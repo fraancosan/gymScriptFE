@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `gimnasio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `gimnasio`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: gimnasio
@@ -31,15 +33,6 @@ CREATE TABLE `actividad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `actividad`
---
-
-LOCK TABLES `actividad` WRITE;
-/*!40000 ALTER TABLE `actividad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `actividad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `checkin`
 --
 
@@ -60,15 +53,6 @@ CREATE TABLE `checkin` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `checkin`
---
-
-LOCK TABLES `checkin` WRITE;
-/*!40000 ALTER TABLE `checkin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `checkin` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cliente`
 --
 
@@ -84,15 +68,6 @@ CREATE TABLE `cliente` (
   PRIMARY KEY (`dniCli`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cliente`
---
-
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `cuota`
@@ -113,15 +88,6 @@ CREATE TABLE `cuota` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cuota`
---
-
-LOCK TABLES `cuota` WRITE;
-/*!40000 ALTER TABLE `cuota` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cuota` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `entrenador`
 --
 
@@ -139,15 +105,6 @@ CREATE TABLE `entrenador` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `entrenador`
---
-
-LOCK TABLES `entrenador` WRITE;
-/*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `horario`
 --
 
@@ -159,19 +116,11 @@ CREATE TABLE `horario` (
   `horaDia` datetime NOT NULL,
   `duracion` time NOT NULL,
   `idSede` int NOT NULL,
+  PRIMARY KEY (`idActividad`,`horaDia`,`idSede`),
   KEY `fk_horario-sa_idx` (`idActividad`,`idSede`),
   CONSTRAINT `fk_horario-sa` FOREIGN KEY (`idActividad`, `idSede`) REFERENCES `sedes_actividades` (`idActividad`, `idSede`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `horario`
---
-
-LOCK TABLES `horario` WRITE;
-/*!40000 ALTER TABLE `horario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `horario` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `inscripcion`
@@ -196,15 +145,6 @@ CREATE TABLE `inscripcion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `inscripcion`
---
-
-LOCK TABLES `inscripcion` WRITE;
-/*!40000 ALTER TABLE `inscripcion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inscripcion` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `localidad`
 --
 
@@ -222,15 +162,6 @@ CREATE TABLE `localidad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `localidad`
---
-
-LOCK TABLES `localidad` WRITE;
-/*!40000 ALTER TABLE `localidad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `localidad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `plan`
 --
 
@@ -245,15 +176,6 @@ CREATE TABLE `plan` (
   PRIMARY KEY (`idPlan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `plan`
---
-
-LOCK TABLES `plan` WRITE;
-/*!40000 ALTER TABLE `plan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `plan` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `plan-actividad`
@@ -273,15 +195,6 @@ CREATE TABLE `plan-actividad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `plan-actividad`
---
-
-LOCK TABLES `plan-actividad` WRITE;
-/*!40000 ALTER TABLE `plan-actividad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `plan-actividad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `provincia`
 --
 
@@ -294,15 +207,6 @@ CREATE TABLE `provincia` (
   PRIMARY KEY (`idProvincia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `provincia`
---
-
-LOCK TABLES `provincia` WRITE;
-/*!40000 ALTER TABLE `provincia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `provincia` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `salon`
@@ -320,15 +224,6 @@ CREATE TABLE `salon` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `salon`
---
-
-LOCK TABLES `salon` WRITE;
-/*!40000 ALTER TABLE `salon` DISABLE KEYS */;
-/*!40000 ALTER TABLE `salon` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `sede`
 --
 
@@ -344,15 +239,6 @@ CREATE TABLE `sede` (
   CONSTRAINT `fk_idLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`idLocalidad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sede`
---
-
-LOCK TABLES `sede` WRITE;
-/*!40000 ALTER TABLE `sede` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sede` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `sede-act_entrenadores`
@@ -373,15 +259,6 @@ CREATE TABLE `sede-act_entrenadores` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sede-act_entrenadores`
---
-
-LOCK TABLES `sede-act_entrenadores` WRITE;
-/*!40000 ALTER TABLE `sede-act_entrenadores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sede-act_entrenadores` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `sedes_actividades`
 --
 
@@ -400,15 +277,6 @@ CREATE TABLE `sedes_actividades` (
   CONSTRAINT `fk_sede-sa` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sedes_actividades`
---
-
-LOCK TABLES `sedes_actividades` WRITE;
-/*!40000 ALTER TABLE `sedes_actividades` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sedes_actividades` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -419,4 +287,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-10 10:25:46
+-- Dump completed on 2023-08-15 13:27:06
