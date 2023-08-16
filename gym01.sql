@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `gimnasio` /*!40100 DEFAULT CHARACTER SET utf8mb4
 USE `gimnasio`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: gimnasio
+-- Host: containers-us-west-161.railway.app    Database: gimnasio
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.1.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,9 +27,9 @@ DROP TABLE IF EXISTS `actividad`;
 CREATE TABLE `actividad` (
   `idActividad` int NOT NULL AUTO_INCREMENT,
   `nombreAct` varchar(45) NOT NULL,
-  `decripcionAct` varchar(45) NOT NULL,
+  `descripcionAct` varchar(45) NOT NULL,
   PRIMARY KEY (`idActividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,10 +45,10 @@ CREATE TABLE `checkin` (
   `idSede` int NOT NULL,
   `fechaHora` datetime NOT NULL,
   PRIMARY KEY (`idCheckIn`,`dniCli`),
-  KEY `fk_dniCliente_idx` (`dniCli`),
   KEY `fk_idSede_idx` (`idSede`),
-  CONSTRAINT `fk_dniCliente` FOREIGN KEY (`dniCli`) REFERENCES `cliente` (`dniCli`),
-  CONSTRAINT `fk_idSede` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`)
+  KEY `fk_dniCli_idx` (`dniCli`),
+  CONSTRAINT `fk_dniCli` FOREIGN KEY (`dniCli`) REFERENCES `cliente` (`dniCli`),
+  CONSTRAINT `fk_idSede` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
-  `dniCli` int NOT NULL AUTO_INCREMENT,
+  `dniCli` int NOT NULL,
   `nombreCli` varchar(45) NOT NULL,
   `apellidoCli` varchar(45) NOT NULL,
   `telefonoCli` int DEFAULT NULL,
@@ -138,9 +138,9 @@ CREATE TABLE `inscripcion` (
   PRIMARY KEY (`dniCli`,`idPlan`),
   KEY `fk_idPlan_idx` (`idPlan`),
   KEY `fk_sede-insc_idx` (`idSede`),
-  CONSTRAINT `fk_cli-Insc` FOREIGN KEY (`dniCli`) REFERENCES `cliente` (`dniCli`),
-  CONSTRAINT `fk_plan-Insc` FOREIGN KEY (`idPlan`) REFERENCES `plan` (`idPlan`),
-  CONSTRAINT `fk_sede-insc` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`)
+  CONSTRAINT `fk_dni-Insc` FOREIGN KEY (`dniCli`) REFERENCES `cliente` (`dniCli`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_plan-Insc` FOREIGN KEY (`idPlan`) REFERENCES `plan` (`idPlan`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_sede-insc` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,7 +158,7 @@ CREATE TABLE `localidad` (
   PRIMARY KEY (`idLocalidad`),
   KEY `fk_idProvincia_idx` (`idProvincia`),
   CONSTRAINT `fk_idProvincia` FOREIGN KEY (`idProvincia`) REFERENCES `provincia` (`idProvincia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +205,7 @@ CREATE TABLE `provincia` (
   `idProvincia` int NOT NULL AUTO_INCREMENT,
   `nombreProv` varchar(45) NOT NULL,
   PRIMARY KEY (`idProvincia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,4 +287,4 @@ CREATE TABLE `sedes_actividades` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-15 13:27:06
+-- Dump completed on 2023-08-16 15:34:18
