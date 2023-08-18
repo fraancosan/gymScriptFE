@@ -46,4 +46,4 @@ Cada cliente tendrá registrado un check in o registro de ingreso al gimnasio, e
 El gimnasio cuenta también con muchos artículos disponibles, los cuales pueden ser comida, bebida o suplementos. Estos artículos son vendidos únicamente de manera física pero interesa mostrar a los clientes cuáles son mediante una página de internet.
 
 ## Link DER
-https://drive.google.com/file/d/1P5hTo7BgIAT2n542mkwsYI71uelFhnp0/view?usp=drive_link
+https://drive.google.com/file/d/1P5hTo7BgIAT2n542mkwsYI71uelFhnp0/view?usp=sharing
