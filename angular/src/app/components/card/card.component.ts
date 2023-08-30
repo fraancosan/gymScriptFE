@@ -6,8 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input() tituloFront: string = '';
-  @Input() contenidoFront: string = '';
-  @Input() tituloBack: string = '';
-  @Input() contenidoBack: string = '';
+  @Input() title!: string;
+  @Input() cost!: string;
 }
