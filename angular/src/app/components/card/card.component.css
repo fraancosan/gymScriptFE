@@ -49,6 +49,9 @@
 .contenido {
   padding: 0.5rem;
 }
+li.contenido{
+  padding: 0.2rem;
+}
 
 .flip-card-front .title {
   color: #FCBD0F;

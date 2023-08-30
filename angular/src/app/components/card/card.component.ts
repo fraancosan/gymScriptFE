@@ -9,5 +9,8 @@ export class CardComponent {
   @Input() tituloFront: string = '';
   @Input() contenidoFront: string = '';
   @Input() tituloBack: string = '';
-  @Input() contenidoBack: string = '';
+  @Input() contenidoBack1: string = '';
+  @Input() contenidoBack2: string = '';
+  @Input() contenidoBack3: string = '';
+  @Input() contenidoBack4: string = '';
 }
