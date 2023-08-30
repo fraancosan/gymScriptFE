@@ -1,12 +1,22 @@
-<app-header></app-header>
-<img class="imgPresentation" src="../assets/fondo_byw.jpg" />
+<!-- Banner -->
+<section class="presentation">
+  <app-header></app-header>
+  <h1 class="title-presentation">
+    BE YOUR<span class="highlighted"> BEST</span>
+  </h1>
+</section>
 
 <!-- Se ponen las cartas con los planes -->
-<div class="container-fluid container-cards">
-  <div class="row">
-    <app-card class="col" title="Plan Basico" cost="20"></app-card>
-    <app-card class="col" title="Plan Estandar" cost="50"></app-card>
-    <app-card class="col" title="Plan Premium" cost="100"></app-card>
+<div class="container-fluid containerPlanes" id="planes">
+  <div class="container">
+    <h1 class="titles">ELEGI TU PLAN</h1>
+  </div>
+  <div class="containerCards">
+    <div class="row">
+      <app-card class="col" title="BASICO" cost="20"></app-card>
+      <app-card class="col" title="ESTANDAR" cost="50"></app-card>
+      <app-card class="col" title="PREMIUM" cost="100"></app-card>
+    </div>
   </div>
 </div>
 

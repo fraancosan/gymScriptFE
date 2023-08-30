@@ -13,26 +13,39 @@
     border-radius: 5%;
     padding: 20px;
     padding-bottom: 10px;
-    background-color: #fff;
+    background-color: #212529;
     transition: all .5s;
 }
 
+.important{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
-    font-size: 25px;
-    color: #212529;
-    margin: 10px 5px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffc107;
+    margin: 10px 5px 5px 5px;
+    text-align: center;
+    border-bottom: 1px solid #ffc107;
 }
 
 .cost {
     margin: 0 5px;
-    font-size: 40px;
+    font-size: 35px;
+    padding-top: 25px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #212529b0;
+    /* border-bottom: 1px solid #ffc107; */
+    color: white;
+    font-weight: bold;
 }
 
 .card-list {
     margin: 15px 0 0 0;
     padding: 0;
+    color: white;
 }
 
 .list-item {
@@ -60,6 +73,7 @@
     transform: scale(1.05);
 }
 
+
 /*Pagina para box shadowx*/
 /* https://getcssscan.com/css-box-shadow-examples */
 
@@ -83,6 +97,13 @@
 /*Si es computadora al pasar el mouse sobre la carta de produce efecto de sombra*/
 @media (min-width: 800px){
     .contenedor:hover {
-        box-shadow: rgba(255, 193, 7, 0.4) -5px 5px, rgba(255, 193, 7, 0.3) -10px 10px, rgba(255, 193, 7, 0.2) -15px 15px, rgba(255, 193, 7, 0.1) -20px 20px, rgba(255, 193, 7, 0.05) -25px 25px;
-        }
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
+}
+
+@media (min-width: 1372px){
+    .contenedor {
+        width: 300px;
+        height: 440px;
+    }
+}

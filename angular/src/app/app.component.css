@@ -1,25 +1,52 @@
-  /* Estilos para la imagen de fondo */
-  .imgPresentation{
-    width: 100%;
-    /* Asegura que la imagen ocupe todo el ancho disponible */
-    height:auto;
-    /* Mantiene la relación de aspecto de la imagen */
-    position: relative;
-    /* Permite que la imagen sea el contexto de apilamiento para el componente */
-    z-index: 1;
-    /* Coloca la imagen en una capa detrás del componente */
-  }
-  
-  h2 {
-    color: #fff;
-  }
-  
-  .container-cards .row{
-    margin-top: 50px;
-  }
+/* Estilos para la ventana de presentacion */
+
+.presentation {
+  background-image: url(../assets/fondo.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.title-presentation{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: 120px;
+  transform: translate(-50%, -50%);
+  text-shadow: 3px 4px 7px #130f05cc;
+}
+
+.titles{
+  color: solid black;
+  font-size: 70px;
+  text-align: center;
+  font-weight: 750;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #d6d6d6;
+}
 
 
-.container-cards .col {
+/*Estilo para resaltar una palabra de la frase de la presentacion*/
+
+.highlighted {
+  color: #ffc107;
+}
+
+.containerPlanes {
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.containerPlanes{
+  width: 100%;
+}
+
+.containerPlanes .row{
+  margin-top: 50px;
+}
+
+.containerPlanes .col {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +57,14 @@
 
 /*Si es una computadora se pone lo siguiente*/
 @media (min-width: 800px) {
-  .container-cards .col {
+  .containerPlanes .col {
     margin-bottom: 40px;
+  }
+}
+
+
+@media (min-width: 1372px) {
+  .containerPlanes{
+    width: 75%;
   }
 }
