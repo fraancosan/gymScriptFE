@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -10,5 +9,3 @@ export class CardComponent {
   @Input() title!: string;
   @Input() cost!: string;
 }
-=======
->>>>>>> refs/remotes/origin/main
