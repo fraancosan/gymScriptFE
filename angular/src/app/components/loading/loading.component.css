@@ -1,0 +1,99 @@
+/* Configuracion Logo */
+
+.logo {
+    display: flex;
+    width: fit-content;
+    height: 2em;
+    font-size: 3em;
+    font-weight: 1000;
+    font-family: 'Anton', sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+
+.boxLogo {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #212529;
+  color: #F0DB4F;
+  transition: all .8s;
+  position: relative;
+  overflow: hidden;
+}
+
+.boxLogo:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  color: #212529;
+  background: #F0DB4F;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 1s;
+  -webkit-transition: transform 1s;
+  -moz-transition: transform 1s;
+  -ms-transition: transform 1s;
+  -o-transition: transform 1s;
+}
+
+.boxLogo:nth-child(1)::before {
+  content: "G";
+}
+
+.boxLogo:nth-child(2)::before {
+  content: "Y";
+  transform: translateY(-100%);
+}
+
+.boxLogo:nth-child(3)::before {
+  content: "M";
+}
+
+.boxLogo:nth-child(4)::before {
+  content: "S";
+  transform: translateY(-100%);
+}
+
+
+.boxLogo:nth-child(5)::before {
+  content: 'C';
+}
+
+.boxLogo:nth-child(6)::before {
+  transform: translateY(-100%);
+  content: "R";
+}
+
+.boxLogo:nth-child(7)::before {
+  content: "I";
+}
+
+.boxLogo:nth-child(8)::before {
+  transform: translateY(-100%);
+  content: "P";
+}
+
+.boxLogo:nth-child(9)::before {
+  content: "T";
+}
+
+.logo.loaded .boxLogo:before {
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
