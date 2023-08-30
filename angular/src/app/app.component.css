@@ -1,4 +1,34 @@
-.container-cards{
+/* Estilos para el componente header */
+app-header {
+    position: absolute;
+    /* Permite que el componente se posicione de forma absoluta */
+    top: 0;
+    /* Alinea el componente en la parte superior */
+    z-index: 10;
+    /* Coloca el componente en una capa superior */
+    width: 100%;
+  }
+  
+  /* Estilos para la imagen de fondo */
+  .imgPresentation{
+    width: 100%;
+    /* Asegura que la imagen ocupe todo el ancho disponible */
+    height:auto;
+    /* Mantiene la relación de aspecto de la imagen */
+    position: relative;
+    /* Permite que la imagen sea el contexto de apilamiento para el componente */
+    z-index: 1;
+    /* Coloca la imagen en una capa detrás del componente */
+  }
+  
+  h2 {
+    color: #fff;
+  }
+  
+  .container_cards {
     display: flex;
-}
+    align-items: center;
+    justify-content: center;
+  }
+
 

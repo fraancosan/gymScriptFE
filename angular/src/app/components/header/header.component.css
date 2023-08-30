@@ -1,0 +1,76 @@
+/* Estilos para el encabezado */
+.header {
+    background-color: transparent;
+    padding: 1rem 0;
+    color: #ffffff;
+    display: flex;
+    /* Cambia el contenedor del encabezado a flex */
+    justify-content: space-between;
+    /* Alinea los elementos al centro y coloca los botones a la derecha */
+    align-items: center;
+    /* Centra verticalmente los elementos */
+  }
+  
+  
+  /* Estilos para la navegación */
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    /* Centra los elementos del menú horizontalmente */
+  }
+  
+  .nav-item {
+    margin: 0;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-item:hover {
+    background-color: #b9b7b78a;
+  }
+  
+  
+  /* Estilos para los botones */
+  .button-login,
+  .button-signup {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-signup {
+    background-color: #ffc107;
+    color: #212529;
+    margin: 0px 15px;
+    border: 1px solid #ffc107;
+  }
+  
+  /* Estilos para el botón Sign-up en hover */
+  .button-signup:hover {
+    border: 1px solid #fff;
+    color: #ffffff;
+    background-color: #000000;
+  }
+  
+  .button-login {
+    background-color: #fff;
+    color: #212529;
+    border: 1px solid #fff;
+  }
+  
+  .button-login:hover {
+    color: #ffffff;
+    background-color: #000000;
+  }
