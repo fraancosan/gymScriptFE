@@ -1,14 +1,3 @@
-/* Estilos para el componente header */
-app-header {
-    position: absolute;
-    /* Permite que el componente se posicione de forma absoluta */
-    top: 0;
-    /* Alinea el componente en la parte superior */
-    z-index: 10;
-    /* Coloca el componente en una capa superior */
-    width: 100%;
-  }
-  
   /* Estilos para la imagen de fondo */
   .imgPresentation{
     width: 100%;
@@ -25,10 +14,23 @@ app-header {
     color: #fff;
   }
   
-  .container_cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .container-cards .row{
+    margin-top: 50px;
   }
 
 
+.container-cards .col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+
+/*Si es una computadora se pone lo siguiente*/
+@media (min-width: 800px) {
+  .container-cards .col {
+    margin-bottom: 40px;
+  }
+}

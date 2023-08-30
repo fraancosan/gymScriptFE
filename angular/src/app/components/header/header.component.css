@@ -4,11 +4,15 @@
     padding: 1rem 0;
     color: #ffffff;
     display: flex;
+    width: 100%;
     /* Cambia el contenedor del encabezado a flex */
     justify-content: space-between;
     /* Alinea los elementos al centro y coloca los botones a la derecha */
     align-items: center;
     /* Centra verticalmente los elementos */
+    position: absolute;
+    top: 0;
+    z-index: 100;
   }
   
   

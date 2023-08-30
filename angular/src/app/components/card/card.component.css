@@ -1,19 +1,18 @@
+/*Creado con mobile first*/
+
 * {
     font-family: sans-serif;
 }
 
-
-
-.container {
+.contenedor {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    width: 300px;
+    text-align: left;
+    width: 100%;
     height: auto;
     border-radius: 5%;
     padding: 20px;
     padding-bottom: 10px;
-    margin: 30px;
     background-color: #fff;
     transition: all .5s;
 }
@@ -57,10 +56,33 @@
     transition: all .5s;
 }
 
-.container:hover {
-   transform: scale(1.05);
-   box-shadow: rgba(239, 218, 79, 0.4) -5px 5px, rgba(239, 218, 79, 0.3) -10px 10px, rgba(239, 218, 79, 0.2) -15px 15px, rgba(239, 218, 79, 0.1) -20px 20px, rgba(239, 218, 79, 0.05) -25px 25px;
+.contenedor:hover {
+    transform: scale(1.05);
 }
 
 /*Pagina para box shadowx*/
 /* https://getcssscan.com/css-box-shadow-examples */
+
+
+/* Si la pantalla tiene minimo 300px hago lo siguiente */
+@media (min-width: 300px){
+    .contenedor {
+        width: 280px;
+    }
+    
+}
+
+/*Si la pantalla tiene minimo 350px hago lo siguiente*/
+@media (min-width: 350px){
+    .contenedor {
+        width: 290px;
+    }
+    
+}
+
+/*Si es computadora al pasar el mouse sobre la carta de produce efecto de sombra*/
+@media (min-width: 800px){
+    .contenedor:hover {
+        box-shadow: rgba(255, 193, 7, 0.4) -5px 5px, rgba(255, 193, 7, 0.3) -10px 10px, rgba(255, 193, 7, 0.2) -15px 15px, rgba(255, 193, 7, 0.1) -20px 20px, rgba(255, 193, 7, 0.05) -25px 25px;
+        }
+    }
