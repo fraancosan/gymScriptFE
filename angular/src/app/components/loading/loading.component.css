@@ -103,7 +103,7 @@
   content: "T";
 }
 
-/* Animacion movimiento */
+/* Animaciones de movimiento */
 
 @keyframes arriba {
   30% {
@@ -122,6 +122,10 @@
     transform: translateY(-100%);
   }
 }
+
+/* Animacion para desaparecer el loading
+  Se realiza cuando temina la animacion general,
+  Si es celular se activa desde un inicio */
 
 @keyframes desaparecerFondo {
   0% {
