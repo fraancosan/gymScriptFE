@@ -2,7 +2,7 @@
 /* Mobile First */
 
 /* Se hace que el loading ocupe toda la pantalla
-  y se configura animacion, si es celular no se muestra */
+  y se configura animacion, si es celular con pantalla menor a 500px de ancho no se muestra */
 .pantalla{
   width: 100%;
   height: 100%;
@@ -138,8 +138,8 @@
 }
 
 
-/* Si es computadora se muestra el loading */
-@media (min-width: 800px) {
+/* Si el disposito tiene una pantalla mayor a 500px se muestra el loading */
+@media (min-width: 500px) {
   .pantalla{
     animation: desaparecerFondo 0.4s 2.5s forwards;
     -webkit-animation: desaparecerFondo 0.4s 2.5s forwards;
