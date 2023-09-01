@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.css']
 })
-export class LoadingComponent implements OnInit {
-  logoLoaded: boolean = false;
-
-  ngOnInit(): void {
-    this.logoLoaded = true;
-  }
+export class LoadingComponent {
 
 }
