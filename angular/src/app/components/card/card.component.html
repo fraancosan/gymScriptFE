@@ -2,17 +2,11 @@
   <span class="title">{{ title }}</span>
   <span class="cost">{{ cost | currency }}</span>
 
-  <!-- <span class="title">{{ title }}</span>
-  <span class="cost">{{ cost | currency }}</span> -->
   <ul class="card-list">
-    <li class="list-item"><i class="gg-check-o"></i>Acceso a +400 Sedes</li>
-    <li class="list-item">
-      <i class="gg-check-o"></i>Actividades Indoor/Outdoor
+    <!-- En este caso uso la directiva ngFor para recorrer el array de string que contiene los items de la lista de beneficios de cada plan, con esto me ahorro declarar una etiqueta <li></li> por cada item -->
+    <li class="list-item" *ngFor="let item of cardListItems">
+      <i class="gg-check-o"></i>{{item}}
     </li>
-    <li class="list-item">
-      <i class="gg-check-o"></i>Clases en vivo y On demand
-    </li>
-    <li class="list-item"><i class="gg-check-o"></i>App Nutricion</li>
   </ul>
   <button class="btn btn-warning boton">Asociate</button>
 </div>

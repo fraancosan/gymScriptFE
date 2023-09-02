@@ -17,9 +17,8 @@
   </div>
   <div class="containerCards">
     <div class="row">
-      <app-card class="col" title="BÁSICO" cost="20"></app-card>
-      <app-card class="col" title="ESTÁNDAR" cost="50"></app-card>
-      <app-card class="col" title="PREMIUM" cost="100"></app-card>
+      <!-- Con la directiva ngFor me ahorro tener que declarar 3 veces el componente app-card, ya que esta recorre el array cards del AppComponent.ts y me va mostrando los diferentes datos en cada card -->
+      <app-card *ngFor="let card of cards" class="col" [title]="card.title" [cost]="card.cost.toString()" [cardListItems]="card.cardListItems"></app-card>
     </div>
   </div>
 </div>
