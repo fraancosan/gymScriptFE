@@ -11,14 +11,5 @@
 </section>
 
 <!-- Se ponen las cartas con los planes -->
-<div class="container-fluid containerPlanes" id="planes">
-  <div class="container">
-    <h1 class="titles">ELEGÍ TU PLAN</h1>
-  </div>
-  <div class="containerCards">
-    <div class="row">
-      <!-- Con la directiva ngFor me ahorro tener que declarar 3 veces el componente app-card, ya que esta recorre el array cards del AppComponent.ts y me va mostrando los diferentes datos en cada card -->
-      <app-card *ngFor="let card of cards" class="col" [title]="card.title" [cost]="card.cost.toString()" [cardListItems]="card.cardListItems"></app-card>
-    </div>
-  </div>
-</div>
+<app-home></app-home>
+<app-footer></app-footer>

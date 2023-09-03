@@ -1,0 +1,54 @@
+.containerPlanes {
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.containerPlanes {
+  width: 100%;
+}
+
+.containerPlanes .row {
+  margin-top: 50px;
+}
+
+.containerPlanes .col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.titles {
+  color: solid black;
+  font-size: 70px;
+  text-align: center;
+  font-weight: 750;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #d6d6d6;
+}
+
+
+/*Si es una computadora se pone lo siguiente*/
+@media (min-width: 800px) {
+  .title-presentation {
+    display: block;
+    font-size: 60px;
+  }
+
+  .containerPlanes .col {
+    margin-bottom: 40px;
+  }
+}
+
+
+@media (min-width: 1372px) {
+  .title-presentation {
+    display: block;
+    font-size: 100px;
+  }
+
+  .containerPlanes {
+    width: 75%;
+  }
+}

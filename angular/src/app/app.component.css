@@ -12,20 +12,11 @@
   top: 50%;
   left: 50%;
   color: #fff;
-  display: none;
+  display: block;
+  font-size: 90px;
   transform: translate(-50%, -50%);
   text-shadow: 3px 4px 7px #130f05cc;
 }
-
-.titles{
-  color: solid black;
-  font-size: 70px;
-  text-align: center;
-  font-weight: 750;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #d6d6d6;
-}
-
 
 /*Estilo para resaltar una palabra de la frase de la presentacion*/
 
@@ -33,47 +24,44 @@
   color: #ffc107;
 }
 
-.containerPlanes {
-  margin-top: 100px;
-  margin-bottom: 150px;
+/* Si es celular veo segun el ancho de la pagina */
+
+@media (min-width: 400px){
+  .title-presentation {
+      font-size: 110px;
+  }
 }
 
-.containerPlanes{
-  width: 100%;
+
+@media (min-width: 500px){
+  .title-presentation {
+      white-space: nowrap;
+      font-size: 70px;
+  }
 }
 
-.containerPlanes .row{
-  margin-top: 50px;
-}
 
-.containerPlanes .col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-}
+@media (min-width:600px){
+  .title-presentation {
+      font-size: 80px;
+  }
 
+}
 
 /*Si es una computadora se pone lo siguiente*/
+
 @media (min-width: 800px) {
   .title-presentation {
-      display: block;
-      font-size: 60px;
+    font-size: 100px;
   }
-  .containerPlanes .col {
-    margin-bottom: 40px;
+
+}
+
+@media (min-width: 1000px) {
+  .title-presentation {
+    font-size: 120px;
   }
 }
 
 
-@media (min-width: 1372px) {
-    .title-presentation {
-        display: block;
-        font-size: 100px;
-      }
-  .containerPlanes{
-    width: 75%;
-  }
-}
 
