@@ -1,21 +1,46 @@
 /* Estilos para el encabezado */
 .header {
     background-color: transparent;
-    padding: 1rem 0;
+    padding: .5rem 0;
     color: #ffffff;
     display: flex;
     width: 100%;
     /* Cambia el contenedor del encabezado a flex */
-    justify-content: space-between;
+    justify-content: space-around;
     /* Alinea los elementos al centro y coloca los botones a la derecha */
     align-items: center;
     /* Centra verticalmente los elementos */
     position: absolute;
     top: 0;
+    transition: all .5s;
     z-index: 100;
   }
   
+  .in-scroll {
+    background-color: #212529;
+    position: fixed;
+  }
   
+  .container-start{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    width: calc(0.3*100%);
+  }
+
+  .img-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .container-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(0.3*100%);
+  }
+
   /* Estilos para la navegación */
   .nav-list {
     list-style: none;
@@ -29,6 +54,9 @@
   
   .nav-item {
     margin: 0;
+    font-size: 18px;
+    letter-spacing: .5px;
+    font-weight: 500;
   }
   
   .nav-link {
@@ -42,17 +70,25 @@
   .nav-item:hover {
     background-color: #b9b7b78a;
   }
+
+  .container-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(0.3*100%);
+  }
   
   
   /* Estilos para los botones */
   .button-login,
   .button-signup {
     border: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.30rem 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s;
+    letter-spacing: .5px;
+    font-weight: 600;
+    transition: all 0.3s;
   }
   
   .button-signup {
