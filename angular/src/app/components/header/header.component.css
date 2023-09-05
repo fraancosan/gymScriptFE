@@ -69,6 +69,7 @@
   
   .nav-item:hover {
     background-color: #b9b7b78a;
+    border-radius: 0.25rem;
   }
 
   .container-end {
