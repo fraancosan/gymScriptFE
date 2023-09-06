@@ -4,6 +4,11 @@ html {
 
 body {
   background-color: #f3f4f5;
+  /* Se desactiva scroll mientras carga la pagina */
+  overflow: hidden;
+  /* Se vuelve a activar el scroll cuando termina la animacion */
+  animation: activarScroll 0s 2.6s forwards;
+  -webkit-animation: activarScroll 0s 2.6s forwards;
 }
 
 
@@ -14,3 +19,10 @@ body {
 .ng-invalid:not(form).ng-touched  {
     border-left: 5px solid #a94442; /* red */
   }
+
+
+@keyframes activarScroll {
+  100% {
+    overflow: auto;
+  }
+}
