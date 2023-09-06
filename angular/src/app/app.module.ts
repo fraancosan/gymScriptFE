@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { SedesComponent } from './components/sedes/sedes.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     RegisterComponent,
     FooterComponent,
     AboutUsComponent,
+    SedesComponent,
   ],
   imports: [
     BrowserModule,
