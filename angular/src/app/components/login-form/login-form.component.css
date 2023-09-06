@@ -1,0 +1,36 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 10px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  width: 350px;
+}
+
+.title-form {
+  color: #212529;
+  font-weight: 300;
+}
+
+.container-email,
+.container-password {
+  margin: 25px 0 10px;
+  width: 100%;
+}
+
+.btn {
+  margin-top: 20px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.final-text {
+  color: #212529;
+  margin-top: 20px;
+}
+
+.final-text p {
+  margin-right: 10px;
+}

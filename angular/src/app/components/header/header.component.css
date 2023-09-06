@@ -26,7 +26,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
-    width: calc(0.3*100%);
+    width: auto;
   }
 
   .img-logo {
@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(0.3*100%);
+    width: 50%;
   }
 
   /* Estilos para la navegación */
@@ -76,7 +76,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: calc(0.3*100%);
+    width: auto;
   }
   
   

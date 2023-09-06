@@ -1,26 +1,3 @@
-<form [formGroup]="loginForm">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input formControlName= "email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="text-danger">
-        <div *ngIf="email.errors?.['required']">
-            El Email es requerido.
-        </div>
-        <div *ngIf="email.errors?.['email']">
-            El Email debe tener un formato válido.
-        </div>
-    </div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
-            <div *ngIf="email.invalid && (password.dirty || password.touched)"
-            class="text-danger">
-            <div *ngIf="email.errors?.['required']">
-                El Password es requerido.
-            </div>
-        </div>
-    </div>
-    <button type="submit" (click)="login()" class="btn btn-primary">Iniciar Sesion</button>
-  </form>
+<section class="section-registration">
+      <app-login-form></app-login-form>
+</section>

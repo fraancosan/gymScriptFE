@@ -1,0 +1,28 @@
+<form class="login-form" [formGroup]="loginForm">
+  <h1 class="title-form">Inicia Sesión</h1>
+  <div class="container-email">
+    <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+      aria-describedby="emailHelp" placeholder="Correo Electrónico">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+      <div *ngIf="email.errors?.['required']">
+        El Email es requerido.
+      </div>
+      <div *ngIf="email.errors?.['email']">
+        El Email debe tener un formato válido.
+      </div>
+    </div>
+  </div>
+
+  <div class="container-password">
+    <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1"
+      placeholder="Contraseña">
+    <div *ngIf="email.invalid && (password.dirty || password.touched)" class="text-danger">
+      <div *ngIf="email.errors?.['required']">
+        El Password es requerido.
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" (click)="login()" class="btn btn-warning">Iniciar Sesion</button>
+  <p class="final-text">¿No tenes una cuenta? <a href="/registration">Registrate</a></p>
+</form>

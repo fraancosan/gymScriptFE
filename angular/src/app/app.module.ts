@@ -16,6 +16,7 @@ import { SedesComponent } from './components/sedes/sedes.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SedesComponent,
     ProductosComponent,
     LoginComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
