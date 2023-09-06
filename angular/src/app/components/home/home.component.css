@@ -1,6 +1,15 @@
+/* posicionar bien href del nav para llegar a esta seccion */
+#planes::before {
+  content: '';
+  display: block;
+  height: 120px;
+  margin-top: -120px;
+  visibility: hidden;
+}
+
 .containerPlanes {
   margin-top: 100px;
-  margin-bottom: 150px;
+  margin-bottom: 175px;
 }
 
 .containerPlanes {
