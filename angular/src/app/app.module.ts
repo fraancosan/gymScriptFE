@@ -13,6 +13,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SedesComponent } from './components/sedes/sedes.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +28,15 @@ import { SedesComponent } from './components/sedes/sedes.component';
     FooterComponent,
     AboutUsComponent,
     SedesComponent,
+    ProductosComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
