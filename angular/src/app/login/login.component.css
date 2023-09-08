@@ -1,8 +1,14 @@
 .section-registration {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100vh;
   background-color: #212529;
+}
+
+.imagenLogo{
+  width: 70px;
+  margin-bottom: 50px;
 }
