@@ -65,7 +65,7 @@
 /* Estilos para la ventana de presentacion */
 
 .presentation {
-  background-image: url(../../assets/fondo2.webp);
+  background-image: url(src/assets/fondo2.webp);
   background-size: cover;
   background-position: center;
   height: 100vh;
