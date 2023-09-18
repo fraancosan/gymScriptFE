@@ -65,6 +65,10 @@
   font-size: 90px;
   transform: translate(-50%, -50%);
   text-shadow: 3px 4px 7px #130f05cc;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 /*Estilo para resaltar una palabra de la frase de la presentacion*/
