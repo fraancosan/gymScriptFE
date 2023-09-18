@@ -9,10 +9,7 @@
   background-color: #212529;
   z-index: 2000;
   position: fixed;
-  animation: desaparecerFondo 0.4s 2.2s forwards;
-  -webkit-animation: desaparecerFondo 0s 0s forwards;
 }
-
 
 /* Esta es la configuracion principal del logo */
 .logo{
@@ -103,6 +100,11 @@
   content: "T";
 }
 
+
+.hidden{
+  display: none;
+}
+
 /* Animaciones de movimiento */
 
 @keyframes arriba {
@@ -137,11 +139,10 @@
   }
 }
 
-
 /* Si el disposito tiene una pantalla mayor a 500px se muestra el loading */
 @media (min-width: 500px) {
   .pantalla{
     animation: desaparecerFondo 0.4s 2.5s forwards;
     -webkit-animation: desaparecerFondo 0.4s 2.5s forwards;
-}
+  }
 }
