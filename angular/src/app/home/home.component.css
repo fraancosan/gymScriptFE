@@ -38,7 +38,7 @@
 }
 
 
-/*Si es una computadora se pone lo siguiente*/
+/* Si es una computadora se pone lo siguiente
 @media (min-width: 800px) {
   .title-presentation {
     display: block;
@@ -60,7 +60,7 @@
   .containerPlanes {
     width: 75%;
   }
-}
+} */
 
 /* Estilos para la ventana de presentacion */
 

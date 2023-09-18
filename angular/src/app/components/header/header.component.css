@@ -116,3 +116,36 @@
     color: #ffffff;
     background-color: #000000;
   }
+
+  .icon {
+    color: #fff;
+    z-index: 10000;
+  }
+
+
+  @media(max-width: 1100px) {
+    .container-start {
+      padding: 5px;
+    }
+    .img-logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-item {
+      font-size: 16px;
+    }
+
+    .nav-link {
+      padding: 3px;
+    }
+
+    .button-login, .button-signup {
+      padding: 0.10rem 0.80rem;
+    }
+  }
+
+  /* Clase usada para ocultar los elementos del header */
+  .hidden {
+    display: none;
+  }
