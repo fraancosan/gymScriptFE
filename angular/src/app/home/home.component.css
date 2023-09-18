@@ -37,31 +37,6 @@
   border-bottom: 2px solid #d6d6d6;
 }
 
-
-/* Si es una computadora se pone lo siguiente
-@media (min-width: 800px) {
-  .title-presentation {
-    display: block;
-    font-size: 60px;
-  }
-
-  .containerPlanes .col {
-    margin-bottom: 40px;
-  }
-}
-
-
-@media (min-width: 1372px) {
-  .title-presentation {
-    display: block;
-    font-size: 100px;
-  }
-
-  .containerPlanes {
-    width: 75%;
-  }
-} */
-
 /* Estilos para la ventana de presentacion */
 
 .presentation {
@@ -90,6 +65,10 @@
   font-size: 90px;
   transform: translate(-50%, -50%);
   text-shadow: 3px 4px 7px #130f05cc;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 /*Estilo para resaltar una palabra de la frase de la presentacion*/
@@ -127,6 +106,11 @@
 @media (min-width: 800px) {
   .title-presentation {
     font-size: 100px;
+    display: block;
+  }
+
+  .containerPlanes .col {
+    margin-bottom: 40px;
   }
 
 }
@@ -134,5 +118,11 @@
 @media (min-width: 1000px) {
   .title-presentation {
     font-size: 120px;
+  }
+}
+
+@media (min-width: 1372px) {
+  .containerPlanes {
+    width: 75%;
   }
 }
