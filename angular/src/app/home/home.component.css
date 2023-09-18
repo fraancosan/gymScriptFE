@@ -37,31 +37,6 @@
   border-bottom: 2px solid #d6d6d6;
 }
 
-
-/*Si es una computadora se pone lo siguiente*/
-@media (min-width: 800px) {
-  .title-presentation {
-    display: block;
-    font-size: 60px;
-  }
-
-  .containerPlanes .col {
-    margin-bottom: 40px;
-  }
-}
-
-
-@media (min-width: 1372px) {
-  .title-presentation {
-    display: block;
-    font-size: 100px;
-  }
-
-  .containerPlanes {
-    width: 75%;
-  }
-}
-
 /* Estilos para la ventana de presentacion */
 
 .presentation {
@@ -127,6 +102,11 @@
 @media (min-width: 800px) {
   .title-presentation {
     font-size: 100px;
+    display: block;
+  }
+
+  .containerPlanes .col {
+    margin-bottom: 40px;
   }
 
 }
@@ -134,5 +114,11 @@
 @media (min-width: 1000px) {
   .title-presentation {
     font-size: 120px;
+  }
+}
+
+@media (min-width: 1372px) {
+  .containerPlanes {
+    width: 75%;
   }
 }
