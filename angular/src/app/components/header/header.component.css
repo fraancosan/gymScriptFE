@@ -1,151 +1,160 @@
 /* Estilos para el encabezado */
 .header {
-    background-color: transparent;
-    padding: .5rem 0;
-    color: #ffffff;
-    display: flex;
-    width: 100%;
-    /* Cambia el contenedor del encabezado a flex */
-    justify-content: space-around;
-    /* Alinea los elementos al centro y coloca los botones a la derecha */
-    align-items: center;
-    /* Centra verticalmente los elementos */
-    position: absolute;
-    top: 0;
-    transition: all .5s;
-    z-index: 100;
-  }
+  background-color: transparent;
+  padding: .5rem 0;
+  color: #ffffff;
+  display: flex;
+  width: 100%;
+  /* Cambia el contenedor del encabezado a flex */
+  justify-content: space-around;
+  /* Alinea los elementos al centro y coloca los botones a la derecha */
+  align-items: center;
+  /* Centra verticalmente los elementos */
+  position: absolute;
+  top: 0;
+  transition: all .5s;
+  z-index: 100;
+}
   
-  .in-scroll {
-    background-color: #212529;
-    position: fixed;
-  }
-  
-  .container-start{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-    width: auto;
-  }
+.in-scroll {
+  background-color: #212529;
+  position: fixed;
+}
 
+.container-start{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  width: auto;
+}
+
+.img-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.container-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+/* Estilos para la navegación */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  /* Centra los elementos del menú horizontalmente */
+}
+
+.nav-item {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: .5px;
+  font-weight: 500;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+  background-color: #b9b7b78a;
+  border-radius: 0.25rem;
+}
+
+.container-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: auto;
+}
+
+
+/* Estilos para los botones */
+.button-login,
+.button-signup {
+  border: none;
+  padding: 0.30rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  letter-spacing: .5px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.button-signup {
+  background-color: #ffc107;
+  color: #212529;
+  margin: 0px 15px;
+  border: 1px solid #ffc107;
+}
+
+/* Estilos para el botón Sign-up en hover */
+.button-signup:hover {
+  border: 1px solid #fff;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.button-login {
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #fff;
+}
+
+.button-login:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.icon {
+  color: white;
+}
+
+.containerIcons button{
+  /* Se le saca estilo original*/
+  background-color: transparent;
+  border: none;
+}
+
+
+@media(max-width: 1100px) {
+  .container-start {
+    padding: 5px;
+  }
   .img-logo {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
-  .container-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-  }
-
-  /* Estilos para la navegación */
-  .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    /* Centra los elementos del menú horizontalmente */
-  }
-  
   .nav-item {
-    margin: 0;
-    font-size: 18px;
-    letter-spacing: .5px;
-    font-weight: 500;
+    font-size: 16px;
   }
-  
+
   .nav-link {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s;
-  }
-  
-  .nav-item:hover {
-    background-color: #b9b7b78a;
-    border-radius: 0.25rem;
+    padding: 3px;
   }
 
-  .container-end {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: auto;
+  .button-login, .button-signup {
+    padding: 0.10rem 0.80rem;
   }
-  
-  
-  /* Estilos para los botones */
-  .button-login,
-  .button-signup {
-    border: none;
-    padding: 0.30rem 1rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    letter-spacing: .5px;
-    font-weight: 600;
-    transition: all 0.3s;
-  }
-  
-  .button-signup {
-    background-color: #ffc107;
-    color: #212529;
-    margin: 0px 15px;
-    border: 1px solid #ffc107;
-  }
-  
-  /* Estilos para el botón Sign-up en hover */
-  .button-signup:hover {
-    border: 1px solid #fff;
-    color: #ffffff;
-    background-color: #000000;
-  }
-  
-  .button-login {
-    background-color: #fff;
-    color: #212529;
-    border: 1px solid #fff;
-  }
-  
-  .button-login:hover {
-    color: #ffffff;
-    background-color: #000000;
-  }
+}
 
-  .icon {
-    color: #fff;
-    z-index: 10000;
-  }
+/* Clase usada para ocultar los elementos del header */
+.hidden {
+  display: none;
+}
 
-
-  @media(max-width: 1100px) {
-    .container-start {
-      padding: 5px;
-    }
-    .img-logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .nav-item {
-      font-size: 16px;
-    }
-
-    .nav-link {
-      padding: 3px;
-    }
-
-    .button-login, .button-signup {
-      padding: 0.10rem 0.80rem;
-    }
-  }
-
-  /* Clase usada para ocultar los elementos del header */
-  .hidden {
-    display: none;
-  }
+@media (max-width: 800px){
+  /* poner cambios que va a tener el header cuando sea celu */
+}

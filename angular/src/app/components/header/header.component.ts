@@ -46,12 +46,44 @@ export class HeaderComponent {
     this.visible('xmarkIcon','barsIcon');
     this.visible('mid-container','');
     this.visible('final-container','');
+
+    // Bloqueo el scroll en todo el documento
+    document.body.style.overflow = 'hidden';
+
+
   }
 
   contraer() {
     this.visible('barsIcon','xmarkIcon');
     this.visible('','mid-container');
     this.visible('','final-container');
+
+    // Desbloqueo el scroll en todo el documento
+    document.body.style.overflow = 'auto';
+  }
+
+   ngOnInit(): void {
+    if (window.innerWidth <= 800) {
+      this.contraer();
+    }
+    else {
+      this.visible('','barsIcon');
+      this.visible('mid-container','');
+      this.visible('final-container','');
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (event.target.innerWidth <= 800) {
+      this.contraer();
+    }
+    else {
+      this.contraer();
+      this.visible('','barsIcon');
+      this.visible('mid-container','');
+      this.visible('final-container','');
+    }
   }
 
 

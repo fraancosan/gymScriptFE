@@ -2,6 +2,16 @@
   <div class="container-start">
     <a href="#" class=""><img class="img-logo" src="assets/logo.png" /></a>
   </div>
+
+  <div class="containerIcons">
+    <button id="barsIcon" (click)="desplegar()">
+      <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
+    </button>
+    <button class="hidden" id="xmarkIcon" (click)="contraer()">
+      <fa-icon [icon]="xmarkIcon" class="icon"></fa-icon>
+    </button>
+  </div>
+
   <div class="container-nav" id="mid-container">
     <ul class="nav-list flex-wrap">
       <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
@@ -22,12 +32,6 @@
     </button>
     <button type="button" class="button-signup" routerLink="/signIn">
       Inicia Sesión
-    </button>
-    <button class="hidden" id="barsIcon" (click)="desplegar()">
-      <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
-    </button>
-    <button class="hidden" id="xmarkIcon" (click)="contraer()">
-      <fa-icon [icon]="xmarkIcon" class="icon"></fa-icon>
     </button>
   </div>
 </header>
