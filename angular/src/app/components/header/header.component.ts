@@ -60,17 +60,19 @@ export class HeaderComponent {
   }
 
   contraer() {
-    this.visible('barsIcon','xmarkIcon');
-    this.visible('','mid-container');
-    this.visible('','final-container');
+    if (window.innerWidth <= 800) {
+      this.visible('barsIcon','xmarkIcon');
+      this.visible('','mid-container');
+      this.visible('','final-container');
 
-    // Desbloqueo el scroll en todo el documento
-    document.body.style.overflow = 'auto';
+      // Desbloqueo el scroll en todo el documento
+      document.body.style.overflow = 'auto';
 
-    // Hago que el header ocupe el alto original de la pantalla
-    let header = document.getElementById('header');
-    if (header) {
-      header.style.height = "initial";
+      // Hago que el header ocupe el alto original de la pantalla
+      let header = document.getElementById('header');
+      if (header) {
+        header.style.height = "initial";
+      }
     }
   }
 
