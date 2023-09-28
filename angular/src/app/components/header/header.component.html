@@ -1,9 +1,8 @@
-<header class="header">
+<header class="header" id="header">
   <div class="container-start">
-    <a href="#" class=""><img class="img-logo" src="assets/logo.png" /></a>
-  </div>
-
-  <div class="containerIcons">
+    <a href="#" (click)="contraer()"
+      ><img class="img-logo" src="assets/logo.png"
+    /></a>
     <button id="barsIcon" (click)="desplegar()">
       <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
     </button>
@@ -14,23 +13,41 @@
 
   <div class="container-nav" id="mid-container">
     <ul class="nav-list flex-wrap">
-      <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
       <li class="nav-item">
-        <a href="#Nosotros" class="nav-link">Nosotros</a>
+        <a href="#" class="nav-link" (click)="contraer()">Inicio</a>
       </li>
-      <li class="nav-item"><a href="#planes" class="nav-link">Planes</a></li>
       <li class="nav-item">
-        <a routerLink="/productos" class="nav-link">Productos</a>
+        <a href="#Nosotros" class="nav-link" (click)="contraer()">Nosotros</a>
       </li>
-      <li class="nav-item"><a href="#sedes" class="nav-link">Sedes</a></li>
+      <li class="nav-item">
+        <a href="#planes" class="nav-link" (click)="contraer()">Planes</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/productos" class="nav-link" (click)="contraer()"
+          >Productos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a href="#sedes" class="nav-link" (click)="contraer()">Sedes</a>
+      </li>
     </ul>
   </div>
 
   <div class="container-end" id="final-container">
-    <button type="button" class="button-login" routerLink="/signUp">
+    <button
+      type="button"
+      class="button-login"
+      routerLink="/signUp"
+      (click)="contraer()"
+    >
       Registrate
     </button>
-    <button type="button" class="button-signup" routerLink="/signIn">
+    <button
+      type="button"
+      class="button-signup"
+      routerLink="/signIn"
+      (click)="contraer()"
+    >
       Inicia Sesión
     </button>
   </div>

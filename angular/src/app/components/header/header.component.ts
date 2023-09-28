@@ -6,6 +6,7 @@ import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent {
   scrolled = false;
   barsIcon = faBars;
@@ -30,7 +31,6 @@ export class HeaderComponent {
     let elemento = document.getElementById(id);
     let elemento2 = document.getElementById(id2);
   
-
     //Muestra elementos 
     if (elemento) {
       elemento.classList.remove('hidden');
@@ -50,7 +50,13 @@ export class HeaderComponent {
     // Bloqueo el scroll en todo el documento
     document.body.style.overflow = 'hidden';
 
-
+    // Hago que el header ocupe todo el alto de la pantalla
+    // Tambien hago que tenga si o si background
+    let header = document.getElementById('header');
+    if (header) {
+      header.style.height = '100vh';
+      header.classList.add('in-scroll');
+    }
   }
 
   contraer() {
@@ -60,6 +66,12 @@ export class HeaderComponent {
 
     // Desbloqueo el scroll en todo el documento
     document.body.style.overflow = 'auto';
+
+    // Hago que el header ocupe el alto original de la pantalla
+    let header = document.getElementById('header');
+    if (header) {
+      header.style.height = "initial";
+    }
   }
 
    ngOnInit(): void {

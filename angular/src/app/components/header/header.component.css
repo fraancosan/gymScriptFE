@@ -10,7 +10,7 @@
   /* Alinea los elementos al centro y coloca los botones a la derecha */
   align-items: center;
   /* Centra verticalmente los elementos */
-  position: absolute;
+  position: fixed;
   top: 0;
   transition: all .5s;
   z-index: 100;
@@ -18,15 +18,24 @@
   
 .in-scroll {
   background-color: #212529;
-  position: fixed;
 }
 
 .container-start{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   padding: 10px;
+  display: flex;
+  flex-direction:initial;
+  justify-content: flex-start;
   width: auto;
+}
+
+.container-start button{
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+  color: white;
+  font-size: 25px;
 }
 
 .img-logo {
@@ -117,16 +126,6 @@
   background-color: #000000;
 }
 
-.icon {
-  color: white;
-}
-
-.containerIcons button{
-  /* Se le saca estilo original*/
-  background-color: transparent;
-  border: none;
-}
-
 
 @media(max-width: 1100px) {
   .container-start {
@@ -156,5 +155,45 @@
 }
 
 @media (max-width: 800px){
-  /* poner cambios que va a tener el header cuando sea celu */
+  .header{
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .container-start{
+    padding: 5px 20px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .container-nav{
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .nav-list{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item{
+    width: 100%;
+    text-align: center;
+  }
+
+  .container-end{
+    margin-top: 20px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .button-signup{
+    margin: 20px 0px 10px 0px;
+  }
+
+  .button-login{
+    margin: 20px 0px 10px 0px;
+  }
 }

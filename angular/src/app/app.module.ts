@@ -13,7 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SedesComponent } from './components/sedes/sedes.component';
-import { ProductosComponent } from './components/productos/productos.component';
+import { ProductosComponent } from './productos/productos.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
