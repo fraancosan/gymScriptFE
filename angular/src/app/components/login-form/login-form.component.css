@@ -7,6 +7,7 @@
   background-color: #f6f8fa;
   border-radius: 0.5rem;
   width: 350px;
+  border: 1px solid #ced4da;
 }
 
 .title-form {
@@ -33,4 +34,11 @@
 
 .final-text p {
   margin-right: 10px;
+}
+
+.errorHandling{
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 0;
 }

@@ -18,11 +18,12 @@
       placeholder="Contraseña">
     <div *ngIf="email.invalid && (password.dirty || password.touched)" class="text-danger">
       <div *ngIf="email.errors?.['required']">
-        El Password es requerido.
+        La contraseña es requerida.
       </div>
     </div>
   </div>
 
   <button type="submit" (click)="login()" class="btn btn-warning">Iniciar Sesion</button>
   <p class="final-text">¿No tenes una cuenta? <a routerLink="/signUp">Registrate</a></p>
+  <p class="errorHandling">{{loginError}}</p>
 </form>
