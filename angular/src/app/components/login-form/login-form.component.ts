@@ -32,11 +32,9 @@ export class LoginFormComponent implements OnInit {
 
   login(){
     if(this.loginForm.valid){
-      console.log("Logueado");
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next: data => {
-          console.log(data);
-          // this.router.navigateByUrl("/home");
+        next: (userData) => {
+          console.log(userData);
         },
         error: error => {
           console.log(error);
@@ -44,7 +42,7 @@ export class LoginFormComponent implements OnInit {
         },
         complete: () => {
           console.log('Login complete')
-          // this.router.navigateByUrl("/home");
+          this.router.navigateByUrl("/dashboard");
           this.loginForm.reset();
         }
           

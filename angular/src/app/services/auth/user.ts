@@ -1,5 +1,7 @@
 export interface User {
     id: number;
-    name?: string;
+    nombre?: string;
+    apellido?: string;
     email?: string;
+    message?: string;
 }

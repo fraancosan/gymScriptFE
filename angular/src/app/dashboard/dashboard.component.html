@@ -1,0 +1,9 @@
+<h1>Bienvenido al Dashboard</h1>
+<p *ngIf="userData">Has ingresado como {{userData.nombre}}</p>
+<p>Datos Usuario</p>
+<div *ngIf="userLoginOn">
+    <p *ngIf="userData">Nombre: {{userData.nombre}}</p>
+    <p *ngIf="userData">Apellido: {{userData.apellido}}</p>
+    <p *ngIf="userData">Email: {{userData.email}}</p>
+</div>
+
