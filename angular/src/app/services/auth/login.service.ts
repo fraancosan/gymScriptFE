@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError, BehaviorSubject, tap} from 'rxjs';
 import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  //idea de el BehaviorSubject --> Se pasa como parametro la ultima sesion para que no tenga que entrar de nuevo por un corto periodo mediante session Storage
+  currentUserData:BehaviorSubject<User> = new BehaviorSubject<User>({id:0, email:''});
 
   constructor(private http:HttpClient) { }
 
   login(credential:LoginRequest):Observable<User>{
     console.log(credential);
-    return this.http.get<User>('../../assets/data.json').pipe(catchError(this.handleError));
+    return this.http.get<User>('../../assets/data.json').pipe(
+      //acciones asincronas mientras se ejecuta el observable, no modifica la info de user
+      tap((user:User)=>{
+        this.currentUserData.next(user);
+      }),
+      catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -24,4 +32,9 @@ export class LoginService {
     }
     return throwError(()=>'Algo falló. Por favor, inténtelo de nuevo más tarde.');
   }
+
+  get userData ():Observable<User>{
+    return this.currentUserData.asObservable();
+  }
+  //Ahora desde el componente dashboard hay que suscribirnos al beahaviorSubject
 }
