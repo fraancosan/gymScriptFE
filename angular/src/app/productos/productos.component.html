@@ -1,1 +1,31 @@
-<p>productos works!</p>
+<div class="container">
+    <div class="title">
+        <h4>Listado de productos</h4>
+        <button type="button" class="button-add" routerLink="/add">Agregar Producto</button>            
+    </div>
+ 
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of productos" class="table-active">
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.precio}}</td>
+        <td>{{item.stock}}</td>
+        <td>
+            <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-warning btn-sm">Edit</button>
+            <button type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,29 @@
+.button-add{
+  border: none;
+  padding: 0.30rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  letter-spacing: .5px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.button-add{
+  background-color: #ffc107;
+  color: #212529;
+  margin: 0px 15px;
+  border: 1px solid #ffc107;
+}
+
+.button-add:hover {
+  border: 1px solid #fff;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.title {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

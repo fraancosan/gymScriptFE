@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProductosComponent,
     LoginComponent,
     LoginFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddEditProductComponent
   ],
   imports: [
     BrowserModule,
