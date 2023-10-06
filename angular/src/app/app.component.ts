@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeaderServiceService } from './services/header-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular';
 
+  constructor(public headerService: HeaderServiceService) {}
+
+  ngOnInit(): void {}
 }

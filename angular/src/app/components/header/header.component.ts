@@ -1,5 +1,7 @@
-import { Component, HostListener, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { HeaderServiceService } from 'src/app/services/header-service.service';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +9,13 @@ import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   scrolled = false;
   barsIcon = faBars;
   xmarkIcon = faXmark;
+  showHeader: boolean = false;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private router: Router, private headerService: HeaderServiceService) {}
 
   @HostListener('window:scroll',['$event'])
 
@@ -46,6 +49,7 @@ export class HeaderComponent {
     this.visible('xmarkIcon','barsIcon');
     this.visible('mid-container','');
     this.visible('final-container','');
+    this.visible('','logo');
 
     // Bloqueo el scroll en todo el documento
     document.body.style.overflow = 'hidden';
@@ -64,6 +68,7 @@ export class HeaderComponent {
       this.visible('barsIcon','xmarkIcon');
       this.visible('','mid-container');
       this.visible('','final-container');
+      this.visible('logo','');
 
       // Desbloqueo el scroll en todo el documento
       document.body.style.overflow = 'auto';
@@ -77,6 +82,18 @@ export class HeaderComponent {
   }
 
    ngOnInit(): void {
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
+        if (event.url === '/' || event.url === '/productos' || event.url === '/#Nosotros' || event.url === '/#planes' || event.url === '/#sedes') {
+          this.headerService.showHeader = true;
+        } else {
+          this.headerService.showHeader = false;
+        }
+      }
+    });
+
     if (window.innerWidth <= 800) {
       this.contraer();
     }
@@ -98,7 +115,9 @@ export class HeaderComponent {
       this.visible('mid-container','');
       this.visible('final-container','');
     }
+
   }
 
+  
 
 }

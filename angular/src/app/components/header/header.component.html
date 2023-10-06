@@ -1,14 +1,16 @@
 <header class="header" id="header">
   <div class="container-start">
-    <a href="#" (click)="contraer()"
-      ><img class="img-logo" src="assets/logo.png"
-    /></a>
-    <button id="barsIcon" (click)="desplegar()">
-      <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
-    </button>
-    <button class="hidden" id="xmarkIcon" (click)="contraer()">
-      <fa-icon [icon]="xmarkIcon" class="icon"></fa-icon>
-    </button>
+    <div class="container-logo">
+        <a href="#" (click)="contraer()" id="logo"><img class="img-logo" src="assets/logo.png" /></a>
+    </div>
+    <div class="container-icons">
+      <button id="barsIcon" (click)="desplegar()">
+        <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
+      </button>
+      <button class="hidden" id="xmarkIcon" (click)="contraer()">
+        <fa-icon [icon]="xmarkIcon" class="icon"></fa-icon>
+      </button>
+    </div>
   </div>
 
   <div class="container-nav" id="mid-container">
