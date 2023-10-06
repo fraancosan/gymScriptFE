@@ -1,0 +1,61 @@
+.add-edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 10px;
+  background-color: #f6f8fa;
+  border-radius: 0.5rem;
+  width: 350px;
+  border: 1px solid #ced4da;
+}
+
+.title-form {
+  color: #212529;
+  font-weight: 300;
+}
+
+.container-nombre,
+.container-descripcion,
+.container-precio,
+.container-stock {
+  margin: 25px 0 10px;
+  width: 100%;
+}
+
+.btn {
+  margin-top: 20px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.final-text {
+  color: #212529;
+  margin-top: 20px;
+}
+
+.final-text p {
+  margin-right: 10px;
+}
+
+.errorHandling{
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.section-add-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  padding: 30px 0;
+}
+
+.imagenLogo{
+  width: 70px;
+  margin-bottom: 30px;
+  }
