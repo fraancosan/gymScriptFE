@@ -9,6 +9,7 @@ export class IdentifyService {
 
   identificar(tabla:string): any {
     let articulos: any = [];
+    let tipos: any = [];
     if (tabla == "articulos") {
       articulos = [
         {id: 1, nombre: 'Monster', descripcion: 'Bebida energizante', tipo: 'Bebida'},
@@ -20,15 +21,23 @@ export class IdentifyService {
         {id: 7, nombre: 'Vodka', descripcion: 'Vodka', tipo: 'Bebida'},
         {id: 8, nombre: 'Whisky', descripcion: 'Whisky', tipo: 'Bebida'},
         {id: 9, nombre: 'Coca', descripcion: 'Coca', tipo: 'Polvo'},
-      ]
+      ],
+      // se envian tipos de datos para el formulario, se ignoran los ID
+      tipos = ["text", "text", "text"]
     }
     else if (tabla == "clientes") {
       articulos = [
-        {dni: 1, nombre: 'Juan', apellido: 'Perez', telefono: 123456789, correo: 'aeae'},
-        {dni: 2, nombre: 'Pedro', apellido: 'Gomez', telefono: 123456789, correo: 'eeeeee'},
-      ]
+        {id: 1,dni: 44615316, nombre: 'Juan', apellido: 'Perez', telefono: 3416964996, correo: 'aeae@gmail.com'},
+        {id: 2,dni: 44615310, nombre: 'Pedro', apellido: 'Gomez', telefono: 3416964999, correo: 'eeeeee@gmail.com'},
+        {id: 3,dni: 44615916, nombre: 'Maria', apellido: 'Lopez', telefono: 3416964996, correo: 'rrrrrr@gmail.com'},
+        {id: 4,dni: 44615451, nombre: 'Jose', apellido: 'Garcia', telefono: 3416964996, correo: 'tttttt@gmail.com'},
+        {id: 5,dni: 44615724, nombre: 'Juan', apellido: 'Perez', telefono: 3416964996, correo: 'aeae@gmail.com'},
+        {id: 6,dni: 44117319, nombre: 'Pedro', apellido: 'Gomez', telefono: 3416964996, correo: 'eeeeee@gmail.com'},
+      ],
+      // se envian tipos de datos para el formulario, se ignoran los ID
+      tipos = ["number", "text", "text", "tel", "email"]
     }
-        
-    return articulos;
+    
+    return [articulos, tipos]
   }
 }

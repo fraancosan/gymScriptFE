@@ -1,19 +1,26 @@
-.button-add {
-  min-width: 200px;
-  border: none;
-  padding: 0.30rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  letter-spacing: .5px;
-  font-weight: 600;
-  transition: all 0.3s;
+section {
+  margin-top: 30px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 15px 15px;
 }
 
 .button-add {
+  width: 200px;
+  border: none;
+  padding: 0.30rem 1rem;
+  border-radius: 4px;
+  letter-spacing: .5px;
+  font-weight: 600;
   background-color: #ffc107;
   color: #212529;
-  margin: 0px 15px;
   border: 1px solid #ffc107;
+  transition: all 0.3s;
 }
 
 .button-add:hover {
@@ -22,11 +29,8 @@
   background-color: #000000;
 }
 
-.title {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+h1{
+  font-size: 1.47rem;
 }
 
 input{
@@ -46,4 +50,34 @@ input:enabled{
 
 .hidden{
   display: none;
+}
+
+tbody tr td input{
+  width: 100%;
+  min-width: 150px;
+}
+
+tbody tr td:last-child{
+  text-align: center;
+}
+
+thead tr th:last-child{
+  text-align: center;
+  min-width: 200px;
+  width: 200px;
+}
+
+@media (min-width:550px) {
+  .title{
+    flex-direction: row;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width:650px){
+  h1{
+    font-size: 2rem;
+  }
 }

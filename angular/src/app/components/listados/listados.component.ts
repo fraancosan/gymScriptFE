@@ -1,6 +1,5 @@
-import { Component, Input} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild} from '@angular/core';
 import { IdentifyService } from '../../services/bd/identify.service'
-import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-listados',
@@ -8,22 +7,35 @@ import { waitForAsync } from '@angular/core/testing';
   styleUrls: ['./listados.component.css']
 })
 export class ListadosComponent{
-  
   @Input() header!: string;
   @Input() tabla!: string;
+  @ViewChild('tablaListados', { static: false }) tablaListados!: ElementRef;
   listado: any[] = [];
+  tipos: any[] = [];
 
   constructor(private identifyService: IdentifyService) {};
 
   ngOnInit(): void {
-    this.listado = this.identifyService.identificar(this.tabla);
+    let devolucion = this.identifyService.identificar(this.tabla);
+    this.listado = devolucion[0];
+    this.tipos = devolucion[1];
   };
 
   getObjectValues(obj: any) {
-    return Object.values(obj);
+    let valores = Object.values(obj);
+    // se elimina el primer valor que es el ID
+    valores.shift();
+    return valores;
   }
   getObjectKeys(obj: any) {
-    return Object.keys(obj);
+    // se eliminan las keys ID
+    let keys = Object.keys(obj);
+    keys.shift();
+    // se pone mayuscula a la primer letra de cada key
+    for (let i = 0; i < keys.length; i++) {
+      keys[i] = keys[i].charAt(0).toUpperCase() + keys[i].slice(1);
+    }
+    return keys;
   }
 
   editar(item: any) {
@@ -32,7 +44,7 @@ export class ListadosComponent{
     let fila = this.obtenerFila(item);
     // se habilitan las celdas de la fila seleccionada
     if (fila) {
-      for (let i = 1; i < (fila.cells.length - 1); i++) {
+      for (let i = 0; i < (fila.cells.length - 1); i++) {
         fila.cells[i].children[0].removeAttribute('disabled');
       }
 
@@ -43,7 +55,8 @@ export class ListadosComponent{
   }
 
   borrar(item: any){
-
+    // se vuelve al formato original de la tabla
+    this.volverOriginal();
   }
 
   cancelar(item: any) {
@@ -59,7 +72,7 @@ export class ListadosComponent{
   obtenerFila(item:any) {
     // obtenido el item, obtengo el valor de su ID para saber en que columna se encuentra
     let id = item.id;
-    let tabla = document.getElementById("tablaListados") as HTMLTableElement;
+    let tabla = this.tablaListados.nativeElement as HTMLTableElement;
     let fila;
     if (tabla){
       // obtengo toda la fila en la que se encuentra el item
@@ -70,7 +83,7 @@ export class ListadosComponent{
 
   volverOriginal() {
     // se vuelve al formato original de la tabla
-    let tabla = document.getElementById("tablaListados") as HTMLTableElement;
+    let tabla = this.tablaListados.nativeElement as HTMLTableElement;
     if (tabla) {
       // itero por cada fila de la tabla
       for (let i = 1; i < tabla.rows.length; i++) {
