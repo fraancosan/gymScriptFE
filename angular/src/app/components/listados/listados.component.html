@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="title">
+    <h4>Listado de {{ header }}</h4>
+    <button type="button" class="button-add" routerLink="/add">
+      Agregar {{ header }}
+    </button>
+  </div>
+
+  <table class="table" id="tablaListados">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col" *ngFor="let titulo of getObjectKeys(listado[0])">
+          {{ titulo }}
+        </th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-light" *ngFor="let item of listado">
+        <td *ngFor="let value of getObjectValues(item)">
+          <input value="{{ value }}" disabled />
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning btn-sm botones"
+            (click)="editar(item)"
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm ms-2 botones"
+            (click)="borrar(item)"
+          >
+            Borrar
+          </button>
+          <!-- Botones que se muestran solo si se encuentra editando valores -->
+          <button
+            type="button"
+            class="btn btn-warning btn-sm hidden botones"
+            (click)="aceptar(item)"
+          >
+            Aceptar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm ms-2 hidden botones"
+            (click)="cancelar(item)"
+          >
+            Cancelar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

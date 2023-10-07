@@ -20,6 +20,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
+import { ListadosComponent } from './components/listados/listados.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
     LoginComponent,
     LoginFormComponent,
     DashboardComponent,
-    AddEditProductComponent
+    AddEditProductComponent,
+    ListadosComponent
   ],
   imports: [
     BrowserModule,
