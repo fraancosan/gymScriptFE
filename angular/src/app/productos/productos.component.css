@@ -1,29 +1,111 @@
-.button-add{
-  border: none;
-  padding: 0.30rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  letter-spacing: .5px;
+
+.products-section {
+  padding: 200px 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.first-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-section h1 {
+  color: #fff;
+  font-size: 3rem;
   font-weight: 600;
-  transition: all 0.3s;
+  margin-bottom: 50px;
 }
 
-.button-add{
-  background-color: #ffc107;
-  color: #212529;
-  margin: 0px 15px;
-  border: 1px solid #ffc107;
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin-bottom: 50px;
+  padding: 10px;
+  border-radius: 2%;
+  outline: none;
 }
 
-.button-add:hover {
-  border: 1px solid #fff;
-  color: #ffffff;
-  background-color: #000000;
+.container-filter-options {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  border-bottom: .5px solid #616161;
 }
 
-.title {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.container-filter-options p {
+  margin: 0 10px;
+  color: #fff;
+}
+
+.second-container {
+  display: flex; 
+}
+
+.container-nav-bar {
+  display: flex;
+  padding-left: 30px;
+  margin-right: 60px;
+}
+
+.nav-categories {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.nav-categories h4 {
+  font-size: 32px;
+  width: 100%;
+  color: #fff;
+  border-bottom: .5px solid #616161;
+  padding-bottom: 10px;
+}
+
+.nav-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  width: 100%;
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.list-item a {
+  font-size: 18px;
+  width: 100%;
+  color: #b4b4b4;
+  text-decoration: none;
+}
+
+.list-item a:hover {
+  color: #ffc107;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

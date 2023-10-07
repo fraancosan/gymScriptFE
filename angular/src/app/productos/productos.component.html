@@ -1,31 +1,41 @@
-<div class="container">
-    <div class="title">
-        <h4>Listado de productos</h4>
-        <button type="button" class="button-add" routerLink="/add">Agregar Producto</button>            
-    </div>
- 
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Stock</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of productos" class="table-active">
-        <td>{{item.name}}</td>
-        <td>{{item.description}}</td>
-        <td>{{item.precio}}</td>
-        <td>{{item.stock}}</td>
-        <td>
-            <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-warning btn-sm">Edit</button>
-            <button type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
-        </td>
-      </tr>    
-    </tbody>
-  </table>
+<section class="products-section">
+  
+  <div class="first-container">
+      <h1 class="section-title">Encontra estos productos en cualquiera de nuestras sedes!</h1>
+      <input type="text" placeholder="Buscar..." class="search-bar">
+      <div class="container-filter-options">
+        <p>Menor Precio</p>
+        <p>Orden Alfabetico</p>
+        <p>Más Vendidos</p>
+      </div>
+  </div>
 
-</div>
+  <div class="second-container">
+    <div class="container-nav-bar">
+      <nav class="nav-categories">
+        <h4>Categorías</h4>
+        <hr>
+        <ul class="nav-list">
+          <li class="list-item"><a href="#">Todos los productos</a></li>
+          <li class="list-item"><a href="#">Equipamiento</a></li>
+          <li class="list-item"><a href="#">Ropa y accesorios</a></li>
+          <li class="list-item"><a href="#">Nutrición y suplementos</a></li>
+          <li class="list-item"><a href="#">Tecnología y electrónica</a></li>
+        </ul>
+      </nav>
+    </div>
+      <div class="products-list">
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+        <app-product-card></app-product-card>
+      </div>
+  </div>
+</section>
+<app-footer></app-footer>

@@ -1,7 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: #efda4f;
     box-sizing: border-box;
 }
 .container-sedes{
@@ -10,7 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 2px solid #141414;
+    background: linear-gradient(26.3deg, #d4d4d4 50%, #dad9d9 50% );
+    background-size: 100% 100%;
 }
 
 .map-container{
@@ -18,6 +18,11 @@
     max-width: 100%;
     height: 500px;
     padding: 0 10px;
+    border: none;
+}
+
+.map {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .txt-info-sedes{
@@ -28,20 +33,27 @@
 }
 
 .main-sedes{
-    width: 1290px;
+    width: 100%;
     max-width: 95%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .txt-info-sedes h1 {
     font-weight: bold;
     font-size: 65px;
     padding-bottom: 30px;
+    color: #000;
 }
+
+.txt-info-sedes h1 span {
+    -webkit-text-stroke: 2px #000;
+     color: transparent;
+}
+
 .txt-info-sedes h4 {
     margin-bottom: 5px;
     color: #888585;
@@ -51,6 +63,7 @@
 
 .txt-info-sedes p {
     font-size: 20px;
+    font-weight: 500;
 }
 
 @media (max-width: 1315px) {
@@ -58,6 +71,10 @@
         width: 100%;
         height: auto;
         padding: 60px 0;
+    }
+    .main-sedes {
+        display: flex;
+        flex-direction: column-reverse;
     }
     .txt-info-sedes{
         text-align: center;

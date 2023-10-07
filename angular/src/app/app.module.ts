@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
@@ -21,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 import { ListadosComponent } from './components/listados/listados.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { ListadosComponent } from './components/listados/listados.component';
     LoginFormComponent,
     DashboardComponent,
     AddEditProductComponent,
-    ListadosComponent
+    ListadosComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
