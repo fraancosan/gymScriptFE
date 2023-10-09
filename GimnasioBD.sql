@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `actividad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `actividad` (
-  `idActividad` int NOT NULL AUTO_INCREMENT,
-  `nombreAct` varchar(45) NOT NULL,
-  `descripcionAct` varchar(45) NOT NULL,
-  PRIMARY KEY (`idActividad`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,15 +49,15 @@ DROP TABLE IF EXISTS `checkin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `checkin` (
-  `idCheckIn` int NOT NULL AUTO_INCREMENT,
-  `idCli` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idUsuario` int NOT NULL,
   `idSede` int NOT NULL,
   `fechaHora` datetime NOT NULL,
-  PRIMARY KEY (`idCheckIn`),
-  UNIQUE KEY `idCli_UNIQUE` (`idCli`),
-  KEY `fk_idSede_idx` (`idSede`),
-  CONSTRAINT `fk_cli_check` FOREIGN KEY (`idCli`) REFERENCES `cliente` (`idCliente`),
-  CONSTRAINT `fk_idSede` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`) ON UPDATE CASCADE
+  PRIMARY KEY (`id`),
+  KEY `fk_usuario_check_idx` (`idUsuario`),
+  KEY `fk_sede_check_idx` (`idSede`),
+  CONSTRAINT `fk_sede_check` FOREIGN KEY (`idSede`) REFERENCES `sede` (`id`),
+  CONSTRAINT `fk_usuario_check` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,36 +71,6 @@ LOCK TABLES `checkin` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cliente`
---
-
-DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cliente` (
-  `dniCli` int NOT NULL,
-  `nombreCli` varchar(45) NOT NULL,
-  `apellidoCli` varchar(45) NOT NULL,
-  `telefonoCli` int DEFAULT NULL,
-  `mailCli` varchar(60) NOT NULL,
-  `idCliente` int NOT NULL AUTO_INCREMENT,
-  `constraseña` varchar(45) NOT NULL,
-  `rol` varchar(45) NOT NULL,
-  PRIMARY KEY (`idCliente`),
-  UNIQUE KEY `mailCli_UNIQUE` (`mailCli`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cliente`
---
-
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cuota`
 --
 
@@ -108,16 +78,15 @@ DROP TABLE IF EXISTS `cuota`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cuota` (
-  `fechaPagoCuota` date NOT NULL,
-  `importeCuota` float NOT NULL,
-  `fechaVencCuota` date DEFAULT NULL,
-  `idCouta` int NOT NULL AUTO_INCREMENT,
+  `fechaPago` date NOT NULL,
+  `importe` float NOT NULL,
+  `fechaVenc` date DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `idInscripcion` int NOT NULL,
-  PRIMARY KEY (`idCouta`),
-  UNIQUE KEY `idInscripcion_UNIQUE` (`idInscripcion`),
-  UNIQUE KEY `fechaPagoCuota_UNIQUE` (`fechaPagoCuota`),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fechaPagoCuota_UNIQUE` (`fechaPago`),
   KEY `fk_insc_couta_idx` (`idInscripcion`),
-  CONSTRAINT `fk_insc_couta` FOREIGN KEY (`idInscripcion`) REFERENCES `inscripcion` (`idInscripcion`)
+  CONSTRAINT `fk_insc_couta` FOREIGN KEY (`idInscripcion`) REFERENCES `inscripcion` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -138,12 +107,12 @@ DROP TABLE IF EXISTS `entrenador`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entrenador` (
-  `idEntrenador` int NOT NULL AUTO_INCREMENT,
-  `nombreEnt` varchar(45) NOT NULL,
-  `apellidoEnt` varchar(45) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
   `telefono` int DEFAULT NULL,
-  `horarioTrabajoEnt` varchar(45) NOT NULL,
-  PRIMARY KEY (`idEntrenador`)
+  `horarioTrabajo` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -167,11 +136,11 @@ CREATE TABLE `horario` (
   `horaDia` datetime NOT NULL,
   `duracion` time NOT NULL,
   `idSedeAct` int NOT NULL,
-  `idHorario` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`idHorario`),
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `horaDia_UNIQUE` (`horaDia`),
   UNIQUE KEY `idSedeAct_UNIQUE` (`idSedeAct`),
-  CONSTRAINT `fk_sa_h` FOREIGN KEY (`idSedeAct`) REFERENCES `sedes_actividades` (`idSedes_actividades`)
+  CONSTRAINT `fk_sa_h` FOREIGN KEY (`idSedeAct`) REFERENCES `sedes_actividades` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -196,16 +165,16 @@ CREATE TABLE `inscripcion` (
   `fechaAlta` date NOT NULL,
   `fechaBaja` date NOT NULL,
   `idSede` int NOT NULL,
-  `idInscripcion` int NOT NULL AUTO_INCREMENT,
-  `idCliente` int NOT NULL,
-  PRIMARY KEY (`idInscripcion`),
-  UNIQUE KEY `idUsuario_UNIQUE` (`idCliente`),
-  UNIQUE KEY `idPlan_UNIQUE` (`idPlan`),
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idUsuario` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idUsuario_UNIQUE` (`idUsuario`),
   KEY `fk_idPlan_idx` (`idPlan`),
-  KEY `fk_sede-insc_idx` (`idSede`),
-  CONSTRAINT `fk_cli_insc` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`),
-  CONSTRAINT `fk_plan-Insc` FOREIGN KEY (`idPlan`) REFERENCES `plan` (`idPlan`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_sede-insc` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`) ON UPDATE CASCADE
+  KEY `fk_usuario_insc_idx` (`idUsuario`),
+  KEY `fk_sede_insc_idx` (`idSede`),
+  CONSTRAINT `fk_plan-Insc` FOREIGN KEY (`idPlan`) REFERENCES `plan` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_sede_insc` FOREIGN KEY (`idSede`) REFERENCES `sede` (`id`),
+  CONSTRAINT `fk_usuario_insc` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,14 +195,14 @@ DROP TABLE IF EXISTS `localidad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `localidad` (
-  `idLocalidad` int NOT NULL AUTO_INCREMENT,
-  `nombreLoc` varchar(45) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
   `idProvincia` int NOT NULL,
   `codPostal` varchar(45) NOT NULL,
-  PRIMARY KEY (`idLocalidad`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `codPostal_UNIQUE` (`codPostal`),
-  KEY `fk_idProvincia_idx` (`idProvincia`),
-  CONSTRAINT `fk_idProvincia` FOREIGN KEY (`idProvincia`) REFERENCES `provincia` (`idProvincia`)
+  KEY `fk_prov_loc_idx` (`idProvincia`),
+  CONSTRAINT `fk_prov_loc` FOREIGN KEY (`idProvincia`) REFERENCES `provincia` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -254,11 +223,11 @@ DROP TABLE IF EXISTS `plan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `plan` (
-  `idPlan` int NOT NULL AUTO_INCREMENT,
-  `nombrePlan` varchar(45) NOT NULL,
-  `descripcionPlan` varchar(45) NOT NULL,
-  `precioMensualPlan` float NOT NULL,
-  PRIMARY KEY (`idPlan`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  `precioMensual` float NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -281,13 +250,12 @@ DROP TABLE IF EXISTS `plan-actividad`;
 CREATE TABLE `plan-actividad` (
   `idActividad` int NOT NULL,
   `idPlan` int NOT NULL,
-  `idPlanAct` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`idPlanAct`),
-  UNIQUE KEY `idActividad_UNIQUE` (`idActividad`),
-  UNIQUE KEY `idPlan_UNIQUE` (`idPlan`),
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
   KEY `fk_plan-act_idx` (`idPlan`),
-  CONSTRAINT `fk_act-plan` FOREIGN KEY (`idActividad`) REFERENCES `actividad` (`idActividad`),
-  CONSTRAINT `fk_plan-act` FOREIGN KEY (`idPlan`) REFERENCES `plan` (`idPlan`)
+  KEY `fk_act_pa_idx` (`idActividad`),
+  CONSTRAINT `fk_act_pa` FOREIGN KEY (`idActividad`) REFERENCES `actividad` (`id`),
+  CONSTRAINT `fk_plan_pa` FOREIGN KEY (`idPlan`) REFERENCES `plan` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -308,12 +276,12 @@ DROP TABLE IF EXISTS `producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
-  `idProducto` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `img` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idProducto`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -334,9 +302,9 @@ DROP TABLE IF EXISTS `provincia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `provincia` (
-  `idProvincia` int NOT NULL AUTO_INCREMENT,
-  `nombreProv` varchar(45) NOT NULL,
-  PRIMARY KEY (`idProvincia`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -357,11 +325,11 @@ DROP TABLE IF EXISTS `salon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `salon` (
-  `idSalon` int NOT NULL AUTO_INCREMENT,
-  `descripcionSal` varchar(60) NOT NULL,
-  `capacidadSal` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(60) NOT NULL,
+  `capacidad` int NOT NULL,
   `nroSalon` varchar(45) NOT NULL,
-  PRIMARY KEY (`idSalon`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -382,12 +350,12 @@ DROP TABLE IF EXISTS `sede`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sede` (
-  `idSede` int NOT NULL AUTO_INCREMENT,
-  `direccionSede` varchar(60) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `direccion` varchar(60) NOT NULL,
   `idLocalidad` int NOT NULL,
-  PRIMARY KEY (`idSede`),
+  PRIMARY KEY (`id`),
   KEY `fk_idLocalidad_idx` (`idLocalidad`),
-  CONSTRAINT `fk_idLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`idLocalidad`)
+  CONSTRAINT `fk_idLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -409,14 +377,13 @@ DROP TABLE IF EXISTS `sede-act_entrenadores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sede-act_entrenadores` (
   `idEntrenador` int NOT NULL,
-  `idSedeActEnt` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `idSedeAct` int NOT NULL,
-  PRIMARY KEY (`idSedeActEnt`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `idSedeAct_UNIQUE` (`idSedeAct`),
-  UNIQUE KEY `idEntrenador_UNIQUE` (`idEntrenador`),
   KEY `fk_ent_idx` (`idEntrenador`),
-  CONSTRAINT `fk_ent` FOREIGN KEY (`idEntrenador`) REFERENCES `entrenador` (`idEntrenador`),
-  CONSTRAINT `fk_sa_ent` FOREIGN KEY (`idSedeAct`) REFERENCES `sedes_actividades` (`idSedes_actividades`)
+  CONSTRAINT `fk_ent_sae` FOREIGN KEY (`idEntrenador`) REFERENCES `entrenador` (`id`),
+  CONSTRAINT `fk_sa_sae` FOREIGN KEY (`idSedeAct`) REFERENCES `sedes_actividades` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -440,15 +407,14 @@ CREATE TABLE `sedes_actividades` (
   `idSede` int NOT NULL,
   `idActividad` int NOT NULL,
   `idSalon` int NOT NULL,
-  `idSedes_actividades` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`idSedes_actividades`),
-  UNIQUE KEY `idSede_UNIQUE` (`idSede`),
-  UNIQUE KEY `idActividad_UNIQUE` (`idActividad`),
-  KEY `fk_idSalon_idx` (`idSalon`),
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
   KEY `fk_act-sa_idx` (`idActividad`),
-  CONSTRAINT `fk_act-sa` FOREIGN KEY (`idActividad`) REFERENCES `actividad` (`idActividad`),
-  CONSTRAINT `fk_salon-sa` FOREIGN KEY (`idSalon`) REFERENCES `salon` (`idSalon`),
-  CONSTRAINT `fk_sede-sa` FOREIGN KEY (`idSede`) REFERENCES `sede` (`idSede`)
+  KEY `fk_sede_sa_idx` (`idSede`),
+  KEY `fk_salon_sa_idx` (`idSalon`),
+  CONSTRAINT `fk_act_sa` FOREIGN KEY (`idActividad`) REFERENCES `actividad` (`id`),
+  CONSTRAINT `fk_salon_sa` FOREIGN KEY (`idSalon`) REFERENCES `salon` (`id`),
+  CONSTRAINT `fk_sede_sa` FOREIGN KEY (`idSede`) REFERENCES `sede` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -460,6 +426,36 @@ LOCK TABLES `sedes_actividades` WRITE;
 /*!40000 ALTER TABLE `sedes_actividades` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sedes_actividades` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `dni` int NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
+  `telefono` int DEFAULT NULL,
+  `mail` varchar(60) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `constraseña` varchar(45) NOT NULL,
+  `rol` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mailCli_UNIQUE` (`mail`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -470,4 +466,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-06 20:56:26
+-- Dump completed on 2023-10-09 16:22:27
