@@ -36,9 +36,9 @@
   outline: none;
 }
 
-.container-filter-options {
+.container-order-options {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   margin-bottom: 50px;
@@ -47,9 +47,24 @@
   border-bottom: .5px solid #616161;
 }
 
-.container-filter-options p {
-  margin: 0 10px;
+.order-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
   color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.option-item {
+  margin: 0 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .second-container {
