@@ -1,0 +1,140 @@
+<section class="section-register">
+  <a routerLink=""><img src="assets/logo.png" class="imagenLogo" /></a>
+  <form class="register-form" [formGroup]="registerForm">
+    <h1 class="title-form">Registrate</h1>
+
+    <div class="container-input">
+      <input
+        formControlName="nombre"
+        type="text"
+        class="form-control"
+        id="inputNombre"
+        aria-describedby="nombreHelp"
+        placeholder="Nombre"
+      />
+      <div
+        *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="nombre.errors?.['required']">El nombre es requerido.</div>
+        <div *ngIf="nombre.errors?.['pattern']">
+          El nombre debe tener un formato válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="container-input">
+      <input
+        formControlName="apellido"
+        type="text"
+        class="form-control"
+        id="inputApellido"
+        aria-describedby="apellidoHelp"
+        placeholder="Apellido"
+      />
+      <div
+        *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="apellido.errors?.['required']">
+          El apellido es requerido.
+        </div>
+        <div *ngIf="apellido.errors?.['pattern']">
+          El apellido debe tener un formato válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="container-input">
+      <input
+        formControlName="dni"
+        type="number"
+        class="form-control"
+        id="inputDni"
+        aria-describedby="dniHelp"
+        placeholder="DNI"
+      />
+      <div
+        *ngIf="dni.invalid && (dni.dirty || dni.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="dni.errors?.['required']">El DNI es requerido.</div>
+        <div *ngIf="dni.errors?.['min'] || dni.errors?.['max'] || dni.invalid">
+          El DNI debe tener un formato válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="container-input">
+      <input
+        formControlName="mail"
+        type="email"
+        class="form-control"
+        id="exampleInputmail1"
+        aria-describedby="mailHelp"
+        placeholder="Correo Electrónico"
+      />
+      <div
+        *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="mail.errors?.['required']">El Email es requerido.</div>
+        <div *ngIf="mail.errors?.['mail'] || mail.errors?.['pattern']">
+          El Email debe tener un formato válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="container-input">
+      <input
+        formControlName="telefono"
+        type="number"
+        class="form-control"
+        id="inputTelefono"
+        aria-describedby="telefonoHelp"
+        placeholder="Telefono"
+      />
+      <div
+        *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="telefono.errors?.['required']">
+          El telefono es requerido.
+        </div>
+        <div
+          *ngIf="telefono.errors?.['pattern'] || telefono.errors?.['minLength'] || telefono.errors?.['maxLength']"
+        >
+          El telefono debe tener un formato válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="container-input">
+      <input
+        formControlName="contraseña"
+        type="password"
+        class="form-control"
+        id="exampleInputcontraseña1"
+        placeholder="Contraseña"
+      />
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="password.errors?.['required']">
+          La contraseña es requerida.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" (click)="register()" class="btn btn-warning">
+      Registrarse
+    </button>
+    <div class="spinner" *ngIf="loading">
+      <app-spinner></app-spinner>
+    </div>
+    <p class="final-text">
+      ¿Ya tenes una cuenta? <a routerLink="/signIn">Logueate</a>
+    </p>
+  </form>
+</section>

@@ -1,30 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/auth/login.service';
-import { User } from '../services/auth/user';
+import { userLogin } from '../services/auth/userLogin';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userData?:User;
-  userLoginOn?:boolean;
-  constructor(private loginService:LoginService){}
+  // userData?: userLogin;
+  userLoginOn?: boolean;
+  constructor(private loginService: LoginService) {}
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.loginService.currentUserData.subscribe({
-      next:(userData) => {
-        this.userData = userData;
-      }
-    })
+      next: (data) => {
+        // this.userData = userData;
+        console.log(data);
+      },
+    });
     this.loginService.currentUserLoginOn.subscribe({
-      next:(userLoginOn) => {
+      next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
-      }
-    })
-    console.log(this.userData);
-    console.log(this.userLoginOn);
+      },
+    });
   }
-  
 }

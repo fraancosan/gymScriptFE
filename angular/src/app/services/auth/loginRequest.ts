@@ -1,8 +1,7 @@
 export interface LoginRequest {
-    email: string,
-    password: string;
+  mail: string;
+  contraseña: string;
 }
-
 
 /*export type Roles = 'admin' | 'user';
 

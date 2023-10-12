@@ -7,19 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './components/loading/loading.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SedesComponent } from './components/sedes/sedes.component';
 import { ProductosComponent } from './productos/productos.component';
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListadosComponent } from './components/listados/listados.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { ToastrModule } from 'ngx-toastr';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,16 +29,16 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     LoadingComponent,
     HeaderComponent,
     HomeComponent,
-    RegisterComponent,
     FooterComponent,
     AboutUsComponent,
     SedesComponent,
     ProductosComponent,
-    LoginComponent,
     LoginFormComponent,
     DashboardComponent,
     ListadosComponent,
     ProductCardComponent,
+    RegisterFormComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +46,15 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     BrowserAnimationsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
