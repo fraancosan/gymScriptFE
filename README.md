@@ -4,13 +4,12 @@
 
 - Fani, Nicolás
 - Fina, Gino
-- Sanchez, Franco
+- Sanchez, Franco Nahuel
 - Mongelos, Manuel
 - Zubiri, Joaquin
 
 ## Pasos para Ejecutar
 
-- Abrir terminal en esta carpeta
 - Instalar Angular: npm install -g @angular/cli@latest
 - Instalar Dependencias
 
