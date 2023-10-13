@@ -29,4 +29,4 @@
 
 ## Pagina Web
 
-[Deploy GitHub Pages](https://francosanchez.me/gymScriptFE/)
+[Deploy hecho con GitHub Pages](https://francosanchez.me/gymScriptFE/)
