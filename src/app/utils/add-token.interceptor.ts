@@ -29,7 +29,7 @@ export class AddTokenInterceptor implements HttpInterceptor {
           //Validar despues en el componente que se invoca para mandar mensaje de error
           this.router.navigate(['/singIn']);
         }
-        return throwError(() => new Error('Error'));
+        return throwError(() => error);
       })
     );
   }
