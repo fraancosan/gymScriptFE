@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/auth/login.service';
 import { userLogin } from '../services/auth/userLogin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ import { userLogin } from '../services/auth/userLogin';
 export class DashboardComponent implements OnInit {
   // userData?: userLogin;
   userLoginOn?: boolean;
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginService.currentUserData.subscribe({
@@ -24,5 +25,10 @@ export class DashboardComponent implements OnInit {
         this.userLoginOn = userLoginOn;
       },
     });
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/signIn']);
   }
 }

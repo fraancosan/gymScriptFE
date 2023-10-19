@@ -14,13 +14,14 @@ import { SedesComponent } from './components/sedes/sedes.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListadosComponent } from './components/listados/listados.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
       preventDuplicates: true,
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
