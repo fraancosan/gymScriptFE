@@ -33,17 +33,22 @@ export class ListadosComponent{
     // se elimina el primer valor que es el ID
     valores.shift();
     return valores;
-  }
+  };
+
   getObjectKeys(obj: any) {
-    // se eliminan las keys ID
-    let keys = Object.keys(obj);
-    keys.shift();
-    // se pone mayuscula a la primer letra de cada key
-    for (let i = 0; i < keys.length; i++) {
-      keys[i] = keys[i].charAt(0).toUpperCase() + keys[i].slice(1);
+    try{
+      // se eliminan las keys ID
+      let keys = Object.keys(obj);
+      keys.shift();
+      // se pone mayuscula a la primer letra de cada key
+      for (let i = 0; i < keys.length; i++) {
+        keys[i] = keys[i].charAt(0).toUpperCase() + keys[i].slice(1);
+      }
+      return keys;
     }
-    return keys;
-  }
+    // se devuelve algo unicamente para que no de error al cargar el componente, ya que en un inicio no hay datos
+    catch{return ['Cargando...']}
+  };
 
   editar(item: any, nroFila: any) {
     // se deshabilitan todas las filas, solamente se puede editar una a la vez
@@ -59,22 +64,22 @@ export class ListadosComponent{
       this.visible(fila,fila.cells.length-1, 2, 0);
       this.visible(fila,fila.cells.length-1, 3, 1);
     }
-  }
+  };
 
   borrar(item: any){
     // se vuelve al formato original de la tabla
     this.volverOriginal();
-  }
+  };
 
   cancelar(item: any) {
     // se vuelve al formato original de la tabla
     this.volverOriginal();
-  }
+  };
 
   aceptar(item: any) {
     // se vuelve al formato original de la tabla
     this.volverOriginal();
-  }
+  };
 
   obtenerFila(nroFila:any) {
     let tabla = this.tablaListados.nativeElement as HTMLTableElement;
@@ -84,7 +89,7 @@ export class ListadosComponent{
       fila = tabla.rows[nroFila];
     }
     return fila;
-  }
+  };
 
   volverOriginal() {
     // se vuelve al formato original de la tabla
@@ -102,7 +107,7 @@ export class ListadosComponent{
         this.visible(fila,fila.cells.length-1, 1, 3);
       }
     }
-  }
+  };
 
   visible(fila:HTMLTableRowElement, posicion: any, mostrar: any, ocultar:any) {
     let elemento1 = fila.cells[posicion].children[mostrar];
@@ -112,5 +117,5 @@ export class ListadosComponent{
     elemento1.classList.remove('hidden');
     //Oculta elementos
     elemento2.classList.add('hidden');
-  } 
+  };
 }
