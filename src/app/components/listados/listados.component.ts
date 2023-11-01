@@ -1,5 +1,7 @@
 import { Component, ElementRef, Input, ViewChild} from '@angular/core';
 import { IdentifyService } from '../../services/bd/identify.service'
+import { HttpClient } from '@angular/common/http';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-listados',
@@ -13,12 +15,17 @@ export class ListadosComponent{
   listado: any[] = [];
   tipos: any[] = [];
 
-  constructor(private identifyService: IdentifyService) {};
+  constructor(private identifyService: IdentifyService, private http: HttpClient) {};
 
-  ngOnInit(): void {
-    let devolucion = this.identifyService.identificar(this.tabla);
-    this.listado = devolucion[0];
-    this.tipos = devolucion[1];
+   ngOnInit(): void {
+    let tipos = this.identifyService.identificar(this.tabla);
+    // se obtienen los datos de la base de datos
+    this.http.get("https://servidordsw.onrender.com/" + this.tabla).pipe(
+      catchError((  ) => {
+        alert("Error al conectar con servidor, intente nuevamente mas tarde");
+        return of()
+      })
+    ).subscribe((data: any) => { this.listado = data; });
   };
 
   getObjectValues(obj: any) {
@@ -38,10 +45,10 @@ export class ListadosComponent{
     return keys;
   }
 
-  editar(item: any) {
+  editar(item: any, nroFila: any) {
     // se deshabilitan todas las filas, solamente se puede editar una a la vez
     this.volverOriginal();
-    let fila = this.obtenerFila(item);
+    let fila = this.obtenerFila(nroFila);
     // se habilitan las celdas de la fila seleccionada
     if (fila) {
       for (let i = 0; i < (fila.cells.length - 1); i++) {
@@ -69,14 +76,12 @@ export class ListadosComponent{
     this.volverOriginal();
   }
 
-  obtenerFila(item:any) {
-    // obtenido el item, obtengo el valor de su ID para saber en que columna se encuentra
-    let id = item.id;
+  obtenerFila(nroFila:any) {
     let tabla = this.tablaListados.nativeElement as HTMLTableElement;
     let fila;
     if (tabla){
       // obtengo toda la fila en la que se encuentra el item
-      fila = tabla.rows[id];
+      fila = tabla.rows[nroFila];
     }
     return fila;
   }

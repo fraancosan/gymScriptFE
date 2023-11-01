@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="table-light" *ngFor="let item of listado">
+        <tr class="table-light" *ngFor="let item of listado; let fila = index">
           <td *ngFor="let value of getObjectValues(item); let i = index">
             <input value="{{ value }}" disabled type="{{ tipos[i] }}" />
           </td>
@@ -22,7 +22,7 @@
             <button
               type="button"
               class="btn btn-warning btn-sm botones"
-              (click)="editar(item)"
+              (click)="editar(item, fila + 1)"
             >
               Editar
             </button>
