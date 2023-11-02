@@ -20,7 +20,7 @@ export class ListadosComponent{
    ngOnInit(): void {
     let tipos = this.identifyService.identificar(this.tabla);
     // se obtienen los datos de la base de datos
-    this.http.get("https://servidordsw.onrendereee.com/" + this.tabla).pipe(
+    this.http.get("https://servidordsw.onrender.com/" + this.tabla).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status == 404){
           // Si hay error 404 devuelvo array vacio para que no de error al cargar el componente, AUTOMATIZAR
