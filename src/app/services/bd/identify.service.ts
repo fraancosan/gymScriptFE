@@ -9,14 +9,21 @@ export class IdentifyService {
 
   identificar(tabla:string): any{
     let tipos: any = [];
+    let esquema: any = [];
     if (tabla == "articulos") {
       // se envian tipos de datos para el formulario, se ignoran los ID
-      tipos = ["text", "text", "text", "text"]
+      tipos = ["number","text", "text", "text", "text"];
+      esquema = {}
     }
-    else if (tabla == "clientes") {
+    else if (tabla == "usuarios") {
       // se envian tipos de datos para el formulario, se ignoran los ID
-      tipos = ["number", "text", "text", "tel", "email"]
+      tipos = ["number","number", "text", "text", "tel", "email"];
+      esquema = {}
     }
-    return tipos;
+    else if (tabla == "provincias") {
+      tipos = ["number","text"];
+      esquema = {"id": "", "nombre":""}
+    }
+    return [tipos, esquema];
   }
 }

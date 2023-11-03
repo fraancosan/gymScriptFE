@@ -1,13 +1,21 @@
 <section class="container-md">
   <div class="title">
     <h1>Listado de {{ header }}</h1>
-    <button type="button" class="button-add">Añadir {{ header }}</button>
+    <button
+      type="button"
+      class="button-add"
+      [disabled]="addRegistrosDisabled"
+      (click)="addRegistro()"
+      #addRegistros
+    >
+      Añadir {{ header }}
+    </button>
   </div>
   <div class="table-responsive">
     <table class="table" #tablaListados>
       <thead class="table-dark">
         <tr>
-          <th scope="col" *ngFor="let titulo of getObjectKeys(listado[0])">
+          <th scope="col" *ngFor="let titulo of getObjectKeys(esquema)">
             {{ titulo }}
           </th>
           <th scope="col">Acciones</th>
@@ -22,14 +30,14 @@
             <button
               type="button"
               class="btn btn-warning btn-sm botones"
-              (click)="editar(item, fila + 1)"
+              (click)="editar(fila + 1)"
             >
               Editar
             </button>
             <button
               type="button"
               class="btn btn-secondary btn-sm ms-2 botones"
-              (click)="borrar(item)"
+              (click)="borrar(fila + 1)"
             >
               Borrar
             </button>
@@ -37,14 +45,14 @@
             <button
               type="button"
               class="btn btn-warning btn-sm hidden botones"
-              (click)="aceptar(item)"
+              (click)="aceptar(fila + 1)"
             >
               Aceptar
             </button>
             <button
               type="button"
               class="btn btn-secondary btn-sm ms-2 hidden botones"
-              (click)="cancelar(item)"
+              (click)="cancelar()"
             >
               Cancelar
             </button>
