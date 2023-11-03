@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild} from '@angular/core';
 import { IdentifyService } from '../../services/bd/identify.service'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
@@ -26,8 +26,7 @@ export class ListadosComponent{
     private identifyService: IdentifyService, 
     private http: HttpClient,
     private toastr: ToastrService,
-    private renderer: Renderer2) {};
-    
+    ) {};
 
   ngOnInit(): void {
     this.addRegistrosDisabled = true;
@@ -76,13 +75,37 @@ export class ListadosComponent{
     if (fila){
       // Busco el ID del elemento a borrar
       let input = fila.cells[0].children[0] as HTMLInputElement;
-      // se borra el item de la base de datos
-      this.http.delete<any>(this.urlBack + this.tabla + "/" + input.value).subscribe();
+      if (input.value != ""){
+        // se borra el item de la base de datos
+        this.http.delete<any>(this.urlBack + this.tabla + "/" + input.value).pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.toastr.error(error.error.msg,"Error");
+            return of ()
+          })
+        ).subscribe(data => this.toastr.success(data.msg, "Exito"));
+      } else{
+        // ya que la fila a borrar no esta en la BD, borro unicamente la fila de la tabla y permito añadir registros nuevamente
+        this.addRegistrosDisabled = false;
+      }
+      // se borra la fila de la tabla
+      fila.remove();
+      // se vuelve al formato original de la tabla
+      this.volverOriginal();
+
+      // veo cuantas filas hay en la tabla
+      let table = this.tablaListados.nativeElement as HTMLTableElement;
+      let filas = table.rows.length;
+      // En caso de que ya no queden mas registros luego de borrar, añado uno vacio.
+      if (filas <= 2){
+        this.addRegistro();
+        // Si se trataba de un registro que no estaba en la BD, se vuelve a inhabilitar la opcion de añadir registros
+        // y se avisa que no se puede borrar
+        if (input.value == ""){
+          this.addRegistrosDisabled = true;
+          this.toastr.error("No se puede borrar", "Error");
+        }
+      }
     }
-    // se borra la fila de la tabla
-    fila?.remove();
-    // se vuelve al formato original de la tabla
-    this.volverOriginal();
   };
 
   cancelar() {
@@ -90,6 +113,7 @@ export class ListadosComponent{
     this.volverOriginal();
   };
 
+  // Funcion que crea o edita registros
   aceptar(nroFila: any) {
     let fila = this.obtenerFila(nroFila);
     // se crea una copia del esquema para no modificarlo
@@ -105,13 +129,22 @@ export class ListadosComponent{
     // se obtiene el ID del item y se saca del JSON
     let id = item.id;
     delete item.id;
+    // Item nuevo
     if (id == ""){
       this.http.post<any>(this.urlBack + this.tabla, item).pipe(
         catchError((error: HttpErrorResponse) => {
           this.toastr.error(error.error.msg,"Error");
         return of()
         })
-      ).subscribe();
+      ).subscribe( rta => {
+        this.toastr.success(rta.msg, "Exito");
+        // se vuelve al formato original de la tabla
+        this.volverOriginal();
+        // se recargan los datos
+        this.recargarDatos();
+        // se habilita la opcion de añadir registros
+        this.addRegistrosDisabled = false;
+      });
     }else{
       // se modifica el item de la base de datos
       this.http.patch<any>(this.urlBack + this.tabla + "/" + id, item).pipe(
@@ -119,48 +152,23 @@ export class ListadosComponent{
           this.toastr.error(error.error.msg,"Error");
         return of()
         })
-      ).subscribe();
+      ).subscribe( rta => {
+        this.toastr.success(rta.msg, "Exito");
+        // se vuelve al formato original de la tabla
+        this.volverOriginal();
+        // se recargan los datos
+        this.recargarDatos();
+      });
     }
-    // se vuelve al formato original de la tabla
-    this.volverOriginal();
   };
 
   addRegistro(){
     this.volverOriginal();
     let tabla = this.tablaListados.nativeElement as HTMLTableElement;
-    let fila = tabla.insertRow();
-    // Estilo original de la fila
-    fila.classList.add('table-light');
-    // Se añaden los campos vacios editables
-    for (let i = 0; i < (tabla.rows[0].cells.length- 1); i++) {
-      let celda = fila.insertCell();
-      // arreglar problemas
-      let input= this.renderer.createElement('input');
-      this.renderer.setAttribute(input, "value", "");
-      this.renderer.setAttribute(input, "type", this.tipos[i]);
-      this.renderer.setAttribute(input, "disabled", "true");
-      this.renderer.appendChild(celda, input);
-    }
-    // se agregan botones
-    let celda = fila.insertCell();
-    // Problemas de compatibilidad se crea cada boton por separado
-    this.crearBoton(celda, "btn btn-warning btn-sm botones", 'Editar', (parametro) => this.editar(parametro), fila.rowIndex);
-    this.crearBoton(celda, "btn btn-secondary btn-sm ms-2 botones", 'Borrar', (parametro) => this.borrar(parametro), fila.rowIndex);
-    this.crearBoton(celda, "btn btn-warning btn-sm hidden botones", 'Aceptar', (parametro) => this.aceptar(parametro), fila.rowIndex);
-    this.crearBoton(celda, "btn btn-secondary btn-sm ms-2 hidden botones", 'Cancelar', () => this.cancelar());
-
+    this.listado.push(JSON.parse(JSON.stringify(this.esquema)));
+    this.addRegistrosDisabled = true;
     // Se pone a editar la fila
-    this.editar(fila.rowIndex);
-  }
-
-  // Funcion usada para crear botones en la tabla, solo se usa en la funcion addRegistro()
-  crearBoton(celda: HTMLTableCellElement, clases:any, texto:string,funcion: (parametro:any) => any, parametro?:any){
-    let boton = this.renderer.createElement('button');
-    this.renderer.setAttribute(boton, "type", "button");
-    this.renderer.setAttribute(boton, "class", clases);
-    this.renderer.appendChild(boton, this.renderer.createText(texto));
-    this.renderer.listen(boton, 'click', () => funcion(parametro));
-    this.renderer.appendChild(celda, boton);
+    setTimeout(() => {this.editar(tabla.rows.length-1);}, 100);
   }
 
   obtenerFila(nroFila:any) {
@@ -169,6 +177,8 @@ export class ListadosComponent{
     if (tabla){
       // obtengo toda la fila en la que se encuentra el item
       fila = tabla.rows[nroFila];
+    } else{
+      fila = null;
     }
     return fila;
   };
@@ -177,11 +187,9 @@ export class ListadosComponent{
     this.http.get(this.urlBack + this.tabla).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status == 404){
-        this.toastr.info("No hay datos para mostrar", "Informacion",{timeOut: 3000})
-        // Si hay error 404 devuelvo array vacio para que no de error al cargar el componente, AUTOMATIZAR
-        this.listado = [{ "id": "", 'nombre': '', 'apellido': '', 'telefono': '', 'email': ''}];
-        // Habilito la opcion de Añadir Clientes
-        this.addRegistrosDisabled = false;
+        this.toastr.info("No hay datos para mostrar", "Informacion",{timeOut: 3000});
+        // Añado un registro vacio para que se pueda añadir un nuevo registro
+        this.addRegistro();
       }
       else{
         this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});
