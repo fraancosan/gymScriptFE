@@ -10,10 +10,10 @@ export class IdentifyService {
   identificar(tabla:string): any{
     let tipos: any = [];
     let esquema: any = [];
-    if (tabla == "articulos") {
+    if (tabla == "productos") {
       // se envian tipos de datos para el formulario, se ignoran los ID
       tipos = ["number","text", "text", "text", "text"];
-      esquema = {}
+      esquema = {"id":"", "nombre":"", "descripcion":"", "tipo":"", "img":""}
     }
     else if (tabla == "usuarios") {
       // se envian tipos de datos para el formulario, se ignoran los ID
