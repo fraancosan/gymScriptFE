@@ -24,7 +24,7 @@
       <tbody>
         <tr class="table-light" *ngFor="let item of listado; let fila = index">
           <td *ngFor="let value of getObjectValues(item); let i = index">
-            <input value="{{ value }}" disabled type="{{ tipos[i] }}" />
+            <input value="{{ value }}" disabled type="text" />
           </td>
           <td>
             <button

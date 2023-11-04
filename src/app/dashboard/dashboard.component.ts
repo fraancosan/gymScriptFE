@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/signIn']);
   }
 
+  // Funciones que se encargan de redirigir a los listados correspondientes
   provincias(): void {
     this.header = "Provincias";
     this.tabla = "provincias";
@@ -48,5 +49,20 @@ export class DashboardComponent implements OnInit {
   productos(): void {
     this.header = "Productos";
     this.tabla = "productos";
+  }
+
+  actividades(): void {
+    this.header = "Actividades";
+    this.tabla = "actividades";
+  }
+
+  planes(): void {
+    this.header = "Planes";
+    this.tabla = "planes";
+  }
+
+  usuarios(): void {
+    this.header = "Usuarios";
+    this.tabla = "usuarios";
   }
 }

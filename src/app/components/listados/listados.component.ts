@@ -3,6 +3,7 @@ import { IdentifyService } from '../../services/bd/identify.service'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { parse } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-listados',
@@ -15,6 +16,7 @@ export class ListadosComponent{
   @ViewChild('tablaListados', { static: false }) tablaListados!: ElementRef;
   @ViewChild('addRegistros', { static: false }) addRegistros!: ElementRef;
   listado: any[] = [];
+  // Los tipos de datos se usan solo para enviarlos correctamente al back-end
   tipos: any[] = [];
   esquema: any;
   // se deshabilita la opcion de Añadir Clientes hasta que se carguen los datos, para evitar problemas de que pueda agregar campos a la tabla antes de que se carguen los datos
@@ -33,6 +35,8 @@ export class ListadosComponent{
     let rta = this.identifyService.identificar(this.tabla);
     this.tipos = rta[0];
     this.esquema = rta[1];
+    // Primero que nada pongo la tabla en blanco
+    this.listado = [];
     // se obtienen los datos de la base de datos
     this.recargarDatos();
   }
@@ -123,7 +127,11 @@ export class ListadosComponent{
       for (let i = 0; i < (fila.cells.length - 1); i++) {
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
         // se obtienen los valores de los inputs
-        item[Object.keys(item)[i]] = inputs.value;
+        if (this.tipos[i] == "number"){
+          item[Object.keys(item)[i]] = Number(inputs.value);
+        } else{
+          item[Object.keys(item)[i]] = inputs.value;
+        }
       }
     }
     // se obtiene el ID del item y se saca del JSON
@@ -160,6 +168,7 @@ export class ListadosComponent{
         this.recargarDatos();
       });
     }
+    console.log(typeof id);
   };
 
   addRegistro(){
@@ -188,11 +197,13 @@ export class ListadosComponent{
     catchError((error: HttpErrorResponse) => {
       if (error.status == 404){
         this.toastr.info("No hay datos para mostrar", "Informacion",{timeOut: 3000});
+        this.listado = [];
         // Añado un registro vacio para que se pueda añadir un nuevo registro
         this.addRegistro();
       }
       else{
         this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});
+        this.listado = [];
         // Se desabilita la opcion de Añadir Clientes
         this.addRegistrosDisabled = true;
       };
