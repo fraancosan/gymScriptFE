@@ -2,4 +2,7 @@
 
 <button (click)="logout()">Cerrar Sesión</button>
 
-<app-listados header="Productos" tabla="productos"></app-listados>
+<button (click)="provincias()">Provincias</button>
+<button (click)="productos()">Productos</button>
+
+<app-listados header="{{ header }}" tabla="{{ tabla }}"></app-listados>

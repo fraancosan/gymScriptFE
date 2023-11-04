@@ -28,7 +28,7 @@ export class ListadosComponent{
     private toastr: ToastrService,
     ) {};
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.addRegistrosDisabled = true;
     let rta = this.identifyService.identificar(this.tabla);
     this.tipos = rta[0];
