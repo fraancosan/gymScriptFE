@@ -3,7 +3,6 @@ import { IdentifyService } from '../../services/bd/identify.service'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { parse } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-listados',
