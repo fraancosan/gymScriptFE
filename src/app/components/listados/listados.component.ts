@@ -17,6 +17,8 @@ export class ListadosComponent{
   listado: any[] = [];
   // Los tipos de datos se usan solo para enviarlos correctamente al back-end
   tipos: any[] = [];
+  // Esquema de los datos que se van a mostrar en la tabla, sirve para saber los campos de la tabla.
+  // usado para manejar los registros y darle formato a la tabla
   esquema: any;
   // se deshabilita la opcion de Añadir Clientes hasta que se carguen los datos, para evitar problemas de que pueda agregar campos a la tabla antes de que se carguen los datos
   addRegistrosDisabled: boolean = true;
@@ -38,22 +40,20 @@ export class ListadosComponent{
     this.listado = [];
     // se obtienen los datos de la base de datos
     this.recargarDatos();
-  }
-
-  // Funcion que devuelve los valores que se encuentran en los JSON, es para el HTML
-  getObjectValues(obj: any) {
-    let valores = Object.values(obj);
-    return valores;
   };
 
   // Funcion que devuelve las keys que se encuentran en los JSON, es para el HTML
   getObjectKeys(obj: any) {
-    let keys = Object.keys(obj);
-    // se pone mayuscula a la primer letra de cada key
-    for (let i = 0; i < keys.length; i++) {
-      keys[i] = keys[i].charAt(0).toUpperCase() + keys[i].slice(1);
+    return Object.keys(obj);
+  };
+
+  convHeader(palabra: string){
+    // se cambia el nombre de la columna para que se vea mejor en la tabla
+    if (palabra == "img"){
+      palabra = "Imagen"
     }
-    return keys;
+    // se pone mayuscula la primer letra
+    return palabra.charAt(0).toUpperCase() + palabra.slice(1);
   };
 
   editar(nroFila: any) {

@@ -14,17 +14,34 @@
   <div class="table-responsive">
     <table class="table" #tablaListados>
       <thead class="table-dark">
+        <!-- Itero por cada key del esquema que use el item -->
         <tr>
-          <th scope="col" *ngFor="let titulo of getObjectKeys(esquema)">
-            {{ titulo }}
+          <th
+            scope="col"
+            *ngFor="let key of getObjectKeys(esquema)"
+            class="{{ key }}"
+          >
+            {{ convHeader(key) }}
           </th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
+        <!-- Itero por cada item existente -->
         <tr class="table-light" *ngFor="let item of listado; let fila = index">
-          <td *ngFor="let value of getObjectValues(item); let i = index">
-            <input value="{{ value }}" disabled type="text" />
+          <!-- Itero por cada key del esquema que use el item
+          permite asignar clases y valores a los inputs
+         -->
+          <td
+            class="{{ key }}"
+            *ngFor="let key of getObjectKeys(esquema); let i = index"
+          >
+            <input
+              value="{{ item[key] }}"
+              disabled
+              type="text"
+              class="{{ key }}"
+            />
           </td>
           <td>
             <button

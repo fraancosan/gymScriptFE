@@ -32,7 +32,7 @@ section {
 h1{
   font-size: 1.47rem;
 }
-
+/* Se le saca estilo predeterminado a los inputs */
 input{
   border: none;
   outline: none;
@@ -48,23 +48,43 @@ input:enabled{
   width: 80px;
 }
 
-.hidden{
-  display: none;
+tbody tr td, thead tr th{
+  min-width: 200px;
 }
 
 tbody tr td input{
   width: 100%;
-  min-width: 150px;
 }
 
+tbody tr td.id, thead tr th.id{
+  min-width: 95px;
+  max-width: 95px;
+}
+
+/*
+  A los ID de cada tabla los pongo en negrita
+  No se hace con la clase .id dado que solo quiero la primer columna 
+  y no todas las que tengan la clase .id 
+*/
+tbody tr td:first-child input{
+  font-weight: bold;
+}
+
+/* Columna Acciones */
 tbody tr td:last-child{
   text-align: center;
 }
 
+/* Columna Acciones */
 thead tr th:last-child{
   text-align: center;
   min-width: 200px;
   width: 200px;
+}
+
+/* Propiedad usada para ocultar items */
+.hidden {
+  display: none;
 }
 
 @media (min-width:550px) {
