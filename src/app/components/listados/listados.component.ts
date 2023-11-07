@@ -38,7 +38,6 @@ export class ListadosComponent{
     private toastr: ToastrService,
     ) {};
 
-
   // Funcion que se ejecuta cuando se cambia el valor de la variable tabla
   // Tambien se ejecuta cuando se carga el componente
   ngOnChanges(): void {
@@ -69,7 +68,6 @@ export class ListadosComponent{
   };
 
   borrar(idItem: any){
-    this.volverOriginal();
     let fila = this.obtenerFila(idItem);
     if (fila){
       // Busco el ID del elemento a borrar
@@ -109,6 +107,8 @@ export class ListadosComponent{
   editar(idItem: any) {
     // se deshabilita la ultima fila editada, solamente se puede editar una a la vez
     this.volverOriginal();
+    // se cancela la edicion anterior
+    this.cancelar();
 
     // se guarda el ultimo elemento editado y cual fue su fila
     this.ultimoEditado = this.recuperarValores(idItem);
@@ -125,23 +125,6 @@ export class ListadosComponent{
       this.visible(fila,fila.cells.length-1, 2, 0);
       this.visible(fila,fila.cells.length-1, 3, 1);
     }
-  };
-
-  cancelar(idItem: any) {
-    let fila = this.obtenerFila(idItem);
-    // se recuperan los valores originales del item
-    let item = JSON.parse(JSON.stringify(this.ultimoEditado));
-    // se escriben los valores originales en la fila
-    if (fila){
-      for (let i = 1; i < (fila.cells.length - 1); i++) {
-        let inputs = fila.cells[i].children[0] as HTMLInputElement;
-        inputs.value = item[this.getObjectKeys(item)[i]];
-      }
-    }
-    // se vuelve al formato original de la tabla
-    this.volverOriginal();
-    // se reinicia historial
-    this.reiniciarHistorial();
   };
 
   // Funcion que crea o edita registros
@@ -185,6 +168,24 @@ export class ListadosComponent{
     }
   };
 
+  cancelar() {
+    // se recuperan los valores originales del item
+    let item = JSON.parse(JSON.stringify(this.ultimoEditado));
+    // se obtiene la fila del item
+    let fila = this.obtenerFila(item.id);
+    // se escriben los valores originales en la fila
+    if (fila){
+      for (let i = 1; i < (fila.cells.length - 1); i++) {
+        let inputs = fila.cells[i].children[0] as HTMLInputElement;
+        inputs.value = item[this.getObjectKeys(item)[i]];
+      }
+    }
+    // se vuelve al formato original de la tabla
+    this.volverOriginal();
+    // se reinicia historial
+    this.reiniciarHistorial();
+  };
+
   // Funcion usada para recuperar los valores de los inputs de una fila
   recuperarValores(idItem: any) {
     let fila = this.obtenerFila(idItem);
@@ -217,24 +218,20 @@ export class ListadosComponent{
     let tabla = this.tablaListados.nativeElement as HTMLTableElement;
     let fila;
     if (tabla){
-      // si el idItem es vacio, se trata de un nuevo registro o que aun no se cargo en la BD
-      // sea cual sea el caso, se busca la ultima fila de la tabla
-      if (idItem == ""){
-        fila = tabla.rows[tabla.rows.length-1];
-      } else{
-        // busco la fila que tiene el id del item
-        for (let i = 1; i < tabla.rows.length; i++) {
-          let input = tabla.rows[i].cells[0].children[0] as HTMLInputElement;
-          if (input.value == idItem){
-            fila = tabla.rows[i];
-            break;
-          }
+      // busco la fila que tiene el id del item
+      // si el idItem es vacio, se trata de un nuevo registro
+      for (let i = 1; i < tabla.rows.length; i++) {
+        let input = tabla.rows[i].cells[0].children[0] as HTMLInputElement;
+        if (input.value == idItem){
+          fila = tabla.rows[i];
+          break;
         }
       }
     }
     return fila;
   };
 
+  // Funcion que se encarga de recargar los datos de la tabla
   recargarDatos(){
     this.http.get(this.urlBack + this.tabla).pipe(
     catchError((error: HttpErrorResponse) => {
@@ -261,10 +258,6 @@ export class ListadosComponent{
 
   volverOriginal() {
     // se vuelve al formato original de la tabla
-    // la primera vez no hay ultimoEditado, sin embargo al buscar la fila se obtiene la ultima fila de la tabla
-    // esto no altera el funcionamiento del programa, por lo tanto no se modifica
-    // se volvera al estado original, de algo que ya esta original
-
     let fila = this.obtenerFila(this.ultimoEditado.id);
     if (fila){
       // itero por cada celda de la fila
