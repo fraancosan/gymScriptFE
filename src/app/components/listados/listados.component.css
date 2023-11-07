@@ -50,15 +50,37 @@ input:enabled{
 
 tbody tr td, thead tr th{
   min-width: 200px;
+  padding: 8px;
 }
 
 tbody tr td input{
   width: 100%;
 }
 
+/* Modifico segun ID */
 tbody tr td.id, thead tr th.id{
   min-width: 95px;
   max-width: 95px;
+}
+
+/* Modifico segun tipos */
+tbody tr td.tipo, thead tr th.tipo{
+  min-width: 160px;
+}
+
+/* Modifico segun urls de imagenes */
+tbody tr td.img, thead tr th.img{
+  min-width: 300px;
+}
+
+/* Modifico segun sea descripcion */
+tbody tr td.descripcion, thead tr th.descripcion{
+  min-width: 300px;
+}
+
+/* Modifico segun sea DNI */
+tbody tr td.dni, thead tr th.dni{
+  min-width: 130px;
 }
 
 /*

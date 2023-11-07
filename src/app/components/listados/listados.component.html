@@ -28,7 +28,7 @@
       </thead>
       <tbody>
         <!-- Itero por cada item existente -->
-        <tr class="table-light" *ngFor="let item of listado; let fila = index">
+        <tr class="table-light" *ngFor="let item of listado">
           <!-- Itero por cada key del esquema que use el item
           permite asignar clases y valores a los inputs
          -->
@@ -47,14 +47,14 @@
             <button
               type="button"
               class="btn btn-warning btn-sm botones"
-              (click)="editar(fila + 1)"
+              (click)="editar(item['id'])"
             >
               Editar
             </button>
             <button
               type="button"
               class="btn btn-secondary btn-sm ms-2 botones"
-              (click)="borrar(fila + 1)"
+              (click)="borrar(item['id'])"
             >
               Borrar
             </button>
@@ -62,14 +62,14 @@
             <button
               type="button"
               class="btn btn-warning btn-sm hidden botones"
-              (click)="aceptar(fila + 1)"
+              (click)="aceptar(item['id'])"
             >
               Aceptar
             </button>
             <button
               type="button"
               class="btn btn-secondary btn-sm ms-2 hidden botones"
-              (click)="cancelar()"
+              (click)="cancelar(item['id'])"
             >
               Cancelar
             </button>
