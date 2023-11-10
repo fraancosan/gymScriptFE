@@ -3,7 +3,7 @@
     <h1 class="section-title">
       Encontra estos productos en cualquiera de nuestras sedes!
     </h1>
-    <input type="text" placeholder="Buscar..." class="search-bar" />
+    <input type="text" placeholder="Buscar..." class="search-bar"/>
     <div class="container-order-options">
       <select class="order-options">
         <option class="option-item">Ordenar por</option>
@@ -17,27 +17,14 @@
     <div class="container-nav-bar">
       <nav class="nav-categories">
         <h4>Categorías</h4>
-        <hr />
+        <hr/>
         <ul class="nav-list">
-          <li class="list-item"><a href="#">Todos los productos</a></li>
-          <li class="list-item"><a href="#">Equipamiento</a></li>
-          <li class="list-item"><a href="#">Ropa y accesorios</a></li>
-          <li class="list-item"><a href="#">Nutrición y suplementos</a></li>
-          <li class="list-item"><a href="#">Tecnología y electrónica</a></li>
+          <li class="list-item" *ngFor="let category of categories" (click)="onCategorySelected(category)">{{category}}</li>
         </ul>
       </nav>
     </div>
     <div class="products-list">
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
+      <app-product-card [product]="product" *ngFor="let product of filteredProducts"></app-product-card>
     </div>
   </div>
 </section>

@@ -34,6 +34,10 @@
   padding: 10px;
   border-radius: 2%;
   outline: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  border-bottom: #fff;
 }
 
 .container-order-options {
@@ -68,11 +72,13 @@
 }
 
 .second-container {
-  display: flex; 
+  display: flex;
+  width: 100%; 
 }
 
 .container-nav-bar {
   display: flex;
+  justify-self: flex-start;
   padding-left: 30px;
   margin-right: 60px;
 }
@@ -104,16 +110,14 @@
   width: 100%;
   margin-bottom: 20px;
   list-style: none;
-}
-
-.list-item a {
   font-size: 18px;
   width: 100%;
   color: #b4b4b4;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.list-item a:hover {
+.list-item:hover {
   color: #ffc107;
 }
 
