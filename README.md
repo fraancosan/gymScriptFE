@@ -8,24 +8,21 @@
 - Mongelos, Manuel
 - Zubiri, Joaquin
 
-## Pasos para Ejecutar
+## Visualizacion del proyecto
+
+[**Pagina Web**](https://francosanchez.me/gymScriptFE/)
+
+### Nota
+Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad esta misma entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
+
+## Pasos para Ejecutar Localmente
 
 - Instalar Angular: npm install -g @angular/cli@latest
-- Instalar Dependencias
-
-  - Automatico: npm install
-  - Manual
-    - BootStrap:
-      - ng add ngx-bootstrap
-      - Documentacion: [https://valor-software.com/ngx-bootstrap/#/components](https://valor-software.com/ngx-bootstrap/#/components)
-    - Iconos
-      - npm i @fortawesome/angular-fontawesome
-      - Documentacion [https://fontawesome.com/icons](https://fontawesome.com/icons)
-
+- Instalar Dependencias: npm install
 - Ejecutar Servidor
   - En consola escribir: ng serve
   - El servidor se creara en: http://localhost:4200/
 
-## Pagina Web
-
-[Deploy hecho con GitHub Pages](https://francosanchez.me/gymScriptFE/)
+## Repositorios
+- [**Modelado del Proyecto**](https://github.com/NicoFani/tp-dsw)
+- [**BackEnd**](https://github.com/JoaquinZubiri/ServidorDSW)

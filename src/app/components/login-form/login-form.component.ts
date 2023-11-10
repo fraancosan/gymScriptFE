@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service'; // Import the loginService
 import { LoginRequest } from 'src/app/services/auth/loginRequest';
 import { ToastrService } from 'ngx-toastr';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login-form',
@@ -24,11 +25,13 @@ export class LoginFormComponent implements OnInit {
     ],
     contraseña: ['', Validators.required],
   });
+  token: string = "";
+  jwtHelper = new JwtHelperService();
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {}
@@ -48,6 +51,7 @@ export class LoginFormComponent implements OnInit {
         next: (data) => {
           console.log(data);
           localStorage.setItem('token', data);
+          this.token = data;
         },
         error: (error) => {
           console.log(error);
@@ -57,8 +61,15 @@ export class LoginFormComponent implements OnInit {
         complete: () => {
           console.log('Login complete');
           this.loading = false;
-          this.router.navigateByUrl('/dashboard');
-          this.loginForm.reset();
+          let tokenDecoded = this.jwtHelper.decodeToken(this.token);
+          if(tokenDecoded.rol == "admin"){
+            this.router.navigateByUrl('/dashboard');
+            this.loginForm.reset();
+          }else{
+            //Deberia mandar a inscripcion
+            this.router.navigateByUrl('/');
+            this.loginForm.reset();
+          }        
         },
       });
     } else {
