@@ -22,7 +22,6 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
-import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +56,6 @@ import { ProductService } from './services/product.service';
     }),
   ],
   providers: [
-    ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

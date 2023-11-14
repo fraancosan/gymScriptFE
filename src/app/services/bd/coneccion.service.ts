@@ -17,11 +17,11 @@ export class ConeccionService {
   
   // El header es el nombre del objeto que se mostrara al usuario en caso de no haber datos
   // Ejemplo: No hay planes
-  getAll(tabla: string, header: string): Observable<any>{
+  getAll(tabla: string, nombreMostrar: string): Observable<any>{
     return this.http.get(this.urlBack + tabla).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status == 404){
-        this.toastr.info("No hay " + header, "Informacion",{timeOut: 3000});
+        this.toastr.info("No hay " + nombreMostrar, "Informacion",{timeOut: 3000});
       }
       else{
         this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});

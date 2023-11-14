@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../services/product.service';
 import { Product } from '../interfaces/interfaces';
+import { ConeccionService } from '../services/bd/coneccion.service';
 
 @Component({
   selector: 'app-productos',
@@ -13,10 +13,10 @@ export class ProductosComponent implements OnInit {
   categories?: string[];
   filteredProducts?: Product[] = this.products;
 
-  constructor(private productService: ProductService) {}
+  constructor(private bd: ConeccionService) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data: any[]) => {
+    this.bd.getAll("productos", "productos").subscribe((data: any[]) => {
       this.products = data;
       this.filteredProducts = this.products;
     
