@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service'; // Import the loginService
-import { LoginRequest } from 'src/app/services/auth/loginRequest';
+import { LoginRequest } from 'src/app/interfaces/interfaces';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
 

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LoginRequest } from './loginRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
-import { userLogin } from './userLogin';
-import { User } from './user';
 import { environment } from 'src/environments/environment';
+import { userLogin, LoginRequest, Usuarios} from "src/app/interfaces/interfaces";
 
 @Injectable({
   providedIn: 'root',
@@ -39,9 +37,9 @@ export class LoginService {
       );
   }
 
-  register(user: User): Observable<User> {
+  register(user: Usuarios): Observable<Usuarios> {
     return this.http
-      .post<User>(this.appUrl + this.apiUrlRegister, user)
+      .post<Usuarios>(this.appUrl + this.apiUrlRegister, user)
       .pipe(catchError(this.handleError));
   }
 

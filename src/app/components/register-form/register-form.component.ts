@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
-import { User } from '../../services/auth/user';
 import { ToastrService } from 'ngx-toastr';
+import { Usuarios } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-register-form',
@@ -75,8 +75,8 @@ export class RegisterFormComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
       this.loading = true;
-      console.log(this.registerForm.value as User);
-      this.loginService.register(this.registerForm.value as User).subscribe({
+      console.log(this.registerForm.value as Usuarios);
+      this.loginService.register(this.registerForm.value as Usuarios).subscribe({
         next: (userData) => {
           console.log(userData);
         },
