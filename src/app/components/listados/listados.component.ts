@@ -1,7 +1,6 @@
 import { Component, ElementRef, Input, ViewChild} from '@angular/core';
 import { IdentifyService } from '../../services/bd/identify.service'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, of } from 'rxjs';
+import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -29,12 +28,9 @@ export class ListadosComponent{
   // copia del ultimo elemento editado, se usa para cancelar la edicion
   ultimoEditado: any;
 
-  // URL del servidor de back-end
-  private urlBack = "https://servidordsw.onrender.com/";
-
   constructor(
     private identifyService: IdentifyService, 
-    private http: HttpClient,
+    private bd: ConeccionService,
     private toastr: ToastrService,
     ) {};
 
@@ -49,7 +45,6 @@ export class ListadosComponent{
     this.listado = [];
     // se obtienen los datos de la base de datos
     this.recargarDatos();
-    this.reiniciarHistorial();
   };
 
   // Funcion que devuelve las keys que se encuentran en los JSON
@@ -70,37 +65,29 @@ export class ListadosComponent{
   borrar(idItem: any){
     let fila = this.obtenerFila(idItem);
     if (fila){
-      // Busco el ID del elemento a borrar
-      let input = fila.cells[0].children[0] as HTMLInputElement;
-      if (input.value != ""){
-        // se borra el item de la base de datos
-        this.http.delete<any>(this.urlBack + this.tabla + "/" + input.value).pipe(
-          catchError((error: HttpErrorResponse) => {
-            this.toastr.error(error.error.msg,"Error");
-            return of ()
-          })
-        ).subscribe(data => this.toastr.success(data.msg, "Exito"));
-      } else{
-        // ya que la fila a borrar no esta en la BD, borro unicamente la fila de la tabla y permito añadir registros nuevamente
-        this.addRegistrosDisabled = false;
-      }
-      // se borra la fila de la tabla
-      fila.remove();
-
       // veo cuantas filas hay en la tabla
-      let table = this.tablaListados.nativeElement as HTMLTableElement;
-      let filas = table.rows.length;
-      // En caso de que ya no queden mas registros luego de borrar, añado uno vacio.
-      if (filas == 1){
-        this.addRegistro();
-        // Si se trataba de un registro que no estaba en la BD, se vuelve a inhabilitar la opcion de añadir registros
-        // y se avisa que no se puede borrar
-        if (input.value == ""){
-          this.addRegistrosDisabled = true;
-          this.toastr.error("No se puede borrar", "Error");
+      let filas = this.tablaListados.nativeElement.rows.length;
+
+      // si el item ya existe en la BD, se borra de la BD
+      if (idItem != ""){
+        // se borra el item de la base de datos
+        this.bd.delete(this.tabla, idItem).subscribe(data => {
+          this.toastr.success(data.msg, "Exito", {timeOut: 1500});
+          // se borra la fila de la tabla
+          fila?.remove();
+          // La tabla nunca quedara vacia
+          if (filas == 2){this.addRegistro()}
+        });
+      } else{
+        // La tabla nunca quedara vacia
+        if (filas == 2){this.toastr.error("No se puede borrar", "Error");} 
+        else {
+          // ya que la fila a borrar no esta en la BD, borro unicamente la fila de la tabla y permito añadir registros nuevamente
+          this.addRegistrosDisabled = false;
+          // se borra la fila de la tabla
+          fila.remove();
         }
       }
-      this.reiniciarHistorial();
     }
   };
 
@@ -131,39 +118,19 @@ export class ListadosComponent{
   aceptar(idItem: any) {
     // se recupera el item que se va a crear o editar
     let item = this.recuperarValores(idItem);
-
-    // se saca el id del JSON
-    delete item.id;
-
     // Item nuevo
     if (idItem == ""){
-      this.http.post<any>(this.urlBack + this.tabla, item).pipe(
-        catchError((error: HttpErrorResponse) => {
-          this.toastr.error(error.error.msg,"Error");
-        return of()
-        })
-      ).subscribe( rta => {
-        this.toastr.success(rta.msg, "Exito");
-        // se vuelve al formato original de la tabla
-        this.volverOriginal();
-        // se recargan los datos
-        this.recargarDatos();
+      this.bd.create(this.tabla,item).subscribe( rta => {
+        this.toastr.success(rta.msg, "Exito", {timeOut: 1500});
         // se habilita la opcion de añadir registros
         this.addRegistrosDisabled = false;
+        this.recargarDatos();
       });
     }else{
       // se modifica el item de la base de datos
-      this.http.patch<any>(this.urlBack + this.tabla + "/" + idItem, item).pipe(
-        catchError((error: HttpErrorResponse) => {
-          this.toastr.error(error.error.msg,"Error");
-        return of()
-        })
-      ).subscribe( rta => {
-        this.toastr.success(rta.msg, "Exito");
-        // se vuelve al formato original de la tabla
-        this.volverOriginal();
-        // se recargan los datos
-        this.recargarDatos();
+      this.bd.update(this.tabla, item).subscribe( rta => {
+        this.toastr.success(rta.msg, "Exito", {timeOut: 1500});
+        this.recargarDatos()
       });
     }
   };
@@ -233,40 +200,45 @@ export class ListadosComponent{
 
   // Funcion que se encarga de recargar los datos de la tabla
   recargarDatos(){
-    this.http.get(this.urlBack + this.tabla).pipe(
-    catchError((error: HttpErrorResponse) => {
-      if (error.status == 404){
-        this.toastr.info("No hay datos para mostrar", "Informacion",{timeOut: 3000});
+    this.volverOriginal();
+    this.reiniciarHistorial();
+
+    this.bd.getAll(this.tabla, this.header).subscribe({
+      // Todo salio bien
+      next: (data: any[]) =>{
+        this.listado = data;
+        // Habilito la opcion de Añadir Clientes
+        this.addRegistrosDisabled = false;
+      },
+      // Hay error
+      error: (error: any) => {
         this.listado = [];
-        // Añado un registro vacio para que se pueda añadir un nuevo registro
-        this.addRegistro();
-      }
-      else{
-        this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});
-        this.listado = [];
-        // Se desabilita la opcion de Añadir Clientes
-        this.addRegistrosDisabled = true;
-      };
-      return of()
-    })
-    ).subscribe((data: any) => { 
-      this.listado = data;
-      // Habilito la opcion de Añadir Clientes
-      this.addRegistrosDisabled = false;
+        if (error.status == 404){
+          // Añado un registro vacio para que se pueda añadir un nuevo registro
+          this.addRegistro();
+        }
+        else {
+          // Se desabilita la opcion de Añadir Clientes
+          this.addRegistrosDisabled = true;
+        }
+      },
     });
   };
 
   volverOriginal() {
-    // se vuelve al formato original de la tabla
-    let fila = this.obtenerFila(this.ultimoEditado.id);
-    if (fila){
-      // itero por cada celda de la fila
-      for (let j = 0; j < (fila.cells.length - 1); j++) {
-        fila.cells[j].children[0].setAttribute('disabled', 'true');
+    // Solamente la primera vez que se carga la pagina ultimoEditado es undefined
+    if (this.ultimoEditado != undefined){
+      // se vuelve al formato original de la fila
+      let fila = this.obtenerFila(this.ultimoEditado.id);
+      if (fila){
+        // itero por cada celda de la fila
+        for (let j = 0; j < (fila.cells.length - 1); j++) {
+          fila.cells[j].children[0].setAttribute('disabled', 'true');
+        }
+        // se muestran solo botones editar y borrar
+        this.visible(fila,fila.cells.length-1, 0, 2);
+        this.visible(fila,fila.cells.length-1, 1, 3);
       }
-      // se muestran solo botones editar y borrar
-      this.visible(fila,fila.cells.length-1, 0, 2);
-      this.visible(fila,fila.cells.length-1, 1, 3);
     }
   };
 

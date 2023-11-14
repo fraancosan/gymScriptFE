@@ -20,7 +20,7 @@ export class LoginService {
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
-  private appUrl = environment.endpoint;
+  private appUrl = environment.urlBack;
   private apiUrlRegister = 'usuarios';
   private apiUrlLogin = 'usuarios/loginUser';
 
