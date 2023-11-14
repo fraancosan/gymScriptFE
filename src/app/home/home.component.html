@@ -15,9 +15,9 @@
       <app-card
         *ngFor="let card of planes"
         class="col"
-        [title]="card.title"
-        [cost]="card.cost.toString()"
-        [cardListItems]="card.cardListItems"
+        [title]="card.nombre"
+        [cost]="card.precioMensual.toString()"
+        [cardListItems]="card.descripcion"
       ></app-card>
     </div>
   </div>
