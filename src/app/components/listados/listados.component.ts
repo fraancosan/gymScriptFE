@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild} from '@angular/core';
+import { Component, ElementRef, Input, NgModule, ViewChild} from '@angular/core';
 import { IdentifyService } from '../../services/bd/identify.service'
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './listados.component.html',
   styleUrls: ['./listados.component.css']
 })
+
 export class ListadosComponent{
   @Input() header!: string;
   @Input() tabla!: string;
@@ -48,15 +49,25 @@ export class ListadosComponent{
   };
 
   // Funcion que devuelve las keys que se encuentran en los JSON
-  getObjectKeys(obj: any) {
+  getObjectKeys(obj: any){
     return Object.keys(obj);
   };
+
+  // Funcion usada solamente para obtener el valor de un JSON, es para usar en el arreglo tipos
+  getValor(obj: any): any{
+    return Object.values(obj)[0];
+  }
+  // Funcion usada solamente para obtener la key de un JSON, es para usar en el arreglo tipos
+  getKey(obj: any){
+    return Object.keys(obj)[0];
+  }
 
   // Funcion que devuelve el nombre de la columna, es para el HTML
   convHeader(palabra: string){
     // se cambia el nombre de la columna para que se vea mejor en la tabla
-    if (palabra == "img"){
-      palabra = "Imagen"
+    switch (palabra) {
+      case "img": palabra = "Imagen"; break;
+      case "precioMensual": palabra = "Precio Mensual"; break;
     }
     // se pone mayuscula la primer letra
     return palabra.charAt(0).toUpperCase() + palabra.slice(1);
@@ -163,7 +174,7 @@ export class ListadosComponent{
       for (let i = 0; i < (fila.cells.length - 1); i++) {
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
         // se obtienen los valores de los inputs
-        if (this.tipos[i] == "number"){
+        if (this.getValor(this.tipos[i]) == "number"){
           // si no es un numero, la funcion devuelve NaN. Por lo tanto el programa no se rompe y luego el backend realiza la validacion de datos
           item[this.getObjectKeys(item)[i]] = Number(inputs.value);
         } else{

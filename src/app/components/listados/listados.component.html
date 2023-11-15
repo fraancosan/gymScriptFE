@@ -35,13 +35,30 @@
           <td
             class="{{ key }}"
             *ngFor="let key of getObjectKeys(esquema); let i = index"
+            [ngSwitch]="getKey(tipos[i])"
           >
+            <!-- Cuando tengo un input obtengo el valor y lo pongo como predeterminado -->
             <input
+              *ngSwitchCase="'input'"
               value="{{ item[key] }}"
               disabled
               type="text"
               class="{{ key }}"
             />
+            <!-- Cuando tengo un select obtengo los posibles valores y pongo como predeterminado el que viene de la BD -->
+            <select
+              *ngSwitchCase="'select'"
+              disabled
+              class="{{ key }}"
+              [(ngModel)]="item[key]"
+            >
+              <option
+                *ngFor="let opcion of getValor(tipos[i])"
+                value="{{ opcion }}"
+              >
+                {{ opcion }}
+              </option>
+            </select>
           </td>
           <td>
             <button

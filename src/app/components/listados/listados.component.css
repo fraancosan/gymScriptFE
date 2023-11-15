@@ -33,15 +33,20 @@ h1{
   font-size: 1.47rem;
 }
 /* Se le saca estilo predeterminado a los inputs */
-input{
+input, select{
+  appearance: none;
   border: none;
   outline: none;
   background: transparent;
 }
 
-input:enabled{
+input:enabled, select:enabled{
   padding: 0.5px, 0.5px, 0.5px, 1px;
   border: 0.5px solid black;
+}
+
+select:enabled{
+  appearance: auto;
 }
 
 .botones{
@@ -53,7 +58,7 @@ tbody tr td, thead tr th{
   padding: 8px;
 }
 
-tbody tr td input{
+tbody tr td input, tbody tr td select{
   width: 100%;
 }
 
