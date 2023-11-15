@@ -45,6 +45,17 @@ input:enabled, select:enabled{
   border: 0.5px solid black;
 }
 
+/* Se eliminan botones de aumento y decremento de inputs number */
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Esta sirve para firefox */
+input[type=number]{
+  -moz-appearance: textfield;
+}
+
 select:enabled{
   appearance: auto;
 }

@@ -42,7 +42,7 @@
               *ngSwitchCase="'input'"
               value="{{ item[key] }}"
               disabled
-              type="text"
+              type="{{ getValor(tipos[i]) }}"
               class="{{ key }}"
             />
             <!-- Cuando tengo un select obtengo los posibles valores y pongo como predeterminado el que viene de la BD -->

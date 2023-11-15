@@ -2,10 +2,18 @@
 
 <button (click)="logout()">Cerrar Sesión</button>
 
-<button (click)="provincias()">Provincias</button>
-<button (click)="productos()">Productos</button>
-<button (click)="actividades()">Actividades</button>
-<button (click)="planes()">Planes</button>
-<button (click)="usuarios()">Usuarios</button>
+<button (click)="cargarDatos('Productos', 'productos')">Productos</button>
+<button (click)="cargarDatos('Provincias', 'provincias')">Provincias</button>
+<button (click)="cargarDatos('Localidades', 'localidades')">Localidades</button>
+<button (click)="cargarDatos('Actividades', 'actividades')">Actividades</button>
+<button (click)="cargarDatos('Planes', 'planes')">Planes</button>
+<button (click)="cargarDatos('Usuarios', 'usuarios')">Usuarios</button>
+<button (click)="cargarDatos('Inscripciones', 'inscripciones')">
+  Inscripciones
+</button>
+<button (click)="cargarDatos('Actividad por Plan', 'plan-actividades')">
+  Actividades de Planes
+</button>
+<button (click)="cargarDatos('Sedes', 'sedes')">Sedes</button>
 
 <app-listados header="{{ header }}" tabla="{{ tabla }}"></app-listados>

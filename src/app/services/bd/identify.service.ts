@@ -30,6 +30,11 @@ export class IdentifyService {
         esquema = {"id": "", "nombre":""}
         break;
       }
+      case "localidades": {
+        tipos = [inpNum,inpText, inpText, inpNum];
+        esquema = {"id": "", "nombre":"", "codPostal":"","idProvincia":""}
+        break;
+      }
       case "actividades": {
         tipos = [inpNum,inpText, inpText];
         esquema = {"id": "", "nombre":"", "descripcion":""}
@@ -38,6 +43,21 @@ export class IdentifyService {
       case "planes": {
         tipos = [inpNum,inpText, inpText, inpNum];
         esquema = {"id": "", "nombre":"", "descripcion":"", "precioMensual":""}
+        break;
+      }
+      case "inscripciones": {
+        tipos = [inpNum,inpNum, inpNum, {"input": "date"}, {"input": "date"}, inpNum];
+        esquema = {"id":"", "idUsuario":"", "idPlan":"", "fechaAlta":"", "fechaBaja":"", "idSede":""}
+        break;
+      }
+      case "plan-actividades": {
+        tipos = [inpNum,inpNum, inpNum];
+        esquema = {"id":"", "idPlan":"", "idActividad":""}
+        break;
+      }
+      case "sedes": {
+        tipos = [inpNum,inpText, inpNum];
+        esquema = {"id":"", "direccion":"", "idLocalidad":""}
         break;
       }
     }

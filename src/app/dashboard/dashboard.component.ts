@@ -31,8 +31,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // se pone tabla por defecto
-    this.header = "Productos";
-    this.tabla = "productos";
+    this.cargarDatos("Productos", "productos");
   }
 
   logout(): void {
@@ -40,29 +39,9 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/signIn']);
   }
 
-  // Funciones que se encargan de redirigir a los listados correspondientes
-  provincias(): void {
-    this.header = "Provincias";
-    this.tabla = "provincias";
-  }
-
-  productos(): void {
-    this.header = "Productos";
-    this.tabla = "productos";
-  }
-
-  actividades(): void {
-    this.header = "Actividades";
-    this.tabla = "actividades";
-  }
-
-  planes(): void {
-    this.header = "Planes";
-    this.tabla = "planes";
-  }
-
-  usuarios(): void {
-    this.header = "Usuarios";
-    this.tabla = "usuarios";
+  // Funcion que se encarga de redirigir a los listados correspondientes
+  cargarDatos(header: string, tabla: string): void{
+    this.header = header;
+    this.tabla = tabla;
   }
 }
