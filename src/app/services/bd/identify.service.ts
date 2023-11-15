@@ -10,7 +10,6 @@ export class IdentifyService {
   identificar(tabla:string): any{
     let tipos: any = [];
     let esquema: any = [];
-    let formato: any = [];
     let inpNum = {"input" : "number"};
     let inpText = {"input": "text"};
     // se identifica la tabla para saber que campos tiene y que tipos de datos son
@@ -22,7 +21,7 @@ export class IdentifyService {
         break;
       }
       case "usuarios": {
-        tipos = [inpNum,inpNum, inpText, inpText, inpNum, {"input": "mail"}, {"input":"password"}, {"select": ["admin", "user", "empleado"]}];
+        tipos = [inpNum,inpNum, inpText, inpText, inpNum, {"input": "mail"}, {"input":"password"}, {"select": ["admin", "user", "recepcionista"]}];
         esquema = {"id": "", "dni": "", "nombre":"", "apellido":"", "telefono":"", "mail":"", "contraseña":"", "rol":""}
         break;
       }
