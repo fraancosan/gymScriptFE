@@ -14,14 +14,10 @@
   <div class="table-responsive">
     <table class="table" #tablaListados>
       <thead class="table-dark">
-        <!-- Itero por cada key del esquema que use el item -->
+        <!-- Itero por cada campo del esquema -->
         <tr>
-          <th
-            scope="col"
-            *ngFor="let key of getObjectKeys(esquema)"
-            class="{{ key }}"
-          >
-            {{ convHeader(key) }}
+          <th scope="col" *ngFor="let campo of esquema" class="{{ campo.key }}">
+            {{ campo.nombre }}
           </th>
           <th scope="col">Acciones</th>
         </tr>
@@ -29,31 +25,29 @@
       <tbody>
         <!-- Itero por cada item existente -->
         <tr class="table-light" *ngFor="let item of listado">
-          <!-- Itero por cada key del esquema que use el item
-          permite asignar clases y valores a los inputs
-         -->
+          <!-- Itero por campo del esquema -->
           <td
-            class="{{ key }}"
-            *ngFor="let key of getObjectKeys(esquema); let i = index"
-            [ngSwitch]="getKey(tipos[i])"
+            class="{{ campo.key }}"
+            *ngFor="let campo of esquema; let i = index"
+            [ngSwitch]="campo.campo"
           >
             <!-- Cuando tengo un input obtengo el valor y lo pongo como predeterminado -->
             <input
               *ngSwitchCase="'input'"
-              value="{{ item[key] }}"
+              value="{{ item[campo.key] }}"
               disabled
-              type="{{ getValor(tipos[i]) }}"
-              class="{{ key }}"
+              type="{{ campo.tipo }}"
+              class="{{ campo.key }}"
             />
             <!-- Cuando tengo un select obtengo los posibles valores y pongo como predeterminado el que viene de la BD -->
             <select
               *ngSwitchCase="'select'"
               disabled
-              class="{{ key }}"
-              [(ngModel)]="item[key]"
+              class="{{ campo.key }}"
+              [(ngModel)]="item[campo.key]"
             >
               <option
-                *ngFor="let opcion of getValor(tipos[i])"
+                *ngFor="let opcion of campo.posValores"
                 value="{{ opcion }}"
               >
                 {{ opcion }}

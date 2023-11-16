@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { esquemaTabla } from 'src/app/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -8,59 +9,93 @@ export class IdentifyService {
   constructor(){}
 
   identificar(tabla:string): any{
-    let tipos: any = [];
-    let esquema: any = [];
-    let inpNum = {"input" : "number"};
-    let inpText = {"input": "text"};
-    // se identifica la tabla para saber que campos tiene y que tipos de datos son
-
+    let esquema:esquemaTabla[] = [];
     switch (tabla) {
       case "productos": {
-        tipos = [inpNum,inpText, inpText, inpText, inpText];
-        esquema = {"id":"", "nombre":"", "descripcion":"", "tipo":"", "img":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"nombre","nombre":"Nombre", "campo":"input","tipo": "text", "editable":true},
+          {"key":"descripcion", "nombre":"Descripcion","campo":"input","tipo": "text", "editable":true},
+          {"key":"tipo", "nombre":"Tipo", "campo":"input","tipo": "text", "editable":true}, 
+          {"key":"img", "nombre":"Imagen", "campo":"input","tipo": "text", "editable":true},
+        ];
         break;
       }
       case "usuarios": {
-        tipos = [inpNum,inpNum, inpText, inpText, inpNum, {"input": "mail"}, {"input":"password"}, {"select": ["admin", "user", "recepcionista"]}];
-        esquema = {"id": "", "dni": "", "nombre":"", "apellido":"", "telefono":"", "mail":"", "contraseña":"", "rol":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"dni", "nombre":"Dni", "campo":"input","tipo": "number", "editable":true}, 
+          {"key":"nombre", "nombre":"Nombre", "campo":"input","tipo": "text", "editable":true},
+          {"key":"apellido", "nombre":"Apellido", "campo":"input","tipo": "text", "editable":true},
+          {"key":"telefono", "nombre":"Telefono", "campo":"input","tipo": "number", "editable":true},
+          {"key":"mail", "nombre":"Mail", "campo":"input","tipo": "mail", "editable": true}, 
+          {"key":"contraseña", "nombre":"Contraseña", "campo":"input","tipo":"password", "editable":true}, 
+          {"key":"rol", "nombre":"Rol", "campo":"select", "tipo":"text", "posValores": ["admin", "user", "recepcionista"], "editable": true}
+        ];
         break;
       }
       case "provincias": {
-        tipos = [inpNum,inpText];
-        esquema = {"id": "", "nombre":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"nombre", "nombre":"Nombre", "campo":"input","tipo": "text", "editable":true},
+        ];
         break;
       }
       case "localidades": {
-        tipos = [inpNum,inpText, inpText, inpNum];
-        esquema = {"id": "", "nombre":"", "codPostal":"","idProvincia":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"nombre", "nombre":"Nombre", "campo":"input","tipo": "text", "editable":true},
+          {"key":"codPostal", "nombre":"Codigo Postal", "campo":"input","tipo": "text", "editable":true},
+          {"key":"idProvincia", "nombre":"Id Provincia", "campo":"input","tipo": "number", "editable":true},
+        ];
         break;
       }
       case "actividades": {
-        tipos = [inpNum,inpText, inpText];
-        esquema = {"id": "", "nombre":"", "descripcion":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"nombre", "nombre":"Nombre", "campo":"input","tipo": "text", "editable":true},
+          {"key":"descripcion", "nombre":"Descripcion", "campo":"input","tipo": "text", "editable":true},
+        ];
         break;
       }
       case "planes": {
-        tipos = [inpNum,inpText, inpText, inpNum];
-        esquema = {"id": "", "nombre":"", "descripcion":"", "precioMensual":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"nombre", "nombre":"Nombre", "campo":"input","tipo": "text", "editable":true},
+          {"key":"descripcion", "nombre":"Descripcion", "campo":"input","tipo": "text", "editable":true},
+          {"key":"precioMensual", "nombre":"Precio Mensual", "campo":"input","tipo": "number", "editable":true},
+        ];
         break;
       }
+      // Ver bien tema inscripciones xq capaz no vaya aca
       case "inscripciones": {
-        tipos = [inpNum,inpNum, inpNum, {"input": "date"}, {"input": "date"}, inpNum];
-        esquema = {"id":"", "idUsuario":"", "idPlan":"", "fechaAlta":"", "fechaBaja":"", "idSede":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"idUsuario", "nombre":"Id Usuario", "campo":"input","tipo": "number", "editable":false},
+          {"key":"idPlan", "nombre":"Id Plan", "campo":"input","tipo": "number", "editable":false},
+          {"key":"fechaAlta", "nombre":"Fecha Alta", "campo": "input","tipo": "date", "editable": false},
+          {"key":"fechaBaja", "nombre":"Fecha Baja", "campo": "input","tipo": "date", "editable": true}, // Ver bien xq es editable la primera vez no mas
+          {"key":"idSede", "nombre":"Id Sede", "campo":"input","tipo": "number", "editable":false},
+        ];
         break;
       }
       case "plan-actividades": {
-        tipos = [inpNum,inpNum, inpNum];
-        esquema = {"id":"", "idPlan":"", "idActividad":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"idPlan", "nombre":"Id Plan", "campo":"input","tipo": "number", "editable":true},
+          {"key":"idActividad", "nombre":"Id Actividad", "campo":"input","tipo": "number", "editable":true},
+        ];
         break;
       }
       case "sedes": {
-        tipos = [inpNum,inpText, inpNum];
-        esquema = {"id":"", "direccion":"", "idLocalidad":""}
+        esquema = [
+          {"key":"id", "nombre":"Id", "campo":"input","tipo": "number", "editable":false},
+          {"key":"direccion", "nombre":"Direccion", "campo":"input","tipo": "text", "editable":true},
+          {"key":"idLocalidad", "nombre":"Id Localidad", "campo":"input","tipo": "number", "editable":true},
+        ];
         break;
       }
     }
-    return [tipos, esquema];
+    return esquema;
   }
 }

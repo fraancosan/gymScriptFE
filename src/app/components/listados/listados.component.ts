@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, NgModule, ViewChild} from '@angular/core'
 import { IdentifyService } from '../../services/bd/identify.service'
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { ToastrService } from 'ngx-toastr';
+import { esquemaTabla } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-listados',
@@ -16,12 +17,9 @@ export class ListadosComponent{
   @ViewChild('addRegistros', { static: false }) addRegistros!: ElementRef;
   // variable que contiene los datos que se van a mostrar en la tabla
   listado: any[] = [];
-  // Los tipos de datos se usan solo para enviarlos correctamente al back-end
-  tipos: any[] = [];
-
-  // Esquema de los datos que se van a mostrar en la tabla, sirve para saber los campos de la tabla.
-  // usado para manejar los registros y darle formato a la tabla
-  esquema: any;
+  
+  // esquemas de datos que se van a mostrar en la tabla
+  esquema: esquemaTabla[] = [];
 
   // se deshabilita la opcion de Añadir Clientes hasta que se carguen los datos, para evitar problemas de que pueda agregar campos a la tabla antes de que se carguen los datos
   addRegistrosDisabled: boolean = true;
@@ -39,38 +37,11 @@ export class ListadosComponent{
   // Tambien se ejecuta cuando se carga el componente
   ngOnChanges(): void {
     this.addRegistrosDisabled = true;
-    let rta = this.identifyService.identificar(this.tabla);
-    this.tipos = rta[0];
-    this.esquema = rta[1];
+    this.esquema = this.identifyService.identificar(this.tabla);
     // Primero que nada pongo la tabla en blanco
     this.listado = [];
     // se obtienen los datos de la base de datos
     this.recargarDatos();
-  };
-
-  // Funcion que devuelve las keys que se encuentran en los JSON
-  getObjectKeys(obj: any){
-    return Object.keys(obj);
-  };
-
-  // Funcion usada solamente para obtener el valor de un JSON, es para usar en el arreglo tipos
-  getValor(obj: any): any{
-    return Object.values(obj)[0];
-  }
-  // Funcion usada solamente para obtener la key de un JSON, es para usar en el arreglo tipos
-  getKey(obj: any){
-    return Object.keys(obj)[0];
-  }
-
-  // Funcion que devuelve el nombre de la columna, es para el HTML
-  convHeader(palabra: string){
-    // se cambia el nombre de la columna para que se vea mejor en la tabla
-    switch (palabra) {
-      case "img": palabra = "Imagen"; break;
-      case "precioMensual": palabra = "Precio Mensual"; break;
-    }
-    // se pone mayuscula la primer letra
-    return palabra.charAt(0).toUpperCase() + palabra.slice(1);
   };
 
   borrar(idItem: any){
@@ -116,8 +87,11 @@ export class ListadosComponent{
     if (fila) {
       for (let i = 0; i < (fila.cells.length - 1); i++) {
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
-        // No dejo que se edite el ID
-        if (i != 0) {inputs.removeAttribute('disabled')};
+        // Dejo que se puedan editar solo los campos autorizados
+        // Si la tabla es nueva, se habilitan todos los campos salvo el id
+        if (this.esquema[i].editable && idItem!=""){ inputs.removeAttribute('disabled')};
+        // En caso de que la fila sea nueva, se habilitan todos los campos salvo el id
+        if (idItem == "" && i != 0){ inputs.removeAttribute('disabled')};
       }
       // se ocultan los botones de editar y borrar
       this.visible(fila,fila.cells.length-1, 2, 0);
@@ -155,7 +129,7 @@ export class ListadosComponent{
     if (fila){
       for (let i = 1; i < (fila.cells.length - 1); i++) {
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
-        inputs.value = item[this.getObjectKeys(item)[i]];
+        inputs.value = item[this.esquema[i].key];
       }
     }
     // se vuelve al formato original de la tabla
@@ -168,17 +142,17 @@ export class ListadosComponent{
   recuperarValores(idItem: any) {
     let fila = this.obtenerFila(idItem);
     // se crea una copia del esquema para no modificarlo
-    let item = JSON.parse(JSON.stringify(this.esquema));
+    let item = this.hacerJSON();
     if (fila){
       // se obtienen los valores de los inputs
       for (let i = 0; i < (fila.cells.length - 1); i++) {
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
         // se obtienen los valores de los inputs
-        if (this.getValor(this.tipos[i]) == "number"){
+        if (this.esquema[i].tipo == "number"){
           // si no es un numero, la funcion devuelve NaN. Por lo tanto el programa no se rompe y luego el backend realiza la validacion de datos
-          item[this.getObjectKeys(item)[i]] = Number(inputs.value);
+          item[this.esquema[i].key] = Number(inputs.value);
         } else{
-          item[this.getObjectKeys(item)[i]] = inputs.value;
+          item[this.esquema[i].key] = inputs.value;
         }
       }
     }
@@ -186,10 +160,20 @@ export class ListadosComponent{
   }
 
   addRegistro(){
-    this.listado.push(JSON.parse(JSON.stringify(this.esquema)));
+    this.listado.push(this.hacerJSON());
     this.addRegistrosDisabled = true;
     // Se pone a editar la fila
     setTimeout(() => {this.editar("");}, 100);
+  }
+
+  // Funcion que se encarga de armar un JSON con las keys correspondientes
+  // Se usa para enviar los datos al backend, esta vacia en un principio
+  hacerJSON(){
+    let json: any = {};
+    for (let i = 0; i < this.esquema.length; i++) {
+      json[this.esquema[i].key] = "";
+    }
+    return json;
   }
 
   obtenerFila(idItem:any) {
@@ -255,7 +239,7 @@ export class ListadosComponent{
 
   reiniciarHistorial() {
     // se reinicia el historial
-    this.ultimoEditado = JSON.parse(JSON.stringify(this.esquema));
+    this.ultimoEditado = this.hacerJSON();
   }
 
   visible(fila:HTMLTableRowElement, posicion: any, mostrar: any, ocultar:any) {
