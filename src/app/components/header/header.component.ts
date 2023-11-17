@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +16,13 @@ export class HeaderComponent implements OnInit{
   xmarkIcon = faXmark;
   showHeader: boolean = false;
 
-  constructor(private renderer: Renderer2, private router: Router, private headerService: HeaderServiceService) {}
+
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    private headerService: HeaderServiceService,
+    private viewPortScroller: ViewportScroller,
+    ) {}
 
   @HostListener('window:scroll',['$event'])
 
@@ -86,7 +93,9 @@ export class HeaderComponent implements OnInit{
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
-        if (event.url === '/' || event.url === '/productos' || event.url === '/#Nosotros' || event.url === '/#planes' || event.url === '/#sedes') {
+        console.log(event.url)
+        if (event.url.includes('home') || event.url === '/productos' || event.url === '/' || event.url === '/#Nosotros' || event.url === '/#planes' || event.url === '/#sedes') {
+          console.log('entro')
           this.headerService.showHeader = true;
         } else {
           this.headerService.showHeader = false;
@@ -116,5 +125,25 @@ export class HeaderComponent implements OnInit{
       this.visible('final-container','');
     }
 
+  }
+
+  irAHome() {
+    this.viewPortScroller.scrollToPosition([0,0]);
+  }
+
+  irANosotros() {
+    this.viewPortScroller.scrollToAnchor('Nosotros');
+  }
+
+  irAPlanes() {
+    this.viewPortScroller.scrollToAnchor('planes');
+  }
+
+  irASedes() {
+    this.viewPortScroller.scrollToAnchor('sedes');
+  }
+
+  irAProductos() {
+    this.viewPortScroller.scrollToPosition([0,0]);
   }
 }

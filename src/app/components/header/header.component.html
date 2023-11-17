@@ -1,7 +1,9 @@
 <header class="header" id="header">
   <div class="container-start">
     <div class="container-logo">
-        <a href="#" (click)="contraer()" id="logo"><img class="img-logo" src="assets/logo.png" /></a>
+      <a [routerLink]="['/home']" (click)="irAHome(); contraer()" id="logo"
+        ><img class="img-logo" src="assets/logo.png"
+      /></a>
     </div>
     <div class="container-icons">
       <button id="barsIcon" (click)="desplegar()">
@@ -16,21 +18,44 @@
   <div class="container-nav" id="mid-container">
     <ul class="nav-list flex-wrap">
       <li class="nav-item">
-        <a href="#" class="nav-link" (click)="contraer()">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a href="#Nosotros" class="nav-link" (click)="contraer()">Nosotros</a>
-      </li>
-      <li class="nav-item">
-        <a href="#planes" class="nav-link" (click)="contraer()">Planes</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/productos" class="nav-link" (click)="contraer()"
-          >Productos</a
+        <a
+          [routerLink]="['/home']"
+          class="nav-link"
+          (click)="irAHome(); contraer()"
+          >Inicio</a
         >
       </li>
       <li class="nav-item">
-        <a href="#sedes" class="nav-link" (click)="contraer()">Sedes</a>
+        <a
+          [routerLink]="['/home']"
+          class="nav-link"
+          (click)="irANosotros(); contraer()"
+          >Nosotros</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['/home']"
+          class="nav-link"
+          (click)="irAPlanes(); contraer()"
+          >Planes</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['/home']"
+          class="nav-link"
+          (click)="irASedes(); contraer()"
+          >Sedes</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['/productos']"
+          class="nav-link"
+          (click)="irAProductos(); contraer()"
+          >Productos</a
+        >
       </li>
     </ul>
   </div>

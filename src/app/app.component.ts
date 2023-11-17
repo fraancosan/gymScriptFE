@@ -7,9 +7,9 @@ import { HeaderServiceService } from './services/header-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular';
+  primeraVez: boolean = true;
 
   constructor(public headerService: HeaderServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {  }
 }
