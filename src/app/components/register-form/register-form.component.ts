@@ -18,10 +18,15 @@ export class RegisterFormComponent implements OnInit {
     apellido: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     dni: [
       0,
-      [Validators.required, Validators.min(1), Validators.max(100000000)],
+      [
+        Validators.required,
+        Validators.min(1), 
+        Validators.max(100000000),
+        Validators.pattern('^[0-9]*$'),
+      ],
     ],
     telefono: [
-      0,
+      "",
       [
         Validators.pattern('^[0-9]*$'),
         Validators.minLength(5),
@@ -29,7 +34,7 @@ export class RegisterFormComponent implements OnInit {
       ],
     ],
     mail: [
-      '',
+      "",
       [
         Validators.required,
         Validators.email,

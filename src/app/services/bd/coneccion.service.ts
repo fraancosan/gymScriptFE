@@ -60,4 +60,18 @@ export class ConeccionService {
       })
     )
   }
+
+  getInscripcionActiva(idUsuario: number){
+    return this.http.get(this.urlBack + "inscripciones?idUsuario=" + idUsuario + "&fechaBaja=null").pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status == 404){
+          this.toastr.warning("No posee una inscripcion, por favor inscribase", "Informacion",{timeOut: 3000});
+        }
+        else{
+          this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});
+        };
+        return throwError(() => error);
+      })
+    );
+  }
 }
