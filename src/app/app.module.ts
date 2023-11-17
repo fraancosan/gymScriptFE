@@ -22,6 +22,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     ProductCardComponent,
     RegisterFormComponent,
     SpinnerComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
       preventDuplicates: true,
     }),
     FormsModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
