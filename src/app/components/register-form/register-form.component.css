@@ -61,3 +61,16 @@
   margin-top: 20px;
   color: #ffc107;
 }
+
+
+/* Se eliminan botones de aumento y decremento de inputs number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Esta sirve para firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

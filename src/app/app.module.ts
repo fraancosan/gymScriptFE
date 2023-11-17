@@ -23,6 +23,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { FilterPipe } from './pipes/filter.pipe';
+import { UserComponent } from './user/user.component';
+import { InscribirseComponent } from './components/inscribirse/inscribirse.component';
+import { UsuarioInscriptoComponent } from './components/usuario-inscripto/usuario-inscripto.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     RegisterFormComponent,
     SpinnerComponent,
     FilterPipe,
+    UserComponent,
+    InscribirseComponent,
+    UsuarioInscriptoComponent,
   ],
   imports: [
     BrowserModule,
