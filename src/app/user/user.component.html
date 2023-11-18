@@ -1,5 +1,5 @@
 <div [ngSwitch]="estado">
-  <app-inscribirse *ngSwitchCase="'noInscripto'"></app-inscribirse>
+  <app-inscribirse *ngSwitchCase="'noInscripto'" [idUser]="idUser"></app-inscribirse>
   <app-usuario-inscripto
     *ngSwitchCase="'inscripto'"
     [inscripcion]="inscripcion"
