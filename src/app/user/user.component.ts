@@ -12,7 +12,7 @@ export class UserComponent {
   inscripcion: any;
   estado: string = "";
   idUser: number = 0;
-  irA: string = '';
+  irA: string = 'cuotas';
 
   constructor (
     private bd: ConeccionService,
