@@ -3,7 +3,7 @@
     <h1 class="section-title">
       Encontra estos productos en cualquiera de nuestras sedes!
     </h1>
-    <input type="text" placeholder="Buscar..." class="search-bar"/>
+    <input type="text" name="filterProduct" placeholder="Buscar..." class="search-bar" [(ngModel)]="filterProduct"/>
     <div class="container-order-options">
       <select class="order-options">
         <option class="option-item">Ordenar por</option>
@@ -24,7 +24,7 @@
       </nav>
     </div>
     <div class="products-list">
-      <app-product-card [product]="product" *ngFor="let product of filteredProducts"></app-product-card>
+      <app-product-card [product]="product" *ngFor="let product of filteredProducts | filter: filterProduct"></app-product-card>
     </div>
   </div>
 </section>

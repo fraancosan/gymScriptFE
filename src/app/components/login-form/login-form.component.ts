@@ -49,17 +49,14 @@ export class LoginFormComponent implements OnInit {
       this.loading = true;
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (data) => {
-          console.log(data);
           localStorage.setItem('token', data);
           this.token = data;
         },
         error: (error) => {
-          console.log(error);
           this.loading = false;
           this.toastr.error(error, 'Error');
         },
         complete: () => {
-          console.log('Login complete');
           this.loading = false;
           let tokenDecoded = this.jwtHelper.decodeToken(this.token);
           if(tokenDecoded.rol == "admin"){
@@ -67,7 +64,7 @@ export class LoginFormComponent implements OnInit {
             this.loginForm.reset();
           }else{
             //Deberia mandar a inscripcion
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/user');
             this.loginForm.reset();
           }        
         },

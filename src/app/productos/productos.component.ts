@@ -12,6 +12,7 @@ export class ProductosComponent implements OnInit {
   products?: any[]; 
   categories?: string[];
   filteredProducts?: Product[] = this.products;
+  filterProduct = '';
 
   constructor(private bd: ConeccionService) {}
 
@@ -20,7 +21,7 @@ export class ProductosComponent implements OnInit {
       this.products = data;
       this.filteredProducts = this.products;
     
-    // Extraigo los tipos de los productos
+    // Extraigo los tipos(categorias) de los productos
     this.categories = [...new Set(this.products.map(product => product.tipo))];
     // Agrego la categoria 'Todos los productos'
     this.categories.unshift('Todos los productos');

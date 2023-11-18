@@ -32,12 +32,15 @@
   width: 40%;
   margin-bottom: 50px;
   padding: 10px;
-  border-radius: 2%;
   outline: none;
   background: transparent;
   border: none;
   color: #fff;
-  border-bottom: #fff;
+  border-bottom: 1px solid #616161; 
+}
+
+.ng-valid:not(form).ng-touched {
+  border-left: none;
 }
 
 .container-order-options {

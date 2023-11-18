@@ -25,7 +25,6 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(credential: LoginRequest): Observable<string> {
-    console.log(credential);
     return this.http
       .post<string>(this.appUrl + this.apiUrlLogin, credential)
       .pipe(
@@ -47,7 +46,6 @@ export class LoginService {
     if (error.status === 0) {
       return throwError(() => 'Error de conexión');
     } else {
-      // console.error('BackEnd devolvió el código', error.status, error.error);
       return throwError(() => error.error.msg);
     }
   }

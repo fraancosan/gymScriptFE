@@ -93,9 +93,7 @@ export class HeaderComponent implements OnInit{
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
-        console.log(event.url)
         if (event.url.includes('home') || event.url === '/productos' || event.url === '/' || event.url === '/#Nosotros' || event.url === '/#planes' || event.url === '/#sedes') {
-          console.log('entro')
           this.headerService.showHeader = true;
         } else {
           this.headerService.showHeader = false;
