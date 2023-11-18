@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-usuario-inscripto',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./usuario-inscripto.component.css']
 })
 export class UsuarioInscriptoComponent {
-
+  @Input() inscripcion: any;
+  
+  ngOnInit(): void {
+    console.log(this.inscripcion);
+  }
 }

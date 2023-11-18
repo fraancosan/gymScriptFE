@@ -8,8 +8,10 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-  jwtHelper = new JwtHelperService();
-  inscripcion = {}
+  private jwtHelper = new JwtHelperService();
+  inscripcion = {};
+  estado: string = "";
+  idUser: number = 0;
 
   constructor (
     private bd: ConeccionService,
@@ -18,6 +20,15 @@ export class UserComponent {
   ngOnInit(): void {
     let token = localStorage.getItem('token')!;
     let tokenDecoded = this.jwtHelper.decodeToken(token);
-    this.bd.getInscripcionActiva(tokenDecoded.id).subscribe(data => {console.log(data)});
+    this.idUser = tokenDecoded.id;
+    this.bd.getInscripcionActiva(this.idUser).subscribe({
+      next: data => {
+        this.inscripcion = data;
+        this.estado = 'inscripto';
+      },
+      error: error => {
+        this.estado = 'noInscripto';
+      }
+    });
   }
 }
