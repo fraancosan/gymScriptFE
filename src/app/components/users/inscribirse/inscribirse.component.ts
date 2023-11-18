@@ -16,6 +16,7 @@ export class InscribirseComponent{
     idPlanSelected: string = '';
     idSedeSelected: number = 0;
     disabledButton: boolean = true;
+    loading: boolean = false;
 
   constructor(private bd: ConeccionService) {
     bd.getAll("planes", "planes").subscribe((planes: any) => {
@@ -32,10 +33,21 @@ export class InscribirseComponent{
   }
 
   createInscription(idPlan:string, idSede:number) {
-    console.log(this.idUser);
-    this.bd.create("inscripciones", {"idUsuario": this.idUser,"idPlan": Number(idPlan), "idSede": Number(idSede)}).subscribe((inscripcion: any) => {
-      console.log(inscripcion);
-    });
+    this.loading = true;
+    this.bd.create("inscripciones", {"idUsuario": this.idUser,"idPlan": Number(idPlan), "idSede": Number(idSede)}).subscribe(
+      {next: (inscripcion: any) => {
+          localStorage.removeItem("idPlan");
+          setTimeout(() => {
+            this.loading = false;
+            window.location.reload();
+          }, 300);
+          
+        },
+      error: (error: any) => {
+          this.loading = false;
+        }
+      }
+    );
   }
 
   updateButtonState() {

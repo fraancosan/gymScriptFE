@@ -53,3 +53,10 @@ label, input {
 .disabled-button {
   background-color: rgb(139, 139, 139);
 }
+
+.spinner {
+  margin-top: 20px;
+  color: #ffc107;
+  display: flex;
+  justify-content: center;
+}
