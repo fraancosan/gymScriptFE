@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/auth/login.service';
+import { LoginService } from '../services/auth/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Usuarios } from 'src/app/interfaces/interfaces';
 
