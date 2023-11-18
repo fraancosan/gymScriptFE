@@ -26,6 +26,8 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { UserComponent } from './user/user.component';
 import { InscribirseComponent } from './components/users/inscribirse/inscribirse.component';
 import { SideBarComponent } from './components/users/side-bar/side-bar.component';
+import { GestionInscripcionComponent } from './components/users/gestion-inscripcion/gestion-inscripcion.component';
+import { CuotasComponent } from './components/users/cuotas/cuotas.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { SideBarComponent } from './components/users/side-bar/side-bar.component
     UserComponent,
     InscribirseComponent,
     SideBarComponent,
+    GestionInscripcionComponent,
+    CuotasComponent,
   ],
   imports: [
     BrowserModule,

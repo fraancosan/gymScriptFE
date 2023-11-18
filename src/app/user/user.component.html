@@ -8,5 +8,11 @@
       [usuario]="inscripcion.usuario"
       (queHacer)="queHacer($event)"
     ></app-side-bar>
+    <main [ngSwitch]="irA">
+      <app-cuotas *ngSwitchCase="'cuotas'"></app-cuotas>
+      <app-gestion-inscripcion
+        *ngSwitchCase="'gestion'"
+      ></app-gestion-inscripcion>
+    </main>
   </div>
 </div>
