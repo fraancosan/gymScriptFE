@@ -9,9 +9,10 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 })
 export class UserComponent {
   private jwtHelper = new JwtHelperService();
-  inscripcion = {};
+  inscripcion: any;
   estado: string = "";
   idUser: number = 0;
+  irA: string = '';
 
   constructor (
     private bd: ConeccionService,
@@ -22,13 +23,17 @@ export class UserComponent {
     let tokenDecoded = this.jwtHelper.decodeToken(token);
     this.idUser = tokenDecoded.id;
     this.bd.getInscripcionActiva(this.idUser).subscribe({
-      next: data => {
-        this.inscripcion = data;
+      next: (data: any) => {
+        this.inscripcion = data[0];
         this.estado = 'inscripto';
       },
       error: error => {
         this.estado = 'noInscripto';
       }
     });
+  }
+
+  queHacer(orden: string){
+    this.irA = orden;
   }
 }

@@ -25,6 +25,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { FilterPipe } from './pipes/filter.pipe';
 import { UserComponent } from './user/user.component';
 import { InscribirseComponent } from './components/inscribirse/inscribirse.component';
+import { SideBarComponent } from './components/users/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { InscribirseComponent } from './components/inscribirse/inscribirse.compo
     FilterPipe,
     UserComponent,
     InscribirseComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,
