@@ -6,8 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent {
-  @Input() product: any; // Asegúrate de definir una interfaz o modelo específico para los productos
+  @Input() product: any;
 
-  // Agrega la lógica de presentación de la tarjeta del producto aquí
 }
 

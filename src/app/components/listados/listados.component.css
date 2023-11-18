@@ -139,3 +139,7 @@ thead tr th:last-child{
     font-size: 2rem;
   }
 }
+
+@media (min-width:1400px){
+  
+}
