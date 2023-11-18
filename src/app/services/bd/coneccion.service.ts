@@ -30,6 +30,20 @@ export class ConeccionService {
     })
   )};
 
+  getOne(tabla:string, nombreMostrar:string, id:number):Observable<any>{
+    return this.http.get(this.urlBack + tabla + "/" + id).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status == 404){
+          this.toastr.info("No se encontro " + nombreMostrar, " con el id ingresado",{timeOut: 3000});
+        }
+        else{
+          this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});
+        };
+        return throwError(() => error);
+      })
+    )
+  }
+
   create(tabla: string, item: any): Observable<any>{
     // el item contiene un campo id que en el back-end se ignora dado que se crea automaticamente
     return this.http.post<any>(this.urlBack + tabla, item).pipe(

@@ -1,19 +1,74 @@
-<h1>Bienvenido al Dashboard</h1>
 
-<button (click)="logout()">Cerrar Sesión</button>
+<div class="container_dash">
+<div class="sidebar">
+  <div class="logo_contect">
+    <div class="logo">
+      <img src="assets/logo.png" class="img-logo" alt="logo">
+      <div class="logo_name">GymScript</div>
+    </div>
+    <fa-icon [icon]="menuIcon" class="icon" id="btn"></fa-icon>
+  </div>
+  <ul class="nav_list">
+    <li>
+      <button (click)="cargarDatos('Productos', 'productos')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>  Productos</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Provincias', 'provincias')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>Provincias</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Localidades', 'localidades')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>Localidades</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Actividades', 'actividades')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>Actividades</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Planes', 'planes')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>Planes</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Usuarios', 'usuarios')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>Usuarios</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Inscripciones', 'inscripciones')">
+        <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+        Inscripciones
+      </button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Actividad por Plan', 'plan-actividades')">
+        <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+        Planes-Actividades
+      </button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+    <li>
+      <button (click)="cargarDatos('Sedes', 'sedes')"><fa-icon [icon]="gridIcon" class="icon"></fa-icon>Sedes</button>
+      <!-- <span class="tooltip">Usuarios</span> -->
+    </li>
+  </ul>
+  <div class="profile_content">
+    <div class="profile">
+      <div class="profile_details">
+        <img src="assets/p.png" alt="profileImg">
+        <div class="name_job">
+          <div class="name">{{nombreUser + " " + apellidoUser}}</div>
+          <div class="rol">Administrador</div>
+        </div>
+      </div>
+      <button (click)="logout()"><fa-icon [icon]="logoutIcon" class="icon"></fa-icon></button>
+    </div>
+  </div>
+</div>
+<div class="listado">
+  <app-listados header="{{ header }}" tabla="{{ tabla }}"></app-listados>
+</div>
+</div>
 
-<button (click)="cargarDatos('Productos', 'productos')">Productos</button>
-<button (click)="cargarDatos('Provincias', 'provincias')">Provincias</button>
-<button (click)="cargarDatos('Localidades', 'localidades')">Localidades</button>
-<button (click)="cargarDatos('Actividades', 'actividades')">Actividades</button>
-<button (click)="cargarDatos('Planes', 'planes')">Planes</button>
-<button (click)="cargarDatos('Usuarios', 'usuarios')">Usuarios</button>
-<button (click)="cargarDatos('Inscripciones', 'inscripciones')">
-  Inscripciones
-</button>
-<button (click)="cargarDatos('Actividad por Plan', 'plan-actividades')">
-  Actividades de Planes
-</button>
-<button (click)="cargarDatos('Sedes', 'sedes')">Sedes</button>
 
-<app-listados header="{{ header }}" tabla="{{ tabla }}"></app-listados>
+
