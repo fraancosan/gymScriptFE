@@ -19,7 +19,6 @@ export class GestionInscripcionComponent {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.inscripcion);
     this.descripcionPlan = this.inscripcion.plan.descripcion.split('-')
 
     this.bd.getOne('localidades', "Localidad", this.inscripcion.sede.idLocalidad).subscribe((data: any) => {this.localidad = data});
