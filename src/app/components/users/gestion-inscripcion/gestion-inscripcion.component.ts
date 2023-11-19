@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 
@@ -9,6 +9,8 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 })
 export class GestionInscripcionComponent {
   @Input() inscripcion: any = {};
+  @Output() sinInscripcion = new EventEmitter<boolean>();
+
   descripcionPlan: string = '';
   localidad: any = {};
   fecha: any;
@@ -48,7 +50,7 @@ export class GestionInscripcionComponent {
         "id": this.inscripcion.id,
         "fechaBaja": new Date(),
       }
-      this.bd.update('inscripciones', baja).subscribe((data: any) => {window.location.reload()});
+      this.bd.update('inscripciones', baja).subscribe((data: any) => {this.sinInscripcion.emit(true)});
     }
   }
 }

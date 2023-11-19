@@ -1,0 +1,80 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-weight: 700;
+}
+
+.tabla {
+  width: 600px;
+  padding: 20px;
+  border: 2px solid black;
+  margin: 5px;
+}
+
+.fila {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  padding: 20px 0px;
+  width: 100%;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  margin-left: 10px;
+}
+
+.key {
+  width: 150px;
+}
+
+.value {
+  width: 300px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+button {
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 0.30rem 1rem;
+  border-radius: 4px;
+  letter-spacing: .5px;
+  color: white;
+  transition: all 0.3s;
+}
+
+.cambiarPlan {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.cambiarPlan:hover {
+  border: 2px solid #fff;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.baja {
+  background-color: rgb(190, 24, 24);
+}
+
+.baja:hover {
+  background-color: rgb(255, 0, 0);
+}

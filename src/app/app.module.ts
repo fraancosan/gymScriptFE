@@ -28,6 +28,7 @@ import { InscribirseComponent } from './components/users/inscribirse/inscribirse
 import { SideBarComponent } from './components/users/side-bar/side-bar.component';
 import { GestionInscripcionComponent } from './components/users/gestion-inscripcion/gestion-inscripcion.component';
 import { CuotasComponent } from './components/users/cuotas/cuotas.component';
+import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestion-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CuotasComponent } from './components/users/cuotas/cuotas.component';
     SideBarComponent,
     GestionInscripcionComponent,
     CuotasComponent,
+    GestionCuentaComponent,
   ],
   imports: [
     BrowserModule,
