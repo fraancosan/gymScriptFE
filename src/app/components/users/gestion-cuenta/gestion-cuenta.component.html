@@ -114,6 +114,9 @@
       <div *ngIf="password.errors?.['required']">
         La contraseña es requerida.
       </div>
+      <div *ngIf="password.errors?.['minlength']">
+        La contraseña debe tener al menos 8 caracteres.
+      </div>
     </div>
   </form>
   <div class="botones">

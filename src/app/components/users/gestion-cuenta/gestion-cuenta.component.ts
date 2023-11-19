@@ -12,7 +12,6 @@ export class GestionCuentaComponent {
   @Input() idUser!: number;
   todoBien: boolean = false;
   usuario: any = {};
-  datosViejos: any = {};
   bloqEdicion: boolean = false;
 
   // se implementa el formulario para editar los datos
@@ -84,14 +83,14 @@ export class GestionCuentaComponent {
 
   guardarDatos(){
     if (this.form.valid) {
-      this.setUsuario();
+      let datos = this.datosAEditar();
       // Si no se modifico nada, no se hace nada
       // Lo averiguo bien si solo tiene la key id
-      if (Object.keys(this.usuario).length == 1){
+      if (Object.keys(datos).length == 1){
         this.toastr.error("No se modificó ningún dato");
-        return;
+        this.cancelar();
       } else {
-        this.bd.update("usuarios",this.usuario).subscribe( 
+        this.bd.update("usuarios",datos).subscribe( 
           {
             next: (data:any) => {
               this.toastr.success("Datos modificados correctamente");
@@ -99,19 +98,17 @@ export class GestionCuentaComponent {
               this.cargarDatos();
             },
             error: (error:any) => {
-              this.cargarDatos();
+              this.cancelar();
             }
           }
         );
       }
-
     }
-    this.cambiarEditando();
   }
 
   cancelar(){
     this.cambiarEditando();
-    this.setFormulario();
+    this.setFormulario(this.usuario);
   }
 
   editar(){
@@ -129,51 +126,44 @@ export class GestionCuentaComponent {
     this.bloqEdicion ? this.form.disable() : this.form.enable();
   }
 
-  setFormulario(){
+  setFormulario(json: any){
     this.form.setValue(
       {
-        nombre: this.usuario.nombre,
-        apellido: this.usuario.apellido,
-        dni: this.usuario.dni,
-        telefono: this.usuario.telefono,
-        mail: this.usuario.mail,
+        nombre: json.nombre,
+        apellido: json.apellido,
+        dni: json.dni,
+        telefono: json.telefono,
+        mail: json.mail,
         contraseña: "",
       }
     );
   }
 
-  setUsuario(){
-    // Actualizo cada dato solo si se modifico
-    if (this.usuario.nombre != this.form.value.nombre){
-      this.usuario.nombre = this.form.value.nombre;
-    } else {
-      delete this.usuario.nombre;
+  getFormulario(): any{
+    return {
+      "id": this.idUser,
+      "nombre": this.nombre.value,
+      "apellido": this.apellido.value,
+      "dni": this.dni.value,
+      "telefono": this.telefono.value,
+      "mail": this.mail.value,
+      "contraseña": this.password.value,
     }
-    if (this.usuario.apellido != this.form.value.apellido){
-      this.usuario.apellido = this.form.value.apellido;
-    } else {
-      delete this.usuario.apellido;
+  }
+
+  datosAEditar(){
+    let datos = this.getFormulario();
+    for (let key in datos){
+      if (key == "id"){
+        continue
+      }
+      if (datos[key] == this.usuario[key]){
+        delete datos[key];
+      } else {
+        continue
+      }
     }
-    if (this.usuario.dni != this.form.value.dni){
-      this.usuario.dni = this.form.value.dni;
-    } else {
-      delete this.usuario.dni;
-    }
-    if (this.usuario.telefono != this.form.value.telefono){
-      this.usuario.telefono = this.form.value.telefono;
-    } else {
-      delete this.usuario.telefono;
-    }
-    if (this.usuario.mail != this.form.value.mail){
-      this.usuario.mail = this.form.value.mail;
-    } else {
-      delete this.usuario.mail;
-    }
-    if (this.form.value.contraseña != ""){
-      this.usuario.contraseña = this.form.value.contraseña;
-    } else {
-      delete this.usuario.contraseña;
-    }
+    return datos;
   }
 
   cargarDatos(){
@@ -182,9 +172,7 @@ export class GestionCuentaComponent {
       delete data.rol;
       data.contraseña = "";
       this.usuario = data;
-      // NO QUIERO QUE SE MODIFIQUE EL OBJETO ORIGINAL
-      this.datosViejos = JSON.parse(JSON.stringify(data));
-      this.setFormulario();
+      this.setFormulario(this.usuario);
     });
   }
 }
