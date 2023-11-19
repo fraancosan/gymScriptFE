@@ -1,9 +1,10 @@
 <div *ngIf="todoBien">
-  <h1>Inscripcion</h1>
+  <h1>INSCRIPCION</h1>
   <!-- Informacion de planes -->
   <div class="row">
     <div class="tabla col">
       <h2>Plan</h2>
+      <hr>
       <div class="fila">
         <div class="columna key">Nombre</div>
         <div class="columna value">{{ inscripcion.plan.nombre }}</div>
@@ -23,6 +24,7 @@
     <!-- Informacion de Sedes -->
     <div class="tabla col">
       <h2>Sede</h2>
+      <hr>
       <div class="fila">
         <div class="columna key">Dirección</div>
         <div class="columna value">{{ inscripcion.sede.direccion }}</div>
@@ -38,7 +40,7 @@
     </div>
   </div>
 
-  <p>Inscripto desde el {{ fecha }}</p>
+  <p class="subtitulo">Inscripto desde el {{ fecha }}</p>
 
   <!-- Botones para dar de baja y cambiar de plan -->
   <div class="botones">
