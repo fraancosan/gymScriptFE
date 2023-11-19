@@ -1,9 +1,10 @@
-* {
-  font-family: 'Montserrat', sans-serif;
+.ng-valid:not(form), .ng-valid:not(form), .ng-dirty, .ng-touched {
+  border: 1px solid black;
 }
 
 h1,h2 {
   font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .contenedor{
@@ -17,16 +18,25 @@ h1,h2 {
   width: 600px;
   padding: 20px;
   border: 2px solid black;
-  margin: 5px;
+  margin: 10px;
 }
 
 .fila {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   text-align: left;
-  padding: 20px 0px;
+  padding-top: 40px;
   width: 100%;
+}
+
+.fila:nth-child(1) {
+  padding-top: 20px;
+}
+
+.text-danger{
+  text-align: center;
 }
 
 .columna {
@@ -85,6 +95,14 @@ button {
   background-color: rgb(255, 0, 0);
 }
 
-.hidden {
-  display: none;
+/* Se eliminan botones de aumento y decremento de inputs number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Esta sirve para firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

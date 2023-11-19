@@ -13,6 +13,15 @@
         value="{{ usuario.nombre }}"
       />
     </div>
+    <div
+      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="nombre.errors?.['required']">El nombre es requerido.</div>
+      <div *ngIf="nombre.errors?.['pattern']">
+        El nombre debe tener un formato válido.
+      </div>
+    </div>
     <!-- Apellido -->
     <div class="fila">
       <div class="columna key">Apellido:</div>
@@ -22,6 +31,15 @@
         type="text"
         value="{{ usuario.apellido }}"
       />
+    </div>
+    <div
+      *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="apellido.errors?.['required']">El apellido es requerido.</div>
+      <div *ngIf="apellido.errors?.['pattern']">
+        El apellido debe tener un formato válido.
+      </div>
     </div>
     <!-- DNI -->
     <div class="fila">
@@ -33,6 +51,12 @@
         value="{{ usuario.dni }}"
       />
     </div>
+    <div *ngIf="dni.invalid && (dni.dirty || dni.touched)" class="text-danger">
+      <div *ngIf="dni.errors?.['required']">El DNI es requerido.</div>
+      <div *ngIf="dni.errors?.['min'] || dni.errors?.['max'] || dni.invalid">
+        El DNI debe tener un formato válido.
+      </div>
+    </div>
     <!-- Telefono -->
     <div class="fila">
       <div class="columna key">Telefono:</div>
@@ -42,6 +66,17 @@
         type="number"
         value="{{ usuario.telefono }}"
       />
+    </div>
+    <div
+      *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="telefono.errors?.['required']">El telefono es requerido.</div>
+      <div
+        *ngIf="telefono.errors?.['pattern'] || telefono.errors?.['minLength'] || telefono.errors?.['maxLength']"
+      >
+        El telefono debe tener un formato válido.
+      </div>
     </div>
     <!-- Mail -->
     <div class="fila">
@@ -53,6 +88,15 @@
         value="{{ usuario.mail }}"
       />
     </div>
+    <div
+      *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="mail.errors?.['required']">El Email es requerido.</div>
+      <div *ngIf="mail.errors?.['mail'] || mail.errors?.['pattern']">
+        El Email debe tener un formato válido.
+      </div>
+    </div>
     <!-- Contraseña -->
     <div class="fila">
       <div class="columna key">Contraseña:</div>
@@ -62,6 +106,14 @@
         type="password"
         value="{{ usuario['contraseña'] }}"
       />
+    </div>
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="password.errors?.['required']">
+        La contraseña es requerida.
+      </div>
     </div>
   </form>
   <div class="botones">

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 
 @Component({
@@ -43,49 +44,81 @@ export class GestionCuentaComponent {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ],
     ],
-    contraseña: ['', Validators.required],
+    contraseña: ['', [Validators.minLength(8), Validators.pattern('^[a-zA-Z0-9]*$')]],
   });
 
   constructor (
     private bd: ConeccionService,
     private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ){}
 
   ngOnInit(): void {
     this.cambiarEditando();
-    this.bd.getOne("usuarios","usuario",this.idUser).subscribe((data:any) => {
-      this.todoBien = true;
-      delete data.rol;
-      data.contraseña = "";
-      this.usuario = data;
-      // NO QUIERO QUE SE MODIFIQUE EL OBJETO ORIGINAL
-      this.datosViejos = JSON.parse(JSON.stringify(data));
+    this.cargarDatos();  
+  };
 
-      this.form.setValue(
-        {
-          nombre: data.nombre,
-          apellido: data.apellido,
-          dni: data.dni,
-          telefono: data.telefono,
-          mail: data.mail,
-          contraseña: "",
-        }
-      );
-    }
-  )};
+  get nombre() {
+    return this.form.controls.nombre;
+  }
+
+  get apellido() {
+    return this.form.controls.apellido;
+  }
+
+  get dni() {
+    return this.form.controls.dni;
+  }
+
+  get telefono() {
+    return this.form.controls.telefono;
+  }
+
+  get mail() {
+    return this.form.controls.mail;
+  }
+
+  get password() {
+    return this.form.controls.contraseña;
+  }
 
   guardarDatos(){
+    if (this.form.valid) {
+      this.setUsuario();
+      // Si no se modifico nada, no se hace nada
+      // Lo averiguo bien si solo tiene la key id
+      if (Object.keys(this.usuario).length == 1){
+        this.toastr.error("No se modificó ningún dato");
+        return;
+      } else {
+        this.bd.update("usuarios",this.usuario).subscribe( 
+          {
+            next: (data:any) => {
+              this.toastr.success("Datos modificados correctamente");
+              this.cambiarEditando();
+              this.cargarDatos();
+            },
+            error: (error:any) => {
+              this.cargarDatos();
+            }
+          }
+        );
+      }
+
+    }
     this.cambiarEditando();
   }
 
   cancelar(){
     this.cambiarEditando();
+    this.setFormulario();
   }
 
   editar(){
     this.cambiarEditando();
   }
 
+  // Se debe agregar una forma de realizar desde el back
   eliminarCuenta(){
     if (confirm('¿Está seguro que desea eliminar su cuenta?\nEsta acción no se puede deshacer')) {
     }
@@ -94,5 +127,64 @@ export class GestionCuentaComponent {
   cambiarEditando(){
     this.bloqEdicion = !this.bloqEdicion;
     this.bloqEdicion ? this.form.disable() : this.form.enable();
+  }
+
+  setFormulario(){
+    this.form.setValue(
+      {
+        nombre: this.usuario.nombre,
+        apellido: this.usuario.apellido,
+        dni: this.usuario.dni,
+        telefono: this.usuario.telefono,
+        mail: this.usuario.mail,
+        contraseña: "",
+      }
+    );
+  }
+
+  setUsuario(){
+    // Actualizo cada dato solo si se modifico
+    if (this.usuario.nombre != this.form.value.nombre){
+      this.usuario.nombre = this.form.value.nombre;
+    } else {
+      delete this.usuario.nombre;
+    }
+    if (this.usuario.apellido != this.form.value.apellido){
+      this.usuario.apellido = this.form.value.apellido;
+    } else {
+      delete this.usuario.apellido;
+    }
+    if (this.usuario.dni != this.form.value.dni){
+      this.usuario.dni = this.form.value.dni;
+    } else {
+      delete this.usuario.dni;
+    }
+    if (this.usuario.telefono != this.form.value.telefono){
+      this.usuario.telefono = this.form.value.telefono;
+    } else {
+      delete this.usuario.telefono;
+    }
+    if (this.usuario.mail != this.form.value.mail){
+      this.usuario.mail = this.form.value.mail;
+    } else {
+      delete this.usuario.mail;
+    }
+    if (this.form.value.contraseña != ""){
+      this.usuario.contraseña = this.form.value.contraseña;
+    } else {
+      delete this.usuario.contraseña;
+    }
+  }
+
+  cargarDatos(){
+    this.bd.getOne("usuarios","usuario",this.idUser).subscribe((data:any) => {
+      this.todoBien = true;
+      delete data.rol;
+      data.contraseña = "";
+      this.usuario = data;
+      // NO QUIERO QUE SE MODIFIQUE EL OBJETO ORIGINAL
+      this.datosViejos = JSON.parse(JSON.stringify(data));
+      this.setFormulario();
+    });
   }
 }
