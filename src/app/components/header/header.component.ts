@@ -87,9 +87,7 @@ export class HeaderComponent implements OnInit{
       }
     }
   }
-
-   ngOnInit(): void {
-
+  ngOnChanges() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
@@ -100,7 +98,9 @@ export class HeaderComponent implements OnInit{
         }
       }
     });
+  }
 
+   ngOnInit(): void {
     if (window.innerWidth <= 800) {
       this.contraer();
     }
