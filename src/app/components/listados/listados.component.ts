@@ -129,7 +129,13 @@ export class ListadosComponent{
     if (fila){
       for (let i = 1; i < (fila.cells.length - 1); i++) {
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
-        inputs.value = item[this.esquema[i].key];
+        if ( item.id == "" ){
+          inputs.value = "";
+          continue;
+        } else if ( this.esquema[i].editable){
+          inputs.value = item[this.esquema[i].key];
+          continue;
+        }
       }
     }
     // se vuelve al formato original de la tabla
@@ -146,13 +152,25 @@ export class ListadosComponent{
     if (fila){
       // se obtienen los valores de los inputs
       for (let i = 0; i < (fila.cells.length - 1); i++) {
+        // Solo se recuperan los editables y el id en caso de que se este editando un registro
+        // Si es nuevo se recupera todo
+        if ( this.esquema[i].editable == false && i != 0 && idItem != ""){
+          delete item[this.esquema[i].key];
+          continue;
+        }
         let inputs = fila.cells[i].children[0] as HTMLInputElement;
         // se obtienen los valores de los inputs
-        if (this.esquema[i].tipo == "number"){
-          // si no es un numero, la funcion devuelve NaN. Por lo tanto el programa no se rompe y luego el backend realiza la validacion de datos
-          item[this.esquema[i].key] = Number(inputs.value);
-        } else{
-          item[this.esquema[i].key] = inputs.value;
+        switch (this.esquema[i].tipo) {
+          case "number":
+            // si no es un numero, la funcion devuelve NaN. Por lo tanto el programa no se rompe y luego el backend realiza la validacion de datos
+            item[this.esquema[i].key] = Number(inputs.value);
+            break;
+          case "date":
+            item[this.esquema[i].key] = new Date(inputs.value + 'T00:00:00');
+            break;
+          default:
+            item[this.esquema[i].key] = inputs.value;
+            break;
         }
       }
     }
