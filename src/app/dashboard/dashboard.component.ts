@@ -17,9 +17,11 @@ export class DashboardComponent implements OnInit {
   userLoginOn?: boolean;
   header?: string;
   tabla?: string;
+
   menuIcon = faBars;
   gridIcon = faTableCellsLarge;
   logoutIcon = faArrowRightFromBracket;
+  
   nombreUser: string = "";
   apellidoUser: string = "";
   jwtHelper = new JwtHelperService();

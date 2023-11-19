@@ -86,4 +86,13 @@ export class ConeccionService {
       })
     );
   }
+
+  pagarCuota(idInscripcion: number){
+    return this.http.post<any>(this.urlBack + "cuotas", {idInscripcion:idInscripcion}).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.toastr.error(error.error.msg,"Error");
+      return throwError(() => error);
+      })
+    )
+  }
 }
