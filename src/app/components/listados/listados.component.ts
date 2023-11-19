@@ -103,20 +103,37 @@ export class ListadosComponent{
   aceptar(idItem: any) {
     // se recupera el item que se va a crear o editar
     let item = this.recuperarValores(idItem);
-    // Item nuevo
-    if (idItem == ""){
-      this.bd.create(this.tabla,item).subscribe( rta => {
-        this.toastr.success(rta.msg, "Exito", {timeOut: 1500});
-        // se habilita la opcion de añadir registros
-        this.addRegistrosDisabled = false;
-        this.recargarDatos();
-      });
-    }else{
-      // se modifica el item de la base de datos
-      this.bd.update(this.tabla, item).subscribe( rta => {
-        this.toastr.success(rta.msg, "Exito", {timeOut: 1500});
-        this.recargarDatos()
-      });
+    // todos los campos que no se hayan editado no se envian al backend
+    for (let key in item){
+      if (key == "id"){
+        continue
+      }
+      if (item[key] == this.ultimoEditado[key]){
+        delete item[key];
+      } else {
+        continue
+      }
+    }
+    if (Object.keys(item).length == 1){
+      this.toastr.warning("No se modificó ningún dato", "Advertencia");
+      this.cancelar();
+      return;
+    } else{
+      // Item nuevo
+      if (idItem == ""){
+        this.bd.create(this.tabla,item).subscribe( rta => {
+          this.toastr.success(rta.msg, "Exito", {timeOut: 1500});
+          // se habilita la opcion de añadir registros
+          this.addRegistrosDisabled = false;
+          this.recargarDatos();
+        });
+      } else{
+        // se modifica el item de la base de datos
+        this.bd.update(this.tabla, item).subscribe( rta => {
+          this.toastr.success(rta.msg, "Exito", {timeOut: 1500});
+          this.recargarDatos()
+        });
+      }
     }
   };
 
@@ -219,9 +236,16 @@ export class ListadosComponent{
     this.bd.getAll(this.tabla, this.header).subscribe({
       // Todo salio bien
       next: (data: any[]) =>{
+        // si se trata de un listado de usuarios, su contraseña se pone en blanco. Para que el admin solo pueda volverla a generar pero nunca verla
+        if (this.tabla == "usuarios"){
+          for (let i = 0; i < data.length; i++) {
+            data[i].contraseña = "";
+          }
+        }
         this.listado = data;
         // Habilito la opcion de Añadir Clientes
         this.addRegistrosDisabled = false;
+        
       },
       // Hay error
       error: (error: any) => {
