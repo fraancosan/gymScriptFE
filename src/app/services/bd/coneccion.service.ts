@@ -21,7 +21,7 @@ export class ConeccionService {
     return this.http.get(this.urlBack + tabla).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status == 404){
-        this.toastr.info("No hay " + nombreMostrar, "Informacion",{timeOut: 3000});
+        this.toastr.info("No hay " + nombreMostrar, "Información",{timeOut: 3000});
       }
       else{
         this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});
@@ -34,7 +34,7 @@ export class ConeccionService {
     return this.http.get(this.urlBack + tabla + "/" + id).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status == 404){
-          this.toastr.info("No se encontro " + nombreMostrar, " con el id ingresado",{timeOut: 3000});
+          this.toastr.error("No se encontro " + nombreMostrar,"Error",{timeOut: 3000});
         }
         else{
           this.toastr.error("No ha sido posible conectar con el servidor, intente nuevamente mas tarde", "Error",{disableTimeOut: true});

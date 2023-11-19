@@ -1,49 +1,50 @@
-<h1>Inscripcion</h1>
-
-<!-- Informacion de planes -->
-<div class="row">
-  <div class="tabla col">
-    <h2>Plan</h2>
-    <div class="fila">
-      <div class="columna key">Nombre</div>
-      <div class="columna value">{{ inscripcion.plan.nombre }}</div>
-    </div>
-    <div class="fila">
-      <div class="columna key">Descripción</div>
-      <div class="columna value">
-        <p *ngFor="let desc of descripcionPlan">{{ desc }}</p>
+<div *ngIf="todoBien">
+  <h1>Inscripcion</h1>
+  <!-- Informacion de planes -->
+  <div class="row">
+    <div class="tabla col">
+      <h2>Plan</h2>
+      <div class="fila">
+        <div class="columna key">Nombre</div>
+        <div class="columna value">{{ inscripcion.plan.nombre }}</div>
+      </div>
+      <div class="fila">
+        <div class="columna key">Descripción</div>
+        <div class="columna value">
+          <p *ngFor="let desc of descripcionPlan">{{ desc }}</p>
+        </div>
+      </div>
+      <div class="fila">
+        <div class="columna key">Precio</div>
+        <div class="columna value">${{ inscripcion.plan.precioMensual }}</div>
       </div>
     </div>
-    <div class="fila">
-      <div class="columna key">Precio</div>
-      <div class="columna value">${{ inscripcion.plan.precioMensual }}</div>
+
+    <!-- Informacion de Sedes -->
+    <div class="tabla col">
+      <h2>Sede</h2>
+      <div class="fila">
+        <div class="columna key">Dirección</div>
+        <div class="columna value">{{ inscripcion.sede.direccion }}</div>
+      </div>
+      <div class="fila">
+        <div class="columna key">Provincia</div>
+        <div class="columna value">{{ localidad.provincia.nombre }}</div>
+      </div>
+      <div class="fila">
+        <div class="columna key">Localidad</div>
+        <div class="columna value">{{ localidad.nombre }}</div>
+      </div>
     </div>
   </div>
 
-  <!-- Informacion de Sedes -->
-  <div class="tabla col">
-    <h2>Sede</h2>
-    <div class="fila">
-      <div class="columna key">Dirección</div>
-      <div class="columna value">{{ inscripcion.sede.direccion }}</div>
-    </div>
-    <div class="fila">
-      <div class="columna key">Provincia</div>
-      <div class="columna value">{{ localidad.provincia.nombre }}</div>
-    </div>
-    <div class="fila">
-      <div class="columna key">Localidad</div>
-      <div class="columna value">{{ localidad.nombre }}</div>
-    </div>
+  <p>Inscripto desde el {{ fecha }}</p>
+
+  <!-- Botones para dar de baja y cambiar de plan -->
+  <div class="botones">
+    <button class="cambiarPlan" (click)="cambiarPlan()">
+      Cambiar Plan o Sede
+    </button>
+    <button class="baja" (click)="darDeBaja()">Dar de Baja</button>
   </div>
-</div>
-
-<p>Inscripto desde el {{ fecha }}</p>
-
-<!-- Botones para dar de baja y cambiar de plan -->
-<div class="botones">
-  <button class="cambiarPlan" (click)="cambiarPlan()">
-    Cambiar Plan o Sede
-  </button>
-  <button class="baja" (click)="darDeBaja()">Dar de Baja</button>
 </div>

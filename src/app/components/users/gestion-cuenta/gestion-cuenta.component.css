@@ -2,10 +2,15 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-h1,
-h2 {
-  text-align: center;
+h1,h2 {
   font-weight: 700;
+}
+
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .tabla {
@@ -32,24 +37,25 @@ h2 {
   margin-left: 10px;
 }
 
+input {
+  width: 100%;
+}
+
 .key {
   width: 150px;
 }
 
-.value {
-  width: 300px;
-}
-
 .botones {
+  width: 600px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 20px;
   font-weight: 500;
 }
 
 button {
-  width: 300px;
+  width: 260px;
   height: 40px;
   cursor: pointer;
   border: 2px solid black;
@@ -60,21 +66,25 @@ button {
   transition: all 0.3s;
 }
 
-.cambiarPlan {
+.editar, .guardar {
   background-color: #ffc107;
   color: #212529;
 }
 
-.cambiarPlan:hover {
+.editar:hover, .guardar:hover {
   border: 2px solid #fff;
   color: #ffffff;
   background-color: #000000;
 }
 
-.baja {
+.baja, .cancelar {
   background-color: rgb(190, 24, 24);
 }
 
-.baja:hover {
+.baja:hover, .cancelar:hover {
   background-color: rgb(255, 0, 0);
+}
+
+.hidden {
+  display: none;
 }

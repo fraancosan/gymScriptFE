@@ -1,10 +1,81 @@
-<div *ngIf="todoBien">
-  <h1>Inscripcion</h1>
+<div *ngIf="todoBien" class="contenedor">
+  <h1>Gestionar Cuenta</h1>
 
   <!-- Informacion de planes -->
-  <div class="row">
-    <div class="tabla col">
-      <h2>Plan</h2>
+  <div class="tabla">
+    <!-- Nombre -->
+    <div class="fila">
+      <div class="columna key">Nombre:</div>
+      <input
+        class="columna"
+        type="text"
+        value="{{ usuario.nombre }}"
+        [disabled]="bloqEdicion"
+      />
     </div>
+    <!-- Apellido -->
+    <div class="fila">
+      <div class="columna key">Apellido:</div>
+      <input
+        class="columna"
+        type="text"
+        value="{{ usuario.apellido }}"
+        [disabled]="bloqEdicion"
+      />
+    </div>
+    <!-- DNI -->
+    <div class="fila">
+      <div class="columna key">DNI:</div>
+      <input
+        class="columna"
+        type="number"
+        value="{{ usuario.dni }}"
+        [disabled]="bloqEdicion"
+      />
+    </div>
+    <!-- Telefono -->
+    <div class="fila">
+      <div class="columna key">Telefono:</div>
+      <input
+        class="columna"
+        type="number"
+        value="{{ usuario.telefono }}"
+        [disabled]="bloqEdicion"
+      />
+    </div>
+    <!-- Mail -->
+    <div class="fila">
+      <div class="columna key">Mail:</div>
+      <input
+        class="columna"
+        type="mail"
+        value="{{ usuario.mail }}"
+        [disabled]="bloqEdicion"
+      />
+    </div>
+    <!-- Contraseña -->
+    <div class="fila">
+      <div class="columna key">Contraseña:</div>
+      <input
+        class="columna"
+        type="password"
+        value="{{ usuario['contraseña'] }}"
+        [disabled]="bloqEdicion"
+      />
+    </div>
+  </div>
+  <div class="botones">
+    <button (click)="editar()" class="editar" *ngIf="bloqEdicion">
+      Editar
+    </button>
+    <button (click)="eliminarCuenta()" class="baja" *ngIf="bloqEdicion">
+      Eliminar Cuenta
+    </button>
+    <button (click)="guardarDatos()" class="guardar" *ngIf="!bloqEdicion">
+      Guardar
+    </button>
+    <button (click)="cancelar()" class="cancelar" *ngIf="!bloqEdicion">
+      Cancelar
+    </button>
   </div>
 </div>

@@ -10,6 +10,7 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 export class GestionInscripcionComponent {
   @Input() inscripcion: any = {};
   @Output() sinInscripcion = new EventEmitter<boolean>();
+  todoBien: boolean = false;
 
   descripcionPlan: string = '';
   localidad: any = {};
@@ -23,7 +24,7 @@ export class GestionInscripcionComponent {
   ngOnInit(): void {
     this.descripcionPlan = this.inscripcion.plan.descripcion.split('-')
 
-    this.bd.getOne('localidades', "Localidad", this.inscripcion.sede.idLocalidad).subscribe((data: any) => {this.localidad = data});
+    this.bd.getOne('localidades', "Localidad", this.inscripcion.sede.idLocalidad).subscribe((data: any) => {this.localidad = data; this.todoBien = true});
 
     let meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     this.fecha = new Date(this.inscripcion.fechaAlta + 'T00:00:00');
