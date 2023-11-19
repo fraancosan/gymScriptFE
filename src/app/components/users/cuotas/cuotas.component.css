@@ -5,13 +5,14 @@
     height: fit-content;
     background: rgb(255, 255, 255);
     border-radius: 20px;
-    padding: 30px;
+    padding: 50px;
     position: relative;
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
   }
 
 .info-cuota_title{
     padding: 20px;
+    padding-bottom: 40px;
 }
 .info-cuota_title h2{
     font-size: 40px;
@@ -32,7 +33,7 @@
     background-color: #dee2e6;
     text-align: center;
     border-radius: 10px;
-    padding: 5px;
+    padding: 20px 0;
 }
 
 .wrap-titulo h3{
@@ -42,12 +43,13 @@
 .wrap-valores h3{
     font-size: 20px;
     font-weight: 500;
+    margin:0;
 }
 
 .estado{
     display: flex;
     justify-content: center;
-    padding-top: 25px;
+    padding-top: 35px;
 }
 
 .estado h3{
@@ -66,7 +68,7 @@
 }
 
 .pay-button{
-    width: 60%;
+    width: 50%;
     height: 50px;
     background-color: #0d6efd;
     border: none;
