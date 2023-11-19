@@ -2,68 +2,68 @@
   <h1>Gestionar Cuenta</h1>
 
   <!-- Informacion de planes -->
-  <div class="tabla">
+  <form class="tabla" [formGroup]="form">
     <!-- Nombre -->
     <div class="fila">
       <div class="columna key">Nombre:</div>
       <input
+        formControlName="nombre"
         class="columna"
         type="text"
         value="{{ usuario.nombre }}"
-        [disabled]="bloqEdicion"
       />
     </div>
     <!-- Apellido -->
     <div class="fila">
       <div class="columna key">Apellido:</div>
       <input
+        formControlName="apellido"
         class="columna"
         type="text"
         value="{{ usuario.apellido }}"
-        [disabled]="bloqEdicion"
       />
     </div>
     <!-- DNI -->
     <div class="fila">
       <div class="columna key">DNI:</div>
       <input
+        formControlName="dni"
         class="columna"
         type="number"
         value="{{ usuario.dni }}"
-        [disabled]="bloqEdicion"
       />
     </div>
     <!-- Telefono -->
     <div class="fila">
       <div class="columna key">Telefono:</div>
       <input
+        formControlName="telefono"
         class="columna"
         type="number"
         value="{{ usuario.telefono }}"
-        [disabled]="bloqEdicion"
       />
     </div>
     <!-- Mail -->
     <div class="fila">
       <div class="columna key">Mail:</div>
       <input
+        formControlName="mail"
         class="columna"
         type="mail"
         value="{{ usuario.mail }}"
-        [disabled]="bloqEdicion"
       />
     </div>
     <!-- Contraseña -->
     <div class="fila">
       <div class="columna key">Contraseña:</div>
       <input
+        formControlName="contraseña"
         class="columna"
         type="password"
         value="{{ usuario['contraseña'] }}"
-        [disabled]="bloqEdicion"
       />
     </div>
-  </div>
+  </form>
   <div class="botones">
     <button (click)="editar()" class="editar" *ngIf="bloqEdicion">
       Editar
