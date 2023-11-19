@@ -1,4 +1,4 @@
-.ng-valid:not(form), .ng-valid:not(form), .ng-dirty, .ng-touched {
+.ng-valid:not(form), .ng-invalid:not(form), .ng-dirty, .ng-touched {
   border: 1px solid black;
 }
 
@@ -52,6 +52,11 @@ h1,h2 {
 
 input {
   width: 100%;
+}
+
+input:disabled {
+  border: 1px solid #ccc;
+  box-shadow: none;
 }
 
 .key {
