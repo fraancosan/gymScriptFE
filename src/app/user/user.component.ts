@@ -22,6 +22,10 @@ export class UserComponent {
     let token = localStorage.getItem('token')!;
     let tokenDecoded = this.jwtHelper.decodeToken(token);
     this.idUser = tokenDecoded.id;
+    this.obtenerInscripcionActiva();
+  }
+
+  obtenerInscripcionActiva(){
     this.bd.getInscripcionActiva(this.idUser).subscribe({
       next: (data: any) => {
         this.inscripcion = data[0];
@@ -35,5 +39,14 @@ export class UserComponent {
 
   queHacer(orden: string){
     this.irA = orden;
+  }
+
+  cambiarEstado(estado: boolean){
+    if (estado){
+      this.estado = 'noInscripto';
+    } else {
+      this.estado = 'inscripto';
+      this.obtenerInscripcionActiva();
+    }
   }
 }

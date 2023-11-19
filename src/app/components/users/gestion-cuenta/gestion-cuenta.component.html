@@ -1,0 +1,81 @@
+<div *ngIf="todoBien" class="contenedor">
+  <h1>Gestionar Cuenta</h1>
+
+  <!-- Informacion de planes -->
+  <form class="tabla" [formGroup]="form">
+    <!-- Nombre -->
+    <div class="fila">
+      <div class="columna key">Nombre:</div>
+      <input
+        formControlName="nombre"
+        class="columna"
+        type="text"
+        value="{{ usuario.nombre }}"
+      />
+    </div>
+    <!-- Apellido -->
+    <div class="fila">
+      <div class="columna key">Apellido:</div>
+      <input
+        formControlName="apellido"
+        class="columna"
+        type="text"
+        value="{{ usuario.apellido }}"
+      />
+    </div>
+    <!-- DNI -->
+    <div class="fila">
+      <div class="columna key">DNI:</div>
+      <input
+        formControlName="dni"
+        class="columna"
+        type="number"
+        value="{{ usuario.dni }}"
+      />
+    </div>
+    <!-- Telefono -->
+    <div class="fila">
+      <div class="columna key">Telefono:</div>
+      <input
+        formControlName="telefono"
+        class="columna"
+        type="number"
+        value="{{ usuario.telefono }}"
+      />
+    </div>
+    <!-- Mail -->
+    <div class="fila">
+      <div class="columna key">Mail:</div>
+      <input
+        formControlName="mail"
+        class="columna"
+        type="mail"
+        value="{{ usuario.mail }}"
+      />
+    </div>
+    <!-- Contraseña -->
+    <div class="fila">
+      <div class="columna key">Contraseña:</div>
+      <input
+        formControlName="contraseña"
+        class="columna"
+        type="password"
+        value="{{ usuario['contraseña'] }}"
+      />
+    </div>
+  </form>
+  <div class="botones">
+    <button (click)="editar()" class="editar" *ngIf="bloqEdicion">
+      Editar
+    </button>
+    <button (click)="eliminarCuenta()" class="baja" *ngIf="bloqEdicion">
+      Eliminar Cuenta
+    </button>
+    <button (click)="guardarDatos()" class="guardar" *ngIf="!bloqEdicion">
+      Guardar
+    </button>
+    <button (click)="cancelar()" class="cancelar" *ngIf="!bloqEdicion">
+      Cancelar
+    </button>
+  </div>
+</div>

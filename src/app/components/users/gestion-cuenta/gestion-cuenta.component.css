@@ -1,28 +1,35 @@
-*{
+* {
   font-family: 'Montserrat', sans-serif;
 }
-h1, h2{
-  text-align: center;
+
+h1,h2 {
   font-weight: 700;
 }
 
-.tabla{
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabla {
   width: 600px;
   padding: 20px;
   border: 2px solid black;
   margin: 5px;
 }
 
-.fila{
+.fila {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   text-align: left;
   padding: 20px 0px;
   width: 100%;
 }
 
-.columna{
+.columna {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,24 +37,25 @@ h1, h2{
   margin-left: 10px;
 }
 
-.key{
+input {
+  width: 100%;
+}
+
+.key {
   width: 150px;
 }
 
-.value{
-  width: 300px;
-}
-
-.botones{
+.botones {
+  width: 600px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 20px;
   font-weight: 500;
 }
 
-button{
-  width: 300px;
+button {
+  width: 260px;
   height: 40px;
   cursor: pointer;
   border: 2px solid black;
@@ -58,21 +66,25 @@ button{
   transition: all 0.3s;
 }
 
-.cambiarPlan {
+.editar, .guardar {
   background-color: #ffc107;
   color: #212529;
 }
 
-.cambiarPlan:hover {
+.editar:hover, .guardar:hover {
   border: 2px solid #fff;
   color: #ffffff;
   background-color: #000000;
 }
 
-.baja{
+.baja, .cancelar {
   background-color: rgb(190, 24, 24);
 }
 
-.baja:hover{
+.baja:hover, .cancelar:hover {
   background-color: rgb(255, 0, 0);
+}
+
+.hidden {
+  display: none;
 }

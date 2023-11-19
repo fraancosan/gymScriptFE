@@ -1,5 +1,6 @@
 <div [ngSwitch]="estado">
   <app-inscribirse
+    (sinInscripcion)="cambiarEstado($event)"
     *ngSwitchCase="'noInscripto'"
     [idUser]="idUser"
   ></app-inscribirse>
@@ -12,8 +13,12 @@
       <app-cuotas *ngSwitchCase="'cuotas'"
       [inscripcion]="inscripcion"></app-cuotas>
       <app-gestion-inscripcion
+        (sinInscripcion)="cambiarEstado($event)"
         *ngSwitchCase="'gestion'"
+        [inscripcion]="inscripcion"
       ></app-gestion-inscripcion>
+      <app-gestion-cuenta *ngSwitchCase="'cuenta'" [idUser]="idUser">
+      </app-gestion-cuenta>
     </main>
   </div>
 </div>

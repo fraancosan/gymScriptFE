@@ -2,6 +2,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { filter } from 'rxjs';
 import { HeaderServiceService } from 'src/app/services/header-service.service';
 
 @Component({
@@ -87,13 +88,11 @@ export class HeaderComponent implements OnInit{
       }
     }
   }
-
    ngOnInit(): void {
-
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd){
         // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
-        if (event.url.includes('home') || event.url === '/productos' || event.url === '/' || event.url === '/#Nosotros' || event.url === '/#planes' || event.url === '/#sedes') {
+        if (event.urlAfterRedirects.includes('home') || event.urlAfterRedirects === '/productos' || event.urlAfterRedirects === '/' || event.urlAfterRedirects === '/#Nosotros' || event.urlAfterRedirects === '/#planes' || event.urlAfterRedirects === '/#sedes') {
           this.headerService.showHeader = true;
         } else {
           this.headerService.showHeader = false;
@@ -122,7 +121,6 @@ export class HeaderComponent implements OnInit{
       this.visible('mid-container','');
       this.visible('final-container','');
     }
-
   }
 
   irAHome() {
