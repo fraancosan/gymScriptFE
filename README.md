@@ -16,6 +16,8 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 
 [**Pagina Web**](https://francosanchez.me/gymScriptFE/home)
 
+[**Video Demostracion**](https://youtu.be/uJMpIO53Nyk)
+
 ### Nota
 Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad esta misma entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
 
