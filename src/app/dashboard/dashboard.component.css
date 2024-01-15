@@ -141,12 +141,6 @@
   font-weight: 300;
 }
 
-.profile_logOut {
-  position: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .btn_LogOut {
   bottom: 5px;
   min-width: 50px;
@@ -185,8 +179,7 @@
   display: none;
 }
 .sidebar.close .profile_info {
-  opacity: 0;
-  transform: translate(-100%);
+  display: none;
   transition: all 0.3s ease;
 }
 
@@ -205,4 +198,12 @@
   height: 100%;
   padding: 20px;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+  }
 }

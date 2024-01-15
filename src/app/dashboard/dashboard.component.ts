@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LoginService } from '../services/auth/login.service';
 import { userLogin } from '../interfaces/interfaces';
 import { Router } from '@angular/router';
@@ -35,6 +35,16 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private bd: ConeccionService
   ) {}
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    let sideBar = document.getElementsByClassName('sidebar');
+    if (event.target.innerWidth < 1100) {
+      sideBar[0].classList.add('close');
+    } else {
+      sideBar[0].classList.remove('close');
+    }
+  }
 
   ngOnInit(): void {
     this.loginService.currentUserData.subscribe({
@@ -78,6 +88,10 @@ export class DashboardComponent implements OnInit {
 
   // Funcion que se encarga de redirigir a los listados correspondientes
   cargarDatos(header: string, tabla: string): void {
+    if (window.innerWidth < 1100) {
+      let sideBar = document.getElementsByClassName('sidebar');
+      sideBar[0].classList.add('close');
+    }
     this.header = header;
     this.tabla = tabla;
   }
