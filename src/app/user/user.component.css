@@ -1,4 +1,4 @@
-main{
+main {
   position: relative;
   top: 0;
   left: 250px;
@@ -6,4 +6,9 @@ main{
   height: 100%;
   padding: 20px;
   transition: all 0.3s ease;
+}
+
+main.close {
+  width: calc(100% - 88px);
+  left: 88px;
 }

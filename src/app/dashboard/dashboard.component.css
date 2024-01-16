@@ -200,6 +200,7 @@
   transition: all 0.3s ease;
 }
 
+/* MEDIA QUERIES */
 @media (max-width: 480px) {
   .sidebar {
     position: absolute;
