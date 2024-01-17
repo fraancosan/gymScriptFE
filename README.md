@@ -25,11 +25,13 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 
 Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad esta misma entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
 
-## Pasos para Ejecutar Localmente
+## Ejecución Proyecto
 
-- Instalar Angular: npm install -g @angular/cli@latest
-- Instalar Dependencias: npm install
-- Ejecutar Servidor
+> [!NOTE]
+> En la instalacion se instala tambien la versión adecuada de angular
+
+- Instalación: npm run start
+- Iniciar proyecto
   - En consola escribir: ng serve
   - El servidor se creara en: http://localhost:4200/
 
