@@ -13,9 +13,9 @@ section {
 .button-add {
   width: 200px;
   border: none;
-  padding: 0.30rem 1rem;
+  padding: 0.3rem 1rem;
   border-radius: 4px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   font-weight: 600;
   background-color: #ffc107;
   color: #212529;
@@ -29,73 +29,83 @@ section {
   background-color: #000000;
 }
 
-h1{
+h1 {
   font-size: 1.47rem;
 }
 /* Se le saca estilo predeterminado a los inputs */
-input, select{
+input,
+select {
   appearance: none;
   border: none;
   outline: none;
   background: transparent;
 }
 
-input:enabled, select:enabled{
+input:enabled,
+select:enabled {
   padding: 0.5px, 0.5px, 0.5px, 1px;
   border: 0.5px solid black;
 }
 
 /* Se eliminan botones de aumento y decremento de inputs number */
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Esta sirve para firefox */
-input[type=number]{
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-select:enabled{
+select:enabled {
   appearance: auto;
 }
 
-.botones{
+.botones {
   width: 80px;
 }
 
-tbody tr td, thead tr th{
+tbody tr td,
+thead tr th {
   min-width: 200px;
   padding: 8px;
 }
 
-tbody tr td input, tbody tr td select{
+tbody tr td input,
+tbody tr td select {
   width: 100%;
 }
 
 /* Modifico segun ID */
-tbody tr td.id, thead tr th.id{
+tbody tr td.id,
+thead tr th.id {
   min-width: 95px;
   max-width: 95px;
 }
 
 /* Modifico segun tipos */
-tbody tr td.tipo, thead tr th.tipo{
+tbody tr td.tipo,
+thead tr th.tipo {
   min-width: 160px;
 }
 
 /* Modifico segun urls de imagenes */
-tbody tr td.img, thead tr th.img{
+tbody tr td.img,
+thead tr th.img {
   min-width: 300px;
 }
 
 /* Modifico segun sea descripcion */
-tbody tr td.descripcion, thead tr th.descripcion{
+tbody tr td.descripcion,
+thead tr th.descripcion {
   min-width: 300px;
 }
 
 /* Modifico segun sea DNI */
-tbody tr td.dni, thead tr th.dni{
+tbody tr td.dni,
+thead tr th.dni {
   min-width: 130px;
 }
 
@@ -104,17 +114,17 @@ tbody tr td.dni, thead tr th.dni{
   No se hace con la clase .id dado que solo quiero la primer columna 
   y no todas las que tengan la clase .id 
 */
-tbody tr td:first-child input{
+tbody tr td:first-child input {
   font-weight: bold;
 }
 
 /* Columna Acciones */
-tbody tr td:last-child{
+tbody tr td:last-child {
   text-align: center;
 }
 
 /* Columna Acciones */
-thead tr th:last-child{
+thead tr th:last-child {
   text-align: center;
   min-width: 200px;
   width: 200px;
@@ -125,21 +135,20 @@ thead tr th:last-child{
   display: none;
 }
 
-@media (min-width:550px) {
-  .title{
+@media (min-width: 550px) {
+  .title {
     flex-direction: row;
   }
-  h1{
+  h1 {
     font-size: 1.5rem;
   }
 }
 
-@media (min-width:650px){
-  h1{
+@media (min-width: 650px) {
+  h1 {
     font-size: 2rem;
   }
 }
 
-@media (min-width:1400px){
-  
+@media (min-width: 1400px) {
 }

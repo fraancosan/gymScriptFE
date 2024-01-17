@@ -73,7 +73,11 @@
     >
       <div *ngIf="telefono.errors?.['required']">El telefono es requerido.</div>
       <div
-        *ngIf="telefono.errors?.['pattern'] || telefono.errors?.['minLength'] || telefono.errors?.['maxLength']"
+        *ngIf="
+          telefono.errors?.['pattern'] ||
+          telefono.errors?.['minLength'] ||
+          telefono.errors?.['maxLength']
+        "
       >
         El telefono debe tener un formato válido.
       </div>

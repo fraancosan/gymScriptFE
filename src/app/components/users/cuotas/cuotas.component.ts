@@ -5,18 +5,21 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cuotas',
   templateUrl: './cuotas.component.html',
-  styleUrls: ['./cuotas.component.css']
+  styleUrls: ['./cuotas.component.css'],
 })
 export class CuotasComponent implements OnInit {
   @Input() inscripcion: any;
-  fechaPago?: string ;
+  fechaPago?: string;
   importe?: number;
   fechaVenc: string = '';
   estado: string = '';
   disabledButton: boolean = true;
   loading: boolean = false;
 
-  constructor(private toastr: ToastrService, private bd:ConeccionService) { }
+  constructor(
+    private toastr: ToastrService,
+    private bd: ConeccionService,
+  ) {}
 
   ngOnInit(): void {
     this.fechaPago = this.inscripcion.cuota[0].fechaPago;
@@ -25,32 +28,31 @@ export class CuotasComponent implements OnInit {
 
     const fechaComparar = new Date(this.fechaVenc);
     const fechaHoy = new Date();
-    if(fechaComparar < fechaHoy){
+    if (fechaComparar < fechaHoy) {
       this.estado = 'Vencido';
-    }else{
+    } else {
       this.estado = 'Al dia!';
     }
     this.updateButtonState();
-    }
+  }
 
-    pagar(){
-      this.loading = true;
-      this.bd.pagarCuota( this.inscripcion.id).subscribe({
-        next: (data: any) => {
-          setTimeout(() => {
-            this.loading = false;
-            window.location.reload();
-          }, 300);
-        },
-        error: (error: any) => {
+  pagar() {
+    this.loading = true;
+    this.bd.pagarCuota(this.inscripcion.id).subscribe({
+      next: (data: any) => {
+        setTimeout(() => {
           this.loading = false;
-          this.toastr.error(error.error.msg, "Error", {timeOut: 1500});
-        }
-        
-      });
-    }
-    
-    updateButtonState() {
-      this.disabledButton = (this.estado == 'Al dia!');
-    }
+          window.location.reload();
+        }, 300);
+      },
+      error: (error: any) => {
+        this.loading = false;
+        this.toastr.error(error.error.msg, 'Error', { timeOut: 1500 });
+      },
+    });
+  }
+
+  updateButtonState() {
+    this.disabledButton = this.estado == 'Al dia!';
+  }
 }

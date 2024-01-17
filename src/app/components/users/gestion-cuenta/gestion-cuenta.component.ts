@@ -6,7 +6,7 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 @Component({
   selector: 'app-gestion-cuenta',
   templateUrl: './gestion-cuenta.component.html',
-  styleUrls: ['./gestion-cuenta.component.css']
+  styleUrls: ['./gestion-cuenta.component.css'],
 })
 export class GestionCuentaComponent {
   @Input() idUser!: number;
@@ -16,19 +16,19 @@ export class GestionCuentaComponent {
 
   // se implementa el formulario para editar los datos
   form = this.formBuilder.group({
-    nombre: ["", [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+    nombre: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     apellido: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     dni: [
       0,
       [
         Validators.required,
-        Validators.min(1), 
+        Validators.min(1),
         Validators.max(100000000),
         Validators.pattern('^[0-9]*$'),
       ],
     ],
     telefono: [
-      "",
+      '',
       [
         Validators.pattern('^[0-9]*$'),
         Validators.minLength(5),
@@ -36,26 +36,29 @@ export class GestionCuentaComponent {
       ],
     ],
     mail: [
-      "",
+      '',
       [
         Validators.required,
         Validators.email,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ],
     ],
-    contraseña: ['', [Validators.minLength(8), Validators.pattern('^[a-zA-Z0-9]*$')]],
+    contraseña: [
+      '',
+      [Validators.minLength(8), Validators.pattern('^[a-zA-Z0-9]*$')],
+    ],
   });
 
-  constructor (
+  constructor(
     private bd: ConeccionService,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
-  ){}
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit(): void {
     this.cambiarEditando();
-    this.cargarDatos();  
-  };
+    this.cargarDatos();
+  }
 
   get nombre() {
     return this.form.controls.nombre;
@@ -81,98 +84,100 @@ export class GestionCuentaComponent {
     return this.form.controls.contraseña;
   }
 
-  guardarDatos(){
+  guardarDatos() {
     if (this.form.valid) {
       let datos = this.datosAEditar();
       // Si no se modifico nada, no se hace nada
       // Lo averiguo bien si solo tiene la key id
-      if (Object.keys(datos).length == 1){
-        this.toastr.error("No se modificó ningún dato");
+      if (Object.keys(datos).length == 1) {
+        this.toastr.error('No se modificó ningún dato');
         this.cancelar();
       } else {
-        this.bd.update("usuarios",datos).subscribe( 
-          {
-            next: (data:any) => {
-              this.toastr.success("Datos modificados correctamente");
-              this.cambiarEditando();
-              this.cargarDatos();
-            },
-            error: (error:any) => {
-              this.cancelar();
-            }
-          }
-        );
+        this.bd.update('usuarios', datos).subscribe({
+          next: (data: any) => {
+            this.toastr.success('Datos modificados correctamente');
+            this.cambiarEditando();
+            this.cargarDatos();
+          },
+          error: (error: any) => {
+            this.cancelar();
+          },
+        });
       }
     }
   }
 
-  cancelar(){
+  cancelar() {
     this.cambiarEditando();
     this.setFormulario(this.usuario);
   }
 
-  editar(){
+  editar() {
     this.cambiarEditando();
   }
 
   // Se debe agregar una forma de realizar desde el back
-  eliminarCuenta(){
-    if (confirm('¿Está seguro que desea eliminar su cuenta?\nEsta acción no se puede deshacer')) {
+  eliminarCuenta() {
+    if (
+      confirm(
+        '¿Está seguro que desea eliminar su cuenta?\nEsta acción no se puede deshacer',
+      )
+    ) {
     }
   }
 
-  cambiarEditando(){
+  cambiarEditando() {
     this.bloqEdicion = !this.bloqEdicion;
     this.bloqEdicion ? this.form.disable() : this.form.enable();
   }
 
-  setFormulario(json: any){
-    this.form.setValue(
-      {
-        nombre: json.nombre,
-        apellido: json.apellido,
-        dni: json.dni,
-        telefono: json.telefono,
-        mail: json.mail,
-        contraseña: "",
-      }
-    );
+  setFormulario(json: any) {
+    this.form.setValue({
+      nombre: json.nombre,
+      apellido: json.apellido,
+      dni: json.dni,
+      telefono: json.telefono,
+      mail: json.mail,
+      contraseña: '',
+    });
   }
 
-  getFormulario(): any{
+  getFormulario(): any {
     return {
-      "id": this.idUser,
-      "nombre": this.nombre.value,
-      "apellido": this.apellido.value,
-      "dni": this.dni.value,
-      "telefono": this.telefono.value,
-      "mail": this.mail.value,
-      "contraseña": this.password.value,
-    }
+      id: this.idUser,
+      nombre: this.nombre.value,
+      apellido: this.apellido.value,
+      dni: this.dni.value,
+      telefono: this.telefono.value,
+      mail: this.mail.value,
+      contraseña: this.password.value,
+    };
   }
 
-  datosAEditar(){
+  datosAEditar() {
     let datos = this.getFormulario();
-    for (let key in datos){
-      if (key == "id"){
-        continue
+    for (let key in datos) {
+      if (key == 'id') {
+        continue;
       }
-      if (datos[key] == this.usuario[key]){
+      if (datos[key] == this.usuario[key]) {
         delete datos[key];
       } else {
-        continue
+        continue;
       }
     }
     return datos;
   }
 
-  cargarDatos(){
-    this.bd.getOne("usuarios","usuario",this.idUser).subscribe((data:any) => {
-      this.todoBien = true;
-      delete data.rol;
-      data.contraseña = "";
-      this.usuario = data;
-      this.setFormulario(this.usuario);
-    });
+  cargarDatos() {
+    this.bd
+      .getOne('usuarios', 'usuario', this.idUser)
+      .subscribe((data: any) => {
+        this.todoBien = true;
+        delete data.rol;
+        data.contraseña = '';
+        this.usuario = data;
+        this.setFormulario(this.usuario);
+      });
   }
 }

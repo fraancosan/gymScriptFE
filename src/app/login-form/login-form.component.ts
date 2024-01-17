@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
     ],
     contraseña: ['', Validators.required],
   });
-  token: string = "";
+  token: string = '';
   jwtHelper = new JwtHelperService();
   constructor(
     private formBuilder: FormBuilder,
@@ -59,14 +59,14 @@ export class LoginFormComponent implements OnInit {
         complete: () => {
           this.loading = false;
           let tokenDecoded = this.jwtHelper.decodeToken(this.token);
-          if(tokenDecoded.rol == "admin"){
+          if (tokenDecoded.rol == 'admin') {
             this.router.navigateByUrl('/dashboard');
             this.loginForm.reset();
-          }else{
+          } else {
             //Deberia mandar a inscripcion
             this.router.navigateByUrl('/user');
             this.loginForm.reset();
-          }        
+          }
         },
       });
     } else {

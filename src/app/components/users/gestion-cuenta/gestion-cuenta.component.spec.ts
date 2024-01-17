@@ -8,7 +8,7 @@ describe('GestionCuentaComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GestionCuentaComponent]
+      declarations: [GestionCuentaComponent],
     });
     fixture = TestBed.createComponent(GestionCuentaComponent);
     component = fixture.componentInstance;

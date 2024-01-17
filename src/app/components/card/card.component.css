@@ -1,118 +1,118 @@
 /*Creado con mobile first*/
 
 * {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 .contenedor {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 100%;
-    height: auto;
-    border-radius: 5%;
-    padding: 20px;
-    padding-bottom: 10px;
-    background-color: #212529;
-    transition: all .5s;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  height: auto;
+  border-radius: 5%;
+  padding: 20px;
+  padding-bottom: 10px;
+  background-color: #212529;
+  transition: all 0.5s;
 }
 
-.important{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+.important {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-    font-size: 30px;
-    font-weight: bold;
-    color: #ffc107;
-    margin: 10px 5px 5px 5px;
-    text-align: center;
-    border-bottom: 1px solid #ffc107;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffc107;
+  margin: 10px 5px 5px 5px;
+  text-align: center;
+  border-bottom: 1px solid #ffc107;
 }
 
 .cost {
-    margin: 0 5px;
-    padding-top: 25px;
-    padding-bottom: 10px;
-    color: white;
-    font-size: 35px;
-    font-weight: bold;
+  margin: 0 5px;
+  padding-top: 25px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 .card-list {
-    margin: 15px 0 0 0;
-    padding: 0;
-    color: white;
+  margin: 15px 0 0 0;
+  padding: 0;
+  color: white;
 }
 
 .list-item {
-    display: flex;
-    flex-direction: row;
-    margin: 10px 5px;
-    margin-bottom: 10px;
-    list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 10px 5px;
+  margin-bottom: 10px;
+  list-style: none;
 }
 
 .gg-check-o {
-    height: 21px;
-    width: 21px;
-    margin-right: 7px;
+  height: 21px;
+  width: 21px;
+  margin-right: 7px;
 }
 
 .btn-warning {
-    margin-top: 10px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    border: 2px solid #212529;
-    transition: all .5s;
+  margin-top: 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border: 2px solid #212529;
+  transition: all 0.5s;
 }
 
 .contenedor:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
-
 
 /*Pagina para box shadowx*/
 /* https://getcssscan.com/css-box-shadow-examples */
 
-
 /* Si la pantalla tiene minimo 300px hago lo siguiente */
-@media (min-width: 300px){
-    .contenedor {
-        width: 280px;
-    }
+@media (min-width: 300px) {
+  .contenedor {
+    width: 280px;
+  }
 
-    .title {
-        font-size: 40px;
-    }
+  .title {
+    font-size: 40px;
+  }
 
-    .cost {
-        font-size: 45px;
-    }
+  .cost {
+    font-size: 45px;
+  }
 }
 
 /*Si la pantalla tiene minimo 350px hago lo siguiente*/
-@media (min-width: 350px){
-    .contenedor {
-        width: 290px;
-    }
-    
+@media (min-width: 350px) {
+  .contenedor {
+    width: 290px;
+  }
 }
 
 /*Si es computadora al pasar el mouse sobre la carta de produce efecto de sombra*/
-@media (min-width: 800px){
-    .contenedor:hover {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    }
-
+@media (min-width: 800px) {
+  .contenedor:hover {
+    box-shadow:
+      rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px,
+      rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px,
+      rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
 }
 
-@media (min-width: 1372px){
-    .contenedor {
-        width: 300px;
-        height: 440px;
-    }
+@media (min-width: 1372px) {
+  .contenedor {
+    width: 300px;
+    height: 440px;
+  }
 }
-

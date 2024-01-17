@@ -4,7 +4,7 @@
   <div class="row">
     <div class="tabla col">
       <h2>Plan</h2>
-      <hr>
+      <hr />
       <div class="fila">
         <div class="columna key">Nombre</div>
         <div class="columna value">{{ inscripcion.plan.nombre }}</div>
@@ -24,14 +24,18 @@
     <!-- Informacion de Sedes -->
     <div class="tabla col">
       <h2>Sede</h2>
-      <hr>
+      <hr />
       <div class="fila">
         <div class="columna key">Dirección</div>
-        <div class="columna value">{{ inscripcion.sede.direccion }}</div>
+        <div class="columna value">
+          {{ inscripcion.sede.direccion }}
+        </div>
       </div>
       <div class="fila">
         <div class="columna key">Provincia</div>
-        <div class="columna value">{{ localidad.provincia.nombre }}</div>
+        <div class="columna value">
+          {{ localidad.provincia.nombre }}
+        </div>
       </div>
       <div class="fila">
         <div class="columna key">Localidad</div>

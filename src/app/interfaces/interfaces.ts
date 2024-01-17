@@ -1,8 +1,8 @@
 export interface Product {
-    id: number;
-    nombre: string;
-    descripcion: string;
-    tipo: string;
+  id: number;
+  nombre: string;
+  descripcion: string;
+  tipo: string;
 }
 
 export interface Usuarios {

@@ -13,14 +13,17 @@ const routes: Routes = [
   { path: 'signUp', component: RegisterFormComponent },
   { path: 'signIn', component: LoginFormComponent },
   { path: 'productos', component: ProductosComponent },
-  { path: 'user', component: UserComponent, canActivate: [authGuard]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
-  { path: '**', redirectTo: 'home'}, // Si no encuentra la ruta, redirige a home
+  { path: 'user', component: UserComponent, canActivate: [authGuard] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [authGuard],
+  },
+  { path: '**', redirectTo: 'home' }, // Si no encuentra la ruta, redirige a home
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-
 export class AppRoutingModule {}

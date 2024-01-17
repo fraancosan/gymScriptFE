@@ -1,13 +1,17 @@
-.ng-valid:not(form), .ng-invalid:not(form), .ng-dirty, .ng-touched {
+.ng-valid:not(form),
+.ng-invalid:not(form),
+.ng-dirty,
+.ng-touched {
   border: 1px solid black;
 }
 
-h1,h2 {
+h1,
+h2 {
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-.contenedor{
+.contenedor {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +29,7 @@ h1,h2 {
 }
 
 .fila {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,7 +42,7 @@ h1,h2 {
   padding-top: 20px;
 }
 
-.text-danger{
+.text-danger {
   text-align: center;
 }
 
@@ -79,40 +83,44 @@ button {
   height: 40px;
   cursor: pointer;
   border: 2px solid black;
-  padding: 0.30rem 1rem;
+  padding: 0.3rem 1rem;
   border-radius: 10px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   color: white;
   transition: all 0.3s;
 }
 
-.editar, .guardar {
+.editar,
+.guardar {
   background-color: #ffc107;
   color: #212529;
 }
 
-.editar:hover, .guardar:hover {
+.editar:hover,
+.guardar:hover {
   border: 2px solid #fff;
   color: #ffffff;
   background-color: #000000;
 }
 
-.baja, .cancelar {
+.baja,
+.cancelar {
   background-color: rgb(190, 24, 24);
 }
 
-.baja:hover, .cancelar:hover {
+.baja:hover,
+.cancelar:hover {
   background-color: rgb(255, 0, 0);
 }
 
 /* Se eliminan botones de aumento y decremento de inputs number */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Esta sirve para firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

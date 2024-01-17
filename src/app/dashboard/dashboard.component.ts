@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private bd: ConeccionService
+    private bd: ConeccionService,
   ) {}
 
   @HostListener('window:resize', ['$event'])

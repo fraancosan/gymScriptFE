@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { userLogin, LoginRequest, Usuarios} from "src/app/interfaces/interfaces";
+import {
+  userLogin,
+  LoginRequest,
+  Usuarios,
+} from 'src/app/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +20,7 @@ export class LoginService {
   //   email: '',
   // }
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
+    false,
   );
   private appUrl = environment.urlBack;
   private apiUrlRegister = 'usuarios';
@@ -32,7 +36,7 @@ export class LoginService {
           this.currentUserData.next(token);
           this.currentUserLoginOn.next(true);
         }),
-        catchError(this.handleError)
+        catchError(this.handleError),
       );
   }
 

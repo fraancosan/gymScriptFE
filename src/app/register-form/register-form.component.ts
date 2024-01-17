@@ -20,13 +20,13 @@ export class RegisterFormComponent implements OnInit {
       0,
       [
         Validators.required,
-        Validators.min(1), 
+        Validators.min(1),
         Validators.max(100000000),
         Validators.pattern('^[0-9]*$'),
       ],
     ],
     telefono: [
-      "",
+      '',
       [
         Validators.pattern('^[0-9]*$'),
         Validators.minLength(5),
@@ -34,7 +34,7 @@ export class RegisterFormComponent implements OnInit {
       ],
     ],
     mail: [
-      "",
+      '',
       [
         Validators.required,
         Validators.email,
@@ -48,7 +48,7 @@ export class RegisterFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router, // private registerService: RegisterService
     private loginService: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {}
@@ -81,22 +81,24 @@ export class RegisterFormComponent implements OnInit {
     if (this.registerForm.valid) {
       this.loading = true;
       console.log(this.registerForm.value as Usuarios);
-      this.loginService.register(this.registerForm.value as Usuarios).subscribe({
-        next: (userData) => {
-          console.log(userData);
-        },
-        error: (error) => {
-          console.log(error);
-          this.loading = false;
-          this.toastr.error(error, 'Error');
-        },
-        complete: () => {
-          this.toastr.success('Usuario registrado con éxito', 'Registro');
-          this.loading = false;
-          this.router.navigateByUrl('/signIn');
-          this.registerForm.reset();
-        },
-      });
+      this.loginService
+        .register(this.registerForm.value as Usuarios)
+        .subscribe({
+          next: (userData) => {
+            console.log(userData);
+          },
+          error: (error) => {
+            console.log(error);
+            this.loading = false;
+            this.toastr.error(error, 'Error');
+          },
+          complete: () => {
+            this.toastr.success('Usuario registrado con éxito', 'Registro');
+            this.loading = false;
+            this.router.navigateByUrl('/signIn');
+            this.registerForm.reset();
+          },
+        });
     } else {
       this.registerForm.markAllAsTouched();
       this.toastr.error('Los datos ingresados presentan errores', 'Error');

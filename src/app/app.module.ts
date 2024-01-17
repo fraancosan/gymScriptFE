@@ -69,10 +69,13 @@ import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestio
       preventDuplicates: true,
     }),
     FormsModule,
-
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddTokenInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
