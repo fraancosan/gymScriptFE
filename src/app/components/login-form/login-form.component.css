@@ -26,7 +26,7 @@
 }
 
 .title-form {
-  color: #212529;
+  color: var(--primary-grey);
   font-weight: 300;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .final-text {
-  color: #212529;
+  color: var(--primary-grey);
   margin-top: 20px;
 }
 
@@ -60,5 +60,5 @@
 
 .spinner {
   margin-top: 20px;
-  color: #ffc107;
+  color: var(--primary-yellow);
 }

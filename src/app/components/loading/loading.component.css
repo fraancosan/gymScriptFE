@@ -3,50 +3,50 @@
 
 /* Se hace que el loading ocupe toda la pantalla
   y se configura animacion, si es celular con pantalla menor a 500px de ancho no se muestra */
-.pantalla{
+.pantalla {
   width: 100%;
   height: 100%;
-  background-color: #212529;
+  background-color: var(--primary-grey);
   z-index: 2000;
   position: fixed;
 }
 
 /* Esta es la configuracion principal del logo */
-.logo{
-    display: flex;
-    width: fit-content;
-    height: 2em;
-    font-size: 3em;
-    font-weight: 1000;
-    font-family: 'Anton', sans-serif;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.logo {
+  display: flex;
+  width: fit-content;
+  height: 2em;
+  font-size: 3em;
+  font-weight: 1000;
+  font-family: "Anton", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Estas son las cajas en las que se almacenan las letras */
 /* Son las que se mostraran una vez termine la animacion */
-.boxLogo{
+.boxLogo {
   width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #F0DB4F;
-  color: #212529;
-  transition: all .8s;
+  background: #f0db4f;
+  color: var(--primary-grey);
+  transition: all 0.8s;
   position: relative;
   overflow: hidden;
 }
 
 /* Estas son las cajas en las que se almacenan las letras */
 /* Son las que se muestran en un inicio */
-.boxLogo:before{
+.boxLogo:before {
   content: "";
   position: absolute;
   top: 0;
-  color: #F0DB4F;
-  background: #212529;
+  color: #f0db4f;
+  background: var(--primary-grey);
   width: 100%;
   height: 100%;
   display: flex;
@@ -55,7 +55,6 @@
   animation: arriba 2s 0s forwards;
   -webkit-animation: arriba 2s 0s forwards;
 }
-
 
 /* Se le asigna a cada caja una letra */
 /* Y tambien se le asigna una animacion distinta a las que corresponda */
@@ -77,9 +76,8 @@
   animation: abajo 2s 0s forwards;
 }
 
-
 .boxLogo:nth-child(5)::before {
-  content: 'C';
+  content: "C";
 }
 
 .boxLogo:nth-child(6)::before {
@@ -100,8 +98,7 @@
   content: "T";
 }
 
-
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -141,7 +138,7 @@
 
 /* Si el disposito tiene una pantalla mayor a 500px se muestra el loading */
 @media (min-width: 500px) {
-  .pantalla{
+  .pantalla {
     animation: desaparecerFondo 0.4s 2.5s forwards;
     -webkit-animation: desaparecerFondo 0.4s 2.5s forwards;
   }

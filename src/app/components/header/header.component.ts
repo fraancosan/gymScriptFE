@@ -1,47 +1,43 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { HeaderServiceService } from 'src/app/services/header-service.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   scrolled = false;
   barsIcon = faBars;
   xmarkIcon = faXmark;
   showHeader: boolean = false;
 
-
   constructor(
     private renderer: Renderer2,
     private router: Router,
     private headerService: HeaderServiceService,
-    private viewPortScroller: ViewportScroller,
-    ) {}
+    private viewPortScroller: ViewportScroller
+  ) {}
 
-  @HostListener('window:scroll',['$event'])
-
+  @HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
     if (window.scrollY > 0) {
       this.scrolled = true;
       this.renderer.addClass(document.querySelector('.header'), 'in-scroll');
     } else {
       this.scrolled = false;
-      this.renderer.removeClass(document.querySelector('header'),'in-scroll');
+      this.renderer.removeClass(document.querySelector('header'), 'in-scroll');
     }
   }
-
 
   visible(id: string, id2: string) {
     let elemento = document.getElementById(id);
     let elemento2 = document.getElementById(id2);
-  
-    //Muestra elementos 
+
+    //Muestra elementos
     if (elemento) {
       elemento.classList.remove('hidden');
     }
@@ -53,10 +49,10 @@ export class HeaderComponent implements OnInit{
   }
 
   desplegar() {
-    this.visible('xmarkIcon','barsIcon');
-    this.visible('mid-container','');
-    this.visible('final-container','');
-    this.visible('','logo');
+    this.visible('xmarkIcon', 'barsIcon');
+    this.visible('mid-container', '');
+    this.visible('final-container', '');
+    this.visible('', 'logo');
 
     // Bloqueo el scroll en todo el documento
     document.body.style.overflow = 'hidden';
@@ -72,10 +68,10 @@ export class HeaderComponent implements OnInit{
 
   contraer() {
     if (window.innerWidth <= 800) {
-      this.visible('barsIcon','xmarkIcon');
-      this.visible('','mid-container');
-      this.visible('','final-container');
-      this.visible('logo','');
+      this.visible('barsIcon', 'xmarkIcon');
+      this.visible('', 'mid-container');
+      this.visible('', 'final-container');
+      this.visible('logo', '');
 
       // Desbloqueo el scroll en todo el documento
       document.body.style.overflow = 'auto';
@@ -83,17 +79,23 @@ export class HeaderComponent implements OnInit{
       // Hago que el header ocupe el alto original de la pantalla
       let header = document.getElementById('header');
       if (header) {
-        header.style.height = "initial";
+        header.style.height = 'initial';
       }
     }
   }
 
-   ngOnInit(): void {
-
+  ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
-        if (event.url.includes('home') || event.url === '/productos' || event.url === '/' || event.url === '/#Nosotros' || event.url === '/#planes' || event.url === '/#sedes') {
+        if (
+          event.url.includes('home') ||
+          event.url === '/productos' ||
+          event.url === '/' ||
+          event.url === '/#Nosotros' ||
+          event.url === '/#planes' ||
+          event.url === '/#sedes'
+        ) {
           this.headerService.showHeader = true;
         } else {
           this.headerService.showHeader = false;
@@ -103,11 +105,10 @@ export class HeaderComponent implements OnInit{
 
     if (window.innerWidth <= 800) {
       this.contraer();
-    }
-    else {
-      this.visible('','barsIcon');
-      this.visible('mid-container','');
-      this.visible('final-container','');
+    } else {
+      this.visible('', 'barsIcon');
+      this.visible('mid-container', '');
+      this.visible('final-container', '');
     }
   }
 
@@ -115,18 +116,16 @@ export class HeaderComponent implements OnInit{
   onResize(event: any) {
     if (event.target.innerWidth <= 800) {
       this.contraer();
-    }
-    else {
+    } else {
       this.contraer();
-      this.visible('','barsIcon');
-      this.visible('mid-container','');
-      this.visible('final-container','');
+      this.visible('', 'barsIcon');
+      this.visible('mid-container', '');
+      this.visible('final-container', '');
     }
-
   }
 
   irAHome() {
-    this.viewPortScroller.scrollToPosition([0,0]);
+    this.viewPortScroller.scrollToPosition([0, 0]);
   }
 
   irANosotros() {
@@ -142,6 +141,6 @@ export class HeaderComponent implements OnInit{
   }
 
   irAProductos() {
-    this.viewPortScroller.scrollToPosition([0,0]);
+    this.viewPortScroller.scrollToPosition([0, 0]);
   }
 }
