@@ -1,0 +1,95 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+h1,
+h2 {
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+.tabla {
+  width: 600px;
+  padding: 20px;
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+  margin: 5px;
+}
+
+.fila {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  padding: 10px 0px;
+  width: 100%;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  margin-left: 10px;
+}
+
+.key {
+  width: 150px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.value {
+  width: 300px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #dee2e6;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+button {
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  color: white;
+  transition: all 0.3s;
+}
+
+.subtitulo {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px 0 20px;
+}
+
+.cambiarPlan {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.cambiarPlan:hover {
+  border: 2px solid #fff;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.baja {
+  background-color: rgb(190, 24, 24);
+}
+
+.baja:hover {
+  background-color: rgb(255, 0, 0);
+}

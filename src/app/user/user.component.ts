@@ -5,30 +5,55 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
   private jwtHelper = new JwtHelperService();
-  inscripcion = {};
-  estado: string = "";
+  inscripcion: any;
+  estado: string = '';
   idUser: number = 0;
+  irA: string = 'cuotas';
 
-  constructor (
-    private bd: ConeccionService,
-  ){}
+  constructor(private bd: ConeccionService) {}
 
   ngOnInit(): void {
     let token = localStorage.getItem('token')!;
     let tokenDecoded = this.jwtHelper.decodeToken(token);
     this.idUser = tokenDecoded.id;
+    this.obtenerInscripcionActiva();
+  }
+
+  obtenerInscripcionActiva() {
     this.bd.getInscripcionActiva(this.idUser).subscribe({
-      next: data => {
-        this.inscripcion = data;
+      next: (data: any) => {
+        this.inscripcion = data[0];
         this.estado = 'inscripto';
       },
-      error: error => {
+      error: (error) => {
         this.estado = 'noInscripto';
-      }
+      },
     });
+  }
+
+  onCloseSidebar(event: boolean) {
+    let content = document.getElementsByTagName('main');
+    if (event) {
+      content[0].classList.remove('close');
+    } else {
+      content[0].classList.add('close');
+    }
+  }
+
+  queHacer(orden: string) {
+    this.irA = orden;
+  }
+
+  cambiarEstado(estado: boolean) {
+    if (estado) {
+      this.estado = 'noInscripto';
+    } else {
+      this.estado = 'inscripto';
+      this.obtenerInscripcionActiva();
+    }
   }
 }

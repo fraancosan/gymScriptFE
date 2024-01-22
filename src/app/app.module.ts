@@ -13,18 +13,22 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SedesComponent } from './components/sedes/sedes.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListadosComponent } from './components/listados/listados.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { FilterPipe } from './pipes/filter.pipe';
 import { UserComponent } from './user/user.component';
-import { InscribirseComponent } from './components/inscribirse/inscribirse.component';
+import { InscribirseComponent } from './components/users/inscribirse/inscribirse.component';
+import { SideBarComponent } from './components/users/side-bar/side-bar.component';
+import { GestionInscripcionComponent } from './components/users/gestion-inscripcion/gestion-inscripcion.component';
+import { CuotasComponent } from './components/users/cuotas/cuotas.component';
+import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestion-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { InscribirseComponent } from './components/inscribirse/inscribirse.compo
     FilterPipe,
     UserComponent,
     InscribirseComponent,
+    SideBarComponent,
+    GestionInscripcionComponent,
+    CuotasComponent,
+    GestionCuentaComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,10 +69,13 @@ import { InscribirseComponent } from './components/inscribirse/inscribirse.compo
       preventDuplicates: true,
     }),
     FormsModule,
-
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddTokenInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

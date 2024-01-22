@@ -1,0 +1,52 @@
+<div class="container_dash">
+  <div class="sidebar">
+    <div class="logo_contect">
+      <div class="logo">
+        <img src="assets/logo.png" class="img-logo" alt="logo" />
+        <div class="logo_name">GymScript</div>
+      </div>
+      <fa-icon
+        [icon]="menuIcon"
+        class="icon"
+        id="btn"
+        (click)="closeMenu()"
+      ></fa-icon>
+    </div>
+    <ul class="nav_list">
+      <li>
+        <button (click)="exportarDato('cuotas')">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Cuotas</span>
+        </button>
+      </li>
+      <li>
+        <button (click)="exportarDato('gestion')">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Inscripcion</span>
+        </button>
+      </li>
+      <li>
+        <button (click)="exportarDato('cuenta')">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Cuenta</span>
+        </button>
+      </li>
+    </ul>
+    <div class="profile_content">
+      <div class="profile_details">
+        <div class="profile_info">
+          <img src="assets/p.png" alt="profileImg" />
+          <div class="name_job">
+            <div class="name">
+              {{ usuario.nombre + " " + usuario.apellido }}
+            </div>
+            <div class="rol">{{ usuario.rol }}</div>
+          </div>
+        </div>
+        <button class="btn_LogOut" (click)="logout()">
+          <fa-icon [icon]="logoutIcon" class="icon"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

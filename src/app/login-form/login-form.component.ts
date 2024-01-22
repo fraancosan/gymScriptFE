@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/auth/login.service'; // Import the loginService
+import { LoginService } from '../services/auth/login.service'; // Import the loginService
 import { LoginRequest } from 'src/app/interfaces/interfaces';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
     ],
     contraseña: ['', Validators.required],
   });
-  token: string = "";
+  token: string = '';
   jwtHelper = new JwtHelperService();
   constructor(
     private formBuilder: FormBuilder,
@@ -59,14 +59,14 @@ export class LoginFormComponent implements OnInit {
         complete: () => {
           this.loading = false;
           let tokenDecoded = this.jwtHelper.decodeToken(this.token);
-          if(tokenDecoded.rol == "admin"){
+          if (tokenDecoded.rol == 'admin') {
             this.router.navigateByUrl('/dashboard');
             this.loginForm.reset();
-          }else{
+          } else {
             //Deberia mandar a inscripcion
             this.router.navigateByUrl('/user');
             this.loginForm.reset();
-          }        
+          }
         },
       });
     } else {

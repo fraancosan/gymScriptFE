@@ -1,98 +1,95 @@
-*{
-    margin: 0;
-    padding: 0;
-    background-color: #141414;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  box-sizing: border-box;
 }
 
-.container-about{
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 2px solid #efda4f;
+.container-about {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #efda4f;
 }
 
-.container-about .main img{
-    width: 650px;
-    max-width: 100%;
-    height: auto;
-    padding: 0 10px;
+.container-about .main img {
+  width: 650px;
+  max-width: 100%;
+  height: auto;
+  padding: 0 10px;
 }
 
-.txt-info{
-    width: 600px;
-    max-width: 100%;
-    padding: 0 10px;
-    color: white;
+.txt-info {
+  width: 600px;
+  max-width: 100%;
+  padding: 0 10px;
+  color: white;
 }
 
-
-
-.main{
-    width: 1290px;
-    max-width: 95%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+.main {
+  width: 1290px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .txt-info h1 {
-    font-weight: bold;
-    -webkit-text-stroke: 2px #efda4f;
-    color: transparent;
-    font-size: 65px;
-    padding-bottom: 30px;
+  font-weight: bold;
+  -webkit-text-stroke: 2px #efda4f;
+  color: transparent;
+  font-size: 65px;
+  padding-bottom: 30px;
 }
 
 .txt-info h1 span {
-    color: #efda4f;
+  color: #efda4f;
 }
 
 .txt-info h4 {
-    margin-bottom: 5px;
-    color: #888585;
-    font-size: 20px;
-    letter-spacing: 1px;
+  margin-bottom: 5px;
+  color: #888585;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
 .txt-info p {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .wave-svg {
-    width: 100%;
-    padding: 0;
-    margin: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
-
 
 @media (max-width: 1315px) {
-    .container-about{
-        width: 100%;
-        height: auto;
-        padding: 60px 0;
-    }
-    .txt-info{
-        text-align: center;
-        margin-bottom: 40px;
-    }
+  .container-about {
+    width: 100%;
+    height: auto;
+    padding: 60px 0;
+  }
+  .txt-info {
+    text-align: center;
+    margin-bottom: 40px;
+  }
 }
 @media (max-width: 650px) {
-    .container-about .main img{
-        margin-top: 35px;
-    }
-    .txt-info h1{
-        font-size: 45px;
-        margin-bottom: 20px;
-    }
+  .container-about .main img {
+    margin-top: 35px;
+  }
+  .txt-info h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 350px) {
-    .txt-info h1{
-        font-size: 40px;
-    }
+  .txt-info h1 {
+    font-size: 40px;
+  }
 }

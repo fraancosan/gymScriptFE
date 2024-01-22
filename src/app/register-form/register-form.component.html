@@ -102,7 +102,11 @@
           El telefono es requerido.
         </div>
         <div
-          *ngIf="telefono.errors?.['pattern'] || telefono.errors?.['minLength'] || telefono.errors?.['maxLength']"
+          *ngIf="
+            telefono.errors?.['pattern'] ||
+            telefono.errors?.['minlength'] ||
+            telefono.errors?.['maxlength']
+          "
         >
           El telefono debe tener un formato válido.
         </div>
@@ -123,6 +127,9 @@
       >
         <div *ngIf="password.errors?.['required']">
           La contraseña es requerida.
+        </div>
+        <div *ngIf="password.errors?.['minlength']">
+          La contraseña debe tener al menos 8 caracteres.
         </div>
       </div>
     </div>

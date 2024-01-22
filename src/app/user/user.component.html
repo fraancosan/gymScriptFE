@@ -1,4 +1,27 @@
 <div [ngSwitch]="estado">
-  <app-inscribirse *ngSwitchCase="'noInscripto'" [idUser]="idUser"></app-inscribirse>
-  <div *ngSwitchCase="'inscripto'"></div>
+  <app-inscribirse
+    (sinInscripcion)="cambiarEstado($event)"
+    *ngSwitchCase="'noInscripto'"
+    [idUser]="idUser"
+  ></app-inscribirse>
+  <div *ngSwitchCase="'inscripto'">
+    <app-side-bar
+      [usuario]="inscripcion.usuario"
+      (queHacer)="queHacer($event)"
+      (closeSidebar)="onCloseSidebar($event)"
+    ></app-side-bar>
+    <main [ngSwitch]="irA">
+      <app-cuotas
+        *ngSwitchCase="'cuotas'"
+        [inscripcion]="inscripcion"
+      ></app-cuotas>
+      <app-gestion-inscripcion
+        (sinInscripcion)="cambiarEstado($event)"
+        *ngSwitchCase="'gestion'"
+        [inscripcion]="inscripcion"
+      ></app-gestion-inscripcion>
+      <app-gestion-cuenta *ngSwitchCase="'cuenta'" [idUser]="idUser">
+      </app-gestion-cuenta>
+    </main>
+  </div>
 </div>

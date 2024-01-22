@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/auth/login.service';
+import { LoginService } from '../services/auth/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Usuarios } from 'src/app/interfaces/interfaces';
 
@@ -41,14 +41,14 @@ export class RegisterFormComponent implements OnInit {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ],
     ],
-    contraseña: ['', Validators.required],
+    contraseña: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router, // private registerService: RegisterService
     private loginService: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {}

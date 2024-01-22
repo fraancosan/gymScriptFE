@@ -1,0 +1,126 @@
+.ng-valid:not(form),
+.ng-invalid:not(form),
+.ng-dirty,
+.ng-touched {
+  border: 1px solid black;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabla {
+  width: 600px;
+  padding: 20px;
+  padding-bottom: 40px;
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+  margin: 10px;
+}
+
+.fila {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  padding-top: 40px;
+  width: 100%;
+}
+
+.fila:nth-child(1) {
+  padding-top: 20px;
+}
+
+.text-danger {
+  text-align: center;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  margin-left: 10px;
+}
+
+input {
+  width: 100%;
+}
+
+input:disabled {
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+.key {
+  width: 150px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.botones {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+button {
+  width: 260px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  color: white;
+  transition: all 0.3s;
+}
+
+.editar,
+.guardar {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.editar:hover,
+.guardar:hover {
+  border: 2px solid #fff;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.baja,
+.cancelar {
+  background-color: rgb(190, 24, 24);
+}
+
+.baja:hover,
+.cancelar:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+/* Se eliminan botones de aumento y decremento de inputs number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Esta sirve para firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
