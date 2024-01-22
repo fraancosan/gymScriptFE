@@ -19,7 +19,8 @@ h2 {
 }
 
 .tabla {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   padding: 20px;
   padding-bottom: 40px;
   background: rgb(255, 255, 255);
@@ -70,17 +71,20 @@ input:disabled {
 }
 
 .botones {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 20px;
   font-weight: 500;
+  align-items: center;
 }
 
 button {
-  width: 260px;
-  height: 40px;
+  max-width: 260px;
+  width: 100%;
+  min-height: 40px;
   cursor: pointer;
   border: 2px solid black;
   padding: 0.3rem 1rem;
@@ -123,4 +127,14 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Esta sirve para firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+@media (max-width: 500px) {
+  .fila {
+    font-size: 12px;
+    flex-direction: column;
+  }
+  .botones {
+    flex-direction: column;
+  }
 }
