@@ -2,7 +2,6 @@ import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { filter } from 'rxjs';
 import { HeaderServiceService } from 'src/app/services/header-service.service';
 
 @Component({

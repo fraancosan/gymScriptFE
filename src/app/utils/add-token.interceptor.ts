@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { faJarWheat } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable()
 export class AddTokenInterceptor implements HttpInterceptor {

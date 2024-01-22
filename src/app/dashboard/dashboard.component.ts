@@ -1,6 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { LoginService } from '../services/auth/login.service';
-import { userLogin } from '../interfaces/interfaces';
 import { Router } from '@angular/router';
 import {
   faArrowRightFromBracket,
@@ -16,8 +14,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  // userData?: userLogin;
-  userLoginOn?: boolean;
   header?: string;
   tabla?: string;
 
@@ -31,7 +27,6 @@ export class DashboardComponent implements OnInit {
   token: string = localStorage.getItem('token') || '';
 
   constructor(
-    private loginService: LoginService,
     private router: Router,
     private bd: ConeccionService,
   ) {}
@@ -47,18 +42,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginService.currentUserData.subscribe({
-      next: (data) => {
-        // this.userData = userData;
-        console.log(data);
-      },
-    });
-    this.loginService.currentUserLoginOn.subscribe({
-      next: (userLoginOn) => {
-        this.userLoginOn = userLoginOn;
-      },
-    });
-
     // se pone tabla por defecto
     this.cargarDatos('Productos', 'productos');
 
