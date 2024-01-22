@@ -74,7 +74,7 @@
 /*Estilo para resaltar una palabra de la frase de la presentacion*/
 
 .highlighted {
-  color: #ffc107;
+  color: var(--primary-yellow);
 }
 
 /* Si es celular veo segun el ancho de la pagina */

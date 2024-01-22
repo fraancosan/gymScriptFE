@@ -120,7 +120,7 @@
 }
 
 .list-item:hover {
-  color: #ffc107;
+  color: var(--primary-yellow);
 }
 
 .products-list {

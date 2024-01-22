@@ -10,7 +10,7 @@ ul {
   border-bottom: 1px solid #373636;
 }
 .single-cta .icon {
-  color: #ffc107;
+  color: var(--primary-yellow);
   font-size: 30px;
   float: left;
   margin: 0 10px;
@@ -86,7 +86,7 @@ ul {
   bottom: -15px;
   height: 2px;
   width: 50px;
-  background: #ffc107;
+  background: var(--primary-yellow);
 }
 .links-container {
   display: flex;
@@ -98,12 +98,12 @@ ul {
 }
 
 .links-container a {
-  color: #ffc107;
+  color: var(--primary-yellow);
   margin-bottom: 10px;
 }
 
 .footer-widget ul li a:hover {
-  color: #ffc107;
+  color: var(--primary-yellow);
 }
 .footer-widget ul li a {
   color: #878787;
@@ -124,9 +124,9 @@ ul {
 .subscribe-form button {
   position: absolute;
   right: 0;
-  background: #ffc107;
+  background: var(--primary-yellow);
   padding: 10px 20px;
-  border: 1px solid #ffc107;
+  border: 1px solid var(--primary-yellow);
   top: 0;
 }
 .subscribe-form button .icon {
@@ -144,14 +144,14 @@ ul {
   color: #878787;
 }
 .copyright-text p a {
-  color: #ffc107;
+  color: var(--primary-yellow);
 }
 .footer-menu li {
   display: inline-block;
   margin-left: 20px;
 }
 .footer-menu li:hover a {
-  color: #ffc107;
+  color: var(--primary-yellow);
 }
 .footer-menu li a {
   font-size: 14px;
@@ -214,7 +214,7 @@ ul {
   }
 
   .links-container a {
-    color: #ffc107;
+    color: var(--primary-yellow);
     margin-bottom: 10px;
   }
 }

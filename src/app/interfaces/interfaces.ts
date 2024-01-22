@@ -8,7 +8,7 @@ export interface Product {
 export interface Usuarios {
   nombre: string;
   apellido: string;
-  dni: number;
+  dni?: number;
   telefono?: number;
   mail: string;
   contraseña: string;

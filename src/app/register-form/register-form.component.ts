@@ -17,7 +17,7 @@ export class RegisterFormComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     apellido: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     dni: [
-      0,
+      '', // Para poder poner la cadena vacia como valor inicial, modifique la interfaz de Usuarios en interfaces.ts
       [
         Validators.required,
         Validators.min(1),

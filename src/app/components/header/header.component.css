@@ -17,7 +17,7 @@
 }
 
 .in-scroll {
-  background-color: #212529;
+  background-color: var(--primary-grey);
 }
 
 .container-start {
@@ -101,10 +101,10 @@
 }
 
 .button-signup {
-  background-color: #ffc107;
-  color: #212529;
+  background-color: var(--primary-yellow);
+  color: var(--primary-grey);
   margin: 0px 15px;
-  border: 1px solid #ffc107;
+  border: 1px solid var(--primary-yellow);
 }
 
 /* Estilos para el botón Sign-up en hover */
@@ -116,7 +116,7 @@
 
 .button-login {
   background-color: #fff;
-  color: #212529;
+  color: var(--primary-grey);
   border: 1px solid #fff;
 }
 

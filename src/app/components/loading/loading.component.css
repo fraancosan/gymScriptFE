@@ -6,7 +6,7 @@
 .pantalla {
   width: 100%;
   height: 100%;
-  background-color: #212529;
+  background-color: var(--primary-grey);
   z-index: 2000;
   position: fixed;
 }
@@ -33,7 +33,7 @@
   justify-content: center;
   align-items: center;
   background: #f0db4f;
-  color: #212529;
+  color: var(--primary-grey);
   transition: all 0.8s;
   position: relative;
   overflow: hidden;
@@ -46,7 +46,7 @@
   position: absolute;
   top: 0;
   color: #f0db4f;
-  background: #212529;
+  background: var(--primary-grey);
   width: 100%;
   height: 100%;
   display: flex;

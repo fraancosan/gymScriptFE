@@ -17,9 +17,9 @@ section {
   border-radius: 4px;
   letter-spacing: 0.5px;
   font-weight: 600;
-  background-color: #ffc107;
-  color: #212529;
-  border: 1px solid #ffc107;
+  background-color: var(--primary-yellow);
+  color: var(--primary-grey);
+  border: 1px solid var(--primary-yellow);
   transition: all 0.3s;
 }
 

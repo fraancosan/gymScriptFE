@@ -13,7 +13,7 @@
   border-radius: 5%;
   padding: 20px;
   padding-bottom: 10px;
-  background-color: #212529;
+  background-color: var(--primary-grey);
   transition: all 0.5s;
 }
 
@@ -26,10 +26,10 @@
 .title {
   font-size: 30px;
   font-weight: bold;
-  color: #ffc107;
+  color: var(--primary-yellow);
   margin: 10px 5px 5px 5px;
   text-align: center;
-  border-bottom: 1px solid #ffc107;
+  border-bottom: 1px solid var(--primary-yellow);
 }
 
 .cost {
@@ -65,7 +65,7 @@
   margin-top: 10px;
   font-weight: bold;
   margin-bottom: 20px;
-  border: 2px solid #212529;
+  border: 2px solid var(--primary-grey);
   transition: all 0.5s;
 }
 
@@ -101,12 +101,9 @@
 /*Si es computadora al pasar el mouse sobre la carta de produce efecto de sombra*/
 @media (min-width: 800px) {
   .contenedor:hover {
-    box-shadow:
-      rgba(0, 0, 0, 0.25) 0px 54px 55px,
-      rgba(0, 0, 0, 0.12) 0px -12px 30px,
-      rgba(0, 0, 0, 0.12) 0px 4px 6px,
-      rgba(0, 0, 0, 0.17) 0px 12px 13px,
-      rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 }
 
