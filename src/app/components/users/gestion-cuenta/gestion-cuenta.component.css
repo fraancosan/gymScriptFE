@@ -52,7 +52,8 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
-  margin-left: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
 }
 
 input {
@@ -77,7 +78,6 @@ input:disabled {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 20px;
-  font-weight: 500;
   align-items: center;
 }
 
@@ -86,12 +86,14 @@ button {
   width: 100%;
   min-height: 40px;
   cursor: pointer;
-  border: 2px solid black;
+  border: none;
   padding: 0.3rem 1rem;
   border-radius: 10px;
   letter-spacing: 0.5px;
   color: white;
-  transition: all 0.3s;
+  transition: all 0.2s;
+  font-weight: 700;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
 }
 
 .editar,
@@ -102,9 +104,7 @@ button {
 
 .editar:hover,
 .guardar:hover {
-  border: 2px solid #fff;
-  color: #ffffff;
-  background-color: #000000;
+  background-color: rgb(251, 218, 44);
 }
 
 .baja,
@@ -114,7 +114,7 @@ button {
 
 .baja:hover,
 .cancelar:hover {
-  background-color: rgb(255, 0, 0);
+  background-color: rgb(255, 47, 47);
 }
 
 /* Se eliminan botones de aumento y decremento de inputs number */
