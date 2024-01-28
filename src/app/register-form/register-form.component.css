@@ -73,3 +73,14 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@media (max-width: 480px) {
+  .register-form {
+    width: 90%;
+    padding: 20px 10px;
+  }
+
+  .imagenLogo {
+    width: 50px;
+  }
+}
