@@ -14,7 +14,6 @@ export class GestionCuentaComponent {
   usuario: any = {};
   bloqEdicion: boolean = false;
 
-  // se implementa el formulario para editar los datos
   form = this.formBuilder.group({
     nombre: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     apellido: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
@@ -87,8 +86,7 @@ export class GestionCuentaComponent {
   guardarDatos() {
     if (this.form.valid) {
       let datos = this.datosAEditar();
-      // Si no se modifico nada, no se hace nada
-      // Lo averiguo bien si solo tiene la key id
+
       if (Object.keys(datos).length == 1) {
         this.toastr.error('No se modificó ningún dato');
         this.cancelar();

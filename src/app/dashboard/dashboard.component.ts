@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
       },
     });
 
-    // se pone tabla por defecto
+
     this.cargarDatos('Productos', 'productos');
 
     let tokenDecoded = this.jwtHelper.decodeToken(this.token);
@@ -86,7 +86,6 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/signIn']);
   }
 
-  // Funcion que se encarga de redirigir a los listados correspondientes
   cargarDatos(header: string, tabla: string): void {
     if (window.innerWidth < 1100) {
       let sideBar = document.getElementsByClassName('sidebar');

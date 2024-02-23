@@ -35,7 +35,7 @@ export interface userLogin {
   message?: string;
 }
 
-// interface que se usa para identificar las tablas y sus campos - Se usa en el componente listados y en el servicio para identificar tablas
+
 export interface esquemaTabla {
   key: string; // Nombre de la clave del atributo tal cual esta en la BD
   nombre: string; // Nombre del atributo como se va a mostrar en la tabla - Ej: Si la key es "img", el nombre sera "Imagen"

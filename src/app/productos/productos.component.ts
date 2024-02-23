@@ -12,6 +12,7 @@ export class ProductosComponent implements OnInit {
   categories?: string[];
   filteredProducts?: Product[] = this.products;
   filterProduct = '';
+  sortOrder: 'asc' | 'desc' = 'asc';
 
   constructor(private bd: ConeccionService) {}
 
@@ -20,16 +21,28 @@ export class ProductosComponent implements OnInit {
       this.products = data;
       this.filteredProducts = this.products;
 
-      // Extraigo los tipos(categorias) de los productos
+      
       this.categories = [
         ...new Set(this.products.map((product) => product.tipo)),
       ];
-      // Agrego la categoria 'Todos los productos'
+      
       this.categories.unshift('Todos los productos');
     });
   }
 
-  //Ver de hacerlo con consultas para que sea mas rapido
+    sortProducts(): void {
+    if (this.filteredProducts) {
+      this.filteredProducts.sort((a, b) => {
+        if (this.sortOrder === 'asc') {
+          return a.nombre.localeCompare(b.nombre);
+        } else {
+          return b.nombre.localeCompare(a.nombre);
+        }
+      });
+    }
+  }
+
+  
   onCategorySelected(category: string): void {
     if (category === 'Todos los productos') {
       this.filteredProducts = this.products;
@@ -38,5 +51,16 @@ export class ProductosComponent implements OnInit {
         (product) => product.tipo === category,
       );
     }
+    this.sortProducts();
+  }
+
+    // Método para manejar el cambio en la opción de ordenamiento
+  onSortOrderChanged(): void {
+    // Invertir el orden al cambiar la opción
+    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    
+    // Ordenar los productos nuevamente
+    this.sortProducts();
   }
 }
+

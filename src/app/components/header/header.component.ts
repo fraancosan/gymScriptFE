@@ -38,12 +38,10 @@ export class HeaderComponent implements OnInit {
     let elemento = document.getElementById(id);
     let elemento2 = document.getElementById(id2);
 
-    //Muestra elementos
     if (elemento) {
       elemento.classList.remove('hidden');
     }
 
-    //Oculta elementos
     if (elemento2) {
       elemento2.classList.add('hidden');
     }
@@ -55,11 +53,8 @@ export class HeaderComponent implements OnInit {
     this.visible('final-container', '');
     this.visible('', 'logo');
 
-    // Bloqueo el scroll en todo el documento
     document.body.style.overflow = 'hidden';
 
-    // Hago que el header ocupe todo el alto de la pantalla
-    // Tambien hago que tenga si o si background
     let header = document.getElementById('header');
     if (header) {
       header.style.height = '100vh';
@@ -74,10 +69,8 @@ export class HeaderComponent implements OnInit {
       this.visible('', 'final-container');
       this.visible('logo', '');
 
-      // Desbloqueo el scroll en todo el documento
       document.body.style.overflow = 'auto';
 
-      // Hago que el header ocupe el alto original de la pantalla
       let header = document.getElementById('header');
       if (header) {
         header.style.height = 'initial';
@@ -87,7 +80,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Verifica la ruta actual y muestra u oculta el encabezado según sea necesario
         if (
           event.urlAfterRedirects.includes('home') ||
           event.urlAfterRedirects === '/productos' ||

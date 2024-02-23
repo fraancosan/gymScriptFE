@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class InscribirseComponent {
   @Input() idUser!: number;
-  // el output es para que el componente padre sepa que se inscribio y pueda cambiar el estado del componente
+
   @Output() sinInscripcion = new EventEmitter<boolean>();
 
   jwtHelper = new JwtHelperService();
