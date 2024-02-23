@@ -80,7 +80,6 @@ export class RegisterFormComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
       this.loading = true;
-      console.log(this.registerForm.value as Usuarios);
       this.loginService
         .register(this.registerForm.value as Usuarios)
         .subscribe({
@@ -88,7 +87,6 @@ export class RegisterFormComponent implements OnInit {
             console.log(userData);
           },
           error: (error) => {
-            console.log(error);
             this.loading = false;
             this.toastr.error(error, 'Error');
           },

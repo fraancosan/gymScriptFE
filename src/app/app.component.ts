@@ -4,7 +4,7 @@ import { HeaderServiceService } from './services/header-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styles: [],
 })
 export class AppComponent {
   primeraVez: boolean = true;

@@ -2,26 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import {
-  userLogin,
-  LoginRequest,
-  Usuarios,
-} from 'src/app/interfaces/interfaces';
+import { LoginRequest, Usuarios } from 'src/app/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   //idea de el BehaviorSubject --> Se pasa como parametro la ultima sesion para que no tenga que entrar de nuevo por un corto periodo mediante session Storage
-  currentUserData: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  //   {
-  //   id: 0,
-  //   nombre: '',
-  //   email: '',
-  // }
-  currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false,
-  );
+
   private appUrl = environment.urlBack;
   private apiUrlRegister = 'usuarios';
   private apiUrlLogin = 'usuarios/loginUser';
@@ -31,13 +19,7 @@ export class LoginService {
   login(credential: LoginRequest): Observable<string> {
     return this.http
       .post<string>(this.appUrl + this.apiUrlLogin, credential)
-      .pipe(
-        tap((token: string) => {
-          this.currentUserData.next(token);
-          this.currentUserLoginOn.next(true);
-        }),
-        catchError(this.handleError),
-      );
+      .pipe(catchError(this.handleError));
   }
 
   register(user: Usuarios): Observable<Usuarios> {
@@ -54,11 +36,5 @@ export class LoginService {
     }
   }
 
-  get userData(): Observable<string> {
-    return this.currentUserData.asObservable();
-  }
-  get userLoginOn(): Observable<boolean> {
-    return this.currentUserLoginOn.asObservable();
-  }
   //Ahora desde el componente dashboard hay que suscribirnos al beahaviorSubject
 }
