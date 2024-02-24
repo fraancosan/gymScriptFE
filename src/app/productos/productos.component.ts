@@ -12,11 +12,9 @@ export class ProductosComponent implements OnInit {
   categories?: string[];
   filteredProducts?: Product[] = this.products;
   filterProduct = '';
-  sortOrder: 'asc' | 'desc';
+  sortOrder = 'asc';
 
-  constructor(private bd: ConeccionService) {
-    this.sortOrder = 'asc';
-  }
+  constructor(private bd: ConeccionService) {}
 
   ngOnInit(): void {
     this.bd.getAll('productos', 'productos').subscribe((data: any[]) => {
@@ -32,20 +30,6 @@ export class ProductosComponent implements OnInit {
     });
   }
 
-    sortProducts(): void {
-      console.log('Antes de ordenar:', this.filteredProducts);
-    if (this.filteredProducts) {
-      this.filteredProducts.sort((a, b) => {
-        if (this.sortOrder === 'asc') {
-          return a.nombre.localeCompare(b.nombre);
-        } else {
-          return b.nombre.localeCompare(a.nombre);
-        }
-      });
-    }
-      console.log('Después de ordenar:', this.filteredProducts);
-  }
-
   onCategorySelected(category: string): void {
     if (category === 'Todos los productos') {
       this.filteredProducts = this.products;
@@ -54,16 +38,19 @@ export class ProductosComponent implements OnInit {
         (product) => product.tipo === category,
       );
     }
-    this.sortProducts();
   }
 
-    // Método para manejar el cambio en la opción de ordenamiento
-  onSortOrderChanged(): void {
-    // Invertir el orden al cambiar la opción
-    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-    console.log('Nuevo orden:', this.sortOrder);
-    // Ordenar los productos nuevamente
-    this.sortProducts();
+  onSortOrderChanged() {
+    if (this.filteredProducts) {
+      if (this.sortOrder === 'asc') {
+      // Ordena tus productos en orden ascendente
+      this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    } else {
+      // Ordena tus productos en orden descendente
+      this.filteredProducts.sort((a, b) => b.nombre.localeCompare(a.nombre));
+      }
+    }
   }
+
 }
 
