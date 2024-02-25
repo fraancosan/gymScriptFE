@@ -15,7 +15,9 @@ export class CardComponent {
   constructor(private router: Router) {}
 
   navigateToUser() {
-    localStorage.setItem('idPlan', this.id);
-    this.router.navigate(['/user']);
+    this.router.navigate(['/user'], {
+      state: { plan: this.id },
+      queryParams: { plan: this.id },
+    });
   }
 }

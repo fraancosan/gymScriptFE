@@ -7,7 +7,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   let jwtHelper = new JwtHelperService();
   const token = localStorage.getItem('token');
   if (token === null) {
-    router.navigate(['/signIn']);
+    signIn();
   } else {
     if (route.routeConfig?.path === 'dashboard') {
       let tokenDecoded = jwtHelper.decodeToken(token);
@@ -17,9 +17,19 @@ export const authGuard: CanActivateFn = (route, state) => {
     } else if (route.routeConfig?.path === 'user') {
       let tokenDecoded = jwtHelper.decodeToken(token);
       if (tokenDecoded.rol != 'user') {
-        router.navigate(['/signIn']);
+        signIn();
       }
     }
   }
   return true;
 };
+
+function signIn() {
+  const router = inject(Router);
+  const info = router.getCurrentNavigation()?.extras.state;
+  if (info ? info['plan'] : false) {
+    router.navigate(['/signIn'], { queryParams: { plan: info!['plan'] } });
+  } else {
+    router.navigate(['/signIn']);
+  }
+}

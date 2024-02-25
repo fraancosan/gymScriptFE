@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscribirse',
@@ -20,7 +21,10 @@ export class InscribirseComponent {
   disabledButton: boolean = true;
   loading: boolean = false;
 
-  constructor(private bd: ConeccionService) {
+  constructor(
+    private bd: ConeccionService,
+    private router: Router,
+  ) {
     bd.getAll('planes', 'planes').subscribe((planes: any) => {
       for (let i = 0; i < planes.length; i++) {
         planes[i].descripcion = planes[i].descripcion
@@ -46,7 +50,6 @@ export class InscribirseComponent {
       })
       .subscribe({
         next: (inscripcion: any) => {
-          localStorage.removeItem('idPlan');
           setTimeout(() => {
             this.loading = false;
             this.sinInscripcion.emit(false);
@@ -63,8 +66,7 @@ export class InscribirseComponent {
   }
 
   ngOnInit(): void {
-    const idPlanFromLocalStorage = localStorage.getItem('idPlan');
-    this.idPlanSelected =
-      idPlanFromLocalStorage !== null ? idPlanFromLocalStorage : '';
+    const params = this.router.parseUrl(this.router.url).queryParams;
+    this.idPlanSelected = params ? params['plan'] : '';
   }
 }
