@@ -82,3 +82,7 @@
 .disabled-button {
   background-color: rgb(139, 139, 139);
 }
+
+.estado-vencido {
+  color: rgb(192, 22, 22);
+}

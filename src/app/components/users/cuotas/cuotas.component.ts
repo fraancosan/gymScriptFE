@@ -25,15 +25,20 @@ export class CuotasComponent implements OnInit {
     this.fechaPago = this.inscripcion.cuota[0].fechaPago;
     this.fechaVenc = this.inscripcion.cuota[0].fechaVenc;
     this.importe = this.inscripcion.cuota[0].importe;
+    const h4Element = document.querySelector('.estado h4');
 
-    const fechaComparar = new Date(this.fechaVenc);
-    const fechaHoy = new Date();
-    if (fechaComparar < fechaHoy) {
-      this.estado = 'Vencido';
-    } else {
-      this.estado = 'Al dia!';
-    }
-    this.updateButtonState();
+    this.bd.getVencimientoCuota(this.inscripcion.id).subscribe({
+      next: (data: any) => {
+        this.estado = data ? 'Vencido' : 'Al dia!';
+        this.updateButtonState();
+        if (h4Element) {
+          h4Element.classList.toggle('estado-vencido', data);
+        }
+      },
+      error: (error: any) => {
+        this.toastr.error(error.error.msg, 'Error', { timeOut: 1500 });
+      },
+    });
   }
 
   pagar() {
