@@ -12,6 +12,7 @@ export class ProductosComponent implements OnInit {
   categories?: string[];
   filteredProducts?: Product[] = this.products;
   filterProduct = '';
+  sortOrder = 'asc';
 
   constructor(private bd: ConeccionService) {}
 
@@ -20,16 +21,15 @@ export class ProductosComponent implements OnInit {
       this.products = data;
       this.filteredProducts = this.products;
 
-      // Extraigo los tipos(categorias) de los productos
+      
       this.categories = [
         ...new Set(this.products.map((product) => product.tipo)),
       ];
-      // Agrego la categoria 'Todos los productos'
+      
       this.categories.unshift('Todos los productos');
     });
   }
 
-  //Ver de hacerlo con consultas para que sea mas rapido
   onCategorySelected(category: string): void {
     if (category === 'Todos los productos') {
       this.filteredProducts = this.products;
@@ -39,4 +39,18 @@ export class ProductosComponent implements OnInit {
       );
     }
   }
+
+  onSortOrderChanged() {
+    if (this.filteredProducts) {
+      if (this.sortOrder === 'asc') {
+      // Ordena tus productos en orden ascendente
+      this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    } else {
+      // Ordena tus productos en orden descendente
+      this.filteredProducts.sort((a, b) => b.nombre.localeCompare(a.nombre));
+      }
+    }
+  }
+
 }
+

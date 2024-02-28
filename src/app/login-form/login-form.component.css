@@ -62,3 +62,15 @@
   margin-top: 20px;
   color: var(--primary-yellow);
 }
+
+
+@media (max-width: 480px) {
+  .login-form {
+    width: 90%;
+    padding: 20px 10px;
+  }
+
+  .imagenLogo {
+    width: 50px;
+  }
+}

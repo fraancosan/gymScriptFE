@@ -15,8 +15,7 @@ export class ConeccionService {
     private http: HttpClient,
   ) {}
 
-  // El header es el nombre del objeto que se mostrara al usuario en caso de no haber datos
-  // Ejemplo: No hay planes
+
   getAll(tabla: string, nombreMostrar: string): Observable<any> {
     return this.http.get(this.urlBack + tabla).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -56,7 +55,6 @@ export class ConeccionService {
   }
 
   create(tabla: string, item: any): Observable<any> {
-    // el item contiene un campo id que en el back-end se ignora dado que se crea automaticamente
     return this.http.post<any>(this.urlBack + tabla, item).pipe(
       catchError((error: HttpErrorResponse) => {
         this.toastr.error(error.error.msg, 'Error');
@@ -66,8 +64,7 @@ export class ConeccionService {
   }
 
   update(tabla: string, item: any): Observable<any> {
-    // el item contiene un campo id que se usa solo en la ruta
-    // Luego el back-end ignora ese campo a la hora de actualizar datos
+
     return this.http
       .patch<any>(this.urlBack + tabla + '/' + item.id, item)
       .pipe(
@@ -98,7 +95,7 @@ export class ConeccionService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status == 404) {
-          } // Por ahora no pasa nada, a lo sumo podria mostrarse un mensaje
+          } 
           else {
             this.toastr.error(
               'No ha sido posible conectar con el servidor, intente nuevamente mas tarde',

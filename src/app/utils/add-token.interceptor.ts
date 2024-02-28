@@ -26,7 +26,7 @@ export class AddTokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          //Validar despues en el componente que se invoca para mandar mensaje de error
+          
           this.router.navigate(['/singIn']);
         }
         return throwError(() => error);

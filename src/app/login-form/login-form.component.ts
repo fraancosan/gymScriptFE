@@ -64,7 +64,7 @@ export class LoginFormComponent implements OnInit {
             this.loginForm.reset();
           } else {
             //Deberia mandar a inscripcion
-            this.router.navigateByUrl('/user');
+            this.navToUser();
             this.loginForm.reset();
           }
         },
@@ -72,6 +72,18 @@ export class LoginFormComponent implements OnInit {
     } else {
       this.loginForm.markAllAsTouched();
       this.toastr.error('Los datos ingresados presentan errores', 'Error');
+    }
+  }
+
+  navToUser() {
+    const params = this.router.parseUrl(this.router.url).queryParams;
+    if (params ? params['plan'] : false) {
+      this.router.navigate(['/user'], {
+        state: { plan: params!['plan'] },
+        queryParams: { plan: params!['plan'] },
+      });
+    } else {
+      this.router.navigate(['/user']);
     }
   }
 }

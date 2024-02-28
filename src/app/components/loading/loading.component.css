@@ -9,6 +9,7 @@
   background-color: var(--primary-grey);
   z-index: 2000;
   position: fixed;
+  animation: fadeOut 2.6s forwards; 
 }
 
 /* Esta es la configuracion principal del logo */
@@ -122,24 +123,20 @@
   }
 }
 
-/* Animacion para desaparecer el loading
-  Se realiza cuando temina la animacion general,
-  Si es celular se activa desde un inicio */
-
-@keyframes desaparecerFondo {
+@keyframes fadeOut {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    z-index: -2000;
   }
 }
+
 
 /* Si el disposito tiene una pantalla mayor a 500px se muestra el loading */
 @media (min-width: 500px) {
   .pantalla {
-    animation: desaparecerFondo 0.4s 2.5s forwards;
-    -webkit-animation: desaparecerFondo 0.4s 2.5s forwards;
+    animation: fadeOut 0.4s 2.5s forwards;
+    -webkit-animation: fadeOut 0.4s 2.5s forwards;
   }
 }
