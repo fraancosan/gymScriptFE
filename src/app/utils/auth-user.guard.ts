@@ -1,15 +1,15 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtAuthService } from '../services/auth/jwt-auth.service';
 
 
 export const authUserGuard: CanActivateFn = () => {
-  let jwtHelper = new JwtHelperService();
+  let jwtAuth = inject(JwtAuthService);
   let token = localStorage.getItem('token');
   if (token === null) {
     signIn();
   }else{
-    let tokenDecoded = jwtHelper.decodeToken(token);
+    let tokenDecoded = jwtAuth.decodeToken(token);
       if (tokenDecoded.rol != 'user') {
         signIn();
       }

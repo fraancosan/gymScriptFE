@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtAuthService } from '../services/auth/jwt-auth.service';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 
 @Component({
@@ -8,17 +8,16 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  private jwtHelper = new JwtHelperService();
   inscripcion: any;
   estado: string = '';
   idUser: number = 0;
   irA: string = 'cuotas';
 
-  constructor(private bd: ConeccionService) {}
+  constructor(private bd: ConeccionService, private jwtAuth: JwtAuthService ) {}
 
   ngOnInit(): void {
     let token = localStorage.getItem('token')!;
-    let tokenDecoded = this.jwtHelper.decodeToken(token);
+    let tokenDecoded = this.jwtAuth.decodeToken(token);
     this.idUser = tokenDecoded.id;
     this.obtenerInscripcionActiva();
   }
