@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-user',
@@ -13,10 +14,10 @@ export class UserComponent {
   idUser: number = 0;
   irA: string = 'cuotas';
 
-  constructor(private bd: ConeccionService, private jwtAuth: JwtAuthService ) {}
+  constructor(private bd: ConeccionService, private jwtAuth: JwtAuthService, private localStorageService:LocalStorageService ) {}
 
   ngOnInit(): void {
-    let token = localStorage.getItem('token')!;
+    let token = this.localStorageService.getItem('token')!;
     let tokenDecoded = this.jwtAuth.decodeToken(token);
     this.idUser = tokenDecoded.id;
     this.obtenerInscripcionActiva();

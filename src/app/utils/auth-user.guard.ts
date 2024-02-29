@@ -1,11 +1,13 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 
 export const authUserGuard: CanActivateFn = () => {
   let jwtAuth = inject(JwtAuthService);
-  let token = localStorage.getItem('token');
+  let localStorageService = inject(LocalStorageService);
+  let token = localStorageService.getItem('token');
   if (token === null) {
     signIn();
   }else{

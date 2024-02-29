@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ConeccionService } from '../services/bd/coneccion.service';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,12 +24,13 @@ export class DashboardComponent implements OnInit {
 
   nombreUser: string = '';
   apellidoUser: string = '';
-  token: string = localStorage.getItem('token') || '';
+  token: string = this.localStorageService.getItem('token') || '';
 
   constructor(
     private router: Router,
     private bd: ConeccionService,
-    private jwtAuth: JwtAuthService
+    private jwtAuth: JwtAuthService,
+    private localStorageService: LocalStorageService
   ) {}
 
   @HostListener('window:resize', ['$event'])
@@ -65,7 +67,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    this.localStorageService.removeItem('token');
     this.router.navigate(['/signIn']);
   }
 

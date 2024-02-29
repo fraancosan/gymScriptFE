@@ -5,6 +5,7 @@ import { LoginService } from '../services/auth/login.service'; // Import the log
 import { LoginRequest } from 'src/app/interfaces/interfaces';
 import { ToastrService } from 'ngx-toastr';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private toastr: ToastrService,
-    private jwtAuth: JwtAuthService
+    private jwtAuth: JwtAuthService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {}
@@ -50,7 +52,7 @@ export class LoginFormComponent implements OnInit {
       this.loading = true;
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (data) => {
-          localStorage.setItem('token', data);
+          this.localStorageService.setItem('token', data);
           this.token = data;
         },
         error: (error) => {
