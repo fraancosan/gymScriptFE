@@ -8,9 +8,9 @@ export class ImagesService {
   private urlBack: string = environment.urlBack;
 
   alterSize(name: string, size: string): string {
-    const parts = name.split('.');
-    const ext = parts.pop();
-    const urlWithoutExt = parts.join('.');
+    let parts = name.split('.');
+    let ext = parts.pop();
+    let urlWithoutExt = parts.join('.');
     return urlWithoutExt + '-' + size + '.' + ext;
   }
 

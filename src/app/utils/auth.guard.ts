@@ -2,10 +2,10 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  const router = inject(Router);
+export let authGuard: CanActivateFn = (route, state) => {
+  let router = inject(Router);
   let jwtHelper = new JwtHelperService();
-  const token = localStorage.getItem('token');
+  let token = localStorage.getItem('token');
   if (token === null) {
     signIn();
   } else {
@@ -25,8 +25,8 @@ export const authGuard: CanActivateFn = (route, state) => {
 };
 
 function signIn() {
-  const router = inject(Router);
-  const info = router.getCurrentNavigation()?.extras.state;
+  let router = inject(Router);
+  let info = router.getCurrentNavigation()?.extras.state;
   if (info ? info['plan'] : false) {
     router.navigate(['/signIn'], { queryParams: { plan: info!['plan'] } });
   } else {

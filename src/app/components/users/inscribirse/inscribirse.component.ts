@@ -66,7 +66,7 @@ export class InscribirseComponent {
   }
 
   ngOnInit(): void {
-    const params = this.router.parseUrl(this.router.url).queryParams;
+    let params = this.router.parseUrl(this.router.url).queryParams;
     this.idPlanSelected = params ? params['plan'] : '';
   }
 }

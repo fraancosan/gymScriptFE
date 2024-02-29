@@ -25,7 +25,7 @@ export class CuotasComponent implements OnInit {
     this.fechaPago = this.inscripcion.cuota[0].fechaPago;
     this.fechaVenc = this.inscripcion.cuota[0].fechaVenc;
     this.importe = this.inscripcion.cuota[0].importe;
-    const h4Element = document.querySelector('.estado h4');
+    let h4Element = document.querySelector('.estado h4');
 
     this.bd.getVencimientoCuota(this.inscripcion.id).subscribe({
       next: (data: any) => {
