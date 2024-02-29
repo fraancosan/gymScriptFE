@@ -5,7 +5,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProductosComponent } from './productos/productos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { authGuard } from './utils/auth.guard';
+import { authAdminGuard } from './utils/auth-admin.guard';
+import { authUserGuard } from './utils/auth-user.guard';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
@@ -13,11 +14,11 @@ const routes: Routes = [
   { path: 'signUp', component: RegisterFormComponent },
   { path: 'signIn', component: LoginFormComponent },
   { path: 'productos', component: ProductosComponent },
-  { path: 'user', component: UserComponent, canActivate: [authGuard] },
+  { path: 'user', component: UserComponent, canActivate: [authUserGuard] },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [authGuard],
+    canActivate: [authAdminGuard],
   },
   { path: '**', redirectTo: 'home' }, // Si no encuentra la ruta, redirige a home
 ];
