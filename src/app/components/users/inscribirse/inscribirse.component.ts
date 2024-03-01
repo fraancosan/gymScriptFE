@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +12,6 @@ export class InscribirseComponent {
 
   @Output() sinInscripcion = new EventEmitter<boolean>();
 
-  jwtHelper = new JwtHelperService();
   planes: any;
   sedes: any;
   idPlanSelected: string = '';
@@ -66,7 +64,7 @@ export class InscribirseComponent {
   }
 
   ngOnInit(): void {
-    const params = this.router.parseUrl(this.router.url).queryParams;
+    let params = this.router.parseUrl(this.router.url).queryParams;
     this.idPlanSelected = params ? params['plan'] : '';
   }
 }

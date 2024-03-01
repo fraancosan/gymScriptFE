@@ -84,18 +84,16 @@ export class RegisterFormComponent implements OnInit {
         .register(this.registerForm.value as Usuarios)
         .subscribe({
           next: (userData) => {
-            console.log(userData);
-          },
-          error: (error) => {
-            this.loading = false;
-            this.toastr.error(error, 'Error');
-          },
-          complete: () => {
             this.toastr.success('Usuario registrado con éxito', 'Registro');
             this.loading = false;
             this.router.navigateByUrl('/signIn');
             this.registerForm.reset();
           },
+          error: (error) => {
+            this.loading = false;
+            this.toastr.error(error, 'Error');
+          },
+          
         });
     } else {
       this.registerForm.markAllAsTouched();
