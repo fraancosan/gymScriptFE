@@ -69,7 +69,7 @@ button {
   letter-spacing: 0.5px;
   color: white;
   transition: all 0.2s;
-  margin-right: 5px;
+  margin: 5px;
   font-weight: 700;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
 }
