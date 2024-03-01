@@ -12,3 +12,9 @@ main.close {
   width: calc(100% - 88px);
   left: 88px;
 }
+
+@media (max-width: 480px) {
+  main {
+    left:0;
+  }
+}
