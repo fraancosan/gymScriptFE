@@ -1,13 +1,38 @@
 .cuota {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1frs;
   width: 100%;
   height: fit-content;
   background: rgb(255, 255, 255);
   border-radius: 20px;
-  padding: 50px;
+  padding: 20px;
   position: relative;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+}
+
+.wrap-contenido{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.celda{
+  flex:1;
+  padding: 15px;
+  text-align: center;
+  min-width: 150px;
+}
+
+.titulo{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.valor{
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #dee2e6;
+  border-radius: 10px;
+  padding: 20px 0;
 }
 
 .info-cuota_title {
@@ -18,33 +43,6 @@
 .info-cuota_title h2 {
   font-size: 40px;
   font-weight: 700;
-}
-
-.wrap-titulo {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 20fr 15fr 20fr;
-  text-align: center;
-  padding-bottom: 5px;
-}
-.wrap-valores {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 20fr 15fr 20fr;
-  background-color: #dee2e6;
-  text-align: center;
-  border-radius: 10px;
-  padding: 20px 0;
-}
-
-.wrap-titulo h3 {
-  font-size: 20px;
-  font-weight: 700;
-}
-.wrap-valores h3 {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0;
 }
 
 .estado {
@@ -65,7 +63,7 @@
 .pagar {
   display: flex;
   justify-content: center;
-  padding: 18px;
+  padding: 18px 0;
 }
 
 .pay-button {
@@ -85,4 +83,25 @@
 
 .estado-vencido {
   color: rgb(192, 22, 22);
+}
+
+@media (max-width: 370px) {
+  .cuota {
+    padding: 0;
+  }
+  .info-cuota_title h2 {
+    font-size: 30px;
+  }
+  .info-cuota_title {
+    padding-left: 10px;
+  }
+  .titulo{
+    font-size: 15px;
+  }
+  .valor{
+    font-size: 15px;
+  }
+  .pay-button{
+    font-size: 15px;
+  }
 }

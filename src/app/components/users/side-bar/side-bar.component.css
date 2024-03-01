@@ -184,6 +184,6 @@
 @media (max-width: 480px) {
   .sidebar {
     z-index: 100;
-    width: 100%;
+    width: 100vw;
   }
 }
