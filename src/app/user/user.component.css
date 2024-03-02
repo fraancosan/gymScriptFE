@@ -1,4 +1,4 @@
-main {
+.main-container {
   position: relative;
   top: 0;
   left: 250px;
@@ -8,13 +8,13 @@ main {
   transition: all 0.3s ease;
 }
 
-main.close {
+.main-container.close {
   width: calc(100% - 88px);
   left: 88px;
 }
 
 @media (max-width: 480px) {
-  main {
+  .main-container {
     left:0;
   }
 }

@@ -10,7 +10,7 @@
       (queHacer)="queHacer($event)"
       (closeSidebar)="onCloseSidebar($event)"
     ></app-side-bar>
-    <main [ngSwitch]="irA">
+    <main class="main-container" [ngSwitch]="irA">
       <app-cuotas
         *ngSwitchCase="'cuotas'"
         [inscripcion]="inscripcion"

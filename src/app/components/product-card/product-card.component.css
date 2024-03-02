@@ -23,13 +23,13 @@
   padding: 0 10px;
 }
 
-.card-info h2 {
+.card-info__name {
   font-size: 1.42rem;
   font-weight: bold;
   color: #fff;
 }
 
-.card-info p {
+.card-info__description {
   font-size: 1rem;
   color: #c4c4c4;
 }

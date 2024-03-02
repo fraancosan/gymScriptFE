@@ -1,11 +1,10 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
-h1,
-h2 {
+.title {
   text-align: center;
   font-weight: 700;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .tabla {
@@ -44,7 +43,8 @@ h2 {
   width: 100%;
   font-size: 15px;
   font-weight: 500;
-  background-color: #dee2e6;
+  background-color: #f3f4f5;
+  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 5px;
 }
@@ -57,8 +57,8 @@ h2 {
   align-items: center;
 }
 
-button {
-  max-width: 300px;
+.btn {
+  max-width: 260px;
   width: 100%;
   min-height: 40px;
   cursor: pointer;
@@ -76,7 +76,7 @@ button {
 .subtitulo {
   font-size: 12px;
   font-weight: 500;
-  margin: 10px 0 20px;
+  margin: 10px 0 15px;
   font-style: italic;
   color: #14213d;
 }
@@ -105,8 +105,7 @@ button {
   .botones {
     flex-direction: column;
   }
-  h1,
-  h2 {
+  .title {
     font-size: 23px;
   }
   .columna {

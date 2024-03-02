@@ -58,11 +58,11 @@
   cursor: pointer;
 }
 
-.sidebar ul {
+.nav_list {
   margin-top: 20px;
 }
 
-.sidebar ul li {
+.nav_list__item {
   list-style: none;
   position: relative;
   height: 50px;
@@ -73,7 +73,7 @@
   line-height: 50px;
 }
 
-.sidebar ul li button {
+.nav_list__item-btn {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -86,7 +86,7 @@
   border: none;
   width: 100%;
 }
-.sidebar ul li button:hover {
+.nav_list__item-btn:hover {
   color: #14213d;
   background-color: white;
 }
@@ -119,7 +119,7 @@
   transition: all 0.3s ease;
 }
 
-.profile_details img {
+.profile_info__img {
   height: 40px;
   width: 40px;
   object-fit: cover;

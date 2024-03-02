@@ -2,14 +2,14 @@
   <div class="container-start">
     <div class="container-logo">
       <a [routerLink]="['/home']" (click)="irAHome(); contraer()" id="logo"
-        ><img class="img-logo" src="assets/logo.webp"
+        ><img class="img-logo container-start__bttn " src="assets/logo.webp"
       /></a>
     </div>
     <div class="container-icons">
-      <button id="barsIcon" (click)="desplegar()">
+      <button class="container-start__bttn" id="barsIcon" (click)="desplegar()">
         <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
       </button>
-      <button class="hidden" id="xmarkIcon" (click)="contraer()">
+      <button class="hidden container-start__bttn" id="xmarkIcon" (click)="contraer()">
         <fa-icon [icon]="xmarkIcon" class="icon"></fa-icon>
       </button>
     </div>

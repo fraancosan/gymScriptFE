@@ -5,8 +5,7 @@
   border: 1px solid black;
 }
 
-h1,
-h2 {
+.contenedor__title {
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
 }
@@ -54,9 +53,6 @@ h2 {
   align-items: left;
   padding-left: 10px;
   border-radius: 10px;
-}
-
-input {
   width: 100%;
 }
 
@@ -81,7 +77,7 @@ input:disabled {
   align-items: center;
 }
 
-button {
+.btn {
   max-width: 260px;
   width: 100%;
   min-height: 40px;

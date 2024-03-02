@@ -11,7 +11,7 @@
 .wrap-contenido{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
 }
 
@@ -30,17 +30,19 @@
 .valor{
   font-size: 20px;
   font-weight: 500;
-  background-color: #dee2e6;
+  /* background-color: #dee2e6; */
+  border: 1px solid #ccc;
+  background-color: #f3f4f5;
   border-radius: 10px;
   padding: 20px 0;
 }
 
-.info-cuota_title {
+.info-cuota-title {
   padding: 20px;
   padding-bottom: 40px;
   text-align: center;
 }
-.info-cuota_title h2 {
+.info-cuota-title__h2 {
   font-size: 40px;
   font-weight: 700;
 }
@@ -51,11 +53,11 @@
   padding-top: 35px;
 }
 
-.estado h3 {
+.estado__title {
   font-size: 20px;
   font-weight: 700;
 }
-.estado h4 {
+.estado__value {
   font-size: 20px;
   font-weight: 500;
 }
@@ -89,10 +91,10 @@
   .cuota {
     padding: 0;
   }
-  .info-cuota_title h2 {
+  .info-cuota-title__h2 {
     font-size: 30px;
   }
-  .info-cuota_title {
+  .info-cuota-title {
     padding-left: 10px;
   }
   .titulo{
