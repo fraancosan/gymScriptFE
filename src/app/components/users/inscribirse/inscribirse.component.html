@@ -1,12 +1,13 @@
 <div class="form-container">
   <form class="inscription-form">
-    <h1>INSCRIPCIÓN A PLAN</h1>
+    <h1 class="form-container__title">INSCRIPCIÓN A PLAN</h1>
 
     <div class="planes-list">
-      <h3>Elige un plan</h3>
-      <hr />
-      <label *ngFor="let plan of planes">
+      <h3 class="form-container__subtitle">Elige un plan</h3>
+      <hr class="form-container__hr" />
+      <label class="form-container__label-input" *ngFor="let plan of planes">
         <input
+          class="form-container__label-input"
           type="radio"
           name="planesGroup"
           [(ngModel)]="idPlanSelected"
@@ -19,10 +20,11 @@
     </div>
 
     <div class="sedes-list">
-      <h3>Elige una sede</h3>
-      <hr />
-      <label *ngFor="let sede of sedes">
+      <h3 class="form-container__subtitle">Elige una sede</h3>
+      <hr class="form-container__hr" />
+      <label class="form-container__label-input" *ngFor="let sede of sedes">
         <input
+          class="form-container__label-input"
           type="radio"
           name="sedesGroup"
           [(ngModel)]="idSedeSelected"

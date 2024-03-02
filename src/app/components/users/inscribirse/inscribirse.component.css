@@ -1,17 +1,22 @@
 .form-container {
   width: 100%;
-  max-width: 700px;
+  max-width: 630px;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 100px auto;
+  margin: 50px auto;
   padding: 30px 20px 20px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  background-color: #f6f8fa;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+}
+
+.form-container__title{
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .planes-list {
@@ -20,12 +25,20 @@
   margin: 60px 0px 0px;
 }
 
-h3 {
+.form-container__subtitle {
   color: #6e6e6e;
 }
 
-label,
-input {
+.form-container__hr {
+  height: 2px;
+  width: 25%;
+  background-color: var(--primary-yellow);
+  border: none;
+  opacity: 0.75;
+  margin: .2rem 0 1.2rem 0;
+}
+
+.form-container__label-input {
   margin: 8px 0px;
   font-size: 1.1rem;
 }
@@ -44,14 +57,16 @@ input {
 .pay-button {
   width: 80%;
   height: 40px;
-  color: #fff;
-  font-weight: 600;
+  color: black;
+  font-weight: 700;
   border: none;
-  border-radius: 5px;
-  background-color: rgb(23, 161, 23);
+  border-radius: 10px;
+  margin-bottom: 25px;
+  background-color: var(--primary-yellow);
 }
 
 .disabled-button {
+  color: #fff;
   background-color: rgb(139, 139, 139);
 }
 

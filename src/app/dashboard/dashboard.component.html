@@ -13,64 +13,64 @@
       ></fa-icon>
     </div>
     <ul class="nav_list">
-      <li>
-        <button (click)="cargarDatos('Productos', 'productos')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Productos', 'productos')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Productos</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Provincias', 'provincias')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Provincias', 'provincias')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Provincias</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Localidades', 'localidades')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Localidades', 'localidades')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Localidades</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Actividades', 'actividades')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Actividades', 'actividades')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Actividades</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Planes', 'planes')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Planes', 'planes')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Planes</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Usuarios', 'usuarios')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Usuarios', 'usuarios')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Usuarios</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Inscripciones', 'inscripciones')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Inscripciones', 'inscripciones')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Inscripciones</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Actividad por Plan', 'plan-actividades')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Actividad por Plan', 'plan-actividades')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Planes-Actividades</span>
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
-      <li>
-        <button (click)="cargarDatos('Sedes', 'sedes')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="cargarDatos('Sedes', 'sedes')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Sedes</span>
         </button>
@@ -80,7 +80,7 @@
     <div class="profile_content">
       <div class="profile_details">
         <div class="profile_info">
-          <img src="assets/p.webp" alt="profileImg" />
+          <img class="profile_info__img" src="assets/p.webp" alt="profileImg" />
           <div class="name_job">
             <div class="name">
               {{ nombreUser + " " + apellidoUser }}

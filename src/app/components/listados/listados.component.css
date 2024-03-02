@@ -1,4 +1,4 @@
-section {
+.container-fluid {
   margin-top: 30px;
 }
 
@@ -29,83 +29,73 @@ section {
   background-color: #000000;
 }
 
-h1 {
+.title__h1 {
   font-size: 1.47rem;
 }
+
+.table-responsive{
+  border-radius: 5px;
+}
 /* Se le saca estilo predeterminado a los inputs */
-input,
-select {
+.table-atribute-value {
   appearance: none;
   border: none;
   outline: none;
   background: transparent;
+  width: 100%;
 }
 
-input:enabled,
-select:enabled {
+.table-atribute-value:enabled {
   padding: 0.5px, 0.5px, 0.5px, 1px;
   border: 0.5px solid black;
+  appearance: auto;
+  border-radius: 5px;
 }
 
 /* Se eliminan botones de aumento y decremento de inputs number */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.table-atribute-value[type="number"]::-webkit-inner-spin-button,
+.table-atribute-value[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Esta sirve para firefox */
-input[type="number"] {
+.table-atribute-value[type="number"] {
   -moz-appearance: textfield;
-}
-
-select:enabled {
-  appearance: auto;
 }
 
 .botones {
   width: 80px;
 }
 
-tbody tr td,
-thead tr th {
+.table-campo {
   min-width: 200px;
   padding: 8px;
 }
 
-tbody tr td input,
-tbody tr td select {
-  width: 100%;
-}
-
 /* Modifico segun ID */
-tbody tr td.id,
-thead tr th.id {
+.table-campo.id {
   min-width: 95px;
   max-width: 95px;
 }
 
 /* Modifico segun tipos */
-tbody tr td.tipo,
-thead tr th.tipo {
+.table-campo.tipo {
   min-width: 160px;
 }
 
 /* Modifico segun urls de imagenes */
-tbody tr td.img,
-thead tr th.img {
+.table-campo.img {
   min-width: 300px;
 }
 
 /* Modifico segun sea descripcion */
-tbody tr td.descripcion,
-thead tr th.descripcion {
+.table-campo.descripcion {
   min-width: 300px;
 }
 
 /* Modifico segun sea DNI */
-tbody tr td.dni,
-thead tr th.dni {
+.table-campo.dni {
   min-width: 130px;
 }
 
@@ -114,17 +104,17 @@ thead tr th.dni {
   No se hace con la clase .id dado que solo quiero la primer columna 
   y no todas las que tengan la clase .id 
 */
-tbody tr td:first-child input {
+.table-campo:first-child .table-atribute-value {
   font-weight: bold;
 }
 
 /* Columna Acciones */
-tbody tr td:last-child {
+.table-campo__btn {
   text-align: center;
 }
 
 /* Columna Acciones */
-thead tr th:last-child {
+.table-campo__acciones {
   text-align: center;
   min-width: 200px;
   width: 200px;
@@ -139,16 +129,14 @@ thead tr th:last-child {
   .title {
     flex-direction: row;
   }
-  h1 {
+  .title__h1 {
     font-size: 1.5rem;
   }
 }
 
 @media (min-width: 650px) {
-  h1 {
+  .title__h1 {
     font-size: 2rem;
   }
 }
 
-@media (min-width: 1400px) {
-}

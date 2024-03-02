@@ -6,8 +6,8 @@
           <div class="single-cta">
             <fa-icon [icon]="locationIcon" class="icon"></fa-icon>
             <div class="cta-text">
-              <h4>Sede Principal</h4>
-              <span>Córdoba 921, Rosario</span>
+              <h4 class="cta-text__sede">Sede Principal</h4>
+              <span class="cta-text__sede-ubi">Córdoba 921, Rosario</span>
             </div>
           </div>
         </div>
@@ -15,8 +15,8 @@
           <div class="single-cta">
             <fa-icon [icon]="phoneIcon" class="icon"></fa-icon>
             <div class="cta-text">
-              <h4>Teléfono</h4>
-              <span>+54 9 341-6000789</span>
+              <h4 class="cta-text__sede">Teléfono</h4>
+              <span class="cta-text__sede-ubi">+54 9 341-6000789</span>
             </div>
           </div>
         </div>
@@ -25,8 +25,8 @@
           <div class="single-cta">
             <fa-icon [icon]="envelopeIcon" class="icon"></fa-icon>
             <div class="cta-text">
-              <h4>Correo Electrónico</h4>
-              <span>gymscript@gmail.com</span>
+              <h4 class="cta-text__sede">Correo Electrónico</h4>
+              <span class="cta-text__sede-ubi">gymscript@gmail.com</span>
             </div>
           </div>
         </div>
@@ -39,12 +39,12 @@
           <div class="footer-widget">
             <div class="footer-logo">
               <a href=""
-                ><img src="assets/logo.webp" class="img-fluid" alt="logo"
+                ><img src="assets/logo.webp" class="img-fluid footer-logo__img" alt="logo"
               /></a>
             </div>
 
             <div class="footer-text">
-              <p>
+              <p class="footer-text__descripcion">
                 Gymscript es un gimnasio moderno y dinámico que combina la
                 última tecnología fitness con un enfoque personalizado en tu
                 salud. Nuestro equipo de entrenadores expertos te ayudará a
@@ -53,16 +53,16 @@
               </p>
             </div>
             <div class="footer-social-icon">
-              <span>Síguenos</span>
+              <span class="footer-social-icon__follow">Síguenos</span>
               <div class="social-icons-container">
                 <a href="#"
-                  ><fa-icon [icon]="facebookIcon" class="icon"></fa-icon
+                  ><fa-icon [icon]="facebookIcon" class="icon social-icons-container__a"></fa-icon
                 ></a>
                 <a href="#"
-                  ><fa-icon [icon]="twitterIcon" class="icon"></fa-icon
+                  ><fa-icon [icon]="twitterIcon" class="icon social-icons-container__a"></fa-icon
                 ></a>
                 <a href="#"
-                  ><fa-icon [icon]="instagramIcon" class="icon"></fa-icon
+                  ><fa-icon [icon]="instagramIcon" class="icon social-icons-container__a"></fa-icon
                 ></a>
               </div>
             </div>
@@ -71,31 +71,31 @@
         <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
           <div class="footer-widget">
             <div class="footer-widget-heading">
-              <h3>Links Útiles</h3>
+              <h3 class="footer-widget-heading__links">Links Útiles</h3>
             </div>
             <div class="links-container">
-              <a href="#">Inicio</a>
-              <a href="#">Contacto</a>
-              <a href="#">Nosotros</a>
-              <a href="#">Servicios</a>
+              <a class="links-container__a" href="#">Inicio</a>
+              <a class="links-container__a" href="#">Contacto</a>
+              <a class="links-container__a" href="#">Nosotros</a>
+              <a class="links-container__a" href="#">Servicios</a>
             </div>
           </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
           <div class="footer-widget">
             <div class="footer-widget-heading">
-              <h3>Subscríbete</h3>
+              <h3 class="footer-widget-heading__links">Subscríbete</h3>
             </div>
             <div class="footer-text mb-25">
-              <p>
+              <p class="footer-text__descripcion">
                 No dejes de suscribirte a nuestras noticias, por favor completa
                 el formulario a continuación.
               </p>
             </div>
             <div class="subscribe-form">
               <form action="#">
-                <input type="text" placeholder="Email Address" />
-                <button>
+                <input class="subscribe-form__input" type="text" placeholder="Email Address" />
+                <button class="subscribe-form__bttn">
                   <fa-icon [icon]="planeIcon" class="icon"></fa-icon>
                 </button>
               </form>
@@ -111,9 +111,9 @@
       <div class="row">
         <div class="col-xl-12 col-lg-12 text-center">
           <div class="copyright-text">
-            <p>
+            <p class="copyright-text__p">
               Copyright &copy; 2023, All Right Reserved
-              <a href="https://www.frro.utn.edu.ar/">UTN frro</a>
+              <a class="copyright-text__p-a" href="https://www.frro.utn.edu.ar/">UTN frro</a>
             </p>
           </div>
         </div>

@@ -1,9 +1,9 @@
 <div *ngIf="todoBien">
-  <h1>INSCRIPCION</h1>
+  <h1 class="title">INSCRIPCION</h1>
   <!-- Informacion de planes -->
   <div class="row">
     <div class="tabla col">
-      <h2>Plan</h2>
+      <h2 class="title">Plan</h2>
       <hr />
       <div class="fila">
         <div class="columna key">Nombre</div>
@@ -23,7 +23,7 @@
 
     <!-- Informacion de Sedes -->
     <div class="tabla col">
-      <h2>Sede</h2>
+      <h2 class="title">Sede</h2>
       <hr />
       <div class="fila">
         <div class="columna key">Dirección</div>
@@ -48,9 +48,9 @@
 
   <!-- Botones para dar de baja y cambiar de plan -->
   <div class="botones">
-    <button class="cambiarPlan" (click)="cambiarPlan()">
+    <button class="cambiarPlan btn" (click)="cambiarPlan()">
       Cambiar Plan o Sede
     </button>
-    <button class="baja" (click)="darDeBaja()">Dar de Baja</button>
+    <button class="baja btn" (click)="darDeBaja()">Dar de Baja</button>
   </div>
 </div>

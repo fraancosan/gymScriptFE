@@ -1,6 +1,6 @@
 <section class="container-fluid">
   <div class="title">
-    <h1>Listado de {{ header }}</h1>
+    <h1 class="title__h1">Listado de {{ header }}</h1>
     <button
       type="button"
       class="button-add"
@@ -16,10 +16,10 @@
       <thead class="table-dark">
         <!-- Itero por cada campo del esquema -->
         <tr>
-          <th scope="col" *ngFor="let campo of esquema" class="{{ campo.key }}">
+          <th scope="col" *ngFor="let campo of esquema" class="{{ campo.key }} table-campo">
             {{ campo.nombre }}
           </th>
-          <th scope="col">Acciones</th>
+          <th class="table-campo__acciones" scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +27,7 @@
         <tr class="table-light" *ngFor="let item of listado">
           <!-- Itero por campo del esquema -->
           <td
-            class="{{ campo.key }}"
+            class="{{ campo.key }} table-campo table-campo__td"
             *ngFor="let campo of esquema; let i = index"
             [ngSwitch]="campo.campo"
           >
@@ -37,13 +37,13 @@
               value="{{ item[campo.key] }}"
               disabled
               type="{{ campo.tipo }}"
-              class="{{ campo.key }}"
+              class="{{ campo.key }} table-atribute-value"
             />
             <!-- Cuando tengo un select obtengo los posibles valores y pongo como predeterminado el que viene de la BD -->
             <select
               *ngSwitchCase="'select'"
               disabled
-              class="{{ campo.key }}"
+              class="{{ campo.key }} table-atribute-value"
               [(ngModel)]="item[campo.key]"
             >
               <option
@@ -54,7 +54,7 @@
               </option>
             </select>
           </td>
-          <td>
+          <td class="table-campo table-campo__btn">
             <button
               type="button"
               class="btn btn-warning btn-sm botones"

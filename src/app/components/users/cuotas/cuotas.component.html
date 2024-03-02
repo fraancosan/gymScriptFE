@@ -1,37 +1,28 @@
 <div class="contenedor-cuota">
   <div class="info-cuota">
-    <div class="info-cuota_title">
-      <h2>ULTIMA CUOTA</h2>
+    <div class="info-cuota-title">
+      <h2 class="info-cuota-title__h2">ULTIMA CUOTA</h2>
     </div>
     <div class="cuota">
+
       <div class="wrap-contenido">
-        <div class="wrap-titulo">
-          <div class="fechaPago">
-            <h3>Fecha pago</h3>
-          </div>
-          <div class="monto">
-            <h3>Monto</h3>
-          </div>
-          <div class="fechaVenc">
-            <h3>Fecha Vencimiento</h3>
-          </div>
+        <div class="celda">
+          <h3 class="titulo">Fecha pago</h3>
+          <h3 class="valor">{{ fechaPago }}</h3>
         </div>
-        <div class="wrap-valores">
-          <div class="fechaPago">
-            <h3>{{ fechaPago }}</h3>
-          </div>
-          <div class="fechaPa">
-            <h3>${{ importe }}</h3>
-          </div>
-          <div class="fechaPa">
-            <h3>{{ fechaVenc }}</h3>
-          </div>
+        <div class="celda">
+          <h3 class="titulo">Monto</h3>
+          <h3 class="valor">${{ importe }}</h3>
+        </div>
+        <div class="celda">
+          <h3 class="titulo">Fecha Vencimiento</h3>
+          <h3 class="valor">{{ fechaVenc }}</h3>
         </div>
       </div>
     </div>
     <div class="estado">
-      <h3>Estado:&nbsp;</h3>
-      <h4>{{ estado }}</h4>
+      <h3 class="estado__title">Estado:&nbsp;</h3>
+      <h4 class="estado__value">{{ estado }}</h4>
     </div>
     <div class="pagar">
       <button
