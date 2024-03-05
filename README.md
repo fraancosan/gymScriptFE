@@ -58,7 +58,7 @@ El gimnasio **“gymScript”** es un establecimiento dedicado a acompañar a su
 
 - Listado de artículos de la tienda del gimnasio, filtrados por tipo de artículo (comida, bebida o suplementos) → Muestra nombre del artículo, y descripción del mismo.
 - Listado de actividades del gimnasio, filtradas por plan → Muestra nombre de actividad, y descripción de la misma.
-- Listado de entrenadores del gimnasio, filtrados por actividad → Muestra id del entrenador, nombre, y apellido del mismo.
+- Listado de check-in del dia por sede
 - Listar sedes, filtradas por localidades → Muestra dirección de la sede.
 
 ### CUU
