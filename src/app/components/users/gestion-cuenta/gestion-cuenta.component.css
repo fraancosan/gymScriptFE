@@ -95,8 +95,8 @@ input:disabled {
 
 .editar,
 .guardar {
-  background-color: #ffc107;
-  color: #212529;
+  background-color: var(--primary-yellow);
+  color: var(--primary-grey);
 }
 
 .editar:hover,
