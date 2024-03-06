@@ -4,35 +4,39 @@
       <h2 class="info-cuota-title__h2">ULTIMA CUOTA</h2>
     </div>
     <div class="cuota">
-
       <div class="wrap-contenido">
         <div class="celda">
           <h3 class="titulo">Fecha pago</h3>
-          <h3 class="valor">{{ fechaPago }}</h3>
+          <h3 class="valor">{{ inscripcion.cuota[0].fechaPago }}</h3>
         </div>
         <div class="celda">
           <h3 class="titulo">Monto</h3>
-          <h3 class="valor">${{ importe }}</h3>
+          <h3 class="valor">${{ inscripcion.cuota[0].importe }}</h3>
         </div>
         <div class="celda">
           <h3 class="titulo">Fecha Vencimiento</h3>
-          <h3 class="valor">{{ fechaVenc }}</h3>
+          <h3 class="valor">{{ inscripcion.cuota[0].fechaVenc }}</h3>
         </div>
       </div>
     </div>
     <div class="estado">
       <h3 class="estado__title">Estado:&nbsp;</h3>
-      <h4 class="estado__value">{{ estado }}</h4>
+      <h4
+        class="estado__value"
+        [ngClass]="{ 'estado-vencido': estado === 'Vencido' }"
+      >
+        {{ estado }}
+      </h4>
     </div>
     <div class="pagar">
       <button
-        [disabled]="disabledButton"
-        [ngClass]="{ 'disabled-button': disabledButton }"
+        [disabled]="estado === 'Al dia!'"
         class="pay-button"
-        (click)="pagar()"
+        (click)="pay()"
       >
         PAGAR
       </button>
     </div>
   </div>
+  <app-spinner *ngIf="loading" class="spinner"></app-spinner>
 </div>
