@@ -53,11 +53,6 @@
   margin-bottom: 0;
 }
 
-.spinner {
-  margin-top: 20px;
-  color: var(--primary-yellow);
-}
-
 /* Se eliminan botones de aumento y decremento de inputs number */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

@@ -54,12 +54,6 @@
   margin-bottom: 0;
 }
 
-.spinner {
-  margin-top: 20px;
-  color: var(--primary-yellow);
-}
-
-
 @media (max-width: 480px) {
   .login-form {
     width: 90%;
