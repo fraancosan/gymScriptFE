@@ -29,6 +29,9 @@ import { SideBarComponent } from './components/users/side-bar/side-bar.component
 import { GestionInscripcionComponent } from './components/users/gestion-inscripcion/gestion-inscripcion.component';
 import { CuotasComponent } from './components/users/cuotas/cuotas.component';
 import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestion-cuenta.component';
+import { ActividadesComponent } from './components/users/actividades/actividades.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AccordionActComponent } from './components/accordion-act/accordion-act.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,8 @@ import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestio
     GestionInscripcionComponent,
     CuotasComponent,
     GestionCuentaComponent,
+    ActividadesComponent,
+    AccordionActComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestio
       preventDuplicates: true,
     }),
     FormsModule,
+    AccordionModule.forRoot(),
   ],
   providers: [
     {

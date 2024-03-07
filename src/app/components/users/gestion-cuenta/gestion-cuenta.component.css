@@ -59,6 +59,7 @@
 input:disabled {
   border: 1px solid #ccc;
   box-shadow: none;
+  background-color: #f3f4f5;
 }
 
 .key {

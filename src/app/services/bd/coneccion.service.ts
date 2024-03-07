@@ -131,4 +131,25 @@ export class ConeccionService {
         }),
       );
   }
+
+  getActividadesPlan(idPlan: number) {
+    return this.http
+      .get(this.urlBack + 'plan-actividades?idPlan=' + idPlan)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.toastr.error(error.error.msg, 'Error');
+          return throwError(() => error);
+        }),
+      );
+  }
+
+  getHorariosActividad(idActividad: number, idSede:number) {
+    return this.http
+      .get(this.urlBack + 'horarios?idActividad=' + idActividad + '&idSede=' + idSede)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(() => error);
+        }),
+      );
+  }
 }

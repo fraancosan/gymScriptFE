@@ -15,6 +15,10 @@
         *ngSwitchCase="'cuotas'"
         [inscripcion]="inscripcion"
       ></app-cuotas>
+      <app-actividades
+        *ngSwitchCase="'actividades'"
+        [inscripcion]="inscripcion"
+      ></app-actividades>
       <app-gestion-inscripcion
         (sinInscripcion)="cambiarEstado($event)"
         *ngSwitchCase="'gestion'"

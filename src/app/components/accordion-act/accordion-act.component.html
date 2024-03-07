@@ -1,0 +1,11 @@
+
+<div *ngIf="!(horarios.length == 0); else noHorario">
+    <div *ngFor="let h of horarios">
+        <p>Dia: {{h.dia}}</p>
+        <p>Horario: {{h.horaDesde}} - {{h.horaHasta}}</p>
+    </div>
+</div>
+
+<ng-template #noHorario>
+    <p>Esta actividad no se dicta en la sede inscripta</p>
+</ng-template>
