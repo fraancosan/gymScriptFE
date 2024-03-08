@@ -86,7 +86,7 @@
   background-color: rgb(139, 139, 139);
 }
 
-@media (max-width: 370px) {
+@media (max-width: 420px) {
   .cuota {
     padding: 0;
   }

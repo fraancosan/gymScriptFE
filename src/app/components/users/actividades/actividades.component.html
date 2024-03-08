@@ -1,22 +1,24 @@
 <div class="container-actividad">
   <div class="container-actividad-title">
     <h1 class="container-actividad-title__main-title">ACTIVIDADES</h1>
-    <p class="container-actividad-title__sub-title">Estas son las actividades dispobles para realizar segun tu Plan contratado</p>
+    <p class="container-actividad-title__sub-title">Estas son las Actividades disponibles para realizar segun tu Plan contratado</p>
   </div>
-  <div class="container-actividad-info">
-    <div class="container-actividad-info-insc">
-      <h3 class="container-actividad-info-insc__celda">Plan: {{inscripcion.plan.nombre}}</h3>
-      <h3 class="container-actividad-info-insc__celda">Sede: {{inscripcion.sede.direccion}}</h3>
-    </div>
-    <div class="container-actividad-info-actividades">
-      <accordion [isAnimated]="true">
-        <accordion-group [panelClass]="customClass" class="accordion-actividad" *ngFor="let acts of actividades" [heading]="acts.actividad.nombre" >
-          <app-accordion-act
-          [actividades]="acts"
-          [idSede]="inscripcion.idSede">
-          </app-accordion-act>
-        </accordion-group>   
-    </accordion>
+  <div class="container-actividad-flex-info">
+    <div class="container-actividad-info">
+      <div class="container-actividad-info-insc">
+        <h3 class="container-actividad-info-insc__celda">Plan: <b>{{inscripcion.plan.nombre}}</b></h3>
+        <h3 class="container-actividad-info-insc__celda">Sede: <b>{{inscripcion.sede.direccion}}</b></h3>
+      </div>
+      <div class="container-actividad-info-actividades">
+        <accordion [isAnimated]="true">
+          <accordion-group [panelClass]="customClass" class="accordion-actividad" *ngFor="let acts of actividades" [heading]="acts.actividad.nombre" >
+            <app-accordion-act
+            [actividades]="acts"
+            [idSede]="inscripcion.idSede">
+            </app-accordion-act>
+          </accordion-group>   
+      </accordion>
+      </div>
     </div>
   </div>
   
