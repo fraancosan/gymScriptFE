@@ -1,6 +1,7 @@
 describe('Sign Up', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200/signUp')
+    localStorage.clear()
   })
   it('Can Sign Up', () => {
 
@@ -24,6 +25,7 @@ describe('Sign Up', () => {
 describe('Sign In', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200/signIn')
+    localStorage.clear()
   })
   it('Can Sign In', () => {
     cy.intercept('POST', '/usuarios/loginUser').as('signInRequest')
@@ -34,4 +36,27 @@ describe('Sign In', () => {
 
   
     cy.wait('@signInRequest').its('response.statusCode').should('eq', 200)
-})})
+  })
+
+  it ('Can not Sign In - Wrong Password', () => {
+    cy.intercept('POST', '/usuarios/loginUser').as('signInRequest')
+
+    cy.get('[formControlName="mail"]').type("robertitototo@gmail.com")
+    // Wrong password
+    cy.get('[formControlName="contraseña"]').type("95929123")
+    cy.get('[name="submit"]').click()
+
+    cy.wait('@signInRequest').its('response.statusCode').should('eq', 400)
+  })
+
+  it ('Can not Sign In - Wrong Email', () => {
+    cy.intercept('POST', '/usuarios/loginUser').as('signInRequest')
+
+    // Wrong Email
+    cy.get('[formControlName="mail"]').type("robertitoto@gmail.com")
+    cy.get('[formControlName="contraseña"]').type("12345678")
+    cy.get('[name="submit"]').click()
+
+    cy.wait('@signInRequest').its('response.statusCode').should('eq', 400)
+  })
+})
