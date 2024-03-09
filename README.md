@@ -27,8 +27,9 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 
 Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad esta misma entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
 
-## Ejecución Proyecto
+## Comandos Útiles
 
+### Instalacion Proyecto
 > [!NOTE]
 > En la instalacion se instala tambien la versión adecuada de angular
 
@@ -36,3 +37,10 @@ Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe 
 - Iniciar proyecto
   - En consola escribir: ng serve
   - El servidor se creara en: http://localhost:4200/
+
+### Tests
+
+- Unit Testing: npm run test
+- E2E Testing:
+  - Via consola: npm run test:e2e
+  - Via Interfaz: npm run cypress:open
