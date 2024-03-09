@@ -598,6 +598,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+ngx-bootstrap/accordion
+MIT
+
+ngx-bootstrap/collapse
+MIT
+
 ngx-bootstrap/datepicker
 MIT
 
