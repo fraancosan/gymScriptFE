@@ -16,7 +16,11 @@
       <thead class="table-dark">
         <!-- Itero por cada campo del esquema -->
         <tr>
-          <th scope="col" *ngFor="let campo of esquema" class="{{ campo.key }} table-campo">
+          <th
+            scope="col"
+            *ngFor="let campo of esquema"
+            class="{{ campo.key }} table-campo"
+          >
             {{ campo.nombre }}
           </th>
           <th class="table-campo__acciones" scope="col">Acciones</th>
@@ -35,14 +39,14 @@
             <input
               *ngSwitchCase="'input'"
               value="{{ item[campo.key] }}"
-              disabled
+              [disabled]="item['id'] != idEditando || !campo['editable']"
               type="{{ campo.tipo }}"
               class="{{ campo.key }} table-atribute-value"
             />
             <!-- Cuando tengo un select obtengo los posibles valores y pongo como predeterminado el que viene de la BD -->
             <select
               *ngSwitchCase="'select'"
-              disabled
+              [disabled]="item['id'] != idEditando || !campo['editable']"
               class="{{ campo.key }} table-atribute-value"
               [(ngModel)]="item[campo.key]"
             >
@@ -56,6 +60,7 @@
           </td>
           <td class="table-campo table-campo__btn">
             <button
+              *ngIf="item['id'] != idEditando"
               type="button"
               class="btn btn-warning btn-sm botones"
               (click)="editar(item['id'])"
@@ -63,6 +68,7 @@
               Editar
             </button>
             <button
+              *ngIf="item['id'] != idEditando"
               type="button"
               class="btn btn-secondary btn-sm ms-2 botones"
               (click)="borrar(item['id'])"
@@ -71,15 +77,17 @@
             </button>
             <!-- Botones que se muestran solo si se encuentra editando valores -->
             <button
+              *ngIf="item['id'] == idEditando"
               type="button"
-              class="btn btn-warning btn-sm hidden botones"
+              class="btn btn-warning btn-sm botones"
               (click)="aceptar(item['id'])"
             >
               Aceptar
             </button>
             <button
+              *ngIf="item['id'] == idEditando"
               type="button"
-              class="btn btn-secondary btn-sm ms-2 hidden botones"
+              class="btn btn-secondary btn-sm ms-2 botones"
               (click)="cancelar()"
             >
               Cancelar

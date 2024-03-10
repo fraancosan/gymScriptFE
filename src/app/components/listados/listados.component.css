@@ -33,7 +33,7 @@
   font-size: 1.47rem;
 }
 
-.table-responsive{
+.table-responsive {
   border-radius: 5px;
 }
 /* Se le saca estilo predeterminado a los inputs */
@@ -120,11 +120,6 @@
   width: 200px;
 }
 
-/* Propiedad usada para ocultar items */
-.hidden {
-  display: none;
-}
-
 @media (min-width: 550px) {
   .title {
     flex-direction: row;
@@ -139,4 +134,3 @@
     font-size: 2rem;
   }
 }
-

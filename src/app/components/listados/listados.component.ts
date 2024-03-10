@@ -21,12 +21,10 @@ export class ListadosComponent {
   @ViewChild('tablaListados', { static: false }) tablaListados!: ElementRef;
   @ViewChild('addRegistros', { static: false }) addRegistros!: ElementRef;
   listado: any[] = [];
-
   esquema: esquemaTabla[] = [];
-
   addRegistrosDisabled: boolean = true;
-
   ultimoEditado: any;
+  idEditando = '';
 
   constructor(
     private identifyService: IdentifyService,
@@ -42,6 +40,7 @@ export class ListadosComponent {
   }
 
   borrar(idItem: any) {
+    this.idEditando = '';
     let fila = this.obtenerFila(idItem);
     if (fila) {
       let filas = this.tablaListados.nativeElement.rows.length;
@@ -66,28 +65,13 @@ export class ListadosComponent {
   }
 
   editar(idItem: any) {
-    this.volverOriginal();
     this.cancelar();
-
+    this.idEditando = idItem;
     this.ultimoEditado = this.recuperarValores(idItem);
-
-    let fila = this.obtenerFila(idItem);
-    if (fila) {
-      for (let i = 0; i < fila.cells.length - 1; i++) {
-        let inputs = fila.cells[i].children[0] as HTMLInputElement;
-        if (this.esquema[i].editable && idItem != '') {
-          inputs.removeAttribute('disabled');
-        }
-        if (idItem == '' && i != 0) {
-          inputs.removeAttribute('disabled');
-        }
-      }
-      this.visible(fila, fila.cells.length - 1, 2, 0);
-      this.visible(fila, fila.cells.length - 1, 3, 1);
-    }
   }
 
   aceptar(idItem: any) {
+    this.idEditando = '';
     let item = this.recuperarValores(idItem);
     for (let key in item) {
       if (key == 'id') {
@@ -120,6 +104,7 @@ export class ListadosComponent {
   }
 
   cancelar() {
+    this.idEditando = '';
     let item = JSON.parse(JSON.stringify(this.ultimoEditado));
     let fila = this.obtenerFila(item.id);
     if (fila) {
@@ -134,7 +119,6 @@ export class ListadosComponent {
         }
       }
     }
-    this.volverOriginal();
     this.reiniciarHistorial();
   }
 
@@ -173,7 +157,6 @@ export class ListadosComponent {
     }, 100);
   }
 
-
   hacerJSON() {
     let json: any = {};
     for (let i = 0; i < this.esquema.length; i++) {
@@ -186,7 +169,6 @@ export class ListadosComponent {
     let tabla = this.tablaListados.nativeElement as HTMLTableElement;
     let fila;
     if (tabla) {
-
       for (let i = 1; i < tabla.rows.length; i++) {
         let input = tabla.rows[i].cells[0].children[0] as HTMLInputElement;
         if (input.value == idItem) {
@@ -199,7 +181,6 @@ export class ListadosComponent {
   }
 
   recargarDatos() {
-    this.volverOriginal();
     this.reiniciarHistorial();
 
     this.bd.getAll(this.tabla, this.header).subscribe({
@@ -223,40 +204,7 @@ export class ListadosComponent {
     });
   }
 
-  volverOriginal() {
-
-    if (this.ultimoEditado != undefined) {
-
-      let fila = this.obtenerFila(this.ultimoEditado.id);
-      if (fila) {
-
-        for (let j = 0; j < fila.cells.length - 1; j++) {
-          fila.cells[j].children[0].setAttribute('disabled', 'true');
-        }
-
-        this.visible(fila, fila.cells.length - 1, 0, 2);
-        this.visible(fila, fila.cells.length - 1, 1, 3);
-      }
-    }
-  }
-
   reiniciarHistorial() {
-
     this.ultimoEditado = this.hacerJSON();
-  }
-
-  visible(
-    fila: HTMLTableRowElement,
-    posicion: any,
-    mostrar: any,
-    ocultar: any,
-  ) {
-    let elemento1 = fila.cells[posicion].children[mostrar];
-    let elemento2 = fila.cells[posicion].children[ocultar];
-
-
-    elemento1.classList.remove('hidden');
-
-    elemento2.classList.add('hidden');
   }
 }
