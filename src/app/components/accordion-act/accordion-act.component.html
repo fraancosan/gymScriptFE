@@ -1,11 +1,21 @@
-
 <div *ngIf="!(horarios.length == 0); else noHorario">
-    <div *ngFor="let h of horarios">
-        <p>Dia: {{h.dia}}</p>
-        <p>Horario: {{h.horaDesde}} - {{h.horaHasta}}</p>
+  <div class="container-cards">
+    <div class="post-card" *ngFor="let h of horarios">
+      <p class="post-card__title">{{ h.dia.toUpperCase() }}</p>
+      <div class="post-card-container">
+        <p
+          class="post-card-container__time"
+          *ngFor="let hora of h.horario.split(',')"
+        >
+          {{ hora }}
+        </p>
+      </div>
     </div>
+  </div>
 </div>
 
 <ng-template #noHorario>
-    <p>Esta actividad NO se dicta en la sede inscripta</p>
+  <p class="empty-horario__p">
+    Esta actividad NO se dicta en la sede inscripta
+  </p>
 </ng-template>
