@@ -74,28 +74,23 @@
   padding: 8px;
 }
 
-/* Modifico segun ID */
 .table-campo.id {
   min-width: 95px;
   max-width: 95px;
 }
 
-/* Modifico segun tipos */
 .table-campo.tipo {
   min-width: 160px;
 }
 
-/* Modifico segun urls de imagenes */
 .table-campo.img {
-  min-width: 300px;
+  min-width: 100px;
 }
 
-/* Modifico segun sea descripcion */
 .table-campo.descripcion {
   min-width: 300px;
 }
 
-/* Modifico segun sea DNI */
 .table-campo.dni {
   min-width: 130px;
 }

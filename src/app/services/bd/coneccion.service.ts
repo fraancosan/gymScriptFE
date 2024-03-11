@@ -15,7 +15,6 @@ export class ConeccionService {
     private http: HttpClient,
   ) {}
 
-
   getAll(tabla: string, nombreMostrar: string): Observable<any> {
     return this.http.get(this.urlBack + tabla).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -63,16 +62,13 @@ export class ConeccionService {
     );
   }
 
-  update(tabla: string, item: any): Observable<any> {
-
-    return this.http
-      .patch<any>(this.urlBack + tabla + '/' + item.id, item)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          this.toastr.error(error.error.msg, 'Error');
-          return throwError(() => error);
-        }),
-      );
+  update(tabla: string, id: number, item: any): Observable<any> {
+    return this.http.patch<any>(this.urlBack + tabla + '/' + id, item).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.toastr.error(error.error.msg, 'Error');
+        return throwError(() => error);
+      }),
+    );
   }
 
   delete(tabla: string, id: string): Observable<any> {
@@ -95,8 +91,7 @@ export class ConeccionService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status == 404) {
-          } 
-          else {
+          } else {
             this.toastr.error(
               'No ha sido posible conectar con el servidor, intente nuevamente mas tarde',
               'Error',
@@ -143,9 +138,15 @@ export class ConeccionService {
       );
   }
 
-  getHorariosActividad(idActividad: number, idSede:number) {
+  getHorariosActividad(idActividad: number, idSede: number) {
     return this.http
-      .get(this.urlBack + 'horarios?idActividad=' + idActividad + '&idSede=' + idSede)
+      .get(
+        this.urlBack +
+          'horarios?idActividad=' +
+          idActividad +
+          '&idSede=' +
+          idSede,
+      )
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError(() => error);

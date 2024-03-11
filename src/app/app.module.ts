@@ -31,7 +31,9 @@ import { CuotasComponent } from './components/users/cuotas/cuotas.component';
 import { GestionCuentaComponent } from './components/users/gestion-cuenta/gestion-cuenta.component';
 import { ActividadesComponent } from './components/users/actividades/actividades.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { AccordionActComponent } from './components/accordion-act/accordion-act.component';
+import { ModalImagenProductoComponent } from './components/modal-imagen-producto/modal-imagen-producto.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { AccordionActComponent } from './components/accordion-act/accordion-act.
     GestionCuentaComponent,
     ActividadesComponent,
     AccordionActComponent,
+    ModalImagenProductoComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ import { AccordionActComponent } from './components/accordion-act/accordion-act.
     }),
     FormsModule,
     AccordionModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   providers: [
     {

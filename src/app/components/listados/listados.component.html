@@ -52,6 +52,12 @@
                 {{ opcion }}
               </option>
             </select>
+            <app-modal-imagen-producto
+              *ngSwitchCase="'image'"
+              [img]="item['img']"
+              [editando]="item['id'] == idEditando"
+              (fileChange)="getFile($event)"
+            ></app-modal-imagen-producto>
           </td>
           <td class="table-campo table-campo__btn">
             <button

@@ -1,0 +1,46 @@
+<button
+  type="button"
+  class="btn btn-primary btn-sm"
+  style="width: 80px"
+  (click)="openModal(template)"
+>
+  Ver
+</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Imagen</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body flex-modal">
+    <img
+      *ngIf="img != ''"
+      [src]="img"
+      class="rounded mx-auto d-block img-fluid"
+    />
+    <div *ngIf="editando" class="flex-modal">
+      <input
+        style="display: none"
+        id="fileInput"
+        (change)="getFile($event)"
+        accept="image/jpg, image/jpeg, image/png, image/webp"
+        type="file"
+      />
+      <label for="fileInput" class="btn btn-warning btn-sm"
+        >Actualizar imagen</label
+      >
+      <div *ngIf="newImg != ''" class="flex-modal">
+        <h4>Vista Previa</h4>
+        <img [src]="newImg" class="rounded mx-auto d-block img-fluid" />
+      </div>
+    </div>
+  </div>
+</ng-template>

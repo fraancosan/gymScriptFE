@@ -19,6 +19,7 @@ export class ListadosComponent {
   addRegistrosDisabled: boolean = true;
   ultimoEditado: any;
   idEditando = '';
+  file: any;
 
   constructor(
     private identifyService: IdentifyService,
@@ -62,13 +63,16 @@ export class ListadosComponent {
 
   aceptar(idItem: any) {
     this.idEditando = '';
-    const item = this.getValue(idItem);
+    const item = this.file
+      ? this.makeFormData(this.getValue(idItem))
+      : this.getValue(idItem);
     // Solo quiero mantener los datos modificados
     for (let key in item) {
       if (item[key] == this.ultimoEditado[key] && key != 'id') {
         delete item[key];
       }
     }
+    console.log(item);
     if (Object.keys(item).length == 1) {
       this.toastr.warning('No se modificó ningún dato', 'Advertencia');
       this.cancelar();
@@ -79,7 +83,7 @@ export class ListadosComponent {
         this.recargarDatos();
       });
     } else {
-      this.bd.update(this.tabla, item).subscribe((rta) => {
+      this.bd.update(this.tabla, idItem, item).subscribe((rta) => {
         this.toastr.success(rta.msg, 'Exito', { timeOut: 1500 });
         this.recargarDatos();
       });
@@ -149,8 +153,22 @@ export class ListadosComponent {
     });
   }
 
+  getFile(event: any) {
+    this.file = event;
+  }
+
+  makeFormData(item: any) {
+    const formData = new FormData();
+    for (let key in item) {
+      formData.append(key, item[key]);
+    }
+    formData.append('file', this.file);
+    return formData;
+  }
+
   reiniciarHistorial() {
     this.ultimoEditado = this.hacerJSON();
+    this.file = null;
   }
 
   copyJSON(json: any) {
