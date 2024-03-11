@@ -21,11 +21,7 @@
   </div>
 
   <div class="modal-body flex-modal">
-    <img
-      *ngIf="img != ''"
-      [src]="img"
-      class="rounded mx-auto d-block img-fluid"
-    />
+    <img *ngIf="img != ''" [src]="img" class="rounded mx-auto d-block img" />
     <div *ngIf="editando" class="flex-modal">
       <input
         style="display: none"
@@ -39,7 +35,7 @@
       >
       <div *ngIf="newImg != ''" class="flex-modal">
         <h4>Vista Previa</h4>
-        <img [src]="newImg" class="rounded mx-auto d-block img-fluid" />
+        <img [src]="newImg" class="rounded mx-auto d-block img" />
       </div>
     </div>
   </div>
