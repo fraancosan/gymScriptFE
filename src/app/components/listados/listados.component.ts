@@ -67,12 +67,17 @@ export class ListadosComponent {
       ? this.makeFormData(this.getValue(idItem))
       : this.getValue(idItem);
     // Solo quiero mantener los datos modificados
-    for (let key in item) {
-      if (item[key] == this.ultimoEditado[key] && key != 'id') {
-        delete item[key];
+    for (let key in this.ultimoEditado) {
+      if (!(item instanceof FormData)) {
+        if (item[key] == this.ultimoEditado[key] && key != 'id') {
+          delete item[key];
+        }
+      } else {
+        if (item.get(key) == this.ultimoEditado[key] && key != 'id') {
+          item.delete(key);
+        }
       }
     }
-    console.log(item);
     if (Object.keys(item).length == 1) {
       this.toastr.warning('No se modificó ningún dato', 'Advertencia');
       this.cancelar();
@@ -113,16 +118,20 @@ export class ListadosComponent {
 
   getValue(idItem: any) {
     const pos = this.getValuePos(idItem);
-    const item = this.copyJSON(this.listado[pos]);
+    const original = this.copyJSON(this.listado[pos]);
+    const item: { [key: string]: any } = {};
     for (let i = 0; i < this.esquema.length; i++) {
       switch (this.esquema[i].tipo) {
         case 'number':
-          item[this.esquema[i].key] = Number(item[this.esquema[i].key]);
+          item[this.esquema[i].key] = Number(original[this.esquema[i].key]);
           break;
         case 'date':
           item[this.esquema[i].key] = new Date(
-            item[this.esquema[i].key] + 'T00:00:00',
+            original[this.esquema[i].key] + 'T00:00:00',
           );
+          break;
+        default:
+          item[this.esquema[i].key] = original[this.esquema[i].key];
           break;
       }
     }
