@@ -604,7 +604,22 @@ MIT
 ngx-bootstrap/collapse
 MIT
 
+ngx-bootstrap/component-loader
+MIT
+
 ngx-bootstrap/datepicker
+MIT
+
+ngx-bootstrap/focus-trap
+MIT
+
+ngx-bootstrap/modal
+MIT
+
+ngx-bootstrap/positioning
+MIT
+
+ngx-bootstrap/utils
 MIT
 
 ngx-toastr
