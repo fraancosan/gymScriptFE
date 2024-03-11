@@ -18,7 +18,7 @@ export class ListadosComponent {
   esquema: esquemaTabla[] = [];
   addRegistrosDisabled: boolean = true;
   ultimoEditado: any;
-  idEditando = '';
+  idEditando = '-1';
   file: any;
 
   constructor(
@@ -35,7 +35,7 @@ export class ListadosComponent {
   }
 
   borrar(idItem: any) {
-    this.idEditando = '';
+    this.idEditando = '-1';
     const pos = this.getValuePos(idItem);
     if (idItem != '') {
       this.bd.delete(this.tabla, idItem).subscribe((data) => {
@@ -62,7 +62,6 @@ export class ListadosComponent {
   }
 
   aceptar(idItem: any) {
-    this.idEditando = '';
     const item = this.file
       ? this.makeFormData(this.getValue(idItem))
       : this.getValue(idItem);
@@ -93,10 +92,14 @@ export class ListadosComponent {
         this.recargarDatos();
       });
     }
+    this.idEditando = '-1';
   }
 
   cancelar() {
-    this.idEditando = '';
+    if (this.addRegistrosDisabled && this.idEditando == '') {
+      this.borrar('');
+    }
+    this.idEditando = '-1';
     const ultimoEditado = this.copyJSON(this.ultimoEditado);
     const pos = this.getValuePos(ultimoEditado.id);
     this.listado[pos] = ultimoEditado;
