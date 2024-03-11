@@ -1,11 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-inscribirse',
   templateUrl: './inscribirse.component.html',
   styleUrls: ['./inscribirse.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ height: 0, opacity: 0 }),
+        animate('0.3s', style({ height: '*', opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class InscribirseComponent {
   @Input() idUser!: number;
@@ -14,7 +23,10 @@ export class InscribirseComponent {
 
   planes: any;
   sedes: any;
+  sedesFiltered: any;
+  localidades: any;
   idPlanSelected: string = '';
+  idLocalidadSelected: number = 0;
   idSedeSelected: number = 0;
   disabledButton: boolean = true;
   loading: boolean = false;
@@ -22,8 +34,13 @@ export class InscribirseComponent {
   constructor(
     private bd: ConeccionService,
     private router: Router,
-  ) {
-    bd.getAll('planes', 'planes').subscribe((planes: any) => {
+  ) {}
+
+  ngOnInit(): void {
+    let params = this.router.parseUrl(this.router.url).queryParams;
+    this.idPlanSelected = params ? params['plan'] : '';
+
+    this.bd.getAll('planes', 'planes').subscribe((planes: any) => {
       for (let i = 0; i < planes.length; i++) {
         planes[i].descripcion = planes[i].descripcion
           .split('-')
@@ -33,9 +50,31 @@ export class InscribirseComponent {
       this.planes = planes;
     });
 
-    bd.getAll('sedes', 'sedes').subscribe((sedes: any) => {
+    this.bd.getAll('sedes', 'sedes').subscribe((sedes: any) => {
       this.sedes = sedes;
+      this.localidades = this.getLocalidades(sedes);
+      this.updateSedes();
     });
+  }
+
+  getLocalidades(sedes: any) {
+    const localidades = sedes.reduce((acc: any[], sede: any) => {
+      if (!acc.find((localidad: any) => localidad.id === sede.idLocalidad)) {
+        acc.push({
+          id: sede.idLocalidad,
+          nombre: sede.localidad.nombre,
+        });
+      }
+      return acc;
+    }, []);
+    return localidades;
+  }
+
+  updateSedes() {
+    this.sedesFiltered = this.sedes.filter(
+      (sede: any) => sede.idLocalidad == this.idLocalidadSelected,
+    );
+    this.idSedeSelected = 0;
   }
 
   createInscription(idPlan: string, idSede: number) {
@@ -60,11 +99,7 @@ export class InscribirseComponent {
   }
 
   updateButtonState() {
-    this.disabledButton = !this.idPlanSelected || !this.idSedeSelected;
-  }
-
-  ngOnInit(): void {
-    let params = this.router.parseUrl(this.router.url).queryParams;
-    this.idPlanSelected = params ? params['plan'] : '';
+    this.disabledButton =
+      !this.idPlanSelected || !this.idLocalidadSelected || !this.idSedeSelected;
   }
 }
