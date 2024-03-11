@@ -8,11 +8,12 @@ import { ImagesService } from 'src/app/services/images.service';
 })
 export class ProductCardComponent {
   @Input() product: any;
+  imgUrl = '';
 
   constructor(private imgServ: ImagesService) {}
 
   ngOnInit(): void {
-    this.product.img = this.imgServ.alterUrl(
+    this.imgUrl = this.imgServ.alterUrl(
       this.imgServ.alterSize(this.product.img, 'medium'),
     );
   }
