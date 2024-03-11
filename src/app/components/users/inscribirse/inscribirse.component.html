@@ -1,8 +1,8 @@
-<div class="form-container">
+<div class="form-container" [@fadeIn]>
   <form class="inscription-form">
     <h1 class="form-container__title">INSCRIPCIÓN A PLAN</h1>
 
-    <div class="planes-list">
+    <div class="list">
       <h3 class="form-container__subtitle">Elige un plan</h3>
       <hr class="form-container__hr" />
       <label class="form-container__label-input" *ngFor="let plan of planes">
@@ -19,10 +19,33 @@
       </label>
     </div>
 
-    <div class="sedes-list">
+    <div class="list">
+      <h3 class="form-container__subtitle">Elige una localidad</h3>
+      <hr class="form-container__hr" />
+      <label
+        class="form-container__label-input"
+        *ngFor="let localidad of localidades"
+      >
+        <input
+          class="form-container__label-input"
+          type="radio"
+          name="localidadesGroup"
+          [(ngModel)]="idLocalidadSelected"
+          value="{{ localidad.id }}"
+          (change)="updateSedes(); updateButtonState()"
+        />
+        {{ localidad.nombre }}
+      </label>
+    </div>
+
+    <div class="list" *ngIf="sedesFiltered.length > 0">
       <h3 class="form-container__subtitle">Elige una sede</h3>
       <hr class="form-container__hr" />
-      <label class="form-container__label-input" *ngFor="let sede of sedes">
+      <label
+        class="form-container__label-input"
+        *ngFor="let sede of sedesFiltered"
+        [@fadeIn]
+      >
         <input
           class="form-container__label-input"
           type="radio"
@@ -31,14 +54,13 @@
           value="{{ sede.id }}"
           (change)="updateButtonState()"
         />
-        {{ sede.direccion + " - " + sede.localidad.nombre }}
+        {{ sede.direccion }}
       </label>
     </div>
 
     <div class="button-container">
       <button
         [disabled]="disabledButton"
-        [ngClass]="{ 'disabled-button': disabledButton }"
         class="pay-button"
         (click)="createInscription(idPlanSelected, idSedeSelected)"
       >
