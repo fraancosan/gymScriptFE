@@ -76,6 +76,39 @@
         </button>
         <!-- <span class="tooltip">Usuarios</span> -->
       </li>
+      <li>
+        <button
+          (click)="cargarDatos('Actividades por Sede', 'sede-actividades')"
+        >
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Sedes-Actividades</span>
+        </button>
+      </li>
+      <li>
+        <button (click)="cargarDatos('Entrenadores', 'entrenadores')">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Entrenadores</span>
+        </button>
+      </li>
+      <li>
+        <button (click)="cargarDatos('Horarios', 'horarios')">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Horarios</span>
+        </button>
+      </li>
+      <li>
+        <button
+          (click)="
+            cargarDatos(
+              'Entrenadores por Sede y Actividad',
+              'sede-act-entrenadores'
+            )
+          "
+        >
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Sede-Act-Entrenador</span>
+        </button>
+      </li>
     </ul>
     <div class="profile_content">
       <div class="profile_details">

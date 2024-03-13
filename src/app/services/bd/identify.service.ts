@@ -323,6 +323,131 @@ export class IdentifyService {
         ];
         break;
       }
+      case 'sede-actividades': {
+        esquema = [
+          {
+            key: 'id',
+            nombre: 'Id',
+            campo: 'input',
+            tipo: 'number',
+            editable: false,
+          },
+          {
+            key: 'idSede',
+            nombre: 'Id Sede',
+            campo: 'input',
+            tipo: 'number',
+            editable: true,
+          },
+          {
+            key: 'idActividad',
+            nombre: 'Id Actividad',
+            campo: 'input',
+            tipo: 'number',
+            editable: true,
+          },
+        ];
+        break;
+      }
+      case 'entrenadores': {
+        esquema = [
+          {
+            key: 'id',
+            nombre: 'Id',
+            campo: 'input',
+            tipo: 'number',
+            editable: false,
+          },
+          {
+            key: 'nombre',
+            nombre: 'Nombre',
+            campo: 'input',
+            tipo: 'text',
+            editable: true,
+          },
+          {
+            key: 'apellido',
+            nombre: 'Apellido',
+            campo: 'input',
+            tipo: 'text',
+            editable: true,
+          },
+          {
+            key: 'telefono',
+            nombre: 'Telefono',
+            campo: 'input',
+            tipo: 'number',
+            editable: true,
+          },
+        ];
+        break;
+      }
+      case 'horarios': {
+        esquema = [
+          {
+            key: 'id',
+            nombre: 'Id',
+            campo: 'input',
+            tipo: 'number',
+            editable: false,
+          },
+          {
+            key: 'horaDesde',
+            nombre: 'Hora Desde',
+            campo: 'input',
+            tipo: 'time',
+            editable: true,
+          },
+          {
+            key: 'horaHasta',
+            nombre: 'Hora Hasta',
+            campo: 'input',
+            tipo: 'time',
+            editable: true,
+          },
+          {
+            key: 'idSedeAct',
+            nombre: 'Id Sede Actividad',
+            campo: 'input',
+            tipo: 'number',
+            editable: true,
+          },
+          {
+            key: 'dia',
+            nombre: 'Dia',
+            campo: 'input',
+            tipo: 'text',
+            editable: true,
+          },
+        ];
+        break;
+      }
+      case 'sede-act-entrenadores': {
+        esquema = [
+          {
+            key: 'id',
+            nombre: 'Id',
+            campo: 'input',
+            tipo: 'number',
+            editable: false,
+          },
+          {
+            key: 'idEntrenador',
+            nombre: 'Id Entrenador',
+            campo: 'input',
+            tipo: 'number',
+            editable: true,
+          },
+          {
+            key: 'idSedeAct',
+            nombre: 'Id Sede Actividad',
+            campo: 'input',
+            tipo: 'number',
+            editable: true,
+          },
+        ];
+        break;
+      }
     }
     return esquema;
   }

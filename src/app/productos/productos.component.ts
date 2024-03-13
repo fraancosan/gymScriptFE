@@ -21,11 +21,10 @@ export class ProductosComponent implements OnInit {
       this.products = data;
       this.filteredProducts = this.products;
 
-      
       this.categories = [
         ...new Set(this.products.map((product) => product.tipo)),
       ];
-      
+
       this.categories.unshift('Todos los productos');
     });
   }
@@ -43,14 +42,10 @@ export class ProductosComponent implements OnInit {
   onSortOrderChanged() {
     if (this.filteredProducts) {
       if (this.sortOrder === 'asc') {
-      // Ordena tus productos en orden ascendente
-      this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    } else {
-      // Ordena tus productos en orden descendente
-      this.filteredProducts.sort((a, b) => b.nombre.localeCompare(a.nombre));
+        this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
+      } else {
+        this.filteredProducts.sort((a, b) => b.nombre.localeCompare(a.nombre));
       }
     }
   }
-
 }
-
