@@ -9,11 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CuotasComponent implements OnInit {
   @Input() inscripcion: any;
-  fechaPago?: string;
-  importe?: number;
-  fechaVenc: string = '';
   estado: string = '';
-  disabledButton: boolean = true;
   loading: boolean = false;
 
   constructor(
@@ -22,27 +18,23 @@ export class CuotasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fechaPago = this.inscripcion.cuota[0].fechaPago;
-    this.fechaVenc = this.inscripcion.cuota[0].fechaVenc;
-    this.importe = this.inscripcion.cuota[0].importe;
-
-    const fechaComparar = new Date(this.fechaVenc);
-    const fechaHoy = new Date();
-    if (fechaComparar < fechaHoy) {
-      this.estado = 'Vencido';
-    } else {
-      this.estado = 'Al dia!';
-    }
-    this.updateButtonState();
+    this.bd.getVencimientoCuota(this.inscripcion.id).subscribe({
+      next: (data: any) => {
+        this.estado = data ? 'Vencido' : 'Al dia!';
+      },
+      error: (error: any) => {
+        this.toastr.error(error.error.msg, 'Error', { timeOut: 1500 });
+      },
+    });
   }
 
-  pagar() {
+  pay() {
     this.loading = true;
     this.bd.pagarCuota(this.inscripcion.id).subscribe({
       next: (data: any) => {
         setTimeout(() => {
           this.loading = false;
-          window.location.reload();
+          window.location.reload(); // no conveniente, buscar alternativa
         }, 300);
       },
       error: (error: any) => {
@@ -50,9 +42,5 @@ export class CuotasComponent implements OnInit {
         this.toastr.error(error.error.msg, 'Error', { timeOut: 1500 });
       },
     });
-  }
-
-  updateButtonState() {
-    this.disabledButton = this.estado == 'Al dia!';
   }
 }

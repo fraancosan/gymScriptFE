@@ -1,0 +1,12 @@
+.flex-modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+}
+
+.img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}

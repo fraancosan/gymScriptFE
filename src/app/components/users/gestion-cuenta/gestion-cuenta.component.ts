@@ -91,7 +91,7 @@ export class GestionCuentaComponent {
         this.toastr.error('No se modificó ningún dato');
         this.cancelar();
       } else {
-        this.bd.update('usuarios', datos).subscribe({
+        this.bd.update('usuarios', datos.id, datos).subscribe({
           next: (data: any) => {
             this.toastr.success('Datos modificados correctamente');
             this.cambiarEditando();

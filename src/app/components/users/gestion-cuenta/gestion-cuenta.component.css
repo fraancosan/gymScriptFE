@@ -5,8 +5,7 @@
   border: 1px solid black;
 }
 
-h1,
-h2 {
+.contenedor__title {
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
 }
@@ -54,15 +53,13 @@ h2 {
   align-items: left;
   padding-left: 10px;
   border-radius: 10px;
-}
-
-input {
   width: 100%;
 }
 
 input:disabled {
   border: 1px solid #ccc;
   box-shadow: none;
+  background-color: #f3f4f5;
 }
 
 .key {
@@ -81,7 +78,7 @@ input:disabled {
   align-items: center;
 }
 
-button {
+.btn {
   max-width: 260px;
   width: 100%;
   min-height: 40px;
@@ -91,6 +88,7 @@ button {
   border-radius: 10px;
   letter-spacing: 0.5px;
   color: white;
+  margin: 5px;
   transition: all 0.2s;
   font-weight: 700;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
@@ -98,8 +96,8 @@ button {
 
 .editar,
 .guardar {
-  background-color: #ffc107;
-  color: #212529;
+  background-color: var(--primary-yellow);
+  color: var(--primary-grey);
 }
 
 .editar:hover,

@@ -18,3 +18,10 @@ body {
   --primary-yellow: #ffc107;
   --primary-grey: #212529;
 }
+
+.spinner {
+  margin-top: 20px;
+  color: var(--primary-yellow);
+  display: flex;
+  justify-content: center;
+}

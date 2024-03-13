@@ -11,6 +11,7 @@ import {
   faTableCellsLarge,
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -26,7 +27,7 @@ export class SideBarComponent {
   gridIcon = faTableCellsLarge;
   logoutIcon = faArrowRightFromBracket;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private localStorageService: LocalStorageService) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -55,7 +56,7 @@ export class SideBarComponent {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    this.localStorageService.removeItem('token');
     this.router.navigate(['/home']);
   }
 

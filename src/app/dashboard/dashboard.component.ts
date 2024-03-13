@@ -6,7 +6,8 @@ import {
   faTableCellsLarge,
 } from '@fortawesome/free-solid-svg-icons';
 import { ConeccionService } from '../services/bd/coneccion.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtAuthService } from '../services/auth/jwt-auth.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,12 +24,13 @@ export class DashboardComponent implements OnInit {
 
   nombreUser: string = '';
   apellidoUser: string = '';
-  jwtHelper = new JwtHelperService();
-  token: string = localStorage.getItem('token') || '';
+  token: string = this.localStorageService.getItem('token') || '';
 
   constructor(
     private router: Router,
     private bd: ConeccionService,
+    private jwtAuth: JwtAuthService,
+    private localStorageService: LocalStorageService
   ) {}
 
   @HostListener('window:resize', ['$event'])
@@ -45,7 +47,7 @@ export class DashboardComponent implements OnInit {
     // se pone tabla por defecto
     this.cargarDatos('Productos', 'productos');
 
-    let tokenDecoded = this.jwtHelper.decodeToken(this.token);
+    let tokenDecoded = this.jwtAuth.decodeToken(this.token);
     this.bd
       .getOne('usuarios', 'usuario', tokenDecoded.id)
       .subscribe((data: any) => {
@@ -65,7 +67,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    this.localStorageService.removeItem('token');
     this.router.navigate(['/signIn']);
   }
 

@@ -26,6 +26,7 @@ export class ProductosComponent implements OnInit {
       ];
 
       this.categories.unshift('Todos los productos');
+      this.onSortOrderChanged();
     });
   }
 
@@ -42,8 +43,15 @@ export class ProductosComponent implements OnInit {
   onSortOrderChanged() {
     if (this.filteredProducts) {
       if (this.sortOrder === 'asc') {
+<<<<<<< HEAD
         this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
       } else {
+=======
+        // Ordena tus productos en orden ascendente
+        this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
+      } else {
+        // Ordena tus productos en orden descendente
+>>>>>>> 2c62d036487232b58a2e8768cb791b0396e7a9ef
         this.filteredProducts.sort((a, b) => b.nombre.localeCompare(a.nombre));
       }
     }

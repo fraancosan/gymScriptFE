@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: white;
   padding: 30px 0;
 }
@@ -46,20 +46,11 @@
   margin-top: 20px;
 }
 
-.final-text p {
-  margin-right: 10px;
-}
-
 .errorHandling {
   color: red;
   font-size: 13px;
   margin-top: 5px;
   margin-bottom: 0;
-}
-
-.spinner {
-  margin-top: 20px;
-  color: var(--primary-yellow);
 }
 
 /* Se eliminan botones de aumento y decremento de inputs number */

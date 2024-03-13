@@ -47,22 +47,12 @@
   margin-top: 20px;
 }
 
-.final-text p {
-  margin-right: 10px;
-}
-
 .errorHandling {
   color: red;
   font-size: 13px;
   margin-top: 5px;
   margin-bottom: 0;
 }
-
-.spinner {
-  margin-top: 20px;
-  color: var(--primary-yellow);
-}
-
 
 @media (max-width: 480px) {
   .login-form {

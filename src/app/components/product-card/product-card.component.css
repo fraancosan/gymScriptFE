@@ -23,19 +23,171 @@
   padding: 0 10px;
 }
 
-.card-info h2 {
+.card-info__name {
   font-size: 1.42rem;
   font-weight: bold;
   color: #fff;
 }
 
-.card-info p {
+.card-info__description {
   font-size: 1rem;
   color: #c4c4c4;
 }
 
-@media (min-width: 768px) {
+/* Media max width querys */
+
+@media (max-width: 1205px) {
   .card-container {
-    width: 250px;
+    width: 300px;
+    height: 300px;
+    margin: 18px 36px;
+  }
+
+  .card-img {
+    padding: 0 18px;
+    width: 225px;
+    height: 225px;
+  }
+
+  .card-info {
+    padding: 0 9px;
+  }
+
+  .card-info__name {
+    font-size: 1.065rem;
+  }
+  
+  .card-info__description {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 988px) {
+  .card-container {
+    height: 400px;
+    width: 400px;
+    margin: 20px 40px;
+  }
+
+  .card-img {
+    padding: 0 20px;
+    width: 300px;
+    height: 300px;
+  }  
+
+  .card-info {
+    padding: 0 10px;
+  }
+
+  .card-info__name {
+    font-size: 1.42rem;
+  }
+  
+  .card-info__description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 724px) {
+  .card-container {
+    width: 300px;
+    height: 300px;
+    margin: 18px 36px;
+  }
+
+  .card-img {
+    padding: 0 18px;
+    width: 225px;
+    height: 225px;
+  }
+
+  .card-info {
+    padding: 0 9px;
+  }
+
+  .card-info__name {
+    font-size: 1.065rem;
+  }
+  
+  .card-info__description {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .card-container {
+    width: 220px;
+    height: 220px;
+    margin: 15px 30px;
+  }
+
+  .card-img {
+    padding: 0 15px;
+    width: 188px;
+    height: 188px;
+  }
+
+  .card-info {
+    padding: 0 7.8px;
+  }
+
+  .card-info__name {
+    font-size: 0.9rem;
+  }
+  
+  .card-info__description {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .card-container {
+    width: 300px;
+    height: 300px;
+    margin: 18px 36px;
+  }
+
+  .card-img {
+    padding: 0 18px;
+    width: 225px;
+    height: 225px;
+  }
+
+  .card-info {
+    padding: 0 9px;
+  }
+
+  .card-info__name {
+    font-size: 1.065rem;
+  }
+  
+  .card-info__description {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 372px) {
+  .card-container {
+    width: 220px;
+    height: 220px;
+    margin: 15px 30px;
+  }
+
+  .card-img {
+    padding: 0 15px;
+    width: 188px;
+    height: 188px;
+  }
+
+  .card-info {
+    padding: 0 7.8px;
+  }
+
+  .card-info__name {
+    font-size: 0.9rem;
+  }
+  
+  .card-info__description {
+    font-size: 0.65rem;
   }
 }

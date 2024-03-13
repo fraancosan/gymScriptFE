@@ -43,8 +43,8 @@ export class IdentifyService {
           {
             key: 'img',
             nombre: 'Imagen',
-            campo: 'input',
-            tipo: 'text',
+            campo: 'image',
+            tipo: 'file',
             editable: true,
           },
         ];

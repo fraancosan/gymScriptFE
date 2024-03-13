@@ -62,7 +62,7 @@ export class GestionInscripcionComponent {
         id: this.inscripcion.id,
         fechaBaja: new Date(),
       };
-      this.bd.update('inscripciones', baja).subscribe((data: any) => {
+      this.bd.update('inscripciones', baja.id, baja).subscribe((data: any) => {
         this.router.navigate(['/home']);
       });
     }
@@ -80,7 +80,7 @@ export class GestionInscripcionComponent {
         id: this.inscripcion.id,
         fechaBaja: new Date(),
       };
-      this.bd.update('inscripciones', baja).subscribe((data: any) => {
+      this.bd.update('inscripciones', baja.id, baja).subscribe((data: any) => {
         this.sinInscripcion.emit(true);
       });
     }

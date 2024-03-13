@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="logo_contect">
       <div class="logo">
-        <img src="assets/logo.png" class="img-logo" alt="logo" />
+        <img src="assets/logo.webp" class="img-logo" alt="logo" />
         <div class="logo_name">GymScript</div>
       </div>
       <fa-icon
@@ -13,20 +13,26 @@
       ></fa-icon>
     </div>
     <ul class="nav_list">
-      <li>
-        <button (click)="exportarDato('cuotas')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="exportarDato('cuotas')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Cuotas</span>
         </button>
       </li>
-      <li>
-        <button (click)="exportarDato('gestion')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="exportarDato('actividades')">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Actividades</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="exportarDato('gestion')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Inscripcion</span>
         </button>
       </li>
-      <li>
-        <button (click)="exportarDato('cuenta')">
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="exportarDato('cuenta')">
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Cuenta</span>
         </button>
@@ -35,7 +41,7 @@
     <div class="profile_content">
       <div class="profile_details">
         <div class="profile_info">
-          <img src="assets/p.png" alt="profileImg" />
+          <img class="profile_info__img" src="assets/p.webp" alt="profileImg" />
           <div class="name_job">
             <div class="name">
               {{ usuario.nombre + " " + usuario.apellido }}

@@ -1,5 +1,5 @@
 <section class="section-login">
-  <a routerLink="/home"><img src="assets/logo.png" class="imagenLogo" /></a>
+  <a routerLink="/home"><img src="assets/logo.webp" class="imagenLogo" /></a>
   <form class="login-form" [formGroup]="loginForm">
     <h1 class="title-form">Inicia Sesión</h1>
     <div class="container-email">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <button type="submit" (click)="login()" class="btn btn-warning">
+    <button name="submit" type="submit" (click)="login()" class="btn btn-warning">
       Iniciar Sesion
     </button>
     <div class="spinner" *ngIf="loading">

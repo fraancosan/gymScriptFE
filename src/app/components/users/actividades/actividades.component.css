@@ -1,0 +1,116 @@
+.container-actividad-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.container-actividad-title__main-title {
+  font-size: 40px;
+  font-weight: 700;
+  padding-bottom: 5px;
+}
+
+.container-actividad-title__sub-title {
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.container-actividad-flex-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.container-actividad-info {
+  width: 80%;
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+}
+
+.container-actividad-info-insc {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #f3f4f5;
+  border-radius: 5px;
+  padding: 20px 1.25rem;
+  margin-bottom: 40px;
+}
+
+.container-actividad-info-insc__celda {
+  font-size: 15px;
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.accordion-actividad {
+  width: 100%;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+  margin-bottom: 15px;
+}
+
+/*NO ES ESTILO FINAL*/
+:host >>> .card.customClass .card-header {
+  background-color: var(--primary-yellow);
+  border-radius: 5px;
+}
+
+:host >>> .card.customClass .card-header:hover {
+  background-color: #fbda2c;
+  transition: all 0.3s;
+}
+
+:host >>> .btn-link,
+.btn {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 715px) {
+  .container-actividad-info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .container-actividad-info {
+    width: 100%;
+  }
+  .container-actividad-title {
+    padding: 10px 0;
+  }
+  .container-actividad-title__main-title {
+    font-size: 25px;
+  }
+  .container-actividad-title__sub-title {
+    font-size: 10px;
+  }
+  .container-actividad-info-insc {
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .container-actividad-info-insc__celda {
+    padding: 5px;
+    font-size: 10px;
+  }
+  :host >>> .btn-link {
+    font-size: 12px;
+  }
+}

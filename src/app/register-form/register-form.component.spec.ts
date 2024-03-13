@@ -59,19 +59,19 @@ describe('RegisterFormComponent', () => {
 
   it('DNI field should be valid if its a number', () => {
     let dni = component.registerForm.controls.dni;
-    dni.setValue(1234);
+    dni.setValue('1234');
     expect(dni.valid).toBeTrue();
   });
 
   it("DNI field should be invalid if it's less than one character", () => {
     let dni = component.registerForm.controls.dni;
-    dni.setValue(0);
+    dni.setValue('0');
     expect(dni.valid).toBeFalsy();
   });
 
   it("DNI field should be invalid if it's more than 8 characters", () => {
     let dni = component.registerForm.controls.dni;
-    dni.setValue(123456789);
+    dni.setValue('123456789');
     expect(dni.valid).toBeFalsy();
   });
 

@@ -1,5 +1,5 @@
 <div *ngIf="todoBien" class="contenedor">
-  <h1>Gestionar Cuenta</h1>
+  <h1 class="contenedor__title">Gestionar Cuenta</h1>
 
   <!-- Informacion de planes -->
   <form class="tabla" [formGroup]="form">
@@ -124,16 +124,16 @@
     </div>
   </form>
   <div class="botones">
-    <button (click)="editar()" class="editar" *ngIf="bloqEdicion">
+    <button (click)="editar()" class="editar btn" *ngIf="bloqEdicion">
       Editar
     </button>
-    <button (click)="eliminarCuenta()" class="baja" *ngIf="bloqEdicion">
+    <button (click)="eliminarCuenta()" class="baja btn" *ngIf="bloqEdicion">
       Eliminar Cuenta
     </button>
-    <button (click)="guardarDatos()" class="guardar" *ngIf="!bloqEdicion">
+    <button (click)="guardarDatos()" class="guardar btn" *ngIf="!bloqEdicion">
       Guardar
     </button>
-    <button (click)="cancelar()" class="cancelar" *ngIf="!bloqEdicion">
+    <button (click)="cancelar()" class="cancelar btn" *ngIf="!bloqEdicion">
       Cancelar
     </button>
   </div>
