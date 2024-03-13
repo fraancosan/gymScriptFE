@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   faFacebook,
@@ -24,4 +25,28 @@ export class FooterComponent {
   locationIcon = faLocationDot;
   phoneIcon = faPhone;
   envelopeIcon = faEnvelope;
+
+  constructor(
+    private viewPortScroller: ViewportScroller,
+  ) {}
+
+  irAHome() {
+    this.viewPortScroller.scrollToPosition([0, 0]);
+  }
+
+  irANosotros() {
+    this.viewPortScroller.scrollToAnchor('Nosotros');
+  }
+
+  irAPlanes() {
+    this.viewPortScroller.scrollToAnchor('planes');
+  }
+
+  irASedes() {
+    this.viewPortScroller.scrollToAnchor('sedes');
+  }
+
+  irAProductos() {
+    this.viewPortScroller.scrollToPosition([0, 0]);
+  }
 }

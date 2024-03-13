@@ -55,13 +55,13 @@
             <div class="footer-social-icon">
               <span class="footer-social-icon__follow">Síguenos</span>
               <div class="social-icons-container">
-                <a href="#"
+                <a
                   ><fa-icon [icon]="facebookIcon" class="icon social-icons-container__a"></fa-icon
                 ></a>
-                <a href="#"
+                <a
                   ><fa-icon [icon]="twitterIcon" class="icon social-icons-container__a"></fa-icon
                 ></a>
-                <a href="#"
+                <a
                   ><fa-icon [icon]="instagramIcon" class="icon social-icons-container__a"></fa-icon
                 ></a>
               </div>
@@ -74,10 +74,36 @@
               <h3 class="footer-widget-heading__links">Links Útiles</h3>
             </div>
             <div class="links-container">
-              <a class="links-container__a" href="#">Inicio</a>
-              <a class="links-container__a" href="#">Contacto</a>
-              <a class="links-container__a" href="#">Nosotros</a>
-              <a class="links-container__a" href="#">Servicios</a>
+              <a
+                 [routerLink]="['/home']"
+                 class="links-container__a"
+                 (click)="irAHome()"
+                >Inicio</a
+              >
+              <a
+                [routerLink]="['/home']"
+                class="links-container__a"
+                (click)="irANosotros()"
+                 >Nosotros</a
+              >
+              <a
+                 [routerLink]="['/home']"
+                 class="links-container__a"
+                 (click)="irAPlanes()"
+                >Planes</a
+              >
+              <a
+                 [routerLink]="['/home']"
+                 class="links-container__a"
+                 (click)="irASedes()"
+                >Sedes</a
+              >
+              <a
+                 [routerLink]="['/productos']"
+                 class="links-container__a"
+                 (click)="irAProductos()"
+                >Productos</a
+              >
             </div>
           </div>
         </div>

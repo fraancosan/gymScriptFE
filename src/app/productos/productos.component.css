@@ -161,6 +161,17 @@
   }
 }
 
+@media (max-width: 988px) {
+  .search-bar {
+    width: 90%;
+  }
+  
+  .search-bar::placeholder {
+    text-align: center;
+  }
+
+}
+
 @media (max-width: 550px) {
   .second-container {
     flex-direction: column;
