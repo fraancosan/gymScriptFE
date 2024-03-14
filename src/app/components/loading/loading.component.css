@@ -9,7 +9,6 @@
   background-color: var(--primary-grey);
   z-index: 2000;
   position: fixed;
-  animation: fadeOut 2.6s forwards; 
 }
 
 /* Esta es la configuracion principal del logo */
@@ -133,10 +132,9 @@
 }
 
 
-/* Si el disposito tiene una pantalla mayor a 500px se muestra el loading */
-@media (min-width: 500px) {
+
+@media only screen and (max-width: 500px) {
   .pantalla {
-    animation: fadeOut 0.4s 2.5s forwards;
-    -webkit-animation: fadeOut 0.4s 2.5s forwards;
+      display: none;
   }
 }
