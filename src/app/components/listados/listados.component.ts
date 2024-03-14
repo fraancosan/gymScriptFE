@@ -3,6 +3,8 @@ import { IdentifyService } from '../../services/bd/identify.service';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { ToastrService } from 'ngx-toastr';
 import { esquemaTabla } from 'src/app/interfaces/interfaces';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'; 
 
 @Component({
   selector: 'app-listados',
@@ -20,11 +22,14 @@ export class ListadosComponent {
   ultimoEditado: any;
   idEditando = '-1';
   file: any;
+  bsModalRef?: BsModalRef;
+  
 
   constructor(
     private identifyService: IdentifyService,
     private bd: ConeccionService,
     private toastr: ToastrService,
+    private modalService: BsModalService,
   ) {}
 
   ngOnChanges(): void {
@@ -35,23 +40,25 @@ export class ListadosComponent {
   }
 
   borrar(idItem: any) {
-    this.idEditando = '-1';
-    const pos = this.getValuePos(idItem);
-    if (idItem != '') {
-      this.bd.delete(this.tabla, idItem).subscribe((data) => {
-        this.toastr.success(data.msg, 'Exito', { timeOut: 1500 });
-        this.listado.splice(pos, 1);
-        if (this.listado.length === 0) {
-          this.addRegistro();
-        }
-      });
-    } else if (this.listado.length == 1) {
-      // Se quiere borrar el registro que se esta creando (ES NUEVO)
-      this.toastr.error('No se puede borrar', 'Error');
-    } else {
-      this.addRegistrosDisabled = false;
-      this.listado.splice(pos, 1);
-    }
+    this.bsModalRef = this.modalService.show(ModalConfirmComponent);
+    this.bsModalRef.content.confirmed.subscribe(() => {
+      this.idEditando = '-1';
+      const pos = this.getValuePos(idItem);
+      if (idItem != '') {
+        this.bd.delete(this.tabla, idItem).subscribe((data) => {
+          this.toastr.success(data.msg, 'Exito', { timeOut: 1500 });
+          this.listado.splice(pos, 1);
+          if (this.listado.length === 0) {
+            this.addRegistro();
+          }
+        });
+      } else if (this.listado.length == 1) {
+        // Se quiere borrar el registro que se esta creando (ES NUEVO)
+        this.toastr.error('No se puede borrar', 'Error');
+      } else {
+        this.addRegistrosDisabled = false;
+      }
+    });
   }
 
   editar(idItem: any) {
