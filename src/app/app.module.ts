@@ -34,7 +34,6 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AccordionActComponent } from './components/accordion-act/accordion-act.component';
 import { ModalImagenProductoComponent } from './components/modal-imagen-producto/modal-imagen-producto.component';
-import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +62,6 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
     ActividadesComponent,
     AccordionActComponent,
     ModalImagenProductoComponent,
-    ModalConfirmComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,8 +3,6 @@ import { IdentifyService } from '../../services/bd/identify.service';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { ToastrService } from 'ngx-toastr';
 import { esquemaTabla } from 'src/app/interfaces/interfaces';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'; 
 
 @Component({
   selector: 'app-listados',
@@ -22,14 +20,12 @@ export class ListadosComponent {
   ultimoEditado: any;
   idEditando = '-1';
   file: any;
-  bsModalRef?: BsModalRef;
   
 
   constructor(
     private identifyService: IdentifyService,
     private bd: ConeccionService,
     private toastr: ToastrService,
-    private modalService: BsModalService,
   ) {}
 
   ngOnChanges(): void {
@@ -40,8 +36,7 @@ export class ListadosComponent {
   }
 
   borrar(idItem: any) {
-    this.bsModalRef = this.modalService.show(ModalConfirmComponent);
-    this.bsModalRef.content.confirmed.subscribe(() => {
+    if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
       this.idEditando = '-1';
       const pos = this.getValuePos(idItem);
       if (idItem != '') {
@@ -57,8 +52,9 @@ export class ListadosComponent {
         this.toastr.error('No se puede borrar', 'Error');
       } else {
         this.addRegistrosDisabled = false;
+        this.listado.splice(pos, 1);
       }
-    });
+    }
   }
 
   editar(idItem: any) {
