@@ -116,6 +116,17 @@ export class ConeccionService {
       );
   }
 
+  getUltimaCuota(idInscripcion: number) {
+    return this.http
+      .get(this.urlBack + 'cuotas?ultima=true&idInscripcion=' + idInscripcion)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.toastr.error(error.error.msg, 'Error');
+          return throwError(() => error);
+        }),
+      );
+  }
+
   getVencimientoCuota(idInscripcion: number) {
     return this.http
       .get(this.urlBack + 'cuotas/vencimiento/' + idInscripcion)

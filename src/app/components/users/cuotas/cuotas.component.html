@@ -30,7 +30,7 @@
     </div>
     <div class="pagar">
       <button
-        [disabled]="estado === 'Al dia!'"
+        [disabled]="estado !== 'Vencido'"
         class="pay-button"
         (click)="pay()"
       >
