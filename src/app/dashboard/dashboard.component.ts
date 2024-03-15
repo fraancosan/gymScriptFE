@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
   gridIcon = faTableCellsLarge;
   logoutIcon = faArrowRightFromBracket;
 
+  closed = false;
+
   nombreUser: string = '';
   apellidoUser: string = '';
   token: string = this.localStorageService.getItem('token') || '';
@@ -30,7 +32,7 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private bd: ConeccionService,
     private jwtAuth: JwtAuthService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
   ) {}
 
   @HostListener('window:resize', ['$event'])
@@ -57,13 +59,7 @@ export class DashboardComponent implements OnInit {
   }
 
   closeMenu(): void {
-    let sideBar = document.getElementsByClassName('sidebar');
-
-    if (sideBar[0].classList.contains('close')) {
-      sideBar[0].classList.remove('close');
-    } else {
-      sideBar[0].classList.add('close');
-    }
+    this.closed = !this.closed;
   }
 
   logout(): void {

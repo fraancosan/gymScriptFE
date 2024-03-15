@@ -8,7 +8,6 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
 }
 
 .sidebar {
@@ -27,8 +26,11 @@
   height: 50px;
   width: 100%;
   align-items: center;
-  margin-bottom: 40px;
   transition: all 0.3s ease;
+}
+
+.logo_content {
+  margin-bottom: 40px;
 }
 
 .img-logo {
@@ -58,13 +60,30 @@
   cursor: pointer;
 }
 
-.nav_list_container {
-  height: 450px;
-  overflow: auto;
+.nav_list {
+  overflow-y: auto;
+  height: auto;
+  max-height: calc(100% - 200px);
 }
 
-.nav_list {
-  margin-top: 20px;
+/* Estilo para la barra de desplazamiento */
+.nav_list::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Estilo para el track (la barra) de la barra de desplazamiento */
+.nav_list::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Estilo para el thumb (el control deslizante) de la barra de desplazamiento */
+.nav_list::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Estilo para el thumb cuando se pasa el mouse sobre él */
+.nav_list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .nav_list__item {
@@ -193,6 +212,10 @@
   left: 88px;
 }
 
+.close > .logo_content {
+  margin-bottom: 20px;
+}
+
 /* LISTADO */
 
 .listado {
@@ -211,53 +234,5 @@
     position: absolute;
     z-index: 100;
     width: 100%;
-  }
-}
-
-@media (max-height: 630px) {
-  .nav_list_container {
-  height: 400px;
-  }
-}
-
-@media (max-height: 570px) {
-  .nav_list_container {
-  height: 350px;
-  }
-}
-
-@media (max-height: 520px) {
-  .nav_list_container {
-  height: 300px;
-  }
-}
-
-@media (max-height: 470px) {
-  .nav_list_container {
-  height: 250px;
-  }
-}
-
-@media (max-height: 420px) {
-  .nav_list_container {
-  height: 200px;
-  }
-}
-
-@media (max-height: 370px) {
-  .nav_list_container {
-  height: 150px;
-  }
-}
-
-@media (max-height: 320px) {
-  .nav_list_container {
-  height: 100px;
-  }
-}
-
-@media (max-height: 270px) {
-  .nav_list_container {
-  height: 50px;
   }
 }
