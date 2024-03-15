@@ -11,8 +11,15 @@
       [(ngModel)]="filterProduct"
     />
     <div class="container-order-options">
-      <label class="container-order-options__label" for="sortOrderSelect">Ordenar por:</label>
-      <select id="sortOrderSelect" class="order-options" [(ngModel)]="sortOrder" (ngModelChange)="onSortOrderChanged()">
+      <label class="container-order-options__label" for="sortOrderSelect"
+        >Ordenar por:</label
+      >
+      <select
+        id="sortOrderSelect"
+        class="order-options"
+        [(ngModel)]="sortOrder"
+        (ngModelChange)="onSortOrderChanged()"
+      >
         <option class="option-item" value="asc">Nombre A-Z</option>
         <option class="option-item" value="desc">Nombre Z-A</option>
       </select>

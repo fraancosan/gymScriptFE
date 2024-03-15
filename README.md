@@ -26,6 +26,9 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 > [!NOTE]
 > Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad el backend entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
 
+> [!IMPORTANT]
+> Dado que estamos usando servidores gratuitos, las imagenes no son persistentes y se borran automaticamente luego de un corto plazo de tiempo
+
 ## Comandos Útiles
 
 ### Instalacion Proyecto
