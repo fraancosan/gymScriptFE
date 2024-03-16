@@ -20,7 +20,6 @@ export class ListadosComponent {
   ultimoEditado: any;
   idEditando = '-1';
   file: any;
-  
 
   constructor(
     private identifyService: IdentifyService,
