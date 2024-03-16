@@ -1,0 +1,87 @@
+<h1 class="contenedor__title">Control Acceso</h1>
+<div class="wrapper">
+    <div id="search-container">
+        <input 
+            type="search" 
+            id="search-input" 
+            placeholder="ID"
+            (keyup.enter)="cargarDatos()"
+            [(ngModel)]="idUser"
+        />
+        <button id="search" (click)="cargarDatos()">Check-in</button>
+    
+    </div>
+
+</div>
+
+
+
+
+<div *ngIf="todoBien" class="contenedor">
+  <form class="tabla">
+    <div class="fila">
+      <div class="columna key">Nombre:</div>
+      <input
+      formControlName="nombre"
+      class="columna"
+      type="text"
+      value="{{ usuario.nombre }}"
+      readonly
+      />
+    </div>
+
+    <div class="fila">
+      <div class="columna key">Apellido:</div>
+      <input
+        formControlName="apellido"
+        class="columna"
+        type="text"
+        value="{{ usuario.apellido }}"
+        readonly
+      />
+    </div>
+
+    <div class="fila">
+      <div class="columna key">DNI:</div>
+      <input
+        formControlName="dni"
+        class="columna"
+        type="number"
+        value="{{ usuario.dni }}"
+        readonly
+      />
+    </div>
+
+    <div class="fila">
+      <div class="columna key">Telefono:</div>
+      <input
+        formControlName="telefono"
+        class="columna"
+        type="number"
+        value="{{ usuario.telefono }}"
+        readonly
+      />
+    </div>
+
+
+    <div class="fila" *ngIf="estado === 'inscripto'">
+      <div class="columna key">Fecha Vencimiento:</div>
+          <input
+            formControlName="vencimiento"
+            class="columna"
+            type="date"
+            value="{{ inscripcion.cuota[0].fechaVenc }}"
+            readonly
+      />
+    </div>
+
+
+  </form>  
+
+
+  <div [ngClass]="{ 'franja-verde': situacion === 'Al dia!', 'franja-roja': situacion === 'Vencido' ||  estado === 'noInscripto'}" class="situacion">
+    {{ estado === 'noInscripto' ? 'Inscripcion inactiva' : situacion }}
+  </div>
+
+
+</div>

@@ -18,6 +18,9 @@ export class DashboardComponent implements OnInit {
   header?: string;
   tabla?: string;
 
+  mostrarCheckIn = false;
+  mostrarListados = true;
+
   menuIcon = faBars;
   gridIcon = faTableCellsLarge;
   logoutIcon = faArrowRightFromBracket;
@@ -27,6 +30,7 @@ export class DashboardComponent implements OnInit {
   nombreUser: string = '';
   apellidoUser: string = '';
   token: string = this.localStorageService.getItem('token') || '';
+
 
   constructor(
     private router: Router,
@@ -74,5 +78,15 @@ export class DashboardComponent implements OnInit {
     }
     this.header = header;
     this.tabla = tabla;
+  }
+
+  toggleCheckIn() {
+    this.mostrarCheckIn = !this.mostrarCheckIn;
+    this.mostrarListados = !this.mostrarCheckIn;
+  }
+
+  toggleListado() {
+    this.mostrarCheckIn = false;
+    this.mostrarListados = true;
   }
 }

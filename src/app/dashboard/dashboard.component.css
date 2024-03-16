@@ -21,6 +21,14 @@
   transition: all 0.3s ease;
 }
 
+hr {
+  border: none;
+  border-top: 2px solid white;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 .logo {
   display: flex;
   height: 50px;
@@ -216,6 +224,21 @@
   margin-bottom: 20px;
 }
 
+.sidebar.close ~ .check-in {
+  width: calc(100% - 88px);
+  left: 88px;
+}
+
+.check-in {
+  position: relative;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  height: 100%;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
 /* LISTADO */
 
 .listado {
@@ -234,5 +257,11 @@
     position: absolute;
     z-index: 100;
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .check-in {
+    left:0;
   }
 }

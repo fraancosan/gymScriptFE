@@ -16,7 +16,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Productos', 'productos')"
+          (click)="cargarDatos('Productos', 'productos') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Productos</span>
@@ -26,7 +26,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Provincias', 'provincias')"
+          (click)="cargarDatos('Provincias', 'provincias') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Provincias</span>
@@ -36,7 +36,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Localidades', 'localidades')"
+          (click)="cargarDatos('Localidades', 'localidades') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Localidades</span>
@@ -46,7 +46,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Actividades', 'actividades')"
+          (click)="cargarDatos('Actividades', 'actividades') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Actividades</span>
@@ -56,7 +56,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Planes', 'planes')"
+          (click)="cargarDatos('Planes', 'planes') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Planes</span>
@@ -66,7 +66,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Usuarios', 'usuarios')"
+          (click)="cargarDatos('Usuarios', 'usuarios') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Usuarios</span>
@@ -76,7 +76,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Inscripciones', 'inscripciones')"
+          (click)="cargarDatos('Inscripciones', 'inscripciones') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Inscripciones</span>
@@ -86,7 +86,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Actividad por Plan', 'plan-actividades')"
+          (click)="cargarDatos('Actividad por Plan', 'plan-actividades') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Planes-Actividades</span>
@@ -96,7 +96,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Sedes', 'sedes')"
+          (click)="cargarDatos('Sedes', 'sedes') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Sedes</span>
@@ -106,7 +106,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Actividades por Sede', 'sede-actividades')"
+          (click)="cargarDatos('Actividades por Sede', 'sede-actividades') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Sedes-Actividades</span>
@@ -115,7 +115,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Entrenadores', 'entrenadores')"
+          (click)="cargarDatos('Entrenadores', 'entrenadores') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Entrenadores</span>
@@ -124,7 +124,7 @@
       <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
-          (click)="cargarDatos('Horarios', 'horarios')"
+          (click)="cargarDatos('Horarios', 'horarios') ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Horarios</span>
@@ -137,11 +137,17 @@
             cargarDatos(
               'Entrenadores por Sede y Actividad',
               'sede-act-entrenadores'
-            )
-          "
+            ) ; toggleListado()"
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Sede-Act-Entrenador</span>
+        </button>
+      </li>
+      <hr>
+      <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="toggleCheckIn()">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Check-in</span>
         </button>
       </li>
     </ul>
@@ -162,7 +168,10 @@
       </div>
     </div>
   </div>
-  <div class="listado">
+  <div class="listado" *ngIf="mostrarListados">
     <app-listados header="{{ header }}" tabla="{{ tabla }}"></app-listados>
+  </div>
+  <div  class="check-in" *ngIf="mostrarCheckIn">
+    <app-check-in></app-check-in>
   </div>
 </div>
