@@ -16,7 +16,10 @@
           Sede: <b>{{ inscripcion.sede.direccion }}</b>
         </h3>
       </div>
-      <div class="container-actividad-info-actividades">
+      <div
+        class="container-actividad-info-actividades"
+        *ngIf="actividades; else loading"
+      >
         <accordion [isAnimated]="true">
           <accordion-group
             [panelClass]="customClass"
@@ -35,3 +38,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

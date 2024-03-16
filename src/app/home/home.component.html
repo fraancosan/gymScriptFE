@@ -9,7 +9,7 @@
   <div class="container">
     <h1 class="titles">ELEGÍ TU PLAN</h1>
   </div>
-  <div class="containerCards">
+  <div class="containerCards" *ngIf="planes; else loading">
     <div class="row">
       <app-card
         *ngFor="let card of planes"
@@ -24,3 +24,7 @@
 </div>
 <app-sedes></app-sedes>
 <app-footer></app-footer>
+
+<ng-template #loading>
+  <app-spinner margin="180px 0 0 0"></app-spinner>
+</ng-template>

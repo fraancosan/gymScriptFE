@@ -10,10 +10,9 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 export class GestionInscripcionComponent {
   @Input() inscripcion: any = {};
   @Output() sinInscripcion = new EventEmitter<boolean>();
-  todoBien: boolean = false;
 
   descripcionPlan: string = '';
-  localidad: any = {};
+  localidad: any;
   fecha: any;
 
   constructor(
@@ -28,7 +27,6 @@ export class GestionInscripcionComponent {
       .getOne('localidades', 'Localidad', this.inscripcion.sede.idLocalidad)
       .subscribe((data: any) => {
         this.localidad = data;
-        this.todoBien = true;
       });
 
     let meses = [
@@ -55,9 +53,7 @@ export class GestionInscripcionComponent {
   }
 
   darDeBaja() {
-    // Primero se pone un mensaje de confirmación
     if (confirm('¿Está seguro que desea dar de baja esta inscripción?')) {
-      // Json a enviar
       let baja = {
         id: this.inscripcion.id,
         fechaBaja: new Date(),
@@ -69,13 +65,11 @@ export class GestionInscripcionComponent {
   }
 
   cambiarPlan() {
-    // Primero se pone un mensaje de confirmación
     if (
       confirm(
         '¿Está seguro que desea cambiar el plan o la sede? Se le volvera a cobrar la inscripción',
       )
     ) {
-      // Json a enviar
       let baja = {
         id: this.inscripcion.id,
         fechaBaja: new Date(),

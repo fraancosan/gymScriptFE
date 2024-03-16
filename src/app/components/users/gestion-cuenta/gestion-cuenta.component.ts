@@ -10,8 +10,7 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 })
 export class GestionCuentaComponent {
   @Input() idUser!: number;
-  todoBien: boolean = false;
-  usuario: any = {};
+  usuario: any;
   bloqEdicion: boolean = false;
 
   form = this.formBuilder.group({
@@ -171,7 +170,6 @@ export class GestionCuentaComponent {
     this.bd
       .getOne('usuarios', 'usuario', this.idUser)
       .subscribe((data: any) => {
-        this.todoBien = true;
         delete data.rol;
         data.contraseña = '';
         this.usuario = data;
