@@ -9,4 +9,5 @@ export class SpinnerComponent {
   // optionals params
   @Input() margin?: string;
   @Input() color?: string;
+  @Input() centrado: boolean = false;
 }

@@ -1,4 +1,8 @@
-<div class="spinner" [ngStyle]="{ color: color, margin: margin }">
+<div
+  class="spinner"
+  [ngStyle]="{ color: color, margin: margin }"
+  [ngClass]="centrado ? 'centrado' : null"
+>
   <div class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
