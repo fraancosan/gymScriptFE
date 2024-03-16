@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
-  styles: [],
+  styleUrls: ['./spinner.component.css'],
 })
-export class SpinnerComponent {}
+export class SpinnerComponent {
+  // optionals params
+  @Input() margin?: string;
+  @Input() color?: string;
+}

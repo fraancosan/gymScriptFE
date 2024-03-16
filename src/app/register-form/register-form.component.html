@@ -134,12 +134,15 @@
       </div>
     </div>
 
-    <button name="submit" type="submit" (click)="register()" class="btn btn-warning">
+    <button
+      name="submit"
+      type="submit"
+      (click)="register()"
+      class="btn btn-warning"
+    >
       Registrarse
     </button>
-    <div class="spinner" *ngIf="loading">
-      <app-spinner></app-spinner>
-    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
     <p class="final-text">
       ¿Ya tenes una cuenta? <a routerLink="/signIn">Logueate</a>
     </p>

@@ -1,0 +1,6 @@
+.spinner {
+  margin-top: 20px;
+  color: var(--primary-yellow);
+  display: flex;
+  justify-content: center;
+}
