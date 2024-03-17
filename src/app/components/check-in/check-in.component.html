@@ -1,23 +1,23 @@
 <h1 class="contenedor__title">Control Acceso</h1>
-<div class="wrapper">
-    <div id="search-container">
-        <input 
-            type="search" 
-            id="search-input" 
-            placeholder="ID"
-            (keyup.enter)="cargarDatos()"
-            [(ngModel)]="idUser"
-        />
-        <button id="search" (click)="cargarDatos()">Check-in</button>
-    
-    </div>
 
+<div id="search-container">
+  <input 
+    type="search" 
+    id="search-input" 
+    placeholder="ID"
+    (keyup.enter)="cargarDatos()"
+    [(ngModel)]="idUser"
+  />
+  <button id="search" (click)="cargarDatos()">Check-in</button>
+    
 </div>
 
 
+<div *ngIf="isLoading" class="contenedor-spinner">
+  <app-spinner [centrado]="true"></app-spinner>
+</div>
 
-
-<div *ngIf="todoBien" class="contenedor">
+<div *ngIf="todoBien && usuario" class="contenedor">
   <form class="tabla">
     <div class="fila">
       <div class="columna key">Nombre:</div>
@@ -83,5 +83,5 @@
     {{ estado === 'noInscripto' ? 'Inscripcion inactiva' : situacion }}
   </div>
 
-
 </div>
+

@@ -14,6 +14,13 @@
     </div>
     <ul class="nav_list">
       <li class="nav_list__item">
+        <button class="nav_list__item-btn" (click)="toggleCheckIn()">
+          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <span class="nav_item">Check-in</span>
+        </button>
+      </li>
+      <hr>
+      <li class="nav_list__item">
         <button
           class="nav_list__item-btn"
           (click)="cargarDatos('Productos', 'productos') ; toggleListado()"
@@ -141,13 +148,6 @@
         >
           <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
           <span class="nav_item">Sede-Act-Entrenador</span>
-        </button>
-      </li>
-      <hr>
-      <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="toggleCheckIn()">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Check-in</span>
         </button>
       </li>
     </ul>

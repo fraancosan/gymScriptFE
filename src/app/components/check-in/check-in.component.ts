@@ -16,15 +16,18 @@ export class CheckInComponent {
   estado: string = '';
   situacion: string = '';
   inscripcion: any;
+  isLoading = false;
 
 
   constructor(private bd: ConeccionService, private toastr: ToastrService) { }
 
   cargarDatos() {
+    this.usuario = null;
+    this.isLoading = true;
     if (!this.idUser) {
+      this.isLoading = false;
       return;
     }
-  
     this.bd.getOne('usuarios', 'usuario', this.idUser).subscribe((data: any) => {
       this.usuario = data;
       this.todoBien = true;
@@ -37,21 +40,25 @@ export class CheckInComponent {
           this.bd.getVencimientoCuota(this.inscripcion.id).subscribe({
             next: (data: any) => {
               this.situacion = data ? 'Vencido' : 'Al dia!';
+              this.isLoading = false;
             },
             error: (error: any) => {
               this.toastr.error(error.error.msg, 'Error', { timeOut: 1500 });
+              this.isLoading = false;
             },
           });
         },
         error: (error) => {
           this.estado = 'noInscripto';
+          this.isLoading = false;
         },
       });
     }, error => {
       console.error('Error al cargar los datos del usuario:', error);
       this.todoBien = false;
-    });
-    
+      this.isLoading = false;
+    }); 
+
   }
 
 
