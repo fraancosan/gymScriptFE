@@ -70,6 +70,8 @@ hr {
 
 .nav_list {
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
   height: auto;
   max-height: calc(100% - 200px);
 }
@@ -262,6 +264,6 @@ hr {
 
 @media (max-width: 480px) {
   .check-in {
-    left:0;
+    left: 0;
   }
 }
