@@ -164,4 +164,15 @@ export class ConeccionService {
         }),
       );
   }
+
+  unSuscribe(idUsuario: number) {
+    return this.http
+      .patch(this.urlBack + 'inscripciones/unSubscribe/' + idUsuario, null)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.toastr.error(error.error.msg, 'Error');
+          return throwError(() => error);
+        }),
+      );
+  }
 }
