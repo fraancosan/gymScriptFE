@@ -5,6 +5,7 @@
     <div class="list">
       <h3 class="form-container__subtitle">Elige un plan</h3>
       <hr class="form-container__hr" />
+      <app-spinner *ngIf="!planes"></app-spinner>
       <label class="form-container__label-input" *ngFor="let plan of planes">
         <input
           class="form-container__label-input"
@@ -22,6 +23,7 @@
     <div class="list">
       <h3 class="form-container__subtitle">Elige una localidad</h3>
       <hr class="form-container__hr" />
+      <app-spinner *ngIf="!localidades"></app-spinner>
       <label
         class="form-container__label-input"
         *ngFor="let localidad of localidades"
