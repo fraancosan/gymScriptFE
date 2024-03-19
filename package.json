@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm i -g @angular/cli@16.2 && npm i && ng serve",
+    "start": "npm i @angular/cli@16.2 && npm i && ng serve",
     "prod": "ng serve -c=production",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.0",
-    "@angular/cli": "~16.2.0",
+    "@angular/cli": "16.2",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
     "cypress": "^13.6.6",
