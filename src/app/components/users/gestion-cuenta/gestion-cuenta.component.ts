@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestion-cuenta',
@@ -49,6 +50,7 @@ export class GestionCuentaComponent {
 
   constructor(
     private bd: ConeccionService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
   ) {}
@@ -120,6 +122,22 @@ export class GestionCuentaComponent {
         '¿Está seguro que desea eliminar su cuenta?\nEsta acción no se puede deshacer',
       )
     ) {
+      this.bd.unSuscribe(this.idUser).subscribe({
+        next: () => {
+          this.bd.delete('usuarios', this.idUser.toString()).subscribe({
+            next: () => {
+              this.toastr.success('Cuenta eliminada correctamente');
+              this.router.navigate(['/home']);
+            },
+            error: () => {
+              this.toastr.error('No se pudo eliminar la cuenta');
+            },
+          });
+        },
+        error: () => {
+          this.toastr.error('No se pudo eliminar la cuenta');
+        },
+      });
     }
   }
 
