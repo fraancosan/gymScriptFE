@@ -175,4 +175,13 @@ export class ConeccionService {
         }),
       );
   }
+
+  accessControl(dni: number) {
+    return this.http.get(this.urlBack + 'check-in/accessControl/' + dni).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.toastr.error(error.error.msg, 'Error');
+        return throwError(() => error);
+      }),
+    );
+  }
 }
