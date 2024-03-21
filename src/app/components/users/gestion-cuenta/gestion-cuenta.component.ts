@@ -122,17 +122,10 @@ export class GestionCuentaComponent {
         '¿Está seguro que desea eliminar su cuenta?\nEsta acción no se puede deshacer',
       )
     ) {
-      this.bd.unSuscribe(this.idUser).subscribe({
+      this.bd.delete('usuarios', this.idUser.toString()).subscribe({
         next: () => {
-          this.bd.delete('usuarios', this.idUser.toString()).subscribe({
-            next: () => {
-              this.toastr.success('Cuenta eliminada correctamente');
-              this.router.navigate(['/home']);
-            },
-            error: () => {
-              this.toastr.error('No se pudo eliminar la cuenta');
-            },
-          });
+          this.toastr.success('Cuenta eliminada correctamente');
+          this.router.navigate(['/']);
         },
         error: () => {
           this.toastr.error('No se pudo eliminar la cuenta');

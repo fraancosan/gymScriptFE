@@ -165,17 +165,6 @@ export class ConeccionService {
       );
   }
 
-  unSuscribe(idUsuario: number) {
-    return this.http
-      .patch(this.urlBack + 'inscripciones/unSubscribe/' + idUsuario, null)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          this.toastr.error(error.error.msg, 'Error');
-          return throwError(() => error);
-        }),
-      );
-  }
-
   accessControl(dni: number) {
     return this.http.get(this.urlBack + 'check-in/accessControl/' + dni).pipe(
       catchError((error: HttpErrorResponse) => {
