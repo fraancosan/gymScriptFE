@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalActividadesPlanComponent } from 'src/app/components/modal-actividades-plan/modal-actividades-plan.component';
+
 
 @Component({
   selector: 'app-inscribirse',
@@ -30,10 +33,12 @@ export class InscribirseComponent {
   idSedeSelected: number = 0;
   disabledButton: boolean = true;
   loading: boolean = false;
+  modalRef!: BsModalRef;
 
   constructor(
     private bd: ConeccionService,
     private router: Router,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -101,5 +106,13 @@ export class InscribirseComponent {
   updateButtonState() {
     this.disabledButton =
       !this.idPlanSelected || !this.idLocalidadSelected || !this.idSedeSelected;
+  }
+
+  openModal(planId: string) {
+    this.modalRef = this.modalService.show(ModalActividadesPlanComponent, {
+      initialState: {
+        planId: planId
+      }
+    });
   }
 }

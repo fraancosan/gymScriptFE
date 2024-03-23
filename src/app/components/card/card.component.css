@@ -55,6 +55,19 @@
   list-style: none;
 }
 
+.ver-actividades {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  color: var(--primary-yellow);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 .gg-check-o {
   height: 21px;
   width: 21px;
@@ -110,6 +123,6 @@
 @media (min-width: 1372px) {
   .contenedor {
     width: 300px;
-    height: 440px;
+    min-height: 440px;
   }
 }

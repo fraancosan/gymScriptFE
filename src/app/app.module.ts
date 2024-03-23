@@ -35,6 +35,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AccordionActComponent } from './components/accordion-act/accordion-act.component';
 import { ModalImagenProductoComponent } from './components/modal-imagen-producto/modal-imagen-producto.component';
 import { CheckInComponent } from './components/check-in/check-in.component';
+import { ModalActividadesPlanComponent } from './components/modal-actividades-plan/modal-actividades-plan.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { CheckInComponent } from './components/check-in/check-in.component';
     AccordionActComponent,
     ModalImagenProductoComponent,
     CheckInComponent,
+    ModalActividadesPlanComponent,
   ],
   imports: [
     BrowserModule,
