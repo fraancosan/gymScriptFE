@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="modal-title">Actividades del Plan</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <ul>
+      <li *ngFor="let actividad of actividades">{{ actividad.actividad.nombre }}</li>
+    </ul>
+</div>
