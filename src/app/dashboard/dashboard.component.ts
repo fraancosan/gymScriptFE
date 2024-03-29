@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
   apellidoUser: string = '';
   token: string = this.localStorageService.getItem('token') || '';
 
-
   constructor(
     private router: Router,
     private bd: ConeccionService,
@@ -41,11 +40,10 @@ export class DashboardComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
-    let sideBar = document.getElementsByClassName('sidebar');
     if (event.target.innerWidth < 1100) {
-      sideBar[0].classList.add('close');
+      this.closed = true;
     } else {
-      sideBar[0].classList.remove('close');
+      this.closed = false;
     }
   }
 
@@ -73,8 +71,7 @@ export class DashboardComponent implements OnInit {
 
   cargarDatos(header: string, tabla: string): void {
     if (window.innerWidth < 1100) {
-      let sideBar = document.getElementsByClassName('sidebar');
-      sideBar[0].classList.add('close');
+      this.closed = true;
     }
     this.header = header;
     this.tabla = tabla;

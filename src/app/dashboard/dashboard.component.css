@@ -6,39 +6,45 @@
 
 .container_dash {
   position: relative;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100svh;
   width: 100%;
 }
 
 .sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 250px;
   height: 100%;
-  position: fixed;
   background-color: #14213d;
   top: 0;
   left: 0;
-  padding: 6px 14px;
+  padding: 1rem 14px;
   transition: all 0.3s ease;
+  gap: 2rem;
 }
 
 hr {
   border: none;
   border-top: 2px solid white;
   width: 100%;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin: 10px 0;
+}
+
+.logo_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .logo {
   display: flex;
-  height: 50px;
-  width: 100%;
   align-items: center;
   transition: all 0.3s ease;
-}
-
-.logo_content {
-  margin-bottom: 40px;
 }
 
 .img-logo {
@@ -47,6 +53,7 @@ hr {
   align-items: center;
   object-fit: contain;
 }
+
 .logo_name {
   color: white;
   font-size: 20px;
@@ -54,16 +61,8 @@ hr {
   padding-left: 10px;
 }
 
-#btn {
+.btn-close-icon {
   color: aliceblue;
-  position: absolute;
-  top: 6px;
-  left: 90%;
-  font-size: 20px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  transform: translateX(-50%);
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -72,8 +71,7 @@ hr {
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
-  height: auto;
-  max-height: calc(100% - 200px);
+  height: 100%;
 }
 
 /* Estilo para la barra de desplazamiento */
@@ -100,9 +98,7 @@ hr {
   list-style: none;
   position: relative;
   height: 50px;
-  margin: 0 auto;
   border-radius: 5px;
-  margin: 0 5px;
   transition: all 0.3s ease;
   line-height: 50px;
 }
@@ -110,6 +106,8 @@ hr {
 .nav_list__item-btn {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
   text-decoration: none;
   color: white;
   font-size: 16px;
@@ -125,32 +123,20 @@ hr {
   background-color: white;
 }
 
-.icon {
-  height: 50px;
-  min-width: 50px;
-  border-radius: 12px;
-  line-height: 50px;
-  text-align: center;
-}
-
 .profile_content {
-  position: absolute;
   color: white;
-  bottom: 0;
-  left: 0;
   width: 100%;
   background-color: #14213d;
-}
-
-.profile_details {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .profile_info {
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .profile_info__img {
@@ -167,7 +153,7 @@ hr {
 
 .name {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .rol {
@@ -197,15 +183,22 @@ hr {
 .sidebar.close {
   width: 88px;
 }
+.sidebar.close .logo_content {
+  flex-direction: column;
+  justify-content: center;
+  flex-flow: column-reverse;
+}
+
 .sidebar.close .logo {
-  margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.sidebar.close #btn {
-  left: 50%;
+
+.sidebar.close .nav_list__item-btn {
+  justify-content: center;
 }
+
 .sidebar.close .nav_item {
   display: none;
 }
@@ -220,10 +213,6 @@ hr {
 .sidebar.close ~ .listado {
   width: calc(100% - 88px);
   left: 88px;
-}
-
-.close > .logo_content {
-  margin-bottom: 20px;
 }
 
 .sidebar.close ~ .check-in {
@@ -253,17 +242,12 @@ hr {
   transition: all 0.3s ease;
 }
 
-/* MEDIA QUERIES */
-@media (max-width: 480px) {
-  .sidebar {
-    position: absolute;
-    z-index: 100;
-    width: 100%;
-  }
-}
-
 @media (max-width: 480px) {
   .check-in {
     left: 0;
+  }
+  .sidebar {
+    z-index: 100;
+    width: 100%;
   }
 }

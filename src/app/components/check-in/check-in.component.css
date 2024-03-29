@@ -3,17 +3,14 @@
   border: 1px solid black;
 }
 
-.contenedor__title {
+.title {
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 50px;
+  text-align: center;
 }
 
-#search-container {
+.search-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,17 +18,17 @@
   margin: 10px;
 }
 
-#search-container input:focus {
+.search-container input:focus {
   outline: none;
   border: none;
   border-bottom: 2px solid #14213d;
 }
 
-#search-container input {
+.search-container input {
   border: none;
   background-color: transparent;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   border-bottom: 2px solid #14213d;
   padding: 0.5em 0.3em;
   margin: auto;
@@ -39,7 +36,7 @@
   height: 36px;
 }
 
-#search-container button {
+.search-container button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,11 +51,11 @@
   transition: all 0.3s;
   margin-top: 20px;
   height: 50px;
+  max-width: 350px;
   width: 100%;
-  max-width: 100px;
 }
 
-#search-container button:hover {
+.search-container button:hover {
   border: 1px solid #fff;
   color: #ffffff;
   background-color: #000000;
@@ -102,13 +99,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-}
-
-.contenedor-spinner {
-  position: absolute;
-  top: 250px;
-  left: 0;
-  right: 0;
 }
 
 .fila {
@@ -173,13 +163,5 @@ input[type="number"] {
   .fila {
     font-size: 12px;
     flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  #search-container input,
-  #search-container button {
-    width: 100%;
-    max-width: none;
   }
 }

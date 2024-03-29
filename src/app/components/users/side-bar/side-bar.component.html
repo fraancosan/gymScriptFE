@@ -1,58 +1,57 @@
 <div class="container_dash">
-  <div class="sidebar">
-    <div class="logo_contect">
+  <div class="sidebar" [ngClass]="{ close: close }">
+    <div class="logo_content">
       <div class="logo">
         <img src="assets/logo.webp" class="img-logo" alt="logo" />
         <div class="logo_name">GymScript</div>
       </div>
       <fa-icon
+        size="lg"
+        [fixedWidth]="true"
         [icon]="menuIcon"
-        class="icon"
-        id="btn"
+        class="text-center btn-close-icon"
         (click)="closeMenu()"
       ></fa-icon>
     </div>
     <ul class="nav_list">
       <li class="nav_list__item">
         <button class="nav_list__item-btn" (click)="exportarDato('cuotas')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Cuotas</span>
         </button>
       </li>
       <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="exportarDato('actividades')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+        <button
+          class="nav_list__item-btn"
+          (click)="exportarDato('actividades')"
+        >
+          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Actividades</span>
         </button>
       </li>
       <li class="nav_list__item">
         <button class="nav_list__item-btn" (click)="exportarDato('gestion')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Inscripcion</span>
         </button>
       </li>
       <li class="nav_list__item">
         <button class="nav_list__item-btn" (click)="exportarDato('cuenta')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Cuenta</span>
         </button>
       </li>
     </ul>
     <div class="profile_content">
-      <div class="profile_details">
-        <div class="profile_info">
-          <img class="profile_info__img" src="assets/p.webp" alt="profileImg" />
-          <div class="name_job">
-            <div class="name">
-              {{ usuario.nombre + " " + usuario.apellido }}
-            </div>
-            <div class="rol">{{ usuario.rol }}</div>
-          </div>
+      <div class="profile_info">
+        <img class="profile_info__img" src="assets/p.webp" alt="profileImg" />
+        <div class="name">
+          {{ usuario.nombre + " " + usuario.apellido }}
         </div>
-        <button class="btn_LogOut" (click)="logout()">
-          <fa-icon [icon]="logoutIcon" class="icon"></fa-icon>
-        </button>
       </div>
+      <button class="btn_LogOut" (click)="logout()">
+        <fa-icon [icon]="logoutIcon" [fixedWidth]="true"></fa-icon>
+      </button>
     </div>
   </div>
 </div>

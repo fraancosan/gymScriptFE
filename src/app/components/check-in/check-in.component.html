@@ -1,19 +1,17 @@
-<h1 class="contenedor__title">Control Acceso</h1>
+<h1 class="title">Control Acceso</h1>
 
-<div id="search-container">
+<div class="search-container">
   <input
     type="search"
-    id="search-input"
+    class="search-input"
     placeholder="ID"
     (keyup.enter)="cargarDatos()"
     [(ngModel)]="idUser"
   />
-  <button id="search" (click)="cargarDatos()">Check-in</button>
+  <button class="search" (click)="cargarDatos()">Check-in</button>
 </div>
 
-<div *ngIf="isLoading" class="contenedor-spinner">
-  <app-spinner [centrado]="true"></app-spinner>
-</div>
+<app-spinner *ngIf="isLoading" margin="30px 0"></app-spinner>
 
 <div class="contenedor">
   <div *ngIf="usuario" class="tabla">

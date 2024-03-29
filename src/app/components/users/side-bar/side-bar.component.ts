@@ -27,32 +27,29 @@ export class SideBarComponent {
   gridIcon = faTableCellsLarge;
   logoutIcon = faArrowRightFromBracket;
 
-  constructor(private router: Router, private localStorageService: LocalStorageService) {}
+  close = false;
+
+  constructor(
+    private router: Router,
+    private localStorageService: LocalStorageService,
+  ) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
-    let sideBar = document.getElementsByClassName('sidebar');
     if (event.target.innerWidth < 1100) {
-      sideBar[0].classList.add('close');
-      this.closeSidebar.emit(false);
-    } else {
-      sideBar[0].classList.remove('close');
+      this.close = true;
       this.closeSidebar.emit(true);
+    } else {
+      this.close = false;
+      this.closeSidebar.emit(false);
     }
   }
 
   ngOnInit(): void {}
 
   closeMenu(): void {
-    let sideBar = document.getElementsByClassName('sidebar');
-
-    if (sideBar[0].classList.contains('close')) {
-      sideBar[0].classList.remove('close');
-      this.closeSidebar.emit(true);
-    } else {
-      sideBar[0].classList.add('close');
-      this.closeSidebar.emit(false);
-    }
+    this.close = !this.close;
+    this.closeSidebar.emit(this.close);
   }
 
   logout(): void {
@@ -62,9 +59,8 @@ export class SideBarComponent {
 
   exportarDato(irA: string) {
     if (window.innerWidth < 1100) {
-      let sideBar = document.getElementsByClassName('sidebar');
-      sideBar[0].classList.add('close');
-      this.closeSidebar.emit(false);
+      this.close = true;
+      this.closeSidebar.emit(this.close);
     }
     this.queHacer.emit(irA);
   }
