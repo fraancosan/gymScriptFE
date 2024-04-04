@@ -1,6 +1,7 @@
 .container-cards {
   display: flex;
   flex-wrap: wrap;
+  gap: 5px;
 }
 
 .post-card {
@@ -12,7 +13,6 @@
   padding: 10px 10px;
   transition: all 0.2s ease-in;
   border-radius: 10px;
-  margin: 5px;
 }
 
 .post-card:hover {
@@ -37,7 +37,7 @@
   background-color: #212529;
   color: #f3f4f5;
   align-items: center;
-  padding: 15px;
+  padding: 0.5rem;
   justify-content: center;
 }
 
