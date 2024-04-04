@@ -117,6 +117,7 @@ hr {
   background-color: transparent;
   border: none;
   width: 100%;
+  padding: 0 0.5rem;
 }
 .nav_list__item-btn:hover {
   color: #14213d;
