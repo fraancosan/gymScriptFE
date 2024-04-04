@@ -3,7 +3,18 @@ import { Router } from '@angular/router';
 import {
   faArrowRightFromBracket,
   faBars,
+  faBasketShopping,
+  faCalendarDays,
+  faCity,
+  faClipboard,
+  faFileLines,
+  faGlobe,
+  faLocationDot,
+  faPeoplePulling,
+  faPersonRunning,
   faTableCellsLarge,
+  faUser,
+  faUserCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { ConeccionService } from '../services/bd/coneccion.service';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
@@ -23,6 +34,17 @@ export class DashboardComponent implements OnInit {
 
   menuIcon = faBars;
   gridIcon = faTableCellsLarge;
+  checkinIcon = faUserCheck;
+  productoIcon = faBasketShopping;
+  provinciaIcon = faGlobe;
+  localidadIcon = faCity;
+  actividadesIcon = faPersonRunning;
+  planIcon = faFileLines;
+  userIcon = faUser;
+  inscripcionIcon = faClipboard;
+  sedeIcon = faLocationDot;
+  entrenadorIcon = faPeoplePulling;
+  horarioIcon = faCalendarDays;
   logoutIcon = faArrowRightFromBracket;
 
   closed = false;

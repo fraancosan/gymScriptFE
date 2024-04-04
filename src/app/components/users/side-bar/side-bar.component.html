@@ -16,7 +16,7 @@
     <ul class="nav_list">
       <li class="nav_list__item">
         <button class="nav_list__item-btn" (click)="exportarDato('cuotas')">
-          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
+          <fa-icon [icon]="cuotaIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Cuotas</span>
         </button>
       </li>
@@ -25,19 +25,19 @@
           class="nav_list__item-btn"
           (click)="exportarDato('actividades')"
         >
-          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
+          <fa-icon [icon]="actividadesIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Actividades</span>
         </button>
       </li>
       <li class="nav_list__item">
         <button class="nav_list__item-btn" (click)="exportarDato('gestion')">
-          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
+          <fa-icon [icon]="inscripcionIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Inscripcion</span>
         </button>
       </li>
       <li class="nav_list__item">
         <button class="nav_list__item-btn" (click)="exportarDato('cuenta')">
-          <fa-icon [icon]="gridIcon" [fixedWidth]="true"></fa-icon>
+          <fa-icon [icon]="cuentaIcon" [fixedWidth]="true"></fa-icon>
           <span class="nav_item">Cuenta</span>
         </button>
       </li>

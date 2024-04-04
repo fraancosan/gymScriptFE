@@ -6,8 +6,12 @@ import {
   HostListener,
 } from '@angular/core';
 import {
+  faAddressCard,
   faArrowRightFromBracket,
   faBars,
+  faClipboard,
+  faPersonRunning,
+  faReceipt,
   faTableCellsLarge,
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
@@ -25,6 +29,10 @@ export class SideBarComponent {
 
   menuIcon = faBars;
   gridIcon = faTableCellsLarge;
+  cuotaIcon = faReceipt;
+  actividadesIcon = faPersonRunning;
+  inscripcionIcon = faClipboard;
+  cuentaIcon = faAddressCard;
   logoutIcon = faArrowRightFromBracket;
 
   close = false;
