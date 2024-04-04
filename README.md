@@ -15,7 +15,7 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 - [**FrontEnd (Actual)**](https://github.com/fraancosan/gymScriptFE)
 - [**BackEnd**](https://github.com/JoaquinZubiri/ServidorDSW)
 
-## [Descripción de Negocio](https://docs.google.com/document/d/1It50uhM5KP0xtz7-1U0BHvZYmDdUesr554C8exSc3dE/edit)
+## [Descripción de Negocio](https://drive.google.com/file/d/1wwekkTi99xBK9NEA6BUtu4bnYpEpjds7/view?usp=sharing)
 
 ## Visualizacion del proyecto
 
@@ -31,18 +31,22 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 
 ## Comandos Útiles
 
-### Instalacion Proyecto
+### Principal
+
 > [!NOTE]
 > En la instalacion se instala tambien la versión adecuada de angular
 
 - Instalación: npm run start
 - Iniciar proyecto
-  - En consola escribir: ng serve
+  - Segun entorno:
+    - Dev: ng serve
+    - Prod: npm run prod
   - El servidor se creara en: http://localhost:4200/
+- Deploy: ng deploy
 
 ### Tests
 
 - Unit Testing: npm run test
 - E2E Testing:
-  - Via consola: npm run test:e2e
   - Via Interfaz: npm run cypress:open
+  - Via consola: npm run test:e2e
