@@ -15,7 +15,7 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 - [**FrontEnd (Actual)**](https://github.com/fraancosan/gymScriptFE)
 - [**BackEnd**](https://github.com/JoaquinZubiri/ServidorDSW)
 
-## [Descripción de Negocio](https://docs.google.com/document/d/1It50uhM5KP0xtz7-1U0BHvZYmDdUesr554C8exSc3dE/edit)
+## [Descripción de Negocio](https://drive.google.com/file/d/1wwekkTi99xBK9NEA6BUtu4bnYpEpjds7/view?usp=sharing)
 
 ## Visualizacion del proyecto
 
