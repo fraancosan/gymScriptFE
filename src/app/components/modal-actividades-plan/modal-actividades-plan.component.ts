@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class ModalActividadesPlanComponent implements OnInit {
   @Input() planId!: string;
   actividades?: any[];
+  isLoading = false;
 
 
   constructor(public modalRef: BsModalRef, private bd: ConeccionService, private toastr: ToastrService) { }
@@ -21,12 +22,15 @@ export class ModalActividadesPlanComponent implements OnInit {
   }
   
   getActividades() {
+    this.isLoading = true;
     this.bd.getActividadesPlan(+this.planId).subscribe({
       next: (data: any) => {
         this.actividades = data;
+        this.isLoading = false;
       },
       error: (error: any) => {
         this.toastr.error(error.error.msg, 'Error', { timeOut: 1500 });
+        this.isLoading = false;
       },
     });
   }

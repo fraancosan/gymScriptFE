@@ -1,3 +1,4 @@
+
 <div class="modal-header">
     <h4 class="modal-title">Actividades del Plan</h4>
     <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
@@ -6,7 +7,8 @@
 </div>
 
 <div class="modal-body">
-    <ul>
+    <app-spinner *ngIf="isLoading" [centrado]="true"></app-spinner> 
+    <ul *ngIf="!isLoading">
       <li *ngFor="let actividad of actividades">{{ actividad.actividad.nombre }}</li>
     </ul>
 </div>
