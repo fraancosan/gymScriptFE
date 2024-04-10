@@ -23,7 +23,7 @@ Trabajo Practico de Desarrollo de Software UTN FRRO
 
 [**Video Demostracion**](https://youtu.be/u8zHUxM0M9Q)
 
-[**(Viejo) Video Demostracion - Primera Version**](https://youtu.be/uJMpIO53Nyk)
+[*(Viejo) Video Demostracion - Primera Version*](https://youtu.be/uJMpIO53Nyk)
 
 > [!NOTE]
 > Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad el backend entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
