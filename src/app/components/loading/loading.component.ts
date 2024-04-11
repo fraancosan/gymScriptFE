@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./loading.component.css'],
 })
 export class LoadingComponent {
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

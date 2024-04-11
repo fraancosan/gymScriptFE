@@ -5,7 +5,6 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalActividadesPlanComponent } from 'src/app/components/modal-actividades-plan/modal-actividades-plan.component';
 
-
 @Component({
   selector: 'app-inscribirse',
   templateUrl: './inscribirse.component.html',
@@ -38,7 +37,7 @@ export class InscribirseComponent {
   constructor(
     private bd: ConeccionService,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
   ) {}
 
   ngOnInit(): void {
@@ -111,8 +110,8 @@ export class InscribirseComponent {
   openModal(planId: string) {
     this.modalRef = this.modalService.show(ModalActividadesPlanComponent, {
       initialState: {
-        planId: planId
-      }
+        planId: planId,
+      },
     });
   }
 }

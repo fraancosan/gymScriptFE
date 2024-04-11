@@ -12,8 +12,11 @@ export class AppComponent {
   isLoading = true;
   isHomeRoute = false;
 
-  constructor(public headerService: HeaderServiceService, private router: Router) {
-    this.router.events.subscribe(event => {
+  constructor(
+    public headerService: HeaderServiceService,
+    private router: Router,
+  ) {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isHomeRoute = event.url === '/home' || event.url === '/';
         if (this.primeraVez && this.isHomeRoute) {

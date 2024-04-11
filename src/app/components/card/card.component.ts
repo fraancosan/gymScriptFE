@@ -15,7 +15,10 @@ export class CardComponent {
   @Input() id: string = '';
   modalRef!: BsModalRef;
 
-  constructor(private router: Router, private modalService: BsModalService) {}
+  constructor(
+    private router: Router,
+    private modalService: BsModalService,
+  ) {}
 
   navigateToUser() {
     this.router.navigate(['/user'], {
@@ -27,8 +30,8 @@ export class CardComponent {
   openModal() {
     this.modalRef = this.modalService.show(ModalActividadesPlanComponent, {
       initialState: {
-        planId: this.id
-      }
+        planId: this.id,
+      },
     });
   }
 }

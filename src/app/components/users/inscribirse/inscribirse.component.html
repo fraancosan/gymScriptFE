@@ -20,7 +20,12 @@
           {{ plan.precioMensual | currency: "USD" : "symbol" : "1.0-0" }}
         </div>
 
-        <button class="ver-actividades" (click)="openModal(plan.id); $event.stopPropagation()">Ver actividades</button>
+        <button
+          class="ver-actividades"
+          (click)="openModal(plan.id); $event.stopPropagation()"
+        >
+          Ver actividades
+        </button>
       </label>
     </div>
 

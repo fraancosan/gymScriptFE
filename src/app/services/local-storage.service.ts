@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
-
-  constructor() { }
+  constructor() {}
 
   setItem(key: string, value: string) {
     localStorage.setItem(key, value);
   }
 
-  getItem(key: string){
+  getItem(key: string) {
     return localStorage.getItem(key);
   }
 
-  removeItem(key: string){
+  removeItem(key: string) {
     localStorage.removeItem(key);
   }
-    
 }

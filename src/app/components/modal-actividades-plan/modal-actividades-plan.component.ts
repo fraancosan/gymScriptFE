@@ -7,20 +7,22 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-modal-actividades-plan',
   templateUrl: './modal-actividades-plan.component.html',
-
 })
 export class ModalActividadesPlanComponent implements OnInit {
   @Input() planId!: string;
   actividades?: any[];
   isLoading = false;
 
-
-  constructor(public modalRef: BsModalRef, private bd: ConeccionService, private toastr: ToastrService) { }
+  constructor(
+    public modalRef: BsModalRef,
+    private bd: ConeccionService,
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit() {
     this.getActividades();
   }
-  
+
   getActividades() {
     this.isLoading = true;
     this.bd.getActividadesPlan(+this.planId).subscribe({
@@ -34,9 +36,4 @@ export class ModalActividadesPlanComponent implements OnInit {
       },
     });
   }
- 
-
 }
-
-
-

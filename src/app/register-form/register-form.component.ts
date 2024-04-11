@@ -17,7 +17,7 @@ export class RegisterFormComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     apellido: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
     dni: [
-      '', 
+      '',
       [
         Validators.required,
         Validators.min(1),
@@ -93,7 +93,6 @@ export class RegisterFormComponent implements OnInit {
             this.loading = false;
             this.toastr.error(error, 'Error');
           },
-          
         });
     } else {
       this.registerForm.markAllAsTouched();

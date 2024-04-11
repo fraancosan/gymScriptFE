@@ -26,9 +26,7 @@ export class FooterComponent {
   phoneIcon = faPhone;
   envelopeIcon = faEnvelope;
 
-  constructor(
-    private viewPortScroller: ViewportScroller,
-  ) {}
+  constructor(private viewPortScroller: ViewportScroller) {}
 
   irAHome() {
     this.viewPortScroller.scrollToPosition([0, 0]);
