@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ConeccionService } from 'src/app/services/bd/coneccion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestion-cuenta',
@@ -10,8 +11,7 @@ import { ConeccionService } from 'src/app/services/bd/coneccion.service';
 })
 export class GestionCuentaComponent {
   @Input() idUser!: number;
-  todoBien: boolean = false;
-  usuario: any = {};
+  usuario: any;
   bloqEdicion: boolean = false;
 
   form = this.formBuilder.group({
@@ -50,6 +50,7 @@ export class GestionCuentaComponent {
 
   constructor(
     private bd: ConeccionService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
   ) {}
@@ -121,6 +122,15 @@ export class GestionCuentaComponent {
         '¿Está seguro que desea eliminar su cuenta?\nEsta acción no se puede deshacer',
       )
     ) {
+      this.bd.delete('usuarios', this.idUser.toString()).subscribe({
+        next: () => {
+          this.toastr.success('Cuenta eliminada correctamente');
+          this.router.navigate(['/']);
+        },
+        error: () => {
+          this.toastr.error('No se pudo eliminar la cuenta');
+        },
+      });
     }
   }
 
@@ -171,7 +181,6 @@ export class GestionCuentaComponent {
     this.bd
       .getOne('usuarios', 'usuario', this.idUser)
       .subscribe((data: any) => {
-        this.todoBien = true;
         delete data.rol;
         data.contraseña = '';
         this.usuario = data;

@@ -14,7 +14,13 @@ export class UserComponent {
   idUser: number = 0;
   irA: string = 'cuotas';
 
-  constructor(private bd: ConeccionService, private jwtAuth: JwtAuthService, private localStorageService:LocalStorageService ) {}
+  close = false;
+
+  constructor(
+    private bd: ConeccionService,
+    private jwtAuth: JwtAuthService,
+    private localStorageService: LocalStorageService,
+  ) {}
 
   ngOnInit(): void {
     let token = this.localStorageService.getItem('token')!;
@@ -36,12 +42,7 @@ export class UserComponent {
   }
 
   onCloseSidebar(event: boolean) {
-    let content = document.getElementsByTagName('main');
-    if (event) {
-      content[0].classList.remove('close');
-    } else {
-      content[0].classList.add('close');
-    }
+    this.close = event;
   }
 
   queHacer(orden: string) {

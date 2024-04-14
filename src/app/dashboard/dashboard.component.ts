@@ -3,7 +3,18 @@ import { Router } from '@angular/router';
 import {
   faArrowRightFromBracket,
   faBars,
+  faBasketShopping,
+  faCalendarDays,
+  faCity,
+  faClipboard,
+  faFileLines,
+  faGlobe,
+  faLocationDot,
+  faPeoplePulling,
+  faPersonRunning,
   faTableCellsLarge,
+  faUser,
+  faUserCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { ConeccionService } from '../services/bd/coneccion.service';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
@@ -18,9 +29,25 @@ export class DashboardComponent implements OnInit {
   header?: string;
   tabla?: string;
 
+  mostrarCheckIn = false;
+  mostrarListados = true;
+
   menuIcon = faBars;
   gridIcon = faTableCellsLarge;
+  checkinIcon = faUserCheck;
+  productoIcon = faBasketShopping;
+  provinciaIcon = faGlobe;
+  localidadIcon = faCity;
+  actividadesIcon = faPersonRunning;
+  planIcon = faFileLines;
+  userIcon = faUser;
+  inscripcionIcon = faClipboard;
+  sedeIcon = faLocationDot;
+  entrenadorIcon = faPeoplePulling;
+  horarioIcon = faCalendarDays;
   logoutIcon = faArrowRightFromBracket;
+
+  closed = false;
 
   nombreUser: string = '';
   apellidoUser: string = '';
@@ -30,16 +57,15 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private bd: ConeccionService,
     private jwtAuth: JwtAuthService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
   ) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
-    let sideBar = document.getElementsByClassName('sidebar');
     if (event.target.innerWidth < 1100) {
-      sideBar[0].classList.add('close');
+      this.closed = true;
     } else {
-      sideBar[0].classList.remove('close');
+      this.closed = false;
     }
   }
 
@@ -57,13 +83,7 @@ export class DashboardComponent implements OnInit {
   }
 
   closeMenu(): void {
-    let sideBar = document.getElementsByClassName('sidebar');
-
-    if (sideBar[0].classList.contains('close')) {
-      sideBar[0].classList.remove('close');
-    } else {
-      sideBar[0].classList.add('close');
-    }
+    this.closed = !this.closed;
   }
 
   logout(): void {
@@ -73,10 +93,19 @@ export class DashboardComponent implements OnInit {
 
   cargarDatos(header: string, tabla: string): void {
     if (window.innerWidth < 1100) {
-      let sideBar = document.getElementsByClassName('sidebar');
-      sideBar[0].classList.add('close');
+      this.closed = true;
     }
     this.header = header;
     this.tabla = tabla;
+  }
+
+  toggleCheckIn() {
+    this.mostrarCheckIn = !this.mostrarCheckIn;
+    this.mostrarListados = !this.mostrarCheckIn;
+  }
+
+  toggleListado() {
+    this.mostrarCheckIn = false;
+    this.mostrarListados = true;
   }
 }

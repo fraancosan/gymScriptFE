@@ -1,133 +1,179 @@
 <div class="container_dash">
-  <div class="sidebar">
+  <div class="sidebar" [ngClass]="closed ? 'close' : ''">
     <div class="logo_content">
       <div class="logo">
         <img src="assets/logo.webp" class="img-logo" alt="logo" />
         <div class="logo_name">GymScript</div>
       </div>
       <fa-icon
+        size="lg"
+        [fixedWidth]="true"
         [icon]="menuIcon"
-        class="icon"
-        id="btn"
+        class="text-center btn-close-icon"
         (click)="closeMenu()"
       ></fa-icon>
     </div>
     <ul class="nav_list">
       <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Productos', 'productos')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+        <button class="nav_list__item-btn" (click)="toggleCheckIn()">
+          <fa-icon [fixedWidth]="true" [icon]="checkinIcon"></fa-icon>
+          <span class="nav_item">Check-in</span>
+        </button>
+      </li>
+      <hr />
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Productos', 'productos'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="productoIcon"></fa-icon>
           <span class="nav_item">Productos</span>
         </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
       </li>
       <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Provincias', 'provincias')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Provincias</span>
-        </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
-      </li>
-      <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Localidades', 'localidades')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Localidades</span>
-        </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
-      </li>
-      <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Actividades', 'actividades')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Actividades</span>
-        </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
-      </li>
-      <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Planes', 'planes')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Planes</span>
-        </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
-      </li>
-      <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Usuarios', 'usuarios')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Usuarios', 'usuarios'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="userIcon"></fa-icon>
           <span class="nav_item">Usuarios</span>
         </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
       </li>
       <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Inscripciones', 'inscripciones')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+        <button
+          class="nav_list__item-btn"
+          (click)="
+            cargarDatos('Inscripciones', 'inscripciones'); toggleListado()
+          "
+        >
+          <fa-icon [fixedWidth]="true" [icon]="inscripcionIcon"></fa-icon>
           <span class="nav_item">Inscripciones</span>
         </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
       </li>
+
       <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Actividad por Plan', 'plan-actividades')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Planes-Actividades</span>
-        </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
-      </li>
-      <li class="nav_list__item">
-        <button class="nav_list__item-btn" (click)="cargarDatos('Sedes', 'sedes')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Sedes</span>
-        </button>
-        <!-- <span class="tooltip">Usuarios</span> -->
-      </li>
-      <li>
         <button
-          (click)="cargarDatos('Actividades por Sede', 'sede-actividades')"
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Horarios', 'horarios'); toggleListado()"
         >
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Sedes-Actividades</span>
-        </button>
-      </li>
-      <li>
-        <button (click)="cargarDatos('Entrenadores', 'entrenadores')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
-          <span class="nav_item">Entrenadores</span>
-        </button>
-      </li>
-      <li>
-        <button (click)="cargarDatos('Horarios', 'horarios')">
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <fa-icon [fixedWidth]="true" [icon]="horarioIcon"></fa-icon>
           <span class="nav_item">Horarios</span>
         </button>
       </li>
-      <li>
+      <li class="nav_list__item">
         <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Provincias', 'provincias'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="provinciaIcon"></fa-icon>
+          <span class="nav_item">Provincias</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Localidades', 'localidades'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="localidadIcon"></fa-icon>
+          <span class="nav_item">Localidades</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Sedes', 'sedes'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="sedeIcon"></fa-icon>
+          <span class="nav_item">Sedes</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Actividades', 'actividades'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="actividadesIcon"></fa-icon>
+          <span class="nav_item">Actividades</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Planes', 'planes'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="planIcon"></fa-icon>
+          <span class="nav_item">Planes</span>
+        </button>
+      </li>
+
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="
+            cargarDatos('Actividad por Plan', 'plan-actividades');
+            toggleListado()
+          "
+        >
+          <fa-icon [fixedWidth]="true" [icon]="gridIcon"></fa-icon>
+          <span class="nav_item">Planes-Actividades</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="
+            cargarDatos('Actividades por Sede', 'sede-actividades');
+            toggleListado()
+          "
+        >
+          <fa-icon [fixedWidth]="true" [icon]="gridIcon"></fa-icon>
+          <span class="nav_item">Sedes-Actividades</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
+          (click)="cargarDatos('Entrenadores', 'entrenadores'); toggleListado()"
+        >
+          <fa-icon [fixedWidth]="true" [icon]="entrenadorIcon"></fa-icon>
+          <span class="nav_item">Entrenadores</span>
+        </button>
+      </li>
+      <li class="nav_list__item">
+        <button
+          class="nav_list__item-btn"
           (click)="
             cargarDatos(
               'Entrenadores por Sede y Actividad',
               'sede-act-entrenadores'
-            )
+            );
+            toggleListado()
           "
         >
-          <fa-icon [icon]="gridIcon" class="icon"></fa-icon>
+          <fa-icon [fixedWidth]="true" [icon]="gridIcon"></fa-icon>
           <span class="nav_item">Sede-Act-Entrenador</span>
         </button>
       </li>
     </ul>
     <div class="profile_content">
-      <div class="profile_details">
-        <div class="profile_info">
-          <img class="profile_info__img" src="assets/p.webp" alt="profileImg" />
-          <div class="name_job">
-            <div class="name">
-              {{ nombreUser + " " + apellidoUser }}
-            </div>
-            <div class="rol">Administrador</div>
+      <div class="profile_info">
+        <img class="profile_info__img" src="assets/p.webp" alt="profileImg" />
+        <div class="name_job">
+          <div class="name">
+            {{ nombreUser + " " + apellidoUser }}
           </div>
+          <div class="rol">Administrador</div>
         </div>
-        <button class="btn_LogOut" (click)="logout()">
-          <fa-icon [icon]="logoutIcon" class="icon"></fa-icon>
-        </button>
       </div>
+      <button class="btn_LogOut" (click)="logout()">
+        <fa-icon [fixedWidth]="true" [icon]="logoutIcon"></fa-icon>
+      </button>
     </div>
   </div>
-  <div class="listado">
+  <div class="listado" *ngIf="mostrarListados">
     <app-listados header="{{ header }}" tabla="{{ tabla }}"></app-listados>
+  </div>
+  <div class="check-in" *ngIf="mostrarCheckIn">
+    <app-check-in></app-check-in>
   </div>
 </div>

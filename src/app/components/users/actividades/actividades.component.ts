@@ -5,14 +5,17 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-actividades',
   templateUrl: './actividades.component.html',
-  styleUrls: ['./actividades.component.css']
+  styleUrls: ['./actividades.component.css'],
 })
 export class ActividadesComponent implements OnInit {
   @Input() inscripcion: any;
-  actividades: any[] = [];
-  customClass = "customClass";
+  actividades?: any[];
+  customClass = 'customClass';
 
-  constructor(private bd:ConeccionService, private toastr:ToastrService) { }
+  constructor(
+    private bd: ConeccionService,
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit(): void {
     this.bd.getActividadesPlan(this.inscripcion.idPlan).subscribe({

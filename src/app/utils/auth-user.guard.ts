@@ -3,22 +3,20 @@ import { CanActivateFn, Router } from '@angular/router';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
 import { LocalStorageService } from '../services/local-storage.service';
 
-
 export const authUserGuard: CanActivateFn = () => {
   let jwtAuth = inject(JwtAuthService);
   let localStorageService = inject(LocalStorageService);
   let token = localStorageService.getItem('token');
   if (token === null) {
     signIn();
-  }else{
+  } else {
     let tokenDecoded = jwtAuth.decodeToken(token);
-      if (tokenDecoded.rol != 'user') {
-        signIn();
-      }
+    if (tokenDecoded.rol != 'user') {
+      signIn();
+    }
   }
   return true;
 };
-
 
 function signIn() {
   let router = inject(Router);

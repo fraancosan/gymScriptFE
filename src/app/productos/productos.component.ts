@@ -43,8 +43,10 @@ export class ProductosComponent implements OnInit {
   onSortOrderChanged() {
     if (this.filteredProducts) {
       if (this.sortOrder === 'asc') {
+        // Ordena tus productos en orden ascendente
         this.filteredProducts.sort((a, b) => a.nombre.localeCompare(b.nombre));
       } else {
+        // Ordena tus productos en orden descendente
         this.filteredProducts.sort((a, b) => b.nombre.localeCompare(a.nombre));
       }
     }

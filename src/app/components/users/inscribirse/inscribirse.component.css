@@ -17,6 +17,18 @@
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
 }
 
+.ver-actividades {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  background: none;
+  border: none;
+  color: var(--primary-yellow);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 .inscription-form {
   display: flex;
   flex-direction: column;
@@ -73,10 +85,6 @@
 .pay-button:disabled {
   color: #fff;
   background-color: rgb(139, 139, 139);
-}
-
-.spinner {
-  margin-top: 0px;
 }
 
 @media (max-width: 700px) {

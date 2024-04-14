@@ -1,0 +1,75 @@
+<h1 class="title">Control Acceso</h1>
+
+<div class="search-container">
+  <input
+    type="search"
+    class="search-input"
+    placeholder="DNI"
+    (keyup.enter)="cargarDatos()"
+    [(ngModel)]="idUser"
+  />
+  <button class="search" (click)="cargarDatos()">Check-in</button>
+</div>
+
+<app-spinner *ngIf="isLoading" margin="30px 0"></app-spinner>
+
+<div class="contenedor">
+  <div *ngIf="usuario" class="tabla">
+    <div class="fila">
+      <div class="columna key">Nombre:</div>
+      <input
+        class="columna"
+        type="text"
+        value="{{ usuario.nombre }}"
+        readonly
+      />
+    </div>
+
+    <div class="fila">
+      <div class="columna key">Apellido:</div>
+      <input
+        class="columna"
+        type="text"
+        value="{{ usuario.apellido }}"
+        readonly
+      />
+    </div>
+
+    <div class="fila">
+      <div class="columna key">DNI:</div>
+      <input class="columna" type="number" value="{{ usuario.dni }}" readonly />
+    </div>
+
+    <div class="fila">
+      <div class="columna key">Telefono:</div>
+      <input
+        class="columna"
+        type="number"
+        value="{{ usuario.telefono }}"
+        readonly
+      />
+    </div>
+
+    <div class="fila" *ngIf="inscripcion">
+      <div class="columna key">Fecha Vencimiento:</div>
+      <input
+        class="columna"
+        type="date"
+        value="{{ inscripcion.cuota[0].fechaVenc }}"
+        readonly
+      />
+    </div>
+  </div>
+</div>
+<div class="container-estado">
+  <div
+    *ngIf="errorMsg || usuario"
+    [ngClass]="{
+      'franja-verde': !errorMsg,
+      'franja-roja': !!errorMsg || situacion === 'Vencido'
+    }"
+    class="situacion"
+  >
+    {{ !errorMsg ? situacion : errorMsg }}
+  </div>
+</div>

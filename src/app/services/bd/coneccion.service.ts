@@ -116,6 +116,17 @@ export class ConeccionService {
       );
   }
 
+  getUltimaCuota(idInscripcion: number) {
+    return this.http
+      .get(this.urlBack + 'cuotas?ultima=true&idInscripcion=' + idInscripcion)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.toastr.error(error.error.msg, 'Error');
+          return throwError(() => error);
+        }),
+      );
+  }
+
   getVencimientoCuota(idInscripcion: number) {
     return this.http
       .get(this.urlBack + 'cuotas/vencimiento/' + idInscripcion)
@@ -152,5 +163,14 @@ export class ConeccionService {
           return throwError(() => error);
         }),
       );
+  }
+
+  accessControl(dni: number) {
+    return this.http.get(this.urlBack + 'check-in/accessControl/' + dni).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.toastr.error(error.error.msg, 'Error');
+        return throwError(() => error);
+      }),
+    );
   }
 }

@@ -106,7 +106,7 @@ export class IdentifyService {
             nombre: 'Rol',
             campo: 'select',
             tipo: 'text',
-            posValores: ['admin', 'user', 'recepcionista'],
+            posValores: ['admin', 'user'],
             editable: true,
           },
         ];

@@ -11,7 +11,7 @@
       Añadir {{ header }}
     </button>
   </div>
-  <div class="table-responsive">
+  <div class="table-responsive" *ngIf="listado.length != 0; else loading">
     <table class="table" #tablaListados>
       <thead class="table-dark">
         <tr>
@@ -98,3 +98,7 @@
     </table>
   </div>
 </section>
+
+<ng-template #loading>
+  <app-spinner [centrado]="true"></app-spinner>
+</ng-template>

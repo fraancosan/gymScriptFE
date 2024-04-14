@@ -1,5 +1,5 @@
 .container-fluid {
-  margin-top: 30px;
+  padding-top: 30px;
 }
 
 .title {
@@ -7,11 +7,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 0 15px 15px;
+  margin: 0 5px 5px;
+  text-align: center;
 }
 
 .button-add {
-  width: 200px;
+  max-width: 200px;
+  width: 100%;
   border: none;
   padding: 0.3rem 1rem;
   border-radius: 4px;
@@ -128,5 +130,11 @@
 @media (min-width: 650px) {
   .title__h1 {
     font-size: 2rem;
+  }
+}
+
+@media (min-width: 320px) {
+  .title {
+    margin: 0 15px 15px;
   }
 }

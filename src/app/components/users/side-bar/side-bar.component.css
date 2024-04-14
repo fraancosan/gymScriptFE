@@ -5,22 +5,32 @@
 }
 
 .sidebar {
-  width: 250px;
-  height: 100vh;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  height: 100%;
+  min-height: 100svh;
   background-color: #14213d;
   top: 0;
   left: 0;
-  padding: 6px 14px;
+  padding: 1rem 14px;
   transition: all 0.3s ease;
+  gap: 2rem;
+}
+
+.logo_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .logo {
   display: flex;
-  height: 50px;
-  width: 100%;
   align-items: center;
-  margin-bottom: 40px;
   transition: all 0.3s ease;
 }
 
@@ -38,31 +48,44 @@
   padding-left: 10px;
 }
 
-#btn {
+.btn-close-icon {
   color: aliceblue;
-  position: absolute;
-  top: 6px;
-  left: 90%;
-  font-size: 20px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  transform: translateX(-50%);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .nav_list {
-  margin-top: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  height: 100%;
+}
+
+/* Estilo para la barra de desplazamiento */
+.nav_list::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Estilo para el track (la barra) de la barra de desplazamiento */
+.nav_list::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Estilo para el thumb (el control deslizante) de la barra de desplazamiento */
+.nav_list::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Estilo para el thumb cuando se pasa el mouse sobre él */
+.nav_list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .nav_list__item {
   list-style: none;
   position: relative;
   height: 50px;
-  margin: 0 auto;
   border-radius: 5px;
-  margin: 0 5px;
   transition: all 0.3s ease;
   line-height: 50px;
 }
@@ -70,6 +93,8 @@
 .nav_list__item-btn {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
   text-decoration: none;
   color: white;
   font-size: 16px;
@@ -79,41 +104,27 @@
   background-color: transparent;
   border: none;
   width: 100%;
+  padding: 0 0.5rem;
 }
-
 .nav_list__item-btn:hover {
   color: #14213d;
   background-color: white;
 }
 
-.icon {
-  height: 50px;
-  min-width: 50px;
-  border-radius: 12px;
-  line-height: 50px;
-  text-align: center;
-}
-
 .profile_content {
-  position: absolute;
   color: white;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  background-color: #14213d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile_info {
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
-  padding: 10px 6px;
-}
-
-.profile_details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 10px;
+  width: 100%;
 }
 
 .profile_info__img {
@@ -124,18 +135,10 @@
   color: white;
 }
 
-.name_job {
-  margin-left: 10px;
-}
-
 .name {
+  margin-left: 10px;
   font-size: 18px;
   font-weight: 500;
-}
-
-.rol {
-  font-size: 12px;
-  font-weight: 300;
 }
 
 .btn_LogOut {
@@ -160,15 +163,22 @@
 .sidebar.close {
   width: 88px;
 }
+.sidebar.close .logo_content {
+  flex-direction: column;
+  justify-content: center;
+  flex-flow: column-reverse;
+}
+
 .sidebar.close .logo {
-  margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.sidebar.close #btn {
-  left: 50%;
+
+.sidebar.close .nav_list__item-btn {
+  justify-content: center;
 }
+
 .sidebar.close .nav_item {
   display: none;
 }
@@ -184,6 +194,6 @@
 @media (max-width: 480px) {
   .sidebar {
     z-index: 100;
-    width: 100vw;
+    width: 100%;
   }
 }

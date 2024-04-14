@@ -1,21 +1,35 @@
 <header class="header" id="header">
   <div class="container-start">
     <div class="container-logo">
-      <a [routerLink]="['/home']" (click)="irAHome(); contraer()" id="logo"
-        ><img class="img-logo container-start__bttn " src="assets/logo.webp"
-      /></a>
+      <a [routerLink]="['/home']" (click)="irAHome(); contraer()" id="logo">
+        <img
+          class="img-logo container-start__bttn"
+          src="assets/logo.webp"
+          *ngIf="showLogo"
+        />
+      </a>
     </div>
     <div class="container-icons">
-      <button class="container-start__bttn" id="barsIcon" (click)="desplegar()">
+      <button
+        class="container-start__bttn"
+        id="barsIcon"
+        (click)="desplegar()"
+        *ngIf="showBarsIcon"
+      >
         <fa-icon [icon]="barsIcon" class="icon"></fa-icon>
       </button>
-      <button class="hidden container-start__bttn" id="xmarkIcon" (click)="contraer()">
+      <button
+        class="container-start__bttn"
+        id="xmarkIcon"
+        (click)="contraer()"
+        *ngIf="showXmarkIcon"
+      >
         <fa-icon [icon]="xmarkIcon" class="icon"></fa-icon>
       </button>
     </div>
   </div>
 
-  <div class="container-nav" id="mid-container">
+  <div class="container-nav" id="mid-container" *ngIf="showMidContainer">
     <ul class="nav-list flex-wrap">
       <li class="nav-item">
         <a
@@ -60,7 +74,7 @@
     </ul>
   </div>
 
-  <div class="container-end" id="final-container">
+  <div class="container-end" id="final-container" *ngIf="showFinalContainer">
     <button
       type="button"
       class="button-login"

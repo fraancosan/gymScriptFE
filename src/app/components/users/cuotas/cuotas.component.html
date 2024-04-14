@@ -30,7 +30,7 @@
     </div>
     <div class="pagar">
       <button
-        [disabled]="estado === 'Al dia!'"
+        [disabled]="estado !== 'Vencido'"
         class="pay-button"
         (click)="pay()"
       >
@@ -38,5 +38,5 @@
       </button>
     </div>
   </div>
-  <app-spinner *ngIf="loading" class="spinner"></app-spinner>
+  <app-spinner *ngIf="loading"></app-spinner>
 </div>

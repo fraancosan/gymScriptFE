@@ -7,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
 import { JwtAuthService } from '../services/auth/jwt-auth.service';
 import { LocalStorageService } from '../services/local-storage.service';
 
-
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -34,7 +33,7 @@ export class LoginFormComponent implements OnInit {
     private loginService: LoginService,
     private toastr: ToastrService,
     private jwtAuth: JwtAuthService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
   ) {}
 
   ngOnInit(): void {}

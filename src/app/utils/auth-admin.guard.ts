@@ -12,11 +12,10 @@ export let authAdminGuard: CanActivateFn = () => {
   if (token === null) {
     router.navigate(['/signIn']);
   } else {
-      let tokenDecoded = jwtAuth.decodeToken(token);
-      if (tokenDecoded.rol != 'admin') {
-        router.navigate(['/signIn']);
-      }
+    let tokenDecoded = jwtAuth.decodeToken(token);
+    if (tokenDecoded.rol != 'admin') {
+      router.navigate(['/signIn']);
+    }
   }
   return true;
 };
-

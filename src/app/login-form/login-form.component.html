@@ -40,12 +40,17 @@
       </div>
     </div>
 
-    <button name="submit" type="submit" (click)="login()" class="btn btn-warning">
+    <button
+      name="submit"
+      type="submit"
+      (click)="login()"
+      class="btn btn-warning"
+    >
       Iniciar Sesion
     </button>
-    <div class="spinner" *ngIf="loading">
-      <app-spinner></app-spinner>
-    </div>
+
+    <app-spinner *ngIf="loading"></app-spinner>
+
     <p class="final-text">
       ¿No tenes una cuenta? <a routerLink="/signUp">Registrate</a>
     </p>

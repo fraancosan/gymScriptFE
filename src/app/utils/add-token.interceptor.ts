@@ -12,7 +12,10 @@ import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class AddTokenInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private localStorageService:LocalStorageService) {}
+  constructor(
+    private router: Router,
+    private localStorageService: LocalStorageService,
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -27,7 +30,6 @@ export class AddTokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          
           this.router.navigate(['/singIn']);
         }
         return throwError(() => error);

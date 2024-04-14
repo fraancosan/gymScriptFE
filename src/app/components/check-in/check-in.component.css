@@ -1,0 +1,167 @@
+.ng-dirty,
+.ng-touched {
+  border: 1px solid black;
+}
+
+.title {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.search-container input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #14213d;
+}
+
+.search-container input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  max-width: 400px;
+  border-bottom: 2px solid #14213d;
+  padding: 0.5em 0.3em;
+  margin: auto;
+  align-self: center;
+  height: 36px;
+}
+
+.search-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.5em 0.3em;
+  background-color: var(--primary-yellow);
+  border: 1px solid var(--primary-yellow);
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: var(--primary-grey);
+  transition: all 0.3s;
+  margin-top: 20px;
+  height: 50px;
+  max-width: 350px;
+  width: 100%;
+}
+
+.search-container button:hover {
+  border: 1px solid #fff;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.tabla {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  margin: 20px;
+  background: rgb(255, 255, 255);
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+  border-radius: 10px;
+}
+
+.situacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+}
+
+.container-estado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.fila {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.text-danger {
+  text-align: center;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding-left: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+input:disabled {
+  border: 1px solid #ccc;
+  box-shadow: none;
+  background-color: #f3f4f5;
+}
+
+.key {
+  width: 150px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.franja-verde,
+.franja-roja {
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+  font-size: 20px;
+}
+
+.franja-verde {
+  background-color: green;
+}
+
+.franja-roja {
+  background-color: red;
+}
+
+/* Esta sirve para firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media (max-width: 500px) {
+  .fila {
+    font-size: 12px;
+    flex-direction: column;
+  }
+}

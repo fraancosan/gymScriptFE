@@ -14,6 +14,11 @@ export class HeaderComponent implements OnInit {
   barsIcon = faBars;
   xmarkIcon = faXmark;
   showHeader: boolean = false;
+  showXmarkIcon = false;
+  showBarsIcon = true;
+  showMidContainer = false;
+  showFinalContainer = false;
+  showLogo = true;
 
   constructor(
     private renderer: Renderer2,
@@ -33,24 +38,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  visible(id: string, id2: string) {
-    let elemento = document.getElementById(id);
-    let elemento2 = document.getElementById(id2);
-
-    if (elemento) {
-      elemento.classList.remove('hidden');
-    }
-
-    if (elemento2) {
-      elemento2.classList.add('hidden');
-    }
-  }
-
   desplegar() {
-    this.visible('xmarkIcon', 'barsIcon');
-    this.visible('mid-container', '');
-    this.visible('final-container', '');
-    this.visible('', 'logo');
+    this.showXmarkIcon = true;
+    this.showBarsIcon = false;
+    this.showMidContainer = true;
+    this.showFinalContainer = true;
+    this.showLogo = false;
 
     document.body.style.overflow = 'hidden';
 
@@ -63,10 +56,11 @@ export class HeaderComponent implements OnInit {
 
   contraer() {
     if (window.innerWidth <= 800) {
-      this.visible('barsIcon', 'xmarkIcon');
-      this.visible('', 'mid-container');
-      this.visible('', 'final-container');
-      this.visible('logo', '');
+      this.showXmarkIcon = false;
+      this.showBarsIcon = true;
+      this.showMidContainer = false;
+      this.showFinalContainer = false;
+      this.showLogo = true;
 
       document.body.style.overflow = 'auto';
 
@@ -76,6 +70,7 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
+
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -97,9 +92,9 @@ export class HeaderComponent implements OnInit {
     if (window.innerWidth <= 800) {
       this.contraer();
     } else {
-      this.visible('', 'barsIcon');
-      this.visible('mid-container', '');
-      this.visible('final-container', '');
+      this.showBarsIcon = false;
+      this.showMidContainer = true;
+      this.showFinalContainer = true;
     }
   }
 
@@ -109,9 +104,9 @@ export class HeaderComponent implements OnInit {
       this.contraer();
     } else {
       this.contraer();
-      this.visible('', 'barsIcon');
-      this.visible('mid-container', '');
-      this.visible('final-container', '');
+      this.showBarsIcon = false;
+      this.showMidContainer = true;
+      this.showFinalContainer = true;
     }
   }
 

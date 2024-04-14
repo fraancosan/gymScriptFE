@@ -35,22 +35,24 @@ export class ListadosComponent {
   }
 
   borrar(idItem: any) {
-    this.idEditando = '-1';
-    const pos = this.getValuePos(idItem);
-    if (idItem != '') {
-      this.bd.delete(this.tabla, idItem).subscribe((data) => {
-        this.toastr.success(data.msg, 'Exito', { timeOut: 1500 });
+    if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+      this.idEditando = '-1';
+      const pos = this.getValuePos(idItem);
+      if (idItem != '') {
+        this.bd.delete(this.tabla, idItem).subscribe((data) => {
+          this.toastr.success(data.msg, 'Exito', { timeOut: 1500 });
+          this.listado.splice(pos, 1);
+          if (this.listado.length === 0) {
+            this.addRegistro();
+          }
+        });
+      } else if (this.listado.length == 1) {
+        // Se quiere borrar el registro que se esta creando (ES NUEVO)
+        this.toastr.error('No se puede borrar', 'Error');
+      } else {
+        this.addRegistrosDisabled = false;
         this.listado.splice(pos, 1);
-        if (this.listado.length === 0) {
-          this.addRegistro();
-        }
-      });
-    } else if (this.listado.length == 1) {
-      // Se quiere borrar el registro que se esta creando (ES NUEVO)
-      this.toastr.error('No se puede borrar', 'Error');
-    } else {
-      this.addRegistrosDisabled = false;
-      this.listado.splice(pos, 1);
+      }
     }
   }
 

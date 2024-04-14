@@ -1,4 +1,4 @@
-<div *ngIf="todoBien">
+<div *ngIf="localidad; else loading">
   <h1 class="title">INSCRIPCION</h1>
   <!-- Informacion de planes -->
   <div class="row">
@@ -54,3 +54,7 @@
     <button class="baja btn" (click)="darDeBaja()">Dar de Baja</button>
   </div>
 </div>
+
+<ng-template #loading>
+  <app-spinner [centrado]="true"></app-spinner>
+</ng-template>
