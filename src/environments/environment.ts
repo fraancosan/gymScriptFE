@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlBack: 'https://servidordsw.onrender.com/',
+  urlBack: 'https://gymscript.app.francosanchez.com.ar/',
 };
