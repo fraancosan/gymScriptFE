@@ -1,54 +1,44 @@
-# TpDsw | Repositorio Front End
+# GymScript | FrontEnd
 
-Trabajo Practico de Desarrollo de Software UTN FRRO
+This project started as a final project for the “Software Development” course at the UTN FRRO university. The main objective of this project is to create a web application that allows the management of a gym.
 
-## Integrantes:
+It was originally developed by a team of 5 students, after finishing the project, I decided to continue working on it to improve it and add more features. **The original project can be found in this [branch](https://github.com/fraancosan/gymScriptFE/tree/facultad)**.
 
-- Fani, Nicolás | Legajo: 49449
-- Fina, Gino | Legajo: 49721
-- Sanchez, Franco Nahuel | Legajo: 49738
-- Mongelos, Manuel | Legajo: 48959
-- Zubiri, Joaquin | Legajo: 50206
+## Repositories
 
-## Repositorios
+- [**FrontEnd (Current)**](https://github.com/fraancosan/gymScriptFE)
+- [**BackEnd**](https://github.com/fraancosan/gymScriptBE)
 
-- [**FrontEnd (Actual)**](https://github.com/fraancosan/gymScriptFE)
-- [**BackEnd**](https://github.com/JoaquinZubiri/ServidorDSW)
+## Take a Look
 
-## [Descripción de Negocio](https://drive.google.com/file/d/1wwekkTi99xBK9NEA6BUtu4bnYpEpjds7/view?usp=sharing)
-
-## Visualizacion del proyecto
-
-[**Pagina Web**](https://francosanchez.me/gymScriptFE/home)
-
-[**Video Demostracion**](https://youtu.be/u8zHUxM0M9Q)
-
-[_(Viejo) Video Demostracion - Primera Version_](https://youtu.be/uJMpIO53Nyk)
-
-> [!NOTE]
-> Es posible que los datos provenientes de la BD tarden en cargarse, esto se debe dado a que luego de un periodo de inactividad el backend entra en estado de hibernacion y cuando se le realiza una consulta debe volver a activarse.
+- [**Web**](https://gymscript.francosanchez.com.ar)
+- [**Video**](https://www.youtube.com/watch?v=REjqzzRXUvY)
 
 > [!IMPORTANT]
-> Dado que estamos usando servidores gratuitos, las imagenes no son persistentes y se borran automaticamente luego de un corto plazo de tiempo
+> It is possible that data from the DB may take a while to load. This is because after a period of inactivity, the DB enters hibernation mode and must be reactivated.
 
-## Comandos Útiles
+## Setup
 
-### Principal
+When running locally, the server will be available at: **`http://localhost:4200/`**
+
+> [!IMPORTANT]
+> The server will not work properly if the backend is not running.
+>
+> The backend must be running on **`http://localhost:3000/`**
+
+## Useful Commands
 
 > [!NOTE]
-> En la instalacion se instala tambien la versión adecuada de angular
+> If you want to run angular commands without using `npx` before every command, you can install the CLI globally.
 
-- Instalación: npm run start
-- Iniciar proyecto
-  - Segun entorno:
-    - Dev: ng serve
-    - Prod: npm run prod
-  - El servidor se creara en: http://localhost:4200/
-- Deploy: ng deploy
-
-### Tests
-
-- Unit Testing: npm run test
-- E2E Testing:
-  - Via Interfaz: npm run cypress:open
-  - Via consola: npm run test:e2e
+- Install dependencies: `npm install`
+- Run server:
+  - Choose environment:
+    - Dev: `npm run start`
+    - Prod: `npm run prod`
+  - It will be available at: **`http://localhost:4200/`**
+- Tests:
+  - Unit Testing: `npm run test`
+  - E2E Testing:
+    - With GUI: `npm run test:e2e`
+    - Without GUI: `npm run test:e2e-f`
